@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Essential Requirements — Work Available Now</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --white:#ffffff; --ink:#303e44; --accent:#475f6a; --mid:#6a858f;
+    --light:#e8eef0; --lighter:#f4f7f8; --line:#d4dde1; --faint:#8fa4ad;
+    --maxw:940px; --ease:cubic-bezier(.22,.61,.36,1);
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{margin:0;font-family:'Asap',system-ui,-apple-system,'Segoe UI',sans-serif;
+    font-size:16px;line-height:1.7;color:var(--ink);background:var(--white);
+    -webkit-font-smoothing:antialiased;}
+  h1,h2,h3,h4,h5{margin:0;font-weight:500;line-height:1.25;}
+  p{margin:0 0 1rem;} p:last-child{margin-bottom:0;}
+  ul,ol{margin:0;padding:0;list-style:none;}
+  strong{font-weight:500;}
+  a{color:var(--accent);}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.86em;
+    background:var(--lighter);padding:0.1em 0.35em;border:1px solid var(--line);}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 3.5rem;}
+
+  .eyebrow{font-size:0.62rem;font-weight:600;letter-spacing:0.2em;
+    text-transform:uppercase;color:var(--faint);margin:0 0 1.1rem;}
+  .rule-label{font-size:0.6rem;font-weight:600;letter-spacing:0.16em;
+    text-transform:uppercase;color:var(--faint);padding-bottom:0.5rem;
+    border-bottom:1px solid var(--line);margin-bottom:1.2rem;}
+
+  header{padding:4.5rem 0 2.8rem;border-bottom:1px solid var(--line);}
+  header h1{font-size:clamp(2rem,5vw,3rem);letter-spacing:-0.015em;margin-bottom:1.4rem;}
+  header h1 em{font-weight:400;color:var(--accent);}
+  .lede{font-size:1.02rem;color:var(--mid);max-width:41rem;}
+
+  .thesis{padding:3rem 0 0.5rem;}
+  .thesis-inner{border-left:2px solid var(--accent);padding:0.2rem 0 0.2rem 1.6rem;max-width:41rem;}
+  .thesis-inner p{font-size:0.97rem;color:var(--mid);}
+  .thesis-inner p strong{color:var(--ink);}
+
+  section.block{padding:3.4rem 0 0;}
+  section.block > h2{font-size:1.5rem;margin-bottom:0.85rem;}
+  section.block > h2 em{color:var(--accent);font-weight:400;}
+  section.block > .intro{max-width:41rem;color:var(--mid);font-size:0.97rem;}
+
+  .track{border-top:1px solid var(--ink);margin-top:2rem;padding-top:1.6rem;}
+  .track + .track{border-top:1px solid var(--line);margin-top:2.6rem;}
+  .track-head{display:grid;grid-template-columns:7.5rem 1fr;gap:0 2rem;align-items:start;}
+  .track-tag{font-size:0.6rem;font-weight:600;letter-spacing:0.16em;
+    text-transform:uppercase;color:var(--accent);padding-top:0.4rem;}
+  .track-head h3{font-size:1.22rem;margin-bottom:0.55rem;}
+  .track-head h3 em{font-weight:400;color:var(--accent);}
+  .track-head > div > p{font-size:0.95rem;color:var(--mid);max-width:38rem;}
+  .track-body{margin-top:1.5rem;padding-left:9.5rem;}
+
+  h4.sub{font-size:0.95rem;margin:1.5rem 0 0.6rem;}
+  .steps li{font-size:0.9rem;color:var(--mid);line-height:1.65;
+    padding:0.32rem 0 0.32rem 1.7rem;position:relative;counter-increment:s;}
+  .steps{counter-reset:s;}
+  .steps li::before{content:counter(s);position:absolute;left:0;top:0.34rem;
+    font-size:0.62rem;font-weight:600;color:var(--faint);letter-spacing:0.05em;}
+  .steps li strong{color:var(--ink);}
+
+  .plain li{font-size:0.9rem;color:var(--mid);line-height:1.65;
+    padding:0.3rem 0 0.3rem 1.15rem;position:relative;}
+  .plain li::before{content:'—';position:absolute;left:0;color:var(--line);}
+  .plain li strong{color:var(--ink);}
+
+  table{border-collapse:collapse;width:100%;margin-top:1rem;font-size:0.86rem;}
+  th,td{border:1px solid var(--line);padding:0.65rem 0.8rem;text-align:left;
+    vertical-align:top;line-height:1.55;}
+  th{background:var(--lighter);font-weight:600;font-size:0.6rem;
+    letter-spacing:0.11em;text-transform:uppercase;color:var(--faint);}
+  td strong{color:var(--ink);}
+  td{color:var(--mid);}
+
+  .callout{border:1px solid var(--line);border-left:3px solid var(--accent);
+    background:var(--lighter);padding:1.2rem 1.35rem;margin-top:1.4rem;}
+  .callout-label{font-size:0.58rem;font-weight:600;letter-spacing:0.17em;
+    text-transform:uppercase;color:var(--accent);margin-bottom:0.6rem;}
+  .callout p{font-size:0.89rem;color:var(--ink);}
+  .callout p + p{margin-top:0.7rem;}
+
+  .venues{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));
+    gap:1px;background:var(--line);border:1px solid var(--line);margin-top:1.3rem;}
+  .venue{background:var(--white);padding:1.1rem 1.25rem;}
+  .venue h5{font-size:0.9rem;margin-bottom:0.3rem;}
+  .venue .meta{font-size:0.62rem;font-weight:600;letter-spacing:0.1em;
+    text-transform:uppercase;color:var(--faint);margin-bottom:0.5rem;}
+  .venue p{font-size:0.83rem;color:var(--mid);line-height:1.58;}
+
+  .order{padding:3.6rem 0 0;}
+  .order h2{font-size:1.5rem;margin-bottom:0.85rem;}
+  .order h2 em{color:var(--accent);font-weight:400;}
+  .order > p{max-width:41rem;color:var(--mid);font-size:0.97rem;}
+  .move{border-top:1px solid var(--line);padding:1.35rem 0;
+    display:grid;grid-template-columns:9rem 1fr;gap:0 2rem;}
+  .move-when{font-size:0.6rem;font-weight:600;letter-spacing:0.14em;
+    text-transform:uppercase;color:var(--accent);padding-top:0.25rem;}
+  .move h4{font-size:1rem;margin-bottom:0.35rem;}
+  .move p{font-size:0.88rem;color:var(--mid);max-width:39rem;}
+
+  .closing{margin:4rem 0 0;background:var(--ink);}
+  .closing .wrap{padding-top:2.6rem;padding-bottom:2.6rem;}
+  .closing p{font-size:1rem;font-style:italic;line-height:1.75;
+    color:rgba(255,255,255,0.82);max-width:44rem;}
+  .closing strong{color:#fff;font-weight:500;font-style:normal;}
+
+  footer{padding:1.7rem 0;border-top:1px solid var(--line);
+    font-size:0.6rem;font-weight:600;letter-spacing:0.15em;
+    text-transform:uppercase;color:var(--faint);
+    display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+
+  @media (max-width:760px){
+    .wrap{padding:0 1.5rem;}
+    header{padding-top:3rem;}
+    .track-head{grid-template-columns:1fr;gap:0.6rem;}
+    .track-tag{padding-top:0;}
+    .track-body{padding-left:0;}
+    .move{grid-template-columns:1fr;gap:0.4rem;}
+    table{font-size:0.8rem;}
+    th,td{padding:0.5rem 0.55rem;}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <p class="eyebrow">Essential Requirements — Working Document</p>
+    <h1>The work available now,<br /><em>without authority or resources.</em></h1>
+    <p class="lede">Everything in this document can be done from a laptop, with no affiliation, no funding, no ethics approval, and no permission from anyone. It is ordered rather than scheduled — a sensible sequence, not a set of deadlines.</p>
+  </div>
+</header>
+
+<div class="thesis">
+  <div class="wrap">
+    <div class="thesis-inner">
+      <p><strong>The scarcity, stated once.</strong> Four bodies of knowledge almost never sit in one person: construct validity from educational measurement, the duty to accommodate from human rights law, disability studies as critique, and professional programme design. Each has a separate faculty, literature, credential, and career ladder, and no institutional role requires more than two — which is why the problems needing all four go unaddressed.</p>
+      <p>The mapped practice confirms both halves of this. Contributions on essential requirements and clinical placement reach three of the four families. Nothing reaches all four, because the disability studies sources are cited by a different set of contributions entirely. <strong>The combination exists in the practitioner and not yet in any artifact.</strong> That gap is the opportunity, and closing it needs nothing but time at a desk.</p>
+    </div>
+  </div>
+</div>
+
+<section class="block">
+  <div class="wrap">
+    <p class="rule-label">Four tracks</p>
+    <h2>What can be built <em>from here.</em></h2>
+    <p class="intro">Four kinds of work, in rough order of how much they establish. They interleave — the study feeds the writing, the writing feeds the network, the network shapes the study — so none of them waits on another to finish.</p>
+
+    <!-- TRACK A -->
+    <div class="track">
+      <div class="track-head">
+        <div class="track-tag">Track A</div>
+        <div>
+          <h3>The corpus study — <em>original research from public documents.</em></h3>
+          <p>Professional programmes publish their essential requirements. Nursing, medicine, social work, paramedicine, physiotherapy, occupational therapy, dental hygiene, pharmacy, midwifery, and counselling programmes almost all post an <em>essential skills and abilities</em> or <em>technical standards</em> document on a public admissions page. As far as I can establish, nobody has analysed them systematically in Canada. This is the centrepiece: a real empirical contribution requiring no permission at all.</p>
+        </div>
+      </div>
+      <div class="track-body">
+
+        <h4 class="sub">The research question</h4>
+        <p style="font-size:0.9rem;color:var(--mid);max-width:38rem;">How do Canadian professional programmes state their essential requirements — as the constructs a standard genuinely measures, or as particular bodily methods of performing them? And what does the difference imply for who can enter the profession?</p>
+
+        <div class="callout">
+          <p class="callout-label">Why no ethics approval is needed</p>
+          <p>TCPS 2 (2022), Article 2.2: research relying exclusively on publicly available information does not require REB review where the information is in the public domain and there is no reasonable expectation of privacy. Published institutional admissions documents sit squarely inside that. No individuals are studied, no personal data is collected, and no one is interacted with.</p>
+          <p>Two cautions. If the study later adds interviews with programme staff or students, that portion does require review and a host institution to provide it. And an REB does not certify its own exemptions in advance for unaffiliated researchers — so state the reasoning in the methods section rather than claiming an approval you do not hold.</p>
+        </div>
+
+        <h4 class="sub">Building the corpus</h4>
+        <ol class="steps">
+          <li><strong>Frame the sample deliberately.</strong> Stratify by profession, province, and institution type — research university, teaching university, college, polytechnic. Forty to sixty documents is a defensible corpus for a first paper; there is no need for completeness, only for a sampling logic you can state.</li>
+          <li><strong>Capture, do not just cite.</strong> Save a PDF of every document and submit each URL to the Internet Archive at the moment of capture. Admissions pages change without notice, and a study of documents that have since been revised is worthless without the archived versions.</li>
+          <li><strong>Record provenance in the same row as the text.</strong> Institution, programme, document title, URL, archive link, date accessed, and where in the admissions process the applicant encounters it. That last field matters more than it looks: a requirement met before application is a different instrument from one met after admission.</li>
+          <li><strong>Keep the working file boring.</strong> A single spreadsheet, one row per document, one column per code. Nothing about this needs software beyond that.</li>
+        </ol>
+
+        <h4 class="sub">The coding frame</h4>
+        <p style="font-size:0.9rem;color:var(--mid);max-width:38rem;">Seven codes, each traceable to one of the four literatures. The first is the highest-yield and would carry a paper on its own.</p>
+
+        <table>
+          <thead>
+            <tr><th style="width:12rem;">Code</th><th>What it asks, and what to look for</th><th style="width:9rem;">Literature</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>1. Construct or method</strong></td>
+              <td>Is the requirement written as the capability being assessed, or as one bodily way of performing it? <em>Assess a patient's respiratory status</em> is a construct. <em>Must be able to auscultate breath sounds</em> is a method. Code every requirement; the ratio is the study's headline finding.</td>
+              <td>Construct validity (Messick)</td>
+            </tr>
+            <tr>
+              <td><strong>2. Locus of authority</strong></td>
+              <td>Does the document ground the requirement in a regulatory standard, an accreditation requirement, or nothing at all? Uncited requirements are inherited convention until shown otherwise — and that is the whole argument of the essential-requirements contribution.</td>
+              <td>Duty to accommodate</td>
+            </tr>
+            <tr>
+              <td><strong>3. Accommodation framing</strong></td>
+              <td>Absent · available · limited · framed as evidence of unsuitability. Note separately whether applicants are asked to self-assess against the standard before applying, which converts the document into a disclosure event.</td>
+              <td>Law · disclosure burden</td>
+            </tr>
+            <tr>
+              <td><strong>4. Bodily specification</strong></td>
+              <td>Count requirements phrased in sensory, motor, or stature terms — vision, hearing, standing, lifting, manual dexterity, speech. This is where the implied default body becomes visible and countable.</td>
+              <td>Disability studies</td>
+            </tr>
+            <tr>
+              <td><strong>5. Temporal assumptions</strong></td>
+              <td>Continuous availability, shift length, attendance minima, no-absence clauses, fixed progression. The structural layer that excludes episodic and fluctuating conditions before any accommodation conversation begins.</td>
+              <td>Episodic disability</td>
+            </tr>
+            <tr>
+              <td><strong>6. Revisability</strong></td>
+              <td>Does the document state when it was last reviewed, by whom, and through what process? Expect almost none to. A standard with no revision record is a standard nobody has been asked to defend.</td>
+              <td>Programme design</td>
+            </tr>
+            <tr>
+              <td><strong>7. Voice</strong></td>
+              <td>Any evidence that disabled practitioners, students, or disability-led organisations were consulted in drafting. Also expect near-zero, which is itself the finding.</td>
+              <td>Disability justice</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="callout">
+          <p class="callout-label">Two methodological decisions worth making early</p>
+          <p><strong>Reliability.</strong> Single-coder document analysis is publishable but weaker. Coding a subsample of ten documents with a second reader — an accommodation professional, a programme director, a disabled practitioner — and reporting agreement raises the paper's standing considerably and costs only a few conversations.</p>
+          <p><strong>Attribution.</strong> Report at aggregate level with unattributed illustrative quotations rather than naming institutions. It is defensible methodologically, it avoids putting programmes on the defensive, and it makes it far more likely that a programme will later invite you in to help. Naming institutions buys a sharper paper and closes the consulting door behind it.</p>
+        </div>
+
+        <h4 class="sub">What it produces</h4>
+        <ul class="plain">
+          <li><strong>A paper</strong> — the first systematic account of how Canadian professional programmes write their essential requirements.</li>
+          <li><strong>An open dataset and coding manual</strong>, deposited free on the Open Science Framework. Infrastructure other people cite, which is a faster route into a field than a single article.</li>
+          <li><strong>A ready dissertation.</strong> Leeds can absorb and extend this directly, which means starting now is not work done ahead of the credential — it is the credential arriving to find the work underway.</li>
+          <li><strong>The evidence base for the consulting offer</strong>, since a programme asking &ldquo;are our standards defensible?&rdquo; can now be answered with comparative data rather than assertion.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- TRACK B -->
+    <div class="track">
+      <div class="track-head">
+        <div class="track-tag">Track B</div>
+        <div>
+          <h3>Writing that needs <em>no data at all.</em></h3>
+          <p>Conceptual and comparative work requires no affiliation, no approval, and no fieldwork. Two pieces are already most of the way written inside the existing contributions.</p>
+        </div>
+      </div>
+      <div class="track-body">
+        <ul class="plain">
+          <li><strong>The four-literature framework.</strong> The piece that welds construct validity, the duty to accommodate, disability studies, and programme design into one argument. This is the artifact that does not currently exist, in your work or anyone's. The essential-requirements contribution is three-quarters of it; what it lacks is the disability studies layer held separately in the contribution on models of disability — the part that asks not only whether a requirement is valid and lawful, but whose body it was written for.</li>
+          <li><strong>The three-jurisdiction comparison.</strong> Canada's <em>bona fide</em> requirement test and accommodation to the point of undue hardship; the UK's statutory carve-out for competence standards under the Equality Act 2010, which exempts them from the reasonable adjustment duty; and the American technical-standards tradition under the ADA and Sections 504 and 508. Read the UK material before assuming the ground is empty — the competence-standards concept gives that jurisdiction a literature Canada lacks, and it is directly relevant to Leeds.</li>
+          <li><strong>The clinical placement piece.</strong> The narrower, higher-demand version: how a programme protects genuine safety requirements while examining the ones it has never had reason to question. This is the one health professions faculties will recognise immediately.</li>
+        </ul>
+
+        <h4 class="sub">Where these go</h4>
+        <div class="venues">
+          <div class="venue">
+            <h5>Journal of Postsecondary Education and Disability</h5>
+            <p class="meta">AHEAD · quarterly · masked review</p>
+            <p>Practitioner-facing and the natural home for the corpus study. Every article must include practical implications for disability resource professionals, which suits this material exactly. Submissions run through Scholastica; author guidelines are on the AHEAD site.</p>
+          </div>
+          <div class="venue">
+            <h5>Canadian Journal of Disability Studies</h5>
+            <p class="meta">Open access · no fees · CDSA</p>
+            <p>Hosted at the University of Waterloo for the Canadian Disability Studies Association. Six thousand words maximum, forty references maximum, no article processing charge, and welcoming to independent scholars. Roughly thirty weeks to publication.</p>
+          </div>
+          <div class="venue">
+            <h5>Disability &amp; Society</h5>
+            <p class="meta">The Leeds tradition</p>
+            <p>Where the critique-facing version of the argument belongs, and the journal whose readership the Leeds faculty share. Slower and more competitive; worth the framework piece rather than a first attempt.</p>
+          </div>
+          <div class="venue">
+            <h5>Health professions education journals</h5>
+            <p class="meta">Clinical placement version</p>
+            <p><em>Advances in Health Sciences Education</em> and <em>Academic Medicine</em> for the placement and technical-standards argument. Commentary and perspective formats are shorter and substantially faster than full articles.</p>
+          </div>
+          <div class="venue">
+            <h5>Assessment &amp; Evaluation in Higher Education</h5>
+            <p class="meta">Validity version</p>
+            <p>For the construct-validity framing aimed at assessment specialists rather than disability professionals — the audience least likely to encounter this argument and most equipped to act on it.</p>
+          </div>
+          <div class="venue">
+            <h5>Preprint, in every case</h5>
+            <p class="meta">EdArXiv · SSRN</p>
+            <p>Post anything under review. Timestamped, citable, freely readable, and no gatekeeper. It establishes the ground publicly while peer review runs at its own pace.</p>
+          </div>
+        </div>
+
+        <div class="callout">
+          <p class="callout-label">Verify before acting</p>
+          <p>Journal scopes, word limits, submission systems, and fees change. Everything above was checked recently, but confirm current author guidelines on each journal's own site before writing to length.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TRACK C -->
+    <div class="track">
+      <div class="track-head">
+        <div class="track-tag">Track C</div>
+        <div>
+          <h3>Publish what <em>already exists.</em></h3>
+          <p>The lowest-cost move available, and the one that makes every other track legible. Four accessibility contributions are drafted and none are public.</p>
+        </div>
+      </div>
+      <div class="track-body">
+        <ul class="plain">
+          <li><strong>Why universal design never eliminates individual accommodation</strong> — the anchor, and the most connected accessibility contribution in the map.</li>
+          <li><strong>Essential requirements and the limits of flexibility</strong> — three of the four literatures already, and the direct companion to the corpus study.</li>
+          <li><strong>Designing for episodic and fluctuating conditions</strong> — the structural argument that underwrites code five above.</li>
+          <li><strong>Access in clinical and placement education</strong> — the rarest of the four and the one with the clearest employer audience.</li>
+        </ul>
+        <p style="font-size:0.9rem;color:var(--mid);max-width:38rem;margin-top:1rem;">Every other area of the practice is largely published and live. The area being moved into is the one with nothing public in it. Closing that asymmetry costs editing time rather than new work.</p>
+
+        <h4 class="sub">And one serialised thread</h4>
+        <p style="font-size:0.9rem;color:var(--mid);max-width:38rem;">A running series on essential requirements — one public technical-standards document examined per piece, using the corpus material as it accumulates. Public scholarship that establishes the ground while peer review is slow, and it builds the dataset as a by-product rather than competing with it.</p>
+      </div>
+    </div>
+
+    <!-- TRACK D -->
+    <div class="track">
+      <div class="track-head">
+        <div class="track-tag">Track D</div>
+        <div>
+          <h3>The four ladders, <em>and where they are climbable.</em></h3>
+          <p>Conferences accept abstracts, not qualifications. That is the permeable point in every one of these communities, and none of them require you to be anything before you submit.</p>
+        </div>
+      </div>
+      <div class="track-body">
+        <ul class="plain">
+          <li><strong>AHEAD</strong> — the accommodation professionals' association and the publisher of JPED. Practitioner proposals are normal; this is the community whose daily work the essential-requirements question actually is.</li>
+          <li><strong>CACUSS and the Canadian disability-services community</strong> — the domestic counterpart, and the network of the people you would be working alongside in an accessibility advisor role.</li>
+          <li><strong>The Canadian Disability Studies Association</strong> — meets at Congress, publishes CJDS, and explicitly accommodates independent scholars.</li>
+          <li><strong>The Docs With Disabilities network</strong> — the community around the health professions education work that grounds the clinical placement contribution. Unusually welcoming to people entering from outside the discipline.</li>
+          <li><strong>Health professions education associations</strong> — CASN for nursing, AFMC and CAME for medicine. Essential requirements are a live and uncomfortable topic in all of them.</li>
+        </ul>
+
+        <h4 class="sub">Two things that cost nothing and compound</h4>
+        <ul class="plain">
+          <li><strong>Volunteer as a peer reviewer.</strong> Small journals are chronically short of reviewers, and JPED and CJDS will take one with this background. It teaches the genre from the inside and puts you in an editor's address book.</li>
+          <li><strong>Write to people.</strong> A short, specific email to an author about their actual argument costs nothing and is how four separate ladders become one network. Most academics answer.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="order">
+  <div class="wrap">
+    <p class="rule-label">An order, not a schedule</p>
+    <h2>What to do first, <em>and what waits for it.</em></h2>
+    <p>Each move is sized to be finishable and produces something the next one uses. There are no dates here. If a move takes three months or nine, the order still holds.</p>
+
+    <div class="move">
+      <div class="move-when">First</div>
+      <div>
+        <h4>Publish the four written contributions</h4>
+        <p>Editing rather than authorship. It removes the asymmetry between what the practice claims and what is publicly visible, and it gives every subsequent conversation something to point at.</p>
+      </div>
+    </div>
+    <div class="move">
+      <div class="move-when">Alongside</div>
+      <div>
+        <h4>Build the first twenty documents and pilot the coding frame</h4>
+        <p>Twenty is enough to discover whether the codes work, which they will not, entirely — code one will need sub-categories and code three will need a fifth value. Revise the frame before scaling to the full corpus.</p>
+      </div>
+    </div>
+    <div class="move">
+      <div class="move-when">Then</div>
+      <div>
+        <h4>Draft the three-jurisdiction comparison</h4>
+        <p>Pure desk work, no data dependency, and it forces the UK competence-standards reading that tells you whether the ground is as empty as it looks. Preprint on completion.</p>
+      </div>
+    </div>
+    <div class="move">
+      <div class="move-when">Then</div>
+      <div>
+        <h4>Complete the corpus and submit the study</h4>
+        <p>JPED first for the practitioner audience. Deposit the dataset and coding manual openly at the same time, so the infrastructure is available whatever the review outcome.</p>
+      </div>
+    </div>
+    <div class="move">
+      <div class="move-when">Once there is something to present</div>
+      <div>
+        <h4>Submit one conference abstract</h4>
+        <p>One, not four. The findings from the corpus are the abstract, and a single well-placed presentation opens more than scattered attendance at several.</p>
+      </div>
+    </div>
+    <div class="move">
+      <div class="move-when">When invited</div>
+      <div>
+        <h4>Facilitate one essential-requirements session, free</h4>
+        <p>With a single professional programme, through a contact, written up as a case study with permission. This converts the framework from argument into evidence and is the bridge from research to the consulting offer.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="block">
+  <div class="wrap">
+    <p class="rule-label">Honesty about the premise</p>
+    <h2>How you would know <em>if this is wrong.</em></h2>
+    <p class="intro">&ldquo;Almost nobody does this&rdquo; is a claim that flatters and is hard to disprove from inside. Three ways it could be overstated, and what would settle each.</p>
+    <ul class="plain" style="margin-top:1.2rem;">
+      <li><strong>The knowledge may exist unpublished.</strong> Accommodation professionals almost certainly reason this way daily without writing it down; practitioner knowledge is systematically under-published. The test is conversations, not literature searches — ask three experienced advisors how they handle an essential-requirements dispute and listen for whether the four literatures are already in the room.</li>
+          <li><strong>The UK may have got there first.</strong> The Equality Act's competence-standards provision has generated guidance and case law that Canada has no equivalent of. Read it early. If the framework already exists there, the contribution becomes translation and adaptation rather than origination — still worth doing, but a different claim.</li>
+      <li><strong>Absence of competition can mean absence of a market.</strong> The commercial test is not whether anyone writes this, but whether anyone buys it. Look at postings for essential-requirements and technical-standards work, and at whether health professions faculties handle this internally. If they do, the contribution is scholarly rather than commercial — which is a fine answer, but it should be known rather than assumed.</li>
+    </ul>
+  </div>
+</section>
+
+<div class="closing">
+  <div class="wrap">
+    <p>None of this requires a degree, a role, a grant, or registration. Two moves — publishing what is already written, and starting the corpus — would produce, within a year and at whatever pace suits, <strong>a public record in the cluster and an original dataset nobody else holds.</strong> The rest follows from those, and follows at its own speed.</p>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;width:100%;">
+    <span>Essential Requirements — Working Document</span>
+    <span>Corpus · Writing · Publication · Network</span>
+  </div>
+</footer>
+
+</body>
+</html>
