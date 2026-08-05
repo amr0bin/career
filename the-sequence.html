@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>The Sequence — Andrea Robin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --white:   #ffffff;
+    --ink:     #303e44;
+    --accent:  #475f6a;
+    --mid:     #6a858f;
+    --light:   #e8eef0;
+    --lighter: #f4f7f8;
+    --line:    #d4dde1;
+    --faint:   #8fa4ad;
+    --maxw:    920px;
+    --ease:    cubic-bezier(.22,.61,.36,1);
+  }
+
+  *{ box-sizing: border-box; }
+  html{ -webkit-text-size-adjust: 100%; }
+  body{
+    margin: 0; padding: 0;
+    font-family: 'Asap', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    font-weight: 400; font-size: 16px; line-height: 1.7;
+    color: var(--ink); background: var(--white);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,h2,h3,h4{ margin: 0; font-weight: 500; line-height: 1.25; }
+  p{ margin: 0 0 1rem; }
+  p:last-child{ margin-bottom: 0; }
+  ul{ margin: 0; padding: 0; list-style: none; }
+  em{ font-style: italic; }
+  strong{ font-weight: 500; color: var(--ink); }
+
+  .wrap{ max-width: var(--maxw); margin: 0 auto; padding: 0 3.5rem; }
+
+  /* ── shared type devices ── */
+  .eyebrow{
+    font-size: 0.62rem; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--faint); margin: 0 0 1.1rem;
+  }
+  .rule-label{
+    font-size: 0.6rem; font-weight: 600; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--faint);
+    padding-bottom: 0.5rem; border-bottom: 1px solid var(--line);
+    margin-bottom: 1.1rem;
+  }
+
+  /* ── header ── */
+  header{ padding: 4.5rem 0 2.8rem; border-bottom: 1px solid var(--line); }
+  header h1{
+    font-size: clamp(2rem, 5vw, 3.05rem); font-weight: 500;
+    letter-spacing: -0.015em; margin-bottom: 1.4rem;
+  }
+  header h1 em{ font-weight: 400; color: var(--accent); }
+  .lede{ font-size: 1.02rem; color: var(--mid); max-width: 40rem; }
+
+  /* ── opening note ── */
+  .note{ padding: 3rem 0 0.5rem; }
+  .note-inner{
+    border-left: 2px solid var(--accent);
+    padding: 0.2rem 0 0.2rem 1.6rem;
+    max-width: 40rem;
+  }
+  .note-inner p{ font-size: 0.97rem; color: var(--mid); }
+  .note-inner p strong{ color: var(--ink); font-weight: 500; }
+
+  /* ── standing ── */
+  .standing{ padding: 3.2rem 0 0; }
+  .standing h2{ font-size: 1.45rem; margin-bottom: 0.9rem; }
+  .standing h2 em{ color: var(--accent); font-weight: 400; }
+  .standing > p{ max-width: 40rem; color: var(--mid); font-size: 0.97rem; }
+  .held{
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1px; background: var(--line);
+    border: 1px solid var(--line); margin-top: 1.8rem;
+  }
+  .held-item{ background: var(--white); padding: 1.15rem 1.3rem; }
+  .held-item h4{ font-size: 0.93rem; margin-bottom: 0.3rem; }
+  .held-item p{ font-size: 0.84rem; color: var(--mid); line-height: 1.6; }
+
+  /* ── phases ── */
+  .phases{ padding: 3.6rem 0 0; }
+  .phase{ padding: 2.6rem 0; border-top: 1px solid var(--line); }
+  .phase:first-of-type{ border-top: 1px solid var(--ink); }
+
+  .phase-head{
+    display: grid; grid-template-columns: 8.5rem 1fr; gap: 0 2rem;
+    align-items: start;
+  }
+  .phase-marker{ padding-top: 0.35rem; }
+  .phase-ord{
+    font-size: 0.6rem; font-weight: 600; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--faint); display: block;
+    margin-bottom: 0.4rem;
+  }
+  .phase-name{
+    font-size: 0.82rem; font-weight: 600; letter-spacing: 0.03em;
+    color: var(--accent);
+  }
+  .phase-body h3{ font-size: 1.35rem; margin-bottom: 0.7rem; }
+  .phase-body h3 em{ font-weight: 400; color: var(--accent); }
+  .phase-lede{ font-size: 0.97rem; color: var(--mid); max-width: 38rem; }
+
+  .phase-content{ margin-top: 1.7rem; }
+  .work{ margin-bottom: 1.6rem; }
+  .work li{
+    font-size: 0.9rem; color: var(--mid); line-height: 1.62;
+    padding: 0.3rem 0 0.3rem 1.15rem; position: relative;
+  }
+  .work li::before{
+    content: '—'; position: absolute; left: 0; color: var(--line);
+  }
+  .work li strong{ font-weight: 500; }
+
+  /* ── the gate: signature device ── */
+  .gate{
+    border: 1px solid var(--line); border-left: 3px solid var(--accent);
+    background: var(--lighter); padding: 1.25rem 1.4rem; margin-top: 1.6rem;
+  }
+  .gate-label{
+    font-size: 0.58rem; font-weight: 600; letter-spacing: 0.17em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 0.7rem;
+  }
+  .gate li{
+    font-size: 0.89rem; color: var(--ink); line-height: 1.6;
+    padding: 0.28rem 0 0.28rem 1.5rem; position: relative;
+  }
+  .gate li::before{
+    content: ''; position: absolute; left: 0; top: 0.82rem;
+    width: 0.6rem; height: 1px; background: var(--accent);
+  }
+  .gate-foot{
+    font-size: 0.82rem; font-style: italic; color: var(--mid);
+    margin-top: 0.9rem; padding-top: 0.8rem; border-top: 1px solid var(--line);
+  }
+
+  /* ── carried / set down ── */
+  .load{
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+    background: var(--line); border: 1px solid var(--line); margin-top: 1.4rem;
+  }
+  .load-col{ background: var(--white); padding: 1.05rem 1.2rem; }
+  .load-col h5{
+    font-size: 0.58rem; font-weight: 600; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--faint); margin: 0 0 0.55rem;
+  }
+  .load-col p{ font-size: 0.85rem; color: var(--mid); line-height: 1.6; }
+
+  /* ── disclosure ── */
+  .more{
+    font-family: inherit; font-size: 0.62rem; font-weight: 600;
+    letter-spacing: 0.13em; text-transform: uppercase; color: var(--accent);
+    background: none; border: none; border-bottom: 1px solid transparent;
+    padding: 0.3rem 0; margin-top: 1.3rem; cursor: pointer;
+    transition: border-color 0.2s var(--ease);
+  }
+  .more:hover{ border-bottom-color: var(--accent); }
+  .more:focus-visible{ outline: 2px solid var(--accent); outline-offset: 3px; }
+  .more-panel{ display: none; margin-top: 1rem; }
+  .more-panel.open{ display: block; }
+  .more-panel p{
+    font-size: 0.89rem; color: var(--mid); max-width: 38rem;
+  }
+
+  /* ── decisions ── */
+  .decisions{ padding: 4rem 0 0; }
+  .decisions h2{ font-size: 1.45rem; margin-bottom: 0.9rem; }
+  .decisions h2 em{ color: var(--accent); font-weight: 400; }
+  .decisions > p{ max-width: 40rem; color: var(--mid); font-size: 0.97rem; }
+  .fork{
+    border-top: 1px solid var(--line); padding: 1.7rem 0;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem 2.4rem;
+  }
+  .fork-q{ grid-column: 1 / -1; }
+  .fork-q h4{ font-size: 1.03rem; margin-bottom: 0.4rem; }
+  .fork-q p{ font-size: 0.9rem; color: var(--mid); max-width: 40rem; }
+  .fork-side h5{
+    font-size: 0.58rem; font-weight: 600; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--faint); margin: 0 0 0.45rem;
+    padding-bottom: 0.4rem; border-bottom: 1px solid var(--line);
+  }
+  .fork-side p{ font-size: 0.86rem; color: var(--mid); line-height: 1.62; }
+
+  /* ── dated ── */
+  .dated{ padding: 3.6rem 0 0; }
+  .dated h2{ font-size: 1.45rem; margin-bottom: 0.9rem; }
+  .dated h2 em{ color: var(--accent); font-weight: 400; }
+  .dated > p{ max-width: 40rem; color: var(--mid); font-size: 0.97rem; }
+  .dated-grid{
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1px; background: var(--line); border: 1px solid var(--line);
+    margin-top: 1.7rem;
+  }
+  .dated-item{ background: var(--white); padding: 1.2rem 1.35rem; }
+  .dated-item h4{ font-size: 0.95rem; margin-bottom: 0.4rem; }
+  .dated-item p{ font-size: 0.85rem; color: var(--mid); line-height: 1.6; }
+
+  /* ── closing ── */
+  .closing{ margin: 4rem 0 0; background: var(--ink); }
+  .closing .wrap{ padding-top: 2.6rem; padding-bottom: 2.6rem; }
+  .closing p{
+    font-size: 1rem; font-weight: 400; font-style: italic;
+    line-height: 1.75; color: rgba(255,255,255,0.82); max-width: 44rem;
+  }
+  .closing strong{ color: #fff; font-weight: 500; font-style: normal; }
+
+  footer{
+    padding: 1.7rem 0; border-top: 1px solid var(--line);
+    font-size: 0.6rem; font-weight: 600; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--faint);
+    display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+  }
+
+  @media (max-width: 720px){
+    .wrap{ padding: 0 1.5rem; }
+    header{ padding-top: 3rem; }
+    .phase-head{ grid-template-columns: 1fr; gap: 0.7rem; }
+    .phase-marker{ padding-top: 0; }
+    .phase-name{ display: inline; }
+    .load{ grid-template-columns: 1fr; }
+    .fork{ grid-template-columns: 1fr; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ transition: none !important; animation: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <p class="eyebrow">The Sequence — Living Document</p>
+    <h1>A path measured in readiness,<br /><em>not in years.</em></h1>
+    <p class="lede">One reconciled order of work, replacing the two that had drifted apart. Each phase closes on a condition met rather than a date reached — so the plan holds whether it takes six years or fourteen, and so no part of it is carried at a pace that would make the work worse.</p>
+  </div>
+</header>
+
+<div class="note">
+  <div class="wrap">
+    <div class="note-inner">
+      <p><strong>Why this is not a timeline.</strong> The earlier plans set each stage against a year, and years turned out to be the wrong unit. A part-time credential taken alongside a full working life, a facilitation practice, and a studio does not move at a predictable rate, and it should not be asked to. Keyed to years, a plan generates a permanent low-grade sense of being behind. Keyed to conditions, it generates a clear answer to one question: <em>is this stage finished, and am I ready for the next.</em></p>
+      <p>Nothing here expires. Two items carry real external dates, and they are listed at the end so they do not have to be held in mind anywhere else.</p>
+    </div>
+  </div>
+</div>
+
+<div class="standing">
+  <div class="wrap">
+    <p class="rule-label">Before the first phase</p>
+    <h2>The path does not start from zero. <em>It starts from here.</em></h2>
+    <p>Any sequence that opens with a credential implies that the work begins when the credential does. That is not the case, and stating what is already in hand removes the largest distortion in the earlier documents — the sense of a long runway before anything counts.</p>
+
+    <div class="held">
+      <div class="held-item">
+        <h4>Fifteen years of practice</h4>
+        <p>Learning systems across higher education, research institutions, and the public sector. The rarest component of the profile and the one already complete.</p>
+      </div>
+      <div class="held-item">
+        <h4>Two completed foundations</h4>
+        <p>The BFA as method rather than history; two research-based years of neurobiology as the biological substrate.</p>
+      </div>
+      <div class="held-item">
+        <h4>A running practice</h4>
+        <p>Make Space in weekly delivery, the Other Bodies tools in use, and a year-long curriculum already tested with real participants.</p>
+      </div>
+      <div class="held-item">
+        <h4>A published body of work</h4>
+        <p>Fifty-odd mapped contributions across five areas of expertise, with sources, and two public writing practices in continuous operation.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="phases">
+  <div class="wrap">
+
+    <!-- PHASE ONE -->
+    <section class="phase">
+      <div class="phase-head">
+        <div class="phase-marker">
+          <span class="phase-ord">Phase one</span>
+          <span class="phase-name">Ground</span>
+        </div>
+        <div class="phase-body">
+          <h3>Put the existing work on the record, <em>and get inside health.</em></h3>
+          <p class="phase-lede">Nothing in this phase requires enrolment, permission, or a change in circumstances. It is the phase that makes every later application easier, and it is entirely composed of work already begun.</p>
+
+          <div class="phase-content">
+            <p class="rule-label">The work of this phase</p>
+            <ul class="work">
+              <li><strong>A role inside health or accessibility.</strong> A health authority, research institute, or an accessibility post in higher education or the public sector. The sector matters more than the title.</li>
+              <li><strong>Outcome measurement in Make Space.</strong> A validated depression screen at the start and end of each cycle. The smallest change with the largest downstream effect: it turns a practice into a program with a defensible claim.</li>
+              <li><strong>The conceptual paper, submitted.</strong> No affiliation required. The argument that the training system delivering an intervention matters as much as the intervention.</li>
+              <li><strong>Four accessibility resources published.</strong> The anchor on universal design and individual accommodation, essential requirements, episodic conditions, and access in clinical placement. All four are written; none are public.</li>
+              <li><strong>CPACC.</strong> Self-paced, inexpensive, and the credential that makes the accessibility expertise legible to institutions that need a formal marker.</li>
+            </ul>
+
+            <div class="gate">
+              <p class="gate-label">This phase is complete when</p>
+              <ul>
+                <li>The conceptual paper is submitted or under review.</li>
+                <li>One Make Space cohort has pre and post data.</li>
+                <li>The four accessibility resources are live.</li>
+                <li>The working role is inside the sector, and stable enough to study alongside.</li>
+              </ul>
+              <p class="gate-foot">If this takes eighteen months, that is the correct length. If it takes three years because the right role took time to find, the plan is not late — the condition simply was not met yet.</p>
+            </div>
+
+            <div class="load">
+              <div class="load-col">
+                <h5>Carried</h5>
+                <p>The role, the writing, Make Space at its weekly rhythm, the studio practice at its quarterly rhythm.</p>
+              </div>
+              <div class="load-col">
+                <h5>Not yet</h5>
+                <p>No coursework. This phase deliberately holds no enrolment, so that the publishing and the job search have room.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHASE TWO -->
+    <section class="phase">
+      <div class="phase-head">
+        <div class="phase-marker">
+          <span class="phase-ord">Phase two</span>
+          <span class="phase-name">Frame</span>
+        </div>
+        <div class="phase-body">
+          <h3>The theoretical grounding, <em>and enough research literacy to read the field.</em></h3>
+          <p class="phase-lede">Leeds and the LSHTM short courses run together rather than in sequence. Both are online, part-time, and modular, and both permit pauses between modules — which is what makes them compatible with a working life and with each other.</p>
+
+          <div class="phase-content">
+            <p class="rule-label">The work of this phase</p>
+            <ul class="work">
+              <li><strong>MSc Disability Studies, Rights and Inclusion — Leeds, online.</strong> Nine taught modules of eight weeks each, with breaks permitted between them. The dissertation is the opportunity: the disability and depression intersection, or access in clinical and placement education.</li>
+              <li><strong>Epidemiology and Statistics for Public Health — LSHTM short courses.</strong> A literacy, not an identity. Enough to read a depression trial and understand what it claims.</li>
+              <li><strong>Global Mental Health — LSHTM short course.</strong> The treatment gap, the task-shifting evidence, and a first international cohort.</li>
+              <li><strong>A qualitative paper from Make Space.</strong> Two or three years of documentation is enough for a thematic or phenomenological study of participant experience. Submittable without a doctoral affiliation.</li>
+            </ul>
+
+            <div class="gate">
+              <p class="gate-label">This phase is complete when</p>
+              <ul>
+                <li>The Leeds dissertation is submitted.</li>
+                <li>A trial's methods and results sections can be read without deferring to someone else.</li>
+                <li>A second paper is submitted or published.</li>
+                <li>The registration question has been answered — see the forks below.</li>
+              </ul>
+              <p class="gate-foot">Leeds permits breaks between modules. Taking one is a use of the programme's design, not a lapse in the plan.</p>
+            </div>
+
+            <div class="load">
+              <div class="load-col">
+                <h5>Carried</h5>
+                <p>The role, coursework, one paper, the Substacks at minimum viable rhythm, Make Space, the studio.</p>
+              </div>
+              <div class="load-col">
+                <h5>Set down</h5>
+                <p>New consulting scope. The practice holds existing clients; it does not grow during coursework.</p>
+              </div>
+            </div>
+
+            <button class="more" type="button" aria-expanded="false" aria-controls="p2-more">On the LSHTM master's</button>
+            <div class="more-panel" id="p2-more">
+              <p>The earlier documents disagreed about this degree. One listed it as optional and post-doctoral with five alternatives and an explicit option to skip. Another made it a required step occupying two years and pushing everything after it back. A third assumed throughout that it was happening.</p>
+              <p>This sequence resolves it as <strong>optional, and decided later</strong>. The three short courses deliver the literacy the plan actually asks for. The full master's delivers a thesis, a network, and formal standing in global health — all valuable, none required before the room. If the international thread becomes central during the doctoral phase, the network is available through fellowships and short-course clusters without another degree.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHASE THREE -->
+    <section class="phase">
+      <div class="phase-head">
+        <div class="phase-marker">
+          <span class="phase-ord">Phase three</span>
+          <span class="phase-name">The room</span>
+        </div>
+        <div class="phase-body">
+          <h3>Clinical formation, <em>and the structural honesty it requires.</em></h3>
+          <p class="phase-lede">This is the phase the earlier plans understated. A counselling master's is cohort-based, with several hundred supervised practicum hours in daytime placements. It cannot be carried alongside a senior full-time role, and planning as though it can is what puts every later stage under strain.</p>
+
+          <div class="phase-content">
+            <p class="rule-label">The work of this phase</p>
+            <ul class="work">
+              <li><strong>A counselling psychology master's.</strong> Depression named as the focus from the application onward. Practicum placements requested in mood disorder clinics, community mental health, and primary care.</li>
+              <li><strong>A worked financial plan, made before applying.</strong> Reduced hours, contract work, or a leave. This is a planning task, not a compromise, and it belongs at the start of the phase rather than in the middle of it.</li>
+              <li><strong>Registration.</strong> Supervised hours and registration follow the degree.</li>
+              <li><strong>Expressive approaches integrated into a real caseload</strong>, once provisional registration permits.</li>
+            </ul>
+
+            <div class="gate">
+              <p class="gate-label">This phase is complete when</p>
+              <ul>
+                <li>The degree is finished and supervised hours are underway or complete.</li>
+                <li>A caseload exists, with depression as its centre.</li>
+                <li>The question of whether a doctorate is needed can be answered from experience rather than from ambition.</li>
+              </ul>
+              <p class="gate-foot">This phase may also turn out to be the destination. A registered practice, a running program, a body of published work, and a consulting methodology is a complete professional life. The next phase is optional in a way the earlier documents did not say plainly.</p>
+            </div>
+
+            <div class="load">
+              <div class="load-col">
+                <h5>Carried</h5>
+                <p>Clinical training first. Make Space and the studio at minimum rhythm. The Substacks reduced to monthly.</p>
+              </div>
+              <div class="load-col">
+                <h5>Set down</h5>
+                <p>The full-time senior role, in its current form. Consulting becomes the flexible income rather than the employment.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHASE FOUR -->
+    <section class="phase">
+      <div class="phase-head">
+        <div class="phase-marker">
+          <span class="phase-ord">Phase four</span>
+          <span class="phase-name">The question</span>
+        </div>
+        <div class="phase-body">
+          <h3>A doctorate, <em>if a question requires one.</em></h3>
+          <p class="phase-lede">The earlier plans specified a clinical psychology doctorate, which bundles two separate things: research authority and a second clinical credential. Separating them removes the plan's most fragile link and opens the programmes best suited to the actual research question.</p>
+
+          <div class="phase-content">
+            <p class="rule-label">The work of this phase</p>
+            <ul class="work">
+              <li><strong>A doctorate chosen for the question, not the title.</strong> Interdisciplinary health research, population and public health, health sciences, or implementation science. These are markedly more open to a profile built from art, learning design, disability studies, and practice.</li>
+              <li><strong>A supervisor identified before a programme is.</strong> Relationships first, applications second.</li>
+              <li><strong>The dissertation on the thread that is uniquely yours:</strong> how a psychosocial intervention is made deliverable, faithfully, by a non-specialist, at scale, accessibly. This question survives whatever the efficacy literature concludes.</li>
+            </ul>
+
+            <div class="gate">
+              <p class="gate-label">This phase begins only when</p>
+              <ul>
+                <li>There is a specific question that cannot be answered without doctoral resources.</li>
+                <li>A supervisor exists who wants the work.</li>
+                <li>The publication record makes the profile legible on its own terms.</li>
+                <li>The clinical practice is stable enough to hold at reduced volume.</li>
+              </ul>
+              <p class="gate-foot">If those four are never all true at once, not entering is a legitimate outcome — not a failure of the plan.</p>
+            </div>
+
+            <div class="load">
+              <div class="load-col">
+                <h5>Carried</h5>
+                <p>A reduced caseload, the dissertation, the studio practice as the thing that makes the years survivable.</p>
+              </div>
+              <div class="load-col">
+                <h5>Set down</h5>
+                <p>Everything expandable. Consulting, facilitation growth, and new writing commitments hold at their floors.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHASE FIVE -->
+    <section class="phase">
+      <div class="phase-head">
+        <div class="phase-marker">
+          <span class="phase-ord">Phase five</span>
+          <span class="phase-name">Deployment</span>
+        </div>
+        <div class="phase-body">
+          <h3>The room, the program, and the method, <em>running together.</em></h3>
+          <p class="phase-lede">A caseload built around depression. Make Space manualised, trained out, and evaluated. The learning-systems method published and applied to the training curriculum. The three assets operating as one engine.</p>
+
+          <div class="phase-content">
+            <div class="gate">
+              <p class="gate-label">The marker that proves the thesis</p>
+              <ul>
+                <li>A creative-health intervention, made transferable by a rigorous training system, designed accessibly from the start, tested in a low-resource setting, and carried by a trusted public identity.</li>
+              </ul>
+              <p class="gate-foot">Not a date. A single artefact that none of the three assets could have produced alone.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<div class="decisions">
+  <div class="wrap">
+    <p class="rule-label">Open questions</p>
+    <h2>Three forks this document <em>does not close for you.</em></h2>
+    <p>Each has been left open deliberately. What follows is what each choice costs and what it buys, stated evenly, so the decision can be made once with the information visible rather than re-litigated at every review.</p>
+
+    <div class="fork">
+      <div class="fork-q">
+        <h4>Is registration the destination, or is research authority?</h4>
+        <p>The earlier plans pursued both, in the most demanding order, and deferred the choice by a decade. The answer determines the shape of phases three and four.</p>
+      </div>
+      <div class="fork-side">
+        <h5>If registration</h5>
+        <p>The master's and supervised hours are sufficient for everything described in the clinical stream. The doctorate becomes genuinely optional, and phase four can be entered late, part-time, or not at all.</p>
+      </div>
+      <div class="fork-side">
+        <h5>If research authority</h5>
+        <p>An interdisciplinary doctorate can be entered directly after Leeds, without the counselling master's first — shortening the path considerably, at the cost of the room. The clinical formation could follow later, or not.</p>
+      </div>
+    </div>
+
+    <div class="fork">
+      <div class="fork-q">
+        <h4>Which thread does the research follow?</h4>
+        <p>The two candidates ask for different literatures, different reviewers, and different risks.</p>
+      </div>
+      <div class="fork-side">
+        <h5>Efficacy of creative approaches</h5>
+        <p>Closer to the practice and to what first drew you. Also the thinner evidence base, the more crowded field, and the one where a fifteen-year prior belief is hardest to hold at arm's length.</p>
+      </div>
+      <div class="fork-side">
+        <h5>Delivery and training systems</h5>
+        <p>Less crowded, survives a null efficacy result, and draws directly on the one capability almost nobody else holds. Further from the studio, closer to the desk.</p>
+      </div>
+    </div>
+
+    <div class="fork">
+      <div class="fork-q">
+        <h4>Is the LSHTM master's a step or an option?</h4>
+        <p>Answered provisionally above as optional. It can be reopened at the end of phase two, when the international thread will either have become central or not.</p>
+      </div>
+      <div class="fork-side">
+        <h5>If a step</h5>
+        <p>Adds a thesis, formal standing in global health, and the graduate network — and adds two to three years before the room.</p>
+      </div>
+      <div class="fork-side">
+        <h5>If an option</h5>
+        <p>The short courses carry the literacy. The network is reachable through fellowships, short-course clusters, and co-authorship without a further degree.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="dated">
+  <div class="wrap">
+    <p class="rule-label">External clocks</p>
+    <h2>The only two things here <em>that carry a date.</em></h2>
+    <p>Everything else in this document moves at whatever pace the work and the life allow. These two are set by other people, so they are recorded once, here, and do not need to be held anywhere else.</p>
+
+    <div class="dated-grid">
+      <div class="dated-item">
+        <h4>Leeds intake</h4>
+        <p>The online MSc runs to fixed application windows with more than one start point in the year. Worth confirming the current cycle directly with the School of Sociology and Social Policy before assuming a date — and worth knowing that missing one simply means the next.</p>
+      </div>
+      <div class="dated-item">
+        <h4>Psychotherapy regulation in British Columbia</h4>
+        <p>Regulation begins in late 2027 under the College of Health and Care Professionals of BC, with the Health Professions and Occupations Act already in force. Qualifying-programme standards are being set now, which is worth watching before choosing a master's — not before deciding whether to want one.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="closing">
+  <div class="wrap">
+    <p>A plan keyed to years turns every ordinary month into evidence of falling behind. A plan keyed to conditions asks a smaller and answerable question: <strong>is this stage finished.</strong> The work is already underway, it has been for fifteen years, and the pace at which the remaining pieces arrive changes very little about what it eventually amounts to.</p>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap" style="display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; width:100%;">
+    <span>The Sequence — Living Document</span>
+    <span>Ground · Frame · The Room · The Question · Deployment</span>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.more').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var panel = document.getElementById(btn.getAttribute('aria-controls'));
+      var open = panel.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
+</script>
+</body>
+</html>

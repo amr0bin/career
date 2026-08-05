@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Knowledge Map — Andrea Robin</title>
+<link href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --ink: #2a3740; --accent: #475f6a; --mid: #6a858f;
+  --light: #e8eef0; --line: #d4dde1; --faint: #8fa4ad;
+}
+body { background: #2a3740; overflow: hidden; height: 100vh; width: 100vw;
+  font-family: 'Asap', sans-serif; color: #fff; }
+
+canvas { display: block; }
+
+/* TOP BAR */
+#topbar {
+  position: fixed; top: 0; left: 0; right: 0; height: 50px;
+  background: rgba(42,55,64,0.85); backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  display: flex; align-items: center; padding: 0 1.4rem; gap: 1.6rem; z-index: 100;
+}
+.brand { font-size: 0.58rem; font-weight: 500; letter-spacing: 0.22em;
+  text-transform: uppercase; color: rgba(255,255,255,0.3); white-space: nowrap; }
+.brand em { color: rgba(255,255,255,0.5); font-style: normal; }
+
+.filters { display: flex; gap: 0.3rem; flex-wrap: wrap; }
+.fbtn {
+  font-family: 'Asap', sans-serif; font-size: 0.55rem; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07); border-radius: 2px;
+  padding: 0.25rem 0.6rem; cursor: pointer; transition: all 0.2s; white-space: nowrap;
+}
+.fbtn:hover { color: rgba(255,255,255,0.7); border-color: rgba(255,255,255,0.2); }
+.fbtn.on { color: #fff; background: rgba(71,95,106,0.6); border-color: rgba(71,95,106,0.8); }
+
+.vtoggle { display: flex; gap: 0.25rem; margin-left: auto;
+  border-left: 1px solid rgba(255,255,255,0.07); padding-left: 1rem; }
+.vbtn {
+  font-family: 'Asap', sans-serif; font-size: 0.55rem; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(255,255,255,0.3); background: none;
+  border: 1px solid rgba(255,255,255,0.1); border-radius: 2px;
+  padding: 0.25rem 0.7rem; cursor: pointer; transition: all 0.2s;
+}
+.vbtn.on { color: #fff; background: rgba(71,95,106,0.6); border-color: var(--accent); }
+
+/* PANEL */
+#panel {
+  position: fixed; right: 0; top: 50px; bottom: 0; width: 320px;
+  background: rgba(22,32,38,0.95); backdrop-filter: blur(24px);
+  border-left: 1px solid rgba(255,255,255,0.07);
+  transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+  z-index: 90; overflow-y: auto; padding: 2rem 1.5rem 3rem;
+}
+#panel.open { transform: translateX(0); }
+.pclose {
+  position: absolute; top: 0.8rem; right: 0.8rem;
+  background: rgba(255,255,255,0.07); border: none; color: rgba(255,255,255,0.4);
+  width: 26px; height: 26px; border-radius: 50%; cursor: pointer; font-size: 0.9rem;
+  display: flex; align-items: center; justify-content: center; transition: all 0.2s;
+}
+.pclose:hover { background: rgba(255,255,255,0.15); color: #fff; }
+.ptag { font-size: 0.55rem; font-weight: 500; letter-spacing: 0.2em;
+  text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 0.5rem; }
+.ptitle { font-size: 1.05rem; font-weight: 400; line-height: 1.3;
+  color: #fff; margin-bottom: 0.4rem; }
+.psub { font-size: 0.75rem; color: rgba(255,255,255,0.45); line-height: 1.65; margin-bottom: 1.2rem; }
+.pdiv { border: none; border-top: 1px solid rgba(255,255,255,0.07); margin: 1rem 0; }
+.pslabel { font-size: 0.55rem; font-weight: 500; letter-spacing: 0.18em;
+  text-transform: uppercase; color: rgba(255,255,255,0.25); margin-bottom: 0.5rem; }
+.pbody { font-size: 0.78rem; color: rgba(255,255,255,0.6); line-height: 1.75; }
+.pconns { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.8rem; }
+.ctag {
+  font-size: 0.55rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 0.22rem 0.55rem; border-radius: 2px;
+  background: rgba(71,95,106,0.25); color: rgba(255,255,255,0.4);
+  border: 1px solid rgba(71,95,106,0.4); cursor: pointer; transition: all 0.2s;
+}
+.ctag:hover { background: rgba(71,95,106,0.6); color: #fff; border-color: var(--accent); }
+
+/* TOOLTIP */
+#tt {
+  position: fixed; pointer-events: none; z-index: 200;
+  background: rgba(22,32,38,0.92); backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.1); border-radius: 2px;
+  padding: 0.45rem 0.75rem; opacity: 0; transition: opacity 0.15s;
+  max-width: 180px;
+}
+#tt.show { opacity: 1; }
+#tt-cat { font-size: 0.52rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(255,255,255,0.35); margin-bottom: 0.15rem; }
+#tt-name { font-size: 0.72rem; color: #fff; line-height: 1.4; }
+
+/* LEGEND */
+#legend {
+  position: fixed; left: 1rem; bottom: 1.2rem; z-index: 80;
+  background: rgba(42,55,64,0.85); backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.07); border-radius: 2px;
+  padding: 0.9rem 1.1rem;
+}
+.ltitle { font-size: 0.52rem; font-weight: 500; letter-spacing: 0.2em;
+  text-transform: uppercase; color: rgba(255,255,255,0.25); margin-bottom: 0.6rem; }
+.li { display: flex; align-items: center; gap: 0.55rem;
+  font-size: 0.65rem; color: rgba(255,255,255,0.4); margin-bottom: 0.3rem; }
+.ldot { border-radius: 50%; flex-shrink: 0; }
+
+/* HINT */
+#hint {
+  position: fixed; bottom: 1.2rem; left: 50%; transform: translateX(-50%);
+  font-size: 0.58rem; letter-spacing: 0.12em; color: rgba(255,255,255,0.2);
+  pointer-events: none; white-space: nowrap;
+}
+</style>
+</head>
+<body>
+
+<div id="topbar">
+  <div class="brand">Andrea Robin — <em>Knowledge Map</em></div>
+  <div class="filters" id="filters">
+    <button class="fbtn on" data-f="all" onclick="setFilter('all',this)">All</button>
+    <button class="fbtn" data-f="vision" onclick="setFilter('vision',this)">Vision</button>
+    <button class="fbtn" data-f="skill" onclick="setFilter('skill',this)">Skills</button>
+    <button class="fbtn" data-f="deployment" onclick="setFilter('deployment',this)">Deployment</button>
+    <button class="fbtn" data-f="concept" onclick="setFilter('concept',this)">Concepts</button>
+    <button class="fbtn" data-f="challenge" onclick="setFilter('challenge',this)">Challenges</button>
+    <button class="fbtn" data-f="checklist" onclick="setFilter('checklist',this)">Checklist</button>
+    <button class="fbtn" data-f="impact" onclick="setFilter('impact',this)">Impact</button>
+  </div>
+  <div class="vtoggle">
+    <button class="vbtn on" id="btn2d" onclick="setView('2d')">2D</button>
+    <button class="vbtn" id="btn3d" onclick="setView('3d')">3D</button>
+  </div>
+</div>
+
+<div id="panel">
+  <button class="pclose" onclick="closePanel()">×</button>
+  <div class="ptag" id="p-tag"></div>
+  <div class="ptitle" id="p-title"></div>
+  <div class="psub" id="p-sub"></div>
+  <hr class="pdiv">
+  <div class="pslabel">Detail</div>
+  <div class="pbody" id="p-body"></div>
+  <hr class="pdiv">
+  <div class="pslabel">Connected Nodes</div>
+  <div class="pconns" id="p-conns"></div>
+</div>
+
+<div id="tt"><div id="tt-cat"></div><div id="tt-name"></div></div>
+
+<div id="legend">
+  <div class="ltitle">Node Size = Depth of Work</div>
+  <div class="li"><div class="ldot" style="width:14px;height:14px;background:rgba(255,255,255,0.9);box-shadow:0 0 8px rgba(255,255,255,0.8)"></div>Core / Deep (5)</div>
+  <div class="li"><div class="ldot" style="width:10px;height:10px;background:rgba(255,255,255,0.65);box-shadow:0 0 5px rgba(255,255,255,0.5)"></div>Substantial (4)</div>
+  <div class="li"><div class="ldot" style="width:7px;height:7px;background:rgba(255,255,255,0.45);box-shadow:0 0 4px rgba(255,255,255,0.3)"></div>Developing (3)</div>
+  <div class="li"><div class="ldot" style="width:5px;height:5px;background:rgba(255,255,255,0.3)"></div>Emerging (2)</div>
+  <div class="li"><div class="ldot" style="width:3px;height:3px;background:rgba(255,255,255,0.2)"></div>Early (1)</div>
+  <hr style="border:none;border-top:1px solid rgba(255,255,255,0.07);margin:0.6rem 0">
+  <div class="ltitle">Colour by Category</div>
+  <div class="li"><div class="ldot" style="width:7px;height:7px;background:#c8e8f0"></div>Vision</div>
+  <div class="li"><div class="ldot" style="width:7px;height:7px;background:#7ab8c8"></div>Skills</div>
+  <div class="li"><div class="ldot" style="width:7px;height:7px;background:#8fa4ad"></div>Concepts</div>
+  <div class="li"><div class="ldot" style="width:7px;height:7px;background:#5a7d8a"></div>Deployment</div>
+  <div class="li"><div class="ldot" style="width:7px;height:7px;background:#a0c8d0"></div>Impact</div>
+  <div class="li"><div class="ldot" style="width:7px;height:7px;background:#c8a0a0"></div>Challenges</div>
+  <div class="li"><div class="ldot" style="width:7px;height:7px;background:#a0b8c0"></div>Checklist</div>
+</div>
+
+<div id="hint">Drag to rotate · Scroll to zoom · Click a star to explore</div>
+
+<script>
+// ═══════════════════════════════════════════
+//  DATA
+// ═══════════════════════════════════════════
+const CAT_COLORS = {
+  vision:     0xc8e8f0,
+  skill:      0x7ab8c8,
+  concept:    0x8fa4ad,
+  deployment: 0x5a7d8a,
+  impact:     0xa0c8d0,
+  challenge:  0xc8a0a0,
+  checklist:  0xa0b8c0,
+};
+
+const NODES = [
+  { id:'v1', label:'Vision', name:'Reduce the Depression Treatment Gap', sub:'The central organising purpose of a twenty-year career', body:'The WHO treatment gap for depression is enormous — especially in low- and middle-income countries. This career is designed to contribute meaningfully to closing that gap through learning systems, creative health approaches, and global health research. Every skill, every deployment, every credential traces back to this purpose.', cat:'vision', depth:5, connects:['v2','v3','c1','c2','c3','sk1','sk5','d1','d6','i1'] },
+  { id:'v2', label:'Vision', name:'Make Space Program', sub:'Creative arts-based group therapy for depression', body:'Make Space is an original therapeutic facilitation program integrating creative health approaches — writing, visual art, music — with evidence-informed group therapy. It is simultaneously a direct intervention, a research site, and a proof-of-concept for the training multiplier model.', cat:'vision', depth:4, connects:['v1','v3','sk3','sk4','c4','d2','ch1','i2'] },
+  { id:'v3', label:'Vision', name:'Multiplier Model', sub:'Train facilitators, not just deliver sessions', body:'The highest-leverage contribution is not running sessions — it is designing training systems that allow others to run sessions. One trained facilitator could reach ten cohorts. Published training systems could reach hundreds. This is the multiplier logic that connects individual practice to population-level impact.', cat:'vision', depth:4, connects:['v1','v2','sk1','sk5','d5','i1','i3','ch2'] },
+  { id:'sk1', label:'Skill', name:'Instructional Systems Design', sub:'15 years applied — Advanced', body:'Designing learning sequences that build genuine competence in practitioners, not just knowledge recall. In health contexts, this requires integrating cognitive load theory, situated learning principles, and deliberate practice frameworks.', cat:'skill', depth:5, connects:['v1','v3','sk2','sk5','d1','d3','ch3'] },
+  { id:'sk2', label:'Skill', name:'Knowledge Translation', sub:'Intermediate — deployed in Substack practice', body:'Making research evidence usable and actionable for practitioners who are not researchers. This means identifying what the evidence actually says, translating it into decision-relevant language, and designing outputs that reach people in the contexts where they make decisions.', cat:'skill', depth:3, connects:['sk1','sk5','c1','d2','d4','i4'] },
+  { id:'sk3', label:'Skill', name:'Therapeutic Group Facilitation', sub:'Developing — active practice', body:'Facilitating therapeutic group experiences for people experiencing depression. This requires holding the group process while attending to individual participants, managing the tension between structure and emergence, and maintaining appropriate scope of practice boundaries.', cat:'skill', depth:3, connects:['v2','sk4','c4','d2','ch4'] },
+  { id:'sk4', label:'Skill', name:'Creative Health Facilitation', sub:'Arts-based approaches to depression', body:'Using creative practice — writing, visual art, music — as a therapeutic medium for depression. Grounded in the Fancourt & Finn 2019 Lancet evidence base and the emerging creative health literature.', cat:'skill', depth:3, connects:['v2','sk3','c4','c5','d2','i2'] },
+  { id:'sk5', label:'Skill', name:'Universal Design for Learning', sub:'Intermediate — CPACC prep underway', body:'Designing learning experiences accessible by default to people with a wide range of abilities, disabilities, and learning differences. In the context of mental health and depression, UDL is essential because the population disproportionately includes people with disabilities and neurodivergent individuals.', cat:'skill', depth:3, connects:['sk1','sk2','c2','d3','c6','i5'] },
+  { id:'sk6', label:'Skill', name:'Health Systems Thinking', sub:'Understanding mental health delivery architecture', body:'Understanding how mental health systems are structured, funded, and constrained at the system level. A depression program that works in a well-resourced Canadian health authority may fail in a low-resource context — not because the clinical model is wrong, but because implementation assumptions were built into a specific system architecture.', cat:'skill', depth:4, connects:['sk1','c1','c3','d1','d5','d6','ch5','i1'] },
+  { id:'sk7', label:'Skill', name:'Research & Academic Writing', sub:'Publication in development', body:'Writing for peer-reviewed publication in health and education journals. This includes systematic review methodology, qualitative research methods, and the ability to frame original contributions. The conceptual paper connecting learning systems design and global mental health is the first major product.', cat:'skill', depth:3, connects:['sk2','sk6','c1','d4','ch6','i4'] },
+  { id:'sk8', label:'Skill', name:'Integration — Holding it All at Once', sub:'The rarest and highest-value skill', body:'The capacity to be in the room with a person experiencing depression and simultaneously think about the population-level evidence, the training system that would make this replicable, the disability justice analysis of who is currently excluded, and the research question that would make this knowledge travel. The individual skills are learnable. The integration is the work of twenty years.', cat:'skill', depth:5, connects:['v1','v2','v3','sk1','sk3','sk4','sk5','sk6','sk7'] },
+  { id:'c1', label:'Concept', name:'Task Shifting', sub:'Redistributing care from specialists to non-specialists', body:'WHO and global health researchers have developed frameworks for training non-specialist health workers to deliver evidence-based mental health interventions. This is the primary mechanism for addressing the global treatment gap. Key scholars: Vikram Patel, Ricardo Araya.', cat:'concept', depth:4, connects:['v1','sk1','sk6','sk7','c3','d5','d6','i1','i3'] },
+  { id:'c2', label:'Concept', name:'Disability Justice', sub:'Structural analysis of who is excluded from care', body:'Disability justice moves beyond individual impairment to understand disability as a social construct shaped by systemic inequities — racism, ableism, socio-economic disparities. For mental health access, this means attending to who is currently excluded from care by design, not by accident.', cat:'concept', depth:3, connects:['sk5','c6','d3','i5','ch5'] },
+  { id:'c3', label:'Concept', name:'Implementation Science', sub:'How interventions actually get adopted', body:'Implementation science studies the methods and strategies that facilitate the uptake of evidence-based practices into routine use. For this career, it is the bridge between clinical research (what works) and systems change (what gets used).', cat:'concept', depth:3, connects:['c1','sk6','d5','d6','i3','ch2'] },
+  { id:'c4', label:'Concept', name:'Creative Health', sub:'Evidence base for arts and wellbeing', body:'The Fancourt & Finn 2019 Lancet report established a robust evidence base for arts and cultural engagement as contributors to health outcomes, including depression. Creative health is now a recognized field in UK and Canadian health systems, with growing policy traction.', cat:'concept', depth:4, connects:['v2','sk3','sk4','c5','d2','i2'] },
+  { id:'c5', label:'Concept', name:'Depression Treatment Evidence', sub:'Cochrane reviews and psychological treatments', body:'The systematic evidence base for psychological treatments for depression — CBT, behavioural activation, interpersonal therapy. Understanding what the evidence actually shows, including its limitations, is the precondition for any credible clinical or training work in this space.', cat:'concept', depth:3, connects:['c4','sk3','sk7','d2','i2'] },
+  { id:'c6', label:'Concept', name:'Universal Health Coverage', sub:'The policy goal that task shifting serves', body:'Universal Health Coverage — the WHO commitment that all people can access quality health services without financial hardship — is the policy frame that gives task shifting its urgency. The treatment gap for depression is fundamentally a coverage gap.', cat:'concept', depth:3, connects:['c1','c2','c3','i1','i3','i5'] },
+  { id:'c7', label:'Concept', name:'Knowledge Translation Frameworks', sub:'iKT, KTA cycle, SPOR', body:'Integrated Knowledge Translation (iKT) engages knowledge users throughout the research process. The Knowledge to Action cycle provides a framework for adapting knowledge to local context. SPOR is the Canadian funding framework for patient-oriented research.', cat:'concept', depth:3, connects:['sk2','sk7','d4','i4','ch6'] },
+  { id:'c8', label:'Concept', name:'Theory of Change', sub:'Explicit causal chain from action to impact', body:'Not a vision statement — a specific causal chain: develop evidence-based creative health interventions, train practitioners to deliver them in low-resource settings, publish training systems so other researchers can adapt and scale them. Each link is an empirical question that must be tested.', cat:'concept', depth:4, connects:['v1','v3','i1','i3','ch1','ch2'] },
+  { id:'d1', label:'Deployment', name:'Health Authority L&D', sub:'Day job — sector proximity, stable income', body:'Senior learning design roles inside health systems (BC Mental Health and Substance Use Services, Vancouver Coastal Health, Fraser Health). The day job builds vocabulary, relationships, and systemic context. The right employer sees outside intellectual and creative work as an asset.', cat:'deployment', depth:4, connects:['sk1','sk6','v1','ch5','ch3','i1'] },
+  { id:'d2', label:'Deployment', name:'Make Space Sessions', sub:'Direct facilitation practice and research site', body:'Running Make Space sessions is simultaneously direct clinical practice, research site documentation, and proof-of-concept for the facilitator training model. Each session generates observational data, participant feedback, and reflective journal material.', cat:'deployment', depth:4, connects:['v2','sk3','sk4','c4','c5','i2'] },
+  { id:'d3', label:'Deployment', name:'Accessible Learning Labs', sub:'Consulting for accessible design', body:'Consulting practice applying Universal Design for Learning principles to educational and organisational settings. Builds credibility in the accessibility and disability justice space. The reframing task is to describe these projects in implementation science and global health language.', cat:'deployment', depth:2, connects:['sk5','c2','d1','i5'] },
+  { id:'d4', label:'Deployment', name:'Substack — Knowledge Translation', sub:'Monthly translation discipline, public audience', body:'The primary venue for translating research evidence into accessible, actionable writing for a non-academic audience. Consistent publication builds a public record of knowledge translation competence and an audience for the work.', cat:'deployment', depth:2, connects:['sk2','sk7','c7','i4'] },
+  { id:'d5', label:'Deployment', name:'Leeds MSc — Disability Studies', sub:'Scholarly standing for the disability-depression thread', body:'The Leeds MSc gives the disability justice framework scholarly standing and makes the disability-depression intersection a legitimate research thread. During this period, the first peer-reviewed publications enter the record.', cat:'deployment', depth:4, connects:['v3','c1','c2','c3','c6','ch6','i3','i5'] },
+  { id:'d6', label:'Deployment', name:'LSHTM / Global Health Track', sub:'International research credibility', body:'The LSHTM route (or equivalent) establishes international research credibility in the global mental health field — specifically in task shifting, implementation science, and low-resource mental health delivery. This is where the PhD research program takes shape.', cat:'deployment', depth:4, connects:['v1','c1','c3','c6','sk6','sk7','i1','i3'] },
+  { id:'d7', label:'Deployment', name:'80,000 Hours Advising', sub:'Career impact calibration', body:'The 80,000 Hours advising application is a ten-minute action with potentially significant return — access to researchers and advisors who think carefully about career impact and the expected value of different paths in the mental health space.', cat:'deployment', depth:1, connects:['v1','c8','ch1'] },
+  { id:'i1', label:'Impact', name:'Reduce Global Depression Treatment Gap', sub:'Population-level change', body:'The animating outcome of the entire career. The treatment gap is largest in low- and middle-income countries. The specific contribution is training systems that allow non-specialists to deliver evidence-based depression interventions at scale.', cat:'impact', depth:5, connects:['v1','v3','c1','c6','c8','d5','d6'] },
+  { id:'i2', label:'Impact', name:'Accessible Creative Health Pathways', sub:'Depression support that reaches excluded groups', body:'Make Space and the creative health work create pathways to depression support for people not reached by clinical services — people who would not see a psychiatrist, who cannot afford private therapy, who live in communities without specialist mental health services.', cat:'impact', depth:3, connects:['v2','c4','c5','d2'] },
+  { id:'i3', label:'Impact', name:'Replicable Training Systems', sub:'Published, open, adaptable', body:'The highest-leverage product of this career is training systems that others can pick up, adapt, and use to train facilitators in their own contexts. A training system that works in Vancouver needs to be designed from the start to be adaptable to Nairobi.', cat:'impact', depth:4, connects:['v3','c1','c3','c8','d5','d6','sk1'] },
+  { id:'i4', label:'Impact', name:'Public Knowledge Translation', sub:'Evidence that actually travels', body:'Research evidence that does not reach practitioners and policymakers has no impact. The Substack practice, the published papers in accessible formats, and the consulting deliverables are all part of making evidence travel from academic journals into rooms where decisions are made.', cat:'impact', depth:2, connects:['sk2','sk7','c7','d4'] },
+  { id:'i5', label:'Impact', name:'Disability-Inclusive Mental Health', sub:'Structural equity in access', body:'People with disabilities experience higher rates of depression and face greater barriers to care — by design, not by coincidence. Disability-inclusive mental health design is not a niche concern; it is the precondition for genuine universality.', cat:'impact', depth:3, connects:['c2','c6','sk5','d3','d5'] },
+  { id:'ch1', label:'Challenge', name:'Busyness vs. Impact', sub:'Risk A — activity without contribution', body:'The most significant strategic risk is confusing busyness with contribution. Publishing papers, training facilitators, running sessions, consulting — all of this can be genuinely busy without meaningfully reducing the depression burden. The discipline is writing a specific theory of change and testing each link annually.', cat:'challenge', depth:3, connects:['v1','v3','c8','d7','ch2'] },
+  { id:'ch2', label:'Challenge', name:'Multiplier Fidelity', sub:'Risk C — dilution at scale', body:'Training one cohort of facilitators is the proof of concept for the multiplier model. But whether trained facilitators actually deliver the Make Space model with fidelity, reach people experiencing depression, and produce meaningful outcomes is an empirical question not yet tested.', cat:'challenge', depth:3, connects:['v3','c3','c8','sk1','ch1','ch3'] },
+  { id:'ch3', label:'Challenge', name:'Credential Sequencing', sub:'What to build, when', body:'The credential sequence (current position → Leeds MSc → LSHTM/PhD) needs to be built in the right order, at the right pace, while maintaining income and practice. Each step has prerequisites. The checklist tracks genuine readiness, not just completion of requirements.', cat:'challenge', depth:2, connects:['sk1','d1','d5','d6','ch4'] },
+  { id:'ch4', label:'Challenge', name:'Scope of Practice', sub:'Facilitation without clinical license', body:'Running therapeutic group facilitation without a clinical license requires careful navigation of scope of practice. What can be done ethically and legally as a non-licensed facilitator? These boundaries need explicit attention and documentation.', cat:'challenge', depth:2, connects:['v2','sk3','d2','ch3'] },
+  { id:'ch5', label:'Challenge', name:'Systemic Barriers to Access', sub:'Transportation, geography, socioeconomics', body:'Barriers to mental health access — transportation in rural areas, cost, cultural competence, language — disproportionately affect the people most likely to be experiencing depression. Designing interventions without attending to these barriers produces services that reach the already-served.', cat:'challenge', depth:3, connects:['c2','c6','sk5','sk6','d1','i5'] },
+  { id:'ch6', label:'Challenge', name:'Research-to-Publication Gap', sub:'Academic writing as a new discipline', body:'Writing for peer-reviewed publication is a distinct skill from professional writing and knowledge translation work. The systematic review methodology, the academic argument structure, the reviewer response process — these require deliberate development. The first paper is the hardest.', cat:'challenge', depth:2, connects:['sk7','c7','d4','d5','d6'] },
+  { id:'ck1', label:'Checklist', name:'Apply — 80,000 Hours Advising', sub:'Week 1–2, immediate', body:'Takes ten minutes. High potential return. Access to researchers and advisors who think carefully about career impact. This is the most immediate and lowest-cost action on the entire checklist.', cat:'checklist', depth:1, connects:['d7','v1','c8'] },
+  { id:'ck2', label:'Checklist', name:'Read Patel + Lancet Commission', sub:'Month 1', body:'Where There Is No Psychiatrist (Patel) and the 2018 Lancet Commission on Global Mental Health are the two foundational texts for understanding the global depression treatment gap.', cat:'checklist', depth:2, connects:['c1','c6','sk6','d6'] },
+  { id:'ck3', label:'Checklist', name:'Begin Make Space Reflective Journal', sub:'Month 1 — one entry per session', body:'Treating Make Space as a research site starts with consistent documentation. Establish a post-session note format: what happened, what was observed, what surprised, what participants expressed.', cat:'checklist', depth:2, connects:['v2','d2','sk3','ch4'] },
+  { id:'ck4', label:'Checklist', name:'Add Participant Feedback Mechanism', sub:'Month 1 — simple format', body:'A simple, respectful, low-burden feedback format at the end of each Make Space phase. The beginning of participant outcome data that will eventually support the qualitative research paper.', cat:'checklist', depth:2, connects:['v2','d2','sk3','sk7','i2'] },
+  { id:'ck5', label:'Checklist', name:'Begin CPACC Exam Preparation', sub:'Accessibility credential — near-term', body:'CPACC (Certified Professional in Accessibility Core Competencies) formalises the Universal Design for Learning expertise that is already applied but not yet credentialed. Preparation timeline: 6–12 months.', cat:'checklist', depth:1, connects:['sk5','d3','c2'] },
+  { id:'ck6', label:'Checklist', name:'Reframe Professional Case Studies', sub:'Within months — health/implementation language', body:'The fifteen years of experience already speaks to mental health systems — it just needs to be named correctly in implementation science and global health framing.', cat:'checklist', depth:2, connects:['sk1','sk6','d1','d3','ch3'] },
+  { id:'ck7', label:'Checklist', name:'Write the Conceptual Paper', sub:'Connects learning systems + global mental health', body:'The first peer-reviewed paper connecting instructional systems design to global mental health delivery — specifically the task-shifting training gap. Establishes the research agenda and creates the first entry in the academic publication record.', cat:'checklist', depth:4, connects:['sk1','sk7','c1','c7','d4','d5','i3','i4'] },
+  { id:'ck8', label:'Checklist', name:'Leeds MSc Application', sub:'Gate: research ethics foundation', body:'The Leeds MSc in Disability Studies provides the scholarly framework for the disability justice work. Prerequisites: the day job, the Make Space documentation foundation, the reframed case studies.', cat:'checklist', depth:3, connects:['c2','d5','sk5','ch3','ch6'] },
+  { id:'ck9', label:'Checklist', name:'Secure Independent Research Funding', sub:'Post-doctoral — CIHR / Wellcome Trust', body:'Independent research funding is the marker of research independence and what enables the program to grow. Begin the CIHR application process in the first year of the post-doctoral phase.', cat:'checklist', depth:3, connects:['d6','i1','i3','sk7','ch6'] },
+  { id:'ck10', label:'Checklist', name:'Two-Year Career Direction Review', sub:'Recurring — not a one-time question', body:'Is this career path designed to maximise impact on the depression treatment gap, or to maximise personal meaning while also being genuinely useful? Set a recurring calendar commitment. Ask: what is the primary contribution? Is that the contribution the problem most needs?', cat:'checklist', depth:2, connects:['v1','c8','ch1'] },
+];
+
+// ═══════════════════════════════════════════
+//  LAYOUT
+// ═══════════════════════════════════════════
+function layoutNodes() {
+  const shells = {
+    vision:     { r: 0 },
+    skill:      { r: 260 },
+    concept:    { r: 195 },
+    deployment: { r: 335 },
+    impact:     { r: 160 },
+    challenge:  { r: 295 },
+    checklist:  { r: 370 },
+  };
+  const yRanges = {
+    vision: 60, skill: 140, concept: 110,
+    deployment: 150, impact: 90, challenge: 120, checklist: 170,
+  };
+  const counts = {};
+  NODES.forEach(n => counts[n.cat] = (counts[n.cat]||0)+1);
+  const idx = {};
+  NODES.forEach(n => {
+    idx[n.cat] = (idx[n.cat]||0);
+    const i = idx[n.cat]++;
+    const total = counts[n.cat];
+    const { r } = shells[n.cat];
+    const yr = yRanges[n.cat];
+
+    if (r === 0) {
+      // Vision: small cluster near center
+      const phi = Math.acos(-1 + (2*i)/Math.max(total-1,1));
+      const theta = Math.PI*(1+Math.sqrt(5))*i;
+      n.x = Math.sin(phi)*Math.cos(theta)*70;
+      n.y = Math.cos(phi)*70;
+      n.z = Math.sin(phi)*Math.sin(theta)*70;
+    } else {
+      // Offset angle per category to avoid overlap
+      const baseAngle = { skill:0, concept:0.6, deployment:1.2,
+        impact:1.8, challenge:2.5, checklist:3.2 }[n.cat]||0;
+      const angle = baseAngle + (2*Math.PI*i)/total;
+      const yOff = yr * ((i/(Math.max(total-1,1)))-0.5);
+      // Slight z-spread
+      const zWobble = (Math.sin(i*2.3)*0.25);
+      n.x = Math.cos(angle)*r * (1 + zWobble*0.1);
+      n.y = yOff;
+      n.z = Math.sin(angle)*r * (1 + zWobble*0.1);
+    }
+  });
+}
+layoutNodes();
+
+const nodeMap = {};
+NODES.forEach(n => nodeMap[n.id] = n);
+
+// ═══════════════════════════════════════════
+//  THREE.JS SETUP
+// ═══════════════════════════════════════════
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(55, window.innerWidth/window.innerHeight, 0.1, 5000);
+camera.position.set(0, 0, 700);
+
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+renderer.setPixelRatio(window.devicePixelRatio);
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setClearColor(0x2a3740, 1);
+document.body.appendChild(renderer.domElement);
+
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth/window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+
+// Star background
+const starGeo = new THREE.BufferGeometry();
+const starPos = [];
+for (let i=0; i<2000; i++) {
+  starPos.push((Math.random()-0.5)*4000, (Math.random()-0.5)*4000, (Math.random()-0.5)*4000);
+}
+starGeo.setAttribute('position', new THREE.Float32BufferAttribute(starPos, 3));
+const starMat = new THREE.PointsMaterial({ color: 0xffffff, size: 0.6, transparent: true, opacity: 0.12 });
+scene.add(new THREE.Points(starGeo, starMat));
+
+// ═══════════════════════════════════════════
+//  BUILD NODE MESHES
+// ═══════════════════════════════════════════
+// Size by depth
+function nodeSize(depth) {
+  const sizes = { 1: 2.5, 2: 4.5, 3: 7, 4: 10.5, 5: 15 };
+  return sizes[depth] || 5;
+}
+
+const nodeMeshes = {}; // id -> mesh
+const nodeGroup = new THREE.Group();
+scene.add(nodeGroup);
+
+// For raycasting
+const raycastSpheres = [];
+
+NODES.forEach(n => {
+  const r = nodeSize(n.depth);
+  const color = CAT_COLORS[n.cat] || 0xffffff;
+
+  // Glow sprite
+  const canvas = document.createElement('canvas');
+  canvas.width = canvas.height = 128;
+  const gctx = canvas.getContext('2d');
+  const grad = gctx.createRadialGradient(64,64,0,64,64,64);
+  grad.addColorStop(0, 'rgba(255,255,255,1)');
+  grad.addColorStop(0.15, 'rgba(255,255,255,0.9)');
+  grad.addColorStop(0.45, 'rgba(255,255,255,0.3)');
+  grad.addColorStop(1, 'rgba(255,255,255,0)');
+  gctx.fillStyle = grad;
+  gctx.fillRect(0,0,128,128);
+
+  const tex = new THREE.CanvasTexture(canvas);
+  const spriteMat = new THREE.SpriteMaterial({
+    map: tex,
+    color: color,
+    transparent: true,
+    blending: THREE.AdditiveBlending,
+    depthWrite: false,
+  });
+  const sprite = new THREE.Sprite(spriteMat);
+  const scale = r * 2.8;
+  sprite.scale.set(scale, scale, 1);
+  sprite.position.set(n.x, n.y, n.z);
+  sprite.userData = { id: n.id };
+  nodeGroup.add(sprite);
+
+  // Invisible sphere for hit testing
+  const hitGeo = new THREE.SphereGeometry(r*1.8, 8, 8);
+  const hitMat = new THREE.MeshBasicMaterial({ visible: false });
+  const hitMesh = new THREE.Mesh(hitGeo, hitMat);
+  hitMesh.position.set(n.x, n.y, n.z);
+  hitMesh.userData = { id: n.id };
+  nodeGroup.add(hitMesh);
+  raycastSpheres.push(hitMesh);
+
+  nodeMeshes[n.id] = { sprite, hitMesh, baseMat: spriteMat, baseColor: color, baseScale: scale };
+});
+
+// ═══════════════════════════════════════════
+//  BUILD EDGES
+// ═══════════════════════════════════════════
+const edgeGroup = new THREE.Group();
+scene.add(edgeGroup);
+
+const edgeMeshes = {}; // "id1-id2" -> line
+const edgesDone = new Set();
+
+NODES.forEach(n => {
+  n.connects.forEach(cid => {
+    const key = [n.id, cid].sort().join('-');
+    if (edgesDone.has(key)) return;
+    edgesDone.add(key);
+    const target = nodeMap[cid];
+    if (!target) return;
+
+    const pts = [
+      new THREE.Vector3(n.x, n.y, n.z),
+      new THREE.Vector3(target.x, target.y, target.z),
+    ];
+    const geo = new THREE.BufferGeometry().setFromPoints(pts);
+    const mat = new THREE.LineBasicMaterial({
+      color: 0x8fa4ad,
+      transparent: true,
+      opacity: 0.12,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false,
+    });
+    const line = new THREE.Line(geo, mat);
+    edgeGroup.add(line);
+    edgeMeshes[key] = { line, mat, nodeIds: [n.id, cid] };
+  });
+});
+
+// ═══════════════════════════════════════════
+//  STATE
+// ═══════════════════════════════════════════
+let activeFilter = 'all';
+let selectedId = null;
+let hoveredId = null;
+let is3D = false;
+
+// Rotation
+const rotation = new THREE.Euler(0, 0, 0, 'YXZ');
+let targetRotX = 0, targetRotY = 0;
+let currentRotX = 0, currentRotY = 0;
+
+// For 2D flat view
+let flatRotX = 0, flatRotY = 0;
+
+// Zoom
+let zoomLevel = 700;
+let targetZoom = 700;
+
+// Auto-rotate
+let autoRotate = false;
+let lastInteract = Date.now();
+
+// Mouse drag
+let isDragging = false;
+let prevMouse = {x:0,y:0};
+let velX = 0, velY = 0;
+
+// ═══════════════════════════════════════════
+//  FILTER / VIEW HELPERS
+// ═══════════════════════════════════════════
+function isVisible(node) {
+  return activeFilter === 'all' || node.cat === activeFilter;
+}
+
+function updateVisibility() {
+  NODES.forEach(n => {
+    const m = nodeMeshes[n.id];
+    const vis = isVisible(n);
+    m.sprite.visible = vis;
+    m.hitMesh.visible = vis;
+  });
+  Object.values(edgeMeshes).forEach(({ line, mat, nodeIds }) => {
+    const [a, b] = nodeIds;
+    const vis = isVisible(nodeMap[a]) && isVisible(nodeMap[b]);
+    line.visible = vis;
+  });
+}
+
+function updateHighlight() {
+  NODES.forEach(n => {
+    const m = nodeMeshes[n.id];
+    const isSelected = n.id === selectedId;
+    const isHovered = n.id === hoveredId;
+    const isConnected = selectedId && nodeMap[selectedId].connects.includes(n.id);
+
+    let alpha = 0.85;
+    let scaleMult = 1;
+    let colorMult = 1;
+
+    if (selectedId) {
+      if (isSelected) { alpha = 1; scaleMult = 1.5; }
+      else if (isConnected) { alpha = 0.9; scaleMult = 1.1; }
+      else { alpha = 0.2; }
+    } else if (hoveredId) {
+      if (isHovered) { alpha = 1; scaleMult = 1.4; }
+      else { alpha = 0.55; }
+    }
+
+    m.sprite.material.opacity = alpha;
+    const s = m.baseScale * scaleMult;
+    m.sprite.scale.set(s, s, 1);
+  });
+
+  Object.values(edgeMeshes).forEach(({ line, mat, nodeIds }) => {
+    const [a, b] = nodeIds;
+    const isSel = (a===selectedId||b===selectedId);
+    const isHov = (a===hoveredId||b===hoveredId);
+    if (selectedId) {
+      mat.opacity = isSel ? 0.75 : 0.04;
+      mat.color.set(isSel ? 0xc8e8f0 : 0x8fa4ad);
+    } else if (hoveredId) {
+      mat.opacity = isHov ? 0.5 : 0.08;
+      mat.color.set(isHov ? 0xc8e8f0 : 0x8fa4ad);
+    } else {
+      mat.opacity = 0.12;
+      mat.color.set(0x8fa4ad);
+    }
+  });
+}
+
+// ═══════════════════════════════════════════
+//  RAYCASTING
+// ═══════════════════════════════════════════
+const raycaster = new THREE.Raycaster();
+const mouse2D = new THREE.Vector2();
+
+function getHit(clientX, clientY) {
+  mouse2D.x = (clientX / window.innerWidth) * 2 - 1;
+  mouse2D.y = -(clientY / window.innerHeight) * 2 + 1;
+  raycaster.setFromCamera(mouse2D, camera);
+  const hits = raycaster.intersectObjects(raycastSpheres.filter(m => m.visible));
+  if (hits.length > 0) return hits[0].object.userData.id;
+  return null;
+}
+
+// ═══════════════════════════════════════════
+//  PANEL
+// ═══════════════════════════════════════════
+function openPanel(id) {
+  selectedId = id;
+  const n = nodeMap[id];
+  document.getElementById('p-tag').textContent = n.label + ' — ' + n.cat.toUpperCase();
+  document.getElementById('p-title').textContent = n.name;
+  document.getElementById('p-sub').textContent = n.sub;
+  document.getElementById('p-body').textContent = n.body;
+  const pc = document.getElementById('p-conns');
+  pc.innerHTML = '';
+  (n.connects||[]).forEach(cid => {
+    const cn = nodeMap[cid];
+    if (!cn) return;
+    const t = document.createElement('span');
+    t.className = 'ctag';
+    t.textContent = cn.name;
+    t.onclick = () => openPanel(cid);
+    pc.appendChild(t);
+  });
+  document.getElementById('panel').classList.add('open');
+  updateHighlight();
+}
+
+function closePanel() {
+  selectedId = null;
+  document.getElementById('panel').classList.remove('open');
+  updateHighlight();
+}
+window.closePanel = closePanel;
+
+// ═══════════════════════════════════════════
+//  MOUSE / TOUCH EVENTS
+// ═══════════════════════════════════════════
+const tt = document.getElementById('tt');
+
+renderer.domElement.addEventListener('mousemove', e => {
+  if (isDragging) {
+    const dx = e.clientX - prevMouse.x;
+    const dy = e.clientY - prevMouse.y;
+    velX = dx;
+    velY = dy;
+    if (is3D) {
+      targetRotY += dx * 0.006;
+      targetRotX += dy * 0.006;
+      targetRotX = Math.max(-Math.PI/2, Math.min(Math.PI/2, targetRotX));
+    }
+    prevMouse = {x: e.clientX, y: e.clientY};
+    lastInteract = Date.now();
+  } else {
+    const id = getHit(e.clientX, e.clientY);
+    if (id !== hoveredId) {
+      hoveredId = id;
+      updateHighlight();
+    }
+    if (id) {
+      const n = nodeMap[id];
+      document.getElementById('tt-cat').textContent = n.label;
+      document.getElementById('tt-name').textContent = n.name;
+      tt.style.left = (e.clientX+14)+'px';
+      tt.style.top = (e.clientY-10)+'px';
+      tt.classList.add('show');
+      renderer.domElement.style.cursor = 'pointer';
+    } else {
+      tt.classList.remove('show');
+      renderer.domElement.style.cursor = 'grab';
+    }
+  }
+});
+
+renderer.domElement.addEventListener('mousedown', e => {
+  isDragging = true;
+  prevMouse = {x: e.clientX, y: e.clientY};
+  velX = 0; velY = 0;
+  renderer.domElement.style.cursor = 'grabbing';
+  lastInteract = Date.now();
+  autoRotate = false;
+});
+
+renderer.domElement.addEventListener('mouseup', e => {
+  const moved = Math.abs(e.clientX-prevMouse.x)+Math.abs(e.clientY-prevMouse.y);
+  isDragging = false;
+  renderer.domElement.style.cursor = 'grab';
+  if (moved < 4) {
+    const id = getHit(e.clientX, e.clientY);
+    if (id) openPanel(id);
+    else closePanel();
+  }
+  setTimeout(() => { autoRotate = is3D; }, 3000);
+});
+
+renderer.domElement.addEventListener('wheel', e => {
+  e.preventDefault();
+  targetZoom *= e.deltaY > 0 ? 1.1 : 0.9;
+  targetZoom = Math.max(150, Math.min(1400, targetZoom));
+  lastInteract = Date.now();
+}, { passive: false });
+
+renderer.domElement.addEventListener('mouseleave', () => {
+  isDragging = false;
+  hoveredId = null;
+  tt.classList.remove('show');
+  updateHighlight();
+});
+
+// Touch
+let touchStart = null, touchDist = null;
+renderer.domElement.addEventListener('touchstart', e => {
+  e.preventDefault();
+  if (e.touches.length === 1) {
+    isDragging = true;
+    touchStart = {x: e.touches[0].clientX, y: e.touches[0].clientY};
+    prevMouse = {x: e.touches[0].clientX, y: e.touches[0].clientY};
+    velX = 0; velY = 0;
+    autoRotate = false;
+    lastInteract = Date.now();
+  } else if (e.touches.length === 2) {
+    touchDist = Math.hypot(e.touches[0].clientX-e.touches[1].clientX, e.touches[0].clientY-e.touches[1].clientY);
+  }
+}, {passive:false});
+
+renderer.domElement.addEventListener('touchmove', e => {
+  e.preventDefault();
+  if (e.touches.length === 1 && isDragging && is3D) {
+    const dx = e.touches[0].clientX - prevMouse.x;
+    const dy = e.touches[0].clientY - prevMouse.y;
+    velX = dx; velY = dy;
+    targetRotY += dx * 0.007;
+    targetRotX += dy * 0.007;
+    targetRotX = Math.max(-Math.PI/2, Math.min(Math.PI/2, targetRotX));
+    prevMouse = {x: e.touches[0].clientX, y: e.touches[0].clientY};
+    lastInteract = Date.now();
+  } else if (e.touches.length === 2 && touchDist) {
+    const d = Math.hypot(e.touches[0].clientX-e.touches[1].clientX, e.touches[0].clientY-e.touches[1].clientY);
+    targetZoom *= touchDist/d;
+    targetZoom = Math.max(150, Math.min(1400, targetZoom));
+    touchDist = d;
+  }
+}, {passive:false});
+
+renderer.domElement.addEventListener('touchend', e => {
+  if (e.changedTouches.length===1 && touchStart) {
+    const dx = e.changedTouches[0].clientX - touchStart.x;
+    const dy = e.changedTouches[0].clientY - touchStart.y;
+    if (Math.abs(dx)+Math.abs(dy) < 8) {
+      const id = getHit(e.changedTouches[0].clientX, e.changedTouches[0].clientY);
+      if (id) openPanel(id);
+      else closePanel();
+    }
+  }
+  isDragging = false; touchStart = null; touchDist = null;
+  setTimeout(() => { autoRotate = is3D; }, 3000);
+}, {passive:false});
+
+// ═══════════════════════════════════════════
+//  FILTER + VIEW
+// ═══════════════════════════════════════════
+function setFilter(f, btn) {
+  activeFilter = f;
+  document.querySelectorAll('.fbtn').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  updateVisibility();
+  updateHighlight();
+  closePanel();
+}
+window.setFilter = setFilter;
+
+function setView(v) {
+  is3D = v === '3d';
+  document.getElementById('btn2d').classList.toggle('on', !is3D);
+  document.getElementById('btn3d').classList.toggle('on', is3D);
+  document.getElementById('hint').textContent = is3D
+    ? 'Drag to rotate in 3D · Scroll to zoom · Click a star to explore'
+    : 'Drag to pan · Scroll to zoom · Click a star to explore';
+  if (!is3D) {
+    // Snap to flat top-down view
+    targetRotX = 0; targetRotY = 0;
+    autoRotate = false;
+  } else {
+    autoRotate = true;
+    lastInteract = 0;
+  }
+}
+window.setView = setView;
+
+// ═══════════════════════════════════════════
+//  ANIMATION LOOP
+// ═══════════════════════════════════════════
+// Momentum when released
+let momentumX = 0, momentumY = 0;
+
+function animate() {
+  requestAnimationFrame(animate);
+
+  // Auto-rotate
+  if (is3D && autoRotate && Date.now()-lastInteract > 2500) {
+    targetRotY += 0.004;
+  }
+
+  // Momentum
+  if (!isDragging && is3D) {
+    targetRotY += momentumX * 0.003;
+    targetRotX += momentumY * 0.003;
+    targetRotX = Math.max(-Math.PI/2, Math.min(Math.PI/2, targetRotX));
+    momentumX *= 0.92;
+    momentumY *= 0.92;
+  } else if (isDragging) {
+    momentumX = velX;
+    momentumY = velY;
+    velX *= 0.8; velY *= 0.8;
+  }
+
+  // Smooth rotation
+  currentRotX += (targetRotX - currentRotX) * 0.1;
+  currentRotY += (targetRotY - currentRotY) * 0.1;
+
+  nodeGroup.rotation.x = currentRotX;
+  nodeGroup.rotation.y = currentRotY;
+  edgeGroup.rotation.x = currentRotX;
+  edgeGroup.rotation.y = currentRotY;
+
+  // Smooth zoom
+  zoomLevel += (targetZoom - zoomLevel) * 0.1;
+  camera.position.z = zoomLevel;
+
+  renderer.render(scene, camera);
+}
+
+// ═══════════════════════════════════════════
+//  INIT
+// ═══════════════════════════════════════════
+updateVisibility();
+updateHighlight();
+renderer.domElement.style.cursor = 'grab';
+animate();
+</script>
+</body>
+</html>

@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skills — Andrea Robin</title>
+<link href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --white:   #ffffff;
+    --ink:     #303e44;
+    --accent:  #475f6a;
+    --mid:     #6a858f;
+    --light:   #e8eef0;
+    --lighter: #f4f7f8;
+    --line:    #d4dde1;
+    --faint:   #8fa4ad;
+  }
+
+  body {
+    background: var(--white);
+    color: var(--ink);
+    font-family: 'Asap', system-ui, sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    font-size: 16px;
+  }
+
+  /* ── HEADER ── */
+  header {
+    padding: 4rem 3.5rem 3rem;
+    border-bottom: 1px solid var(--line);
+    max-width: 900px;
+  }
+  .eyebrow {
+    font-size: 0.68rem; font-weight: 500; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--mid); margin-bottom: 1.4rem;
+  }
+  h1 {
+    font-size: clamp(2rem, 4.5vw, 3.4rem); font-weight: 300;
+    line-height: 1.12; letter-spacing: -0.01em; margin-bottom: 1.2rem;
+  }
+  h1 em { font-style: italic; color: var(--accent); }
+  .header-sub {
+    font-size: 1rem; color: var(--mid); max-width: 580px; line-height: 1.75;
+  }
+
+  /* ── INTRO BANNER ── */
+  .intro-banner {
+    margin: 0; padding: 2rem 3.5rem;
+    background: var(--ink); border-bottom: 1px solid var(--line);
+  }
+  .intro-label {
+    font-size: 0.58rem; font-weight: 500; letter-spacing: 0.22em;
+    text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 0.9rem;
+  }
+  .intro-text {
+    font-size: clamp(1rem, 2.2vw, 1.18rem); font-weight: 300;
+    font-style: italic; line-height: 1.72; color: rgba(255,255,255,0.88);
+    max-width: 720px;
+  }
+  .intro-text strong { font-weight: 500; color: #fff; font-style: normal; }
+
+  /* ── TABS ── */
+  .tabs {
+    display: flex; border-bottom: 1px solid var(--line);
+    padding: 0 3.5rem; background: var(--white);
+    position: sticky; top: 0; z-index: 100; overflow-x: auto;
+  }
+  .tab-btn {
+    font-family: 'Asap', sans-serif; font-size: 0.7rem; font-weight: 500;
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--faint);
+    background: none; border: none; padding: 1.1rem 0;
+    margin-right: 2.5rem; cursor: pointer; position: relative;
+    transition: color 0.25s; white-space: nowrap; flex-shrink: 0;
+  }
+  .tab-btn::after {
+    content: ''; position: absolute; bottom: -1px; left: 0; right: 0;
+    height: 2px; background: var(--accent);
+    transform: scaleX(0); transform-origin: left; transition: transform 0.3s ease;
+  }
+  .tab-btn.active { color: var(--ink); }
+  .tab-btn.active::after { transform: scaleX(1); }
+
+  /* ── PANELS ── */
+  .panel { display: none; }
+  .panel.active { display: block; animation: fadeUp 0.3s ease; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── WRAP ── */
+  .wrap { padding: 3rem 3.5rem; max-width: 860px; }
+
+  .panel-intro {
+    font-size: 1rem; color: var(--mid); font-style: italic;
+    line-height: 1.75; margin-bottom: 2.8rem; max-width: 620px;
+  }
+
+  /* ── SECTION HEADER ── */
+  .sec-header {
+    margin-bottom: 1.8rem; margin-top: 3rem;
+    padding-bottom: 0.85rem; border-bottom: 1px solid var(--line);
+  }
+  .sec-header:first-of-type { margin-top: 0; }
+  .sec-eye {
+    font-size: 0.57rem; font-weight: 500; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--faint); margin-bottom: 0.35rem;
+  }
+  .sec-title { font-size: 1.2rem; font-weight: 300; line-height: 1.3; }
+  .sec-title em { font-style: italic; color: var(--accent); }
+  .sec-desc {
+    font-size: 0.87rem; color: var(--mid); font-style: italic;
+    line-height: 1.7; margin-top: 0.4rem; max-width: 580px;
+  }
+
+  /* ── SKILL BLOCKS ── */
+  .skill-block {
+    margin-bottom: 1.1rem;
+    border: 1px solid var(--line);
+    background: var(--white);
+  }
+  .skill-header {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: start;
+    gap: 1.1rem;
+    padding: 1.3rem 1.5rem;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .skill-header:hover { background: var(--lighter); }
+
+  .skill-tag {
+    font-size: 0.54rem; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 0.22em 0.6em; border-radius: 2px;
+    white-space: nowrap; margin-top: 0.15rem;
+  }
+  .t-core    { background: var(--accent); color: #fff; }
+  .t-applied { background: var(--light); color: var(--accent); border: 1px solid var(--line); }
+  .t-research { border: 1px solid var(--line); color: var(--faint); }
+  .t-clinical { background: var(--lighter); border: 1px solid var(--line); color: var(--mid); }
+
+  .skill-body { flex: 1; }
+  .skill-title { font-size: 1.02rem; font-weight: 500; line-height: 1.3; margin-bottom: 0.2rem; }
+  .skill-sub { font-size: 0.82rem; color: var(--mid); font-style: italic; line-height: 1.6; }
+
+  .toggle-btn {
+    font-family: 'Asap', sans-serif; font-size: 0.6rem; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent);
+    background: none; border: none; cursor: pointer;
+    white-space: nowrap; padding-top: 0.15rem; flex-shrink: 0;
+  }
+
+  .skill-detail {
+    display: none; padding: 0 1.5rem 1.5rem;
+    border-top: 1px solid var(--line);
+    animation: fadeUp 0.22s ease;
+  }
+  .skill-detail.open { display: block; }
+
+  .detail-body {
+    font-size: 0.88rem; color: var(--mid); line-height: 1.72;
+    padding-top: 1.1rem;
+  }
+  .detail-body p { margin-bottom: 0.8rem; }
+  .detail-body p:last-child { margin-bottom: 0; }
+
+  /* ── DETAIL SECTIONS ── */
+  .detail-section {
+    margin-top: 1.2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--line);
+  }
+  .detail-section-label {
+    font-size: 0.56rem; font-weight: 500; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--faint); margin-bottom: 0.65rem;
+  }
+
+  .steps-list { list-style: none; margin-top: 0.5rem; }
+  .steps-list li {
+    font-size: 0.86rem; color: var(--mid); padding: 0.22rem 0 0.22rem 1.1rem;
+    position: relative; line-height: 1.6;
+  }
+  .steps-list li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 0.78rem; }
+
+  /* ── EXEMPLAR ROW ── */
+  .exemplar-row { display: flex; flex-direction: column; gap: 0.6rem; margin-top: 0.5rem; }
+  .exemplar {
+    background: var(--lighter); border-left: 3px solid var(--accent);
+    padding: 0.75rem 1rem; font-size: 0.84rem; color: var(--mid); line-height: 1.65;
+  }
+  .exemplar strong { color: var(--ink); font-weight: 500; font-style: normal; }
+  .exemplar em { font-style: italic; }
+
+  /* ── LEARNING ROW ── */
+  .learning-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-top: 0.5rem;
+  }
+  .learning-card {
+    border: 1px solid var(--line); padding: 0.85rem 1rem; background: var(--white);
+  }
+  .learning-type {
+    font-size: 0.52rem; font-weight: 500; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--faint); margin-bottom: 0.35rem;
+  }
+  .learning-title { font-size: 0.87rem; font-weight: 500; color: var(--ink); margin-bottom: 0.25rem; line-height: 1.3; }
+  .learning-desc { font-size: 0.78rem; color: var(--mid); line-height: 1.58; }
+
+  /* ── COMPETENCY NOTE ── */
+  .competency-note {
+    font-size: 0.8rem; color: var(--mid); font-style: italic;
+    line-height: 1.68; border-left: 2px solid var(--accent);
+    padding-left: 0.9rem; margin-top: 1.1rem;
+  }
+
+  /* ── DARK BLOCK ── */
+  .dark-block {
+    background: var(--ink); padding: 2rem 1.5rem; margin-top: 2.5rem; margin-bottom: 2rem;
+  }
+  .dark-block p {
+    font-size: 0.95rem; font-weight: 300; font-style: italic;
+    line-height: 1.72; color: rgba(255,255,255,0.85);
+  }
+  .dark-block strong { font-weight: 500; color: #fff; font-style: normal; }
+  .dark-block h3 {
+    font-size: 0.65rem; font-weight: 500; letter-spacing: 0.2em;
+    text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 0.9rem;
+  }
+
+  /* ── TAG ROW ── */
+  .tag-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.8rem; }
+  .tag {
+    font-size: 0.68rem; font-weight: 400; padding: 0.22em 0.65em;
+    border: 1px solid var(--line); color: var(--mid); border-radius: 2px;
+  }
+
+  /* ── MATRIX TABLE ── */
+  .matrix {
+    width: 100%; border-collapse: collapse; margin-top: 0.5rem;
+    font-size: 0.82rem;
+  }
+  .matrix th {
+    font-size: 0.55rem; font-weight: 500; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--faint);
+    border-bottom: 1px solid var(--line); padding: 0.5rem 0.8rem 0.5rem 0;
+    text-align: left;
+  }
+  .matrix td {
+    padding: 0.6rem 0.8rem 0.6rem 0; border-bottom: 1px solid var(--lighter);
+    color: var(--mid); line-height: 1.55; vertical-align: top;
+  }
+  .matrix td:first-child { color: var(--ink); font-weight: 500; }
+  .matrix tr:last-child td { border-bottom: none; }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 1.8rem 3.5rem; border-top: 1px solid var(--line);
+    font-size: 0.62rem; font-weight: 500; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--faint);
+    display: flex; justify-content: space-between; margin-top: 2rem;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    header, .intro-banner, .wrap { padding: 2rem 1.5rem; }
+    .tabs { padding: 0 1.5rem; }
+    .tab-btn { margin-right: 1.4rem; }
+    .skill-header { grid-template-columns: auto 1fr; }
+    .toggle-btn { display: none; }
+    .skill-detail { display: block; }
+    .learning-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 0.4rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <p class="eyebrow">Skills — Living Document</p>
+  <h1>The competencies that make<br><em>this work possible.</em></h1>
+  <p class="header-sub">A portfolio career at the intersection of learning design, global mental health, creative health, and disability equity demands a specific constellation of skills. This document names them precisely, grounds them in the scholarship and practice of others who have built similar expertise, and identifies pathways for building and demonstrating each one.</p>
+</header>
+
+<div class="intro-banner">
+  <div class="intro-label">Why this map matters</div>
+  <div class="intro-text">Skills are not ornamental. They are the mechanism by which intention becomes contribution. <strong>Naming them clearly — what they are, what competence actually looks like, and how to develop them deliberately — is the difference between a career that aspires and one that builds.</strong> This document is part of the working infrastructure of a twenty-year plan.</div>
+</div>
+
+<nav class="tabs">
+  <button class="tab-btn active" onclick="showPanel('core',this)">Core Domain</button>
+  <button class="tab-btn" onclick="showPanel('research',this)">Research &amp; Evidence</button>
+  <button class="tab-btn" onclick="showPanel('clinical',this)">Clinical &amp; Creative</button>
+  <button class="tab-btn" onclick="showPanel('systems',this)">Systems &amp; Equity</button>
+  <button class="tab-btn" onclick="showPanel('matrix',this)">Skill Matrix</button>
+</nav>
+
+
+<!-- ══════════════════════════════════════
+     PANEL 1 — CORE DOMAIN SKILLS
+══════════════════════════════════════ -->
+<div class="panel active" id="panel-core">
+<div class="wrap">
+
+  <p class="panel-intro">The foundation of this portfolio career rests on fifteen years of learning design expertise, now being actively reoriented toward health systems. These are the skills that are already strong, already deployable, and already generating value — and that deepen significantly as the health sector work develops.</p>
+
+  <div class="sec-header">
+    <div class="sec-eye">Competency Domain 01</div>
+    <div class="sec-title">Learning Experience Design &amp; <em>Instructional Architecture</em></div>
+    <p class="sec-desc">The ability to design learning systems that are coherent, evidence-informed, and responsive to how people actually acquire and transfer knowledge.</p>
+  </div>
+
+  <div class="skill-block">
+    <div class="skill-header" onclick="toggleSkill(this)">
+      <span class="skill-tag t-core">Core</span>
+      <div class="skill-body">
+        <div class="skill-title">Instructional Systems Design — Applied to Complex Domains</div>
+        <div class="skill-sub">Designing learning sequences that build genuine competence in practitioners, not just knowledge recall</div>
+      </div>
+      <button class="toggle-btn">Expand ↓</button>
+    </div>
+    <div class="skill-detail">
+      <div class="detail-body">
+        <p>Competence in this area means designing learning that moves people from novice to proficient in domains that cannot be reduced to checklists. In health and mental health contexts, this requires integrating cognitive load theory, situated learning principles, and deliberate practice frameworks. The work is architectural: understanding how knowledge builds, where misconceptions form, and what conditions enable genuine skill transfer.</p>
+        <p>In the context of this career, the application is designing training systems for mental health practitioners in low-resource settings — task-shifting programs, community facilitator training, and scalable practitioner development in creative health approaches to depression.</p>
+      </div>
+      <div class="detail-section">
+        <div class="detail-section-label">Scholars and Practitioners</div>
+        <div class="exemplar-row">
+          <div class="exemplar"><strong>John Sweller</strong> — Cognitive load theory, foundational to all serious learning design. His work on intrinsic, extraneous, and germane load directly informs how practitioner training is sequenced for complex skills like facilitation and therapeutic technique.</div>
+          <div class="exemplar"><strong>Ruth Clark &amp; Richard Mayer</strong> — Evidence-based multimedia learning principles, relevant for designing accessible digital learning in global mental health contexts where bandwidth and literacy vary.</div>
+          <div class="exemplar"><strong>Viviane Robinson</strong> — Educational leadership and professional learning in complex institutional environments; her work on problem-centred professional development maps directly to health authority L&amp;D.</div>
+        </div>
+      </div>
+      <div class="detail-section">
+        <div class="detail-section-label">Learning Pathways</div>
+        <div class="learning-grid">
+          <div class="learning-card">
+            <div class="learning-type">Formal — Short Course</div>
+            <div class="learning-title">ATD Certificate in Instructional Design</div>
+            <div class="learning-desc">Self-paced professional credential. Formalises existing expertise and adds health-sector credibility to the consulting practice.</div>
+          </div>
+          <div class="learning-card">
+            <div class="learning-type">Experiential — Self-Led</div>
+            <div class="learning-title">Design &amp; document a practitioner training program for Make Space facilitators</div>
+            <div class="learning-desc">Build the full training architecture: learning outcomes, sequenced curriculum, competency indicators, and a fidelity checklist. Produces a publishable training manual.</div>
+          </div>
+          <div class="learning-card">
+            <div class="learning-type">Formal — Reading</div>
+            <div class="learning-title">Sweller, van Merriënboer &amp; Paas (1998) — Cognitive Architecture and Instructional Design, <em>Educational Psychology Review</em></div>
+            <div class="learning-desc">The primary source. Read alongside real design work to test which principles hold in the health sector context.</div>
+          </div>
+          <div class="learning-card">
+            <div class="learning-type">Experiential — Consulting</div>
+            <div class="learning-title">Conduct an instructional audit of an existing health authority training program</div>
+            <div class="learning-desc">Pro-bono or paid: map an existing program against evidence-based design principles. The audit report demonstrates applied expertise and produces a portfolio artefact.</div>
+          </div>
+        </div>
+      </div>
+      <p class="competency-note">The benchmark for high competence here is the ability to take a clinical or health practice that currently exists only in the heads of senior practitioners and build the training system that makes it teachable, scalable, and evaluable. That is the specific skill this career requires.</p>
+    </div>
+  </div>
+
+  <div class="skill-block">
+    <div class="skill-header" onclick="toggleSkill(this)">
+      <span class="skill-tag t-core">Core</span>
+      <div class="skill-body">
+        <div class="skill-title">Knowledge Translation — From Evidence to Practice</div>
+        <div class="skill-sub">Making research findings available and actionable for practitioners who did not produce them</div>
+      </div>
+      <button class="toggle-btn">Expand ↓</button>
+    </div>
+    <div class="skill-detail">
+      <div class="detail-body">
+        <p>Knowledge translation is not summarising papers. It is the disciplined work of understanding what a body of evidence actually shows, identifying the gap between evidence and current practice, and designing the specific intervention — a tool, a training, a protocol, a decision support system — that closes that gap in a real context with real constraints.</p>
+        <p>In this career, knowledge translation operates at two levels: translating depression treatment research into accessible creative health programs for communities, and translating that program knowledge into training systems that enable other practitioners to deliver those programs with fidelity.</p>
+      </div>
+      <div class="detail-section">
+        <div class="detail-section-label">Scholars and Practitioners</div>
+        <div class="exemplar-row">
+          <div class="exemplar"><strong>Ian Graham et al.</strong> — The Knowledge-to-Action framework, widely used in health systems. Their 2006 paper in <em>Journal of Continuing Education in the Health Professions</em> is the primary theoretical source for knowledge translation in health contexts.</div>
+          <div class="exemplar"><strong>Trisha Greenhalgh</strong> — Diffusion of Innovations in health services. Her work on why evidence does or does not travel in complex systems is essential for anyone designing scalable mental health training.</div>
+          <div class="exemplar"><strong>The Campbell Collaboration</strong> — Practitioner knowledge translation in social care and education; a useful complement to the health-focused KT literature for work that crosses sectors.</div>
+        </div>
+      </div>
+      <div class="detail-section">
+        <div class="detail-section-label">Learning Pathways</div>
+        <div class="learning-grid">
+          <div class="learning-card">
+            <div class="learning-type">Formal — Short Course</div>
+            <div class="learning-title">Knowledge Translation Canada — KT Online Course</div>
+            <div class="learning-desc">Free, health-focused, and directly applicable. Builds the vocabulary and frameworks used by health authority collaborators.</div>
+          </div>
+          <div class="learning-card">
+            <div class="learning-type">Experiential — Self-Led</div>
+            <div class="learning-title">Write one Substack piece per month translating a depression research paper for practitioners</div>
+            <div class="learning-desc">Disciplines the skill, builds the audience, and produces the intellectual track record that precedes peer-reviewed publication.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="skill-block">
+    <div class="skill-header" onclick="toggleSkill(this)">
+      <span class="skill-tag t-core">Core</span>
+      <div class="skill-body">
+        <div class="skill-title">Universal Design for Learning — Accessibility-Grounded Design</div>
+        <div class="skill-sub">Designing learning that does not require adaptation because it was built for the full range of human variation from the start</div>
+      </div>
+      <button class="toggle-btn">Expand ↓</button>
+    </div>
+    <div class="skill-detail">
+      <div class="detail-body">
+        <p>Universal Design for Learning is not an add-on. It is a design philosophy grounded in the neuroscience of variability — the recognition that there is no average learner, and that systems designed for an imagined average exclude most people. In mental health contexts, this intersects directly with the depression-disability relationship: disabled people experience depression at significantly higher rates and are simultaneously the most excluded from existing mental health systems.</p>
+        <p>Competence in UDL means being able to design learning experiences that provide multiple means of representation, action and expression, and engagement — not as a compliance gesture, but as a genuine expansion of who can access and benefit from the learning.</p>
+      </div>
+      <div class="detail-section">
+        <div class="detail-section-label">Scholars and Practitioners</div>
+        <div class="exemplar-row">
+          <div class="exemplar"><strong>David Rose, Anne Meyer &amp; the CAST team</strong> — Founders of UDL. The <em>UDL Guidelines</em> (CAST, 2018) are the primary framework. Rose and Meyer's 2002 book <em>Teaching Every Student in the Digital Age</em> remains the most accessible introduction.</div>
+          <div class="exemplar"><strong>Thomas Hehir</strong> — Disability studies and UDL in institutional contexts. His work on ableism in education provides the equity critique that prevents UDL from becoming a technical exercise without political substance.</div>
+        </div>
+      </div>
+      <div class="detail-section">
+        <div class="detail-section-label">Learning Pathways</div>
+        <div class="learning-grid">
+          <div class="learning-card">
+            <div class="learning-type">Formal — Credential</div>
+            <div class="learning-title">CPACC — Certified Professional in Accessibility Core Competencies (IAAP)</div>
+            <div class="learning-desc">The professional credential that formalises accessibility expertise for institutions and consulting clients. Already on the plan — this is the exam preparation.</div>
+          </div>
+          <div class="learning-card">
+            <div class="learning-type">Experiential — Self-Led</div>
+            <div class="learning-title">Conduct a UDL audit of Make Space curriculum and rebuild one module to full UDL compliance</div>
+            <div class="learning-desc">Applied, documentable, and produces a portfolio artefact that demonstrates the skill concretely to health authority clients.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-header">
+    <div class="sec-eye">Competency Domain 02</div>
+    <div class="sec-title">Program Design, Facilitation &amp; <em>Community-Based Practice</em></div>
+    <p class="sec-desc">The capacity to design, run, and evaluate structured group programs in community settings — the operational heart of Make Space and the practitioner training work.</p>
+  </div>
+
+  <div class="skill-block">
+    <div class="skill-header" onclick="toggleSkill(this)">
+      <span class="skill-tag t-applied">Applied</span>
+      <div class="skill-body">
+        <div class="skill-title">Facilitation Design — Therapeutic and Psychoeducational Groups</div>
+        <div class="skill-sub">Structuring and running groups that produce genuine psychological benefit rather than social activity</div>
+      </div>
+      <button class="toggle-btn">Expand ↓</button>
+    </div>
+    <div class="skill-detail">
+      <div class="detail-body">
+        <p>Facilitation in therapeutic contexts requires a different skill set from workshop facilitation or classroom instruction. The facilitator holds the emotional container of the group, tracks the wellbeing of individual members while maintaining group coherence, works with material that can activate distress, and makes real-time decisions about depth, pacing, and safety. These competencies are developed through practice, supervision, and reflective documentation — not primarily through coursework.</p>
+        <p>For this career, facilitation competence is directly deployable through Make Space, and serves as the foundation for the practitioner training work: it is not possible to build a credible facilitator training program without having done the facilitation oneself with sufficient depth to know what the skill actually requires.</p>
+      </div>
+      <div class="detail-section">
+        <div class="detail-section-label">Scholars and Practitioners</div>
+        <div class="exemplar-row">
+          <div class="exemplar"><strong>Irvin Yalom</strong> — The primary theoretical foundation for therapeutic group work. His <em>Theory and Practice of Group Psychotherapy</em> (5th ed., 2005) identifies the curative factors in group settings — instillation of hope, universality, altruism, cohesiveness — that are directly observable in Make Space sessions and provide the conceptual vocabulary for documenting outcomes.</div>
+          <div class="exemplar"><strong>Stephen Brookfield</strong> — Critical facilitation in adult learning. His work on the facilitation of critical reflection, particularly <em>The Skillful Teacher</em> and <em>Becoming a Critically Reflective Teacher</em>, provides the pedagogical grounding for facilitation that goes beyond content delivery to genuine transformation.</div>
+        </div>
+      </div>
+      <div class="detail-section">
+        <div class="detail-section-label">Learning Pathways</div>
+        <div class="learning-grid">
+          <div class="learning-card">
+            <div class="learning-type">Experiential — Ongoing</div>
+            <div class="learning-title">Keep a reflective facilitation journal after every Make Space session</div>
+            <div class="learning-desc">Document what was observed, what group dynamics emerged, what clinical decisions were made and why. This is the raw material of both personal skill development and eventual publication.</div>
+          </div>
+          <div class="learning-card">
+            <div class="learning-type">Formal — Short Course</div>
+            <div class="learning-title">Mental Health Commission of Canada — Applied Suicide Intervention Skills Training (ASIST)</div>
+            <div class="learning-desc">Essential safety competency for anyone facilitating groups with people experiencing depression. Two-day in-person workshop, widely available in Vancouver.</div>
+          </div>
+          <div class="learning-card">
+            <div class="learning-type">Informal — Peer</div>
+            <div class="learning-title">Establish a peer supervision relationship with another facilitator</div>
+            <div class="learning-desc">Monthly structured reflection on facilitation practice. Builds critical distance from one's own work and models the supervision structure that will eventually be part of the facilitator training program.</div>
+          </div>
+          <div class="learning-card">
+            <div class="learning-type">Experiential — Portfolio</div>
+            <div class="learning-title">Write and publish a detailed facilitation guide for one Make Space module</div>
+            <div class="learning-desc">The guide makes implicit facilitation knowledge explicit — a prerequisite for scalable training. Published via Substack or as a standalone document, it is immediately shareable with collaborators and health authority partners.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     PANEL 2 — RESEARCH & EVIDENCE
+══════════════════════════════════════ -->
+<div class="panel" id="panel-research">
+<div class="wrap">
+
+  <p class="panel-intro">The research skills in this portfolio serve a specific purpose: generating credible evidence about what works in creative health and depression, and contributing to the literature that shapes how mental health systems are designed. These skills are being built deliberately and in sequence, beginning now.</p>
+
+  <div class="sec-header">
+    <div class="sec-eye">Competency Domain 03</div>
+    <div class="sec-title">Research Literacy &amp; <em>Epidemiological Thinking</em></div>
+    <p class="sec-desc">The ability to read, evaluate, and generate health research — a prerequisite for both the LSHTM MSc and for contributing meaningfully to the depression and creative health evidence base.</p>
+  </div>
+
+  <div class="skill-block">
+    <div class="skill-header" onclick="toggleSkill(this)">
+      <span class="skill-tag t-research">Research</span>
+      <div class="skill-body">
+        <div class="skill-title">Critical Appraisal of Health Research</div>
+        <div class="skill-sub">Evaluating the strength, relevance, and limits of evidence — the core intellectual skill of evidence-based practice</div>
+      </div>
+      <button class="toggle-btn">Expand ↓</button>
+    </div>
+    <div class="skill-detail">
+      <div class="detail-body">
+        <p>Critical appraisal means being able to read a paper in a health journal and determine: what kind of study is this, what can it actually establish, what are its methodological limitations, and how does it fit within the broader body of evidence on this question? Without this skill, a researcher is dependent on others' summaries and cannot evaluate whether a claimed intervention effect is real, replicable, or relevant to their population.</p>
+        <p>For this career, the primary application is evaluating the evidence base for creative health interventions in depression — a field where enthusiasm often runs ahead of rigorous evidence. Being able to name what the evidence actually shows, and what it does not, is a form of intellectual integrity that distinguishes credible contribution from advocacy.</p>
+      </div>
+      <div class="detail-section">
+        <div class="detail-section-label">Scholars and Practitioners</div>
+        <div class="exemplar-row">
+          <div class="exemplar"><strong>Trisha Greenhalgh</strong> — <em>How to Read a Paper: The Basics of Evidence-Based Medicine and Healthcare</em> (6th ed., 2019). The single most useful book for developing critical appraisal skills as a non-physician health professional. Clear, opinionated, and grounded in real research practice.</div>
+          <div class="exemplar"><strong>The GRADE Working Group</strong> — The international standard for rating the quality of evidence and strength of recommendations in clinical practice guidelines. Fluency with GRADE reasoning is expected in health research contexts and demonstrates methodological sophistication to collaborators.</div>
+        </div>
+      </div>
+      <div class="detail-section">
+        <div class="detail-section-label">Learning Pathways</div>
+        <div class="learning-grid">
+          <div class="learning-card">
+            <div class="learning-type">Formal — Short Course</div>
+            <div class="learning-title">LSHTM: Epidemiology for Public Health (online)</div>
+            <div class="learning-desc">First in the LSHTM sequence. Builds the foundational vocabulary for reading health research — study designs, confounding, bias, measures of association.</div>
+          </div>
+          <div class="learning-card">
+            <div class="learning-type">Experiential — Self-Led</div>
+            <div class="learning-title">Complete a structured critical appraisal of five creative health and depression RCTs</div>
+            <div class="learning-desc">Using a standard CASP checklist, appraise five trials. Write a 500-word critical summary of each. The five summaries together form the foundation of a future systematic review or scoping review.</div>
+          </div>
+          <div class="learning-card">
+            <div class="learning-type">Formal — Reading</div>
+            <div class="learning-title">Cochrane Collaboration training modules — Understanding Evidence in Systematic Reviews</div>
+            <div class="learning-desc">Free online. Provides fluency with the Cochrane framework used by health authority partners and the LSHTM research community.</div>
+          </div>
+          <div class="learning-card">
+            <div class="learning-type">Experiential — Portfolio</div>
+            <div class="learning-title">Write a Substack series: "What the Evidence Actually Says About Creative Health and Depression"</div>
+            <div class="learning-desc">Six-part series applying critical appraisal skills publicly. Builds intellectual credibility, attracts a research-adjacent audience, and disciplines the appraisal practice.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="skill-block">
+    <div class="skill-header" onclick="toggleSkill(this)">
+      <span class="skill-tag t-research">Research</span>
+      <div class="skill-body">
+        <div class="skill-title">Qualitative Research Methods — Applied to Creative Health Practice</div>
+        <div class="skill-sub">Generating rich, credible evidence about lived experience, process, and meaning — the methods that fit the research questions this career raises</div>
+      </div>
+      <button class="toggle-btn">Expand ↓</button>
+    </div>
+    <div class="skill-detail">
+      <div class="detail-body">
+        <p>Qualitative research methods — phenomenological inquiry, thematic analysis, narrative research, grounded theory — are the appropriate methodology for the earliest research questions in this career. What is the experience of depression for people who participate in creative health programs? What meanings do participants make of the work? What theoretical model best explains the mechanism of change? These are not questions that randomised controlled trials are designed to answer.</p>
+        <p>Competence in qualitative methods means understanding not just the procedures — coding, theming, member-checking — but the epistemological commitments underneath them: what counts as evidence, how trustworthiness is established, and how qualitative findings contribute to cumulative knowledge. It also means being able to defend qualitative methodology to audiences trained primarily in quantitative health research — a real skill in interdisciplinary settings.</p>
+      </div>
+      <div class="detail-section">
+        <div class="detail-section-label">Scholars and Practitioners</div>
+        <div class="exemplar-row">
+          <div class="exemplar"><strong>Virginia Braun &amp; Victoria Clarke</strong> — Thematic analysis is the most widely used qualitative method in applied health research. Their 2006 paper in <em>Qualitative Research in Psychology</em> and their 2022 book <em>Thematic Analysis: A Practical Guide</em> are the primary methodological sources. Their reflexive thematic analysis framework is well-suited to the Make Space data.</div>
+          <div class="exemplar"><strong>Norman Denzin &amp; Yvonna Lincoln</strong> — <em>The SAGE Handbook of Qualitative Research</em> is the field's primary reference. The chapters on epistemology and on defending qualitative inquiry are essential for navigating the methodological debates that arise when this research meets health research gatekeepers.</div>
+          <div class="exemplar"><strong>Cheryl Mattingly</strong> — Narrative reasoning in clinical practice; her work connects qualitative methods to therapeutic practice in ways that are directly relevant to creative health research design.</div>
+        </div>
+      </div>
+      <div class="detail-section">
+        <div class="detail-section-label">Learning Pathways</div>
+        <div class="learning-grid">
+          <div class="learning-card">
+            <div class="learning-type">Formal — Short Course</div>
+            <div class="learning-title">Coursera: Qualitative Research Methods (University of Amsterdam)</div>
+            <div class="learning-desc">Free audit available. Structured, internationally credible, and immediately applicable to the Make Space data already being collected.</div>
+          </div>
+          <div class="learning-card">
+            <div class="learning-type">Experiential — Self-Led</div>
+            <div class="learning-title">Conduct a thematic analysis of Make Space participant feedback and write it up as a draft paper</div>
+            <div class="learning-desc">Apply Braun and Clarke's reflexive TA procedure to existing feedback data. The draft paper becomes the first submission-ready research document — and demonstrates applied qualitative competence to future graduate supervisors.</div>
+          </div>
+        </div>
+      </div>
+      <p class="competency-note">The qualitative paper from Make Space is not a future aspiration — it is possible now, with data already in hand. Completing it before the Leeds MSc application demonstrates research initiative and produces the first line of the publication record.</p>
+    </div>
+  </div>
+
+  <div class="skill-block">
+    <div class="skill-header" onclick="toggleSkill(this)">
+      <span class="skill-tag t-research">Research</span>
+      <div class="skill-body">
+        <div class="skill-title">Academic Writing — Peer-Reviewed Publication</div>
+        <div class="skill-sub">Writing for the scholarly audience that makes research travel — the form that gives findings the authority to influence practice and policy</div>
+      </div>
+      <button class="toggle-btn">Expand ↓</button>
+    </div>
+    <div class="skill-detail">
+      <div class="detail-body">
+        <p>Academic writing is a discipline distinct from all other forms of professional writing. It demands precision in claim-making, rigorous citation of sources, adherence to field-specific conventions, and the ability to situate one's own work within the existing literature without overstating its contribution. For someone with fifteen years of professional writing experience, the adaptation to academic conventions is achievable — but it requires deliberate practice and, ideally, feedback from someone who publishes in the target journals.</p>
+        <p>The first peer-reviewed paper from Make Space is achievable without a graduate affiliation. Qualitative papers in community mental health and creative health journals do not require institutional affiliation as a condition of submission. The work is already happening. The writing is the next step.</p>
+      </div>
+      <div class="detail-section">
+        <div class="detail-section-label">Scholars and Practitioners</div>
+        <div class="exemplar-row">
+          <div class="exemplar"><strong>Wendy Laura Belcher</strong> — <em>Writing Your Journal Article in Twelve Weeks</em> (2nd ed., 2019) is the most practically useful guide to academic writing and publication for people entering the scholarly publishing system without institutional support. It is a workbook, not a style guide, and it produces a submitted paper if followed.</div>
+          <div class="exemplar"><strong>Paul Silvia</strong> — <em>How to Write a Lot: A Practical Guide to Productive Academic Writing</em>. A short, honest book about the behavioural discipline of writing regularly — essential for someone managing a portfolio career alongside a writing practice.</div>
+        </div>
+      </div>
+      <div class="detail-section">
+        <div class="detail-section-label">Learning Pathways</div>
+        <div class="learning-grid">
+          <div class="learning-card">
+            <div class="learning-type">Formal — Self-Paced</div>
+            <div class="learning-title">Work through Wendy Laura Belcher's twelve-week program with the Make Space qualitative paper as the target manuscript</div>
+            <div class="learning-desc">The program produces a submission-ready manuscript. This is the most direct path to a first publication.</div>
+          </div>
+          <div class="learning-card">
+            <div class="learning-type">Experiential — Portfolio</div>
+            <div class="learning-title">Submit a conceptual paper to a creative health or community mental health journal</div>
+            <div class="learning-desc">Target journals: <em>Arts in Psychotherapy</em>, <em>International Journal of Mental Health Promotion</em>, <em>Health Promotion International</em>. A conceptual paper on the theoretical model underlying Make Space does not require empirical data.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     PANEL 3 — CLINICAL & CREATIVE
+══════════════════════════════════════ -->
+<div class="panel" id="panel-clinical">
+<div class="wrap">
+
+  <p class="panel-intro">The clinical and creative skills in this portfolio are the ones that cannot be acquired quickly. They develop through sustained practice, supervision, and the particular kind of knowledge that comes only from being in the room with people in distress. These are the skills being built now, through Make Space, and that will deepen significantly through the MA and clinical training.</p>
+
+  <div class="sec-header">
+    <div class="sec-eye">Competency Domain 04</div>
+    <div class="sec-title">Creative Health &amp; <em>Expressive Arts Practice</em></div>
+    <p class="sec-desc">The integration of arts-based methods with therapeutic intent — the distinctive intersection that no other combination of credentials and experience fully provides.</p>
+  </div>
+
+  <div class="skill-block">
+    <div class="skill-header" onclick="toggleSkill(this)">
+      <span class="skill-tag t-clinical">Clinical</span>
+      <div class="skill-body">
+        <div class="skill-title">Creative Health Facilitation — Depression-Specific Approaches</div>
+        <div class="skill-sub">Using creative and expressive modalities as structured therapeutic intervention for people experiencing depression</div>
+      </div>
+      <button class="toggle-btn">Expand ↓</button>
+    </div>
+    <div class="skill-detail">
+      <div class="detail-body">
+        <p>Creative health facilitation for depression is not art therapy and not art-making for wellbeing in a general sense. It is the structured application of creative processes — drawing, writing, image-making, embodied practice — as a vehicle for the emotional processing, cognitive reframing, and interpersonal connection that depression disrupts. Competence requires understanding both the mechanisms of depression and the mechanisms by which creative engagement can work on those mechanisms.</p>
+        <p>The Make Space program embodies this competence in operational form. The Other Bodies tools — the emotional compass, the star chart, the topography, the emotion stories — are original clinical instruments developed through sustained facilitation practice. They are not borrowed from existing frameworks. This is the evidence of genuine expertise, not just familiarity with the field.</p>
+      </div>
+      <div class="detail-section">
+        <div class="detail-section-label">Scholars and Practitioners</div>
+        <div class="exemplar-row">
+          <div class="exemplar"><strong>Daisy Fancourt &amp; Saoirse Finn</strong> — <em>What is the Evidence on the Role of the Arts in Improving Health and Well-being?</em> (WHO Europe, 2019). The most comprehensive review of arts and health evidence to date. Provides the evidentiary framing within which Make Space should be positioned.</div>
+          <div class="exemplar"><strong>Shaun McNiff</strong> — <em>Art as Medicine</em> and <em>Art-Based Research</em>. McNiff is the most rigorous theorist of arts-based practice as therapeutic intervention, and his concept of artistic inquiry as a form of knowing is directly relevant to the Dear Ordinary practice as epistemological infrastructure.</div>
+          <div class="exemplar"><strong>Cathy Malchiodi</strong> — <em>Handbook of Art Therapy</em> and <em>Trauma and Expressive Arts Therapy</em>. The most clinically grounded practitioner in the expressive arts field. Her integration of neuroscience and arts-based practice provides the biological mechanism that connects creative facilitation to depression outcomes.</div>
+        </div>
+      </div>
+      <div class="detail-section">
+        <div class="detail-section-label">Learning Pathways</div>
+        <div class="learning-grid">
+          <div class="learning-card">
+            <div class="learning-type">Formal — Certificate</div>
+            <div class="learning-title">Vancouver Art Therapy Institute — Introduction to Art Therapy Certificate</div>
+            <div class="learning-desc">A local, accessible entry point that provides the clinical vocabulary and basic assessment framework for arts-based therapeutic work before the full art therapy credential.</div>
+          </div>
+          <div class="learning-card">
+            <div class="learning-type">Experiential — Self-Led</div>
+            <div class="learning-title">Develop and document the theoretical model underlying the Other Bodies tools</div>
+            <div class="learning-desc">Write a 3,000-word theoretical paper explaining why these tools work — what mechanisms they engage, what the evidence suggests about those mechanisms, how they connect to the broader literature. This is the conceptual foundation for the first publication.</div>
+          </div>
+          <div class="learning-card">
+            <div class="learning-type">Formal — Reading</div>
+            <div class="learning-title">WHO Europe Report: Fancourt &amp; Finn (2019)</div>
+            <div class="learning-desc">Read in full, with annotation. Map every Make Space activity to the evidence categories in this report. The mapping exercise becomes the literature review for the first paper.</div>
+          </div>
+          <div class="learning-card">
+            <div class="learning-type">Experiential — Portfolio</div>
+            <div class="learning-title">Present the Make Space model at a community mental health or arts in health conference</div>
+            <div class="learning-desc">Conference presentations are available before peer-reviewed publication and begin building the field network. Target: BC Art Therapy Association symposium, Canadian Arts Health Alliance events.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="skill-block">
+    <div class="skill-header" onclick="toggleSkill(this)">
+      <span class="skill-tag t-clinical">Clinical</span>
+      <div class="skill-body">
+        <div class="skill-title">Depression — Theoretical and Clinical Literacy</div>
+        <div class="skill-sub">Deep understanding of what depression is, how it presents, what the evidence supports, and what people experiencing it actually need</div>
+      </div>
+      <button class="toggle-btn">Expand ↓</button>
+    </div>
+    <div class="skill-detail">
+      <div class="detail-body">
+        <p>Depression literacy at the level required for this career goes beyond general mental health awareness. It encompasses the current diagnostic and theoretical frameworks for depression across the DSM and ICD systems; the neurobiology of depression as it relates to anhedonia, rumination, and behavioural withdrawal; the evidence base for first-line treatments (CBT, behavioural activation, interpersonal therapy, pharmacotherapy) and their mechanisms; the chronic and recurrent nature of depressive episodes; and the specific ways depression intersects with disability, neurodivergence, cultural context, and social determinants.</p>
+        <p>This literacy enables accurate identification of who Make Space is and is not appropriate for, honest communication about what the program can and cannot do, and the ability to engage credibly with clinical collaborators and researchers who have formal training.</p>
+      </div>
+      <div class="detail-section">
+        <div class="detail-section-label">Scholars and Practitioners</div>
+        <div class="exemplar-row">
+          <div class="exemplar"><strong>Andrew Solomon</strong> — <em>The Noonday Demon: An Atlas of Depression</em>. While not a clinical text, this Pulitzer Prize-winning work provides the most comprehensive account of depression as lived experience, treatment landscape, and social phenomenon. Essential for developing the empathic imagination that creative health facilitation requires alongside clinical knowledge.</div>
+          <div class="exemplar"><strong>Jonathan Rottenberg</strong> — <em>The Depths: The Evolutionary Origins of the Age of Depression</em>. An evolutionary and psychological account of depression that challenges conventional clinical framings — important for developing the theoretical flexibility that original clinical work requires.</div>
+          <div class="exemplar"><strong>Ricardo Araya</strong> — Depression in low-resource settings and task-shifting models of treatment at scale. His work at LSHTM and the evidence from Chile's <em>Tratamiento con Apoyo de Proveedores de Salud No Especializados</em> (TAPS) program is the foundational evidence for scalable depression care — the model this career aims to extend through creative approaches.</div>
+        </div>
+      </div>
+      <div class="detail-section">
+        <div class="detail-section-label">Learning Pathways</div>
+        <div class="learning-grid">
+          <div class="learning-card">
+            <div class="learning-type">Formal — Short Course</div>
+            <div class="learning-title">LSHTM: Global Mental Health (online short course)</div>
+            <div class="learning-desc">Third in the LSHTM sequence. Places depression within the global treatment gap, task-shifting models, and low-resource settings that this career is aimed at.</div>
+          </div>
+          <div class="learning-card">
+            <div class="learning-type">Experiential — Self-Led</div>
+            <div class="learning-title">Conduct and document safety screening for every Make Space cohort using a validated depression screener</div>
+            <div class="learning-desc">Use the PHQ-9 as a pre-program screen (with appropriate referral pathways). This builds clinical literacy, produces preliminary outcome data, and demonstrates responsible program design to health authority partners.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     PANEL 4 — SYSTEMS & EQUITY
+══════════════════════════════════════ -->
+<div class="panel" id="panel-systems">
+<div class="wrap">
+
+  <p class="panel-intro">The systems and equity skills are what make this work go beyond the room and into the architecture of how care is organised. They are also the skills that connect learning design expertise to global health ambition — and that ground the entire project in the justice commitments that give it its purpose.</p>
+
+  <div class="sec-header">
+    <div class="sec-eye">Competency Domain 05</div>
+    <div class="sec-title">Health Systems Literacy &amp; <em>Global Mental Health</em></div>
+    <p class="sec-desc">Understanding how mental health systems are structured, resourced, and constrained — at local and global scales — as the precondition for designing interventions that can actually travel.</p>
+  </div>
+
+  <div class="skill-block">
+    <div class="skill-header" onclick="toggleSkill(this)">
+      <span class="skill-tag t-applied">Applied</span>
+      <div class="skill-body">
+        <div class="skill-title">Health Systems Thinking — Mental Health Delivery Architecture</div>
+        <div class="skill-sub">Understanding how mental health services are structured, funded, and constrained at the system level</div>
+      </div>
+      <button class="toggle-btn">Expand ↓</button>
+    </div>
+    <div class="skill-detail">
+      <div class="detail-body">
+        <p>Systems thinking in health means understanding that individual interventions do not exist outside of the organisational, financial, and political structures in which they are delivered. A depression program that works in a well-resourced Canadian health authority setting may fail completely in a low-resource context — not because the clinical model is wrong, but because the implementation assumptions were built into a specific system architecture. Competence in health systems thinking means being able to read a system, identify the leverage points, and design accordingly.</p>
+        <p>For this career, the most relevant application is understanding the task-shifting model: how WHO and global health researchers have developed frameworks for training non-specialist health workers to deliver evidence-based mental health interventions, what fidelity and supervision requirements this imposes, and how training systems can be designed to make this work at scale.</p>
+      </div>
+      <div class="detail-section">
+        <div class="detail-section-label">Scholars and Practitioners</div>
+        <div class="exemplar-row">
+          <div class="exemplar"><strong>Vikram Patel</strong> — The field's foremost advocate for task-shifting and the global mental health treatment gap. His 2018 TED Talk and his work with Sangath in India are the most accessible entry point. His paper "Mental health for all by involving all" (2013, <em>The Lancet</em>) is the primary reference for the task-shifting model that underlies the scale ambition of this career.</div>
+          <div class="exemplar"><strong>WHO mhGAP (Mental Health Gap Action Programme)</strong> — The international framework for scaling mental health care in low- and middle-income countries. Fluency with mhGAP is expected by global health collaborators and funders, and the training design principles it encodes are directly relevant to Make Space facilitator training.</div>
+          <div class="exemplar"><strong>Mary De Silva</strong> — Implementation science in global mental health. Her work on the scaling of mental health interventions provides the methodological framework for moving from a pilot program to a replicable model.</div>
+        </div>
+      </div>
+      <div class="detail-section">
+        <div class="detail-section-label">Learning Pathways</div>
+        <div class="learning-grid">
+          <div class="learning-card">
+            <div class="learning-type">Formal — Reading</div>
+            <div class="learning-title">WHO mhGAP Intervention Guide — read in full</div>
+            <div class="learning-desc">The primary international framework. Map the Make Space program against mhGAP principles to identify where it aligns, where it extends, and where it diverges — and why.</div>
+          </div>
+          <div class="learning-card">
+            <div class="learning-type">Formal — Short Course</div>
+            <div class="learning-title">Harvard Global Mental Health: Trauma &amp; Recovery (part-time, optional)</div>
+            <div class="learning-desc">Builds the field network in global mental health. Participants from low- and middle-income countries become the first international professional relationships for the research program.</div>
+          </div>
+          <div class="learning-card">
+            <div class="learning-type">Experiential — Self-Led</div>
+            <div class="learning-title">Map the Make Space facilitator training model against WHO task-shifting principles</div>
+            <div class="learning-desc">Write a two-page brief describing how Make Space facilitator training could operate as a task-shifting model for creative health approaches to depression. This document becomes the concept paper for a future grant application.</div>
+          </div>
+          <div class="learning-card">
+            <div class="learning-type">Experiential — Portfolio</div>
+            <div class="learning-title">Apply for one health sector informational interview per quarter at a BC health authority L&amp;D department</div>
+            <div class="learning-desc">Build the vocabulary, the relationships, and the systemic context that shapes everything downstream. The conversations also clarify where learning design expertise is most needed and least available in the health sector.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-header">
+    <div class="sec-eye">Competency Domain 06</div>
+    <div class="sec-title">Disability Justice &amp; <em>Equity-Centred Design</em></div>
+    <p class="sec-desc">The frameworks that ensure this work does not reproduce the exclusions it is designed to address — and that position the consulting practice as a genuine specialist in accessible health system design.</p>
+  </div>
+
+  <div class="skill-block">
+    <div class="skill-header" onclick="toggleSkill(this)">
+      <span class="skill-tag t-applied">Applied</span>
+      <div class="skill-body">
+        <div class="skill-title">Disability Justice Framework — Applied to Mental Health Systems</div>
+        <div class="skill-sub">Understanding disability as a social and political reality, not a medical category — and designing mental health systems accordingly</div>
+      </div>
+      <button class="toggle-btn">Expand ↓</button>
+    </div>
+    <div class="skill-detail">
+      <div class="detail-body">
+        <p>Disability justice is the framework that emerged from the disability rights movement and that centres the most marginalised disabled people — people of colour, trans and queer disabled people, people in poverty — in the analysis of what equity actually requires. It is distinct from the medical model of disability (which locates the problem in the individual's impairment), the social model of disability (which locates the problem in societal barriers), and even mainstream accessibility compliance (which often satisfies the letter of equity without its substance).</p>
+        <p>For this career, disability justice is not a philosophical add-on. Disabled people experience depression at significantly higher rates than the general population, and they are simultaneously the most excluded from existing mental health systems. Any serious attempt to address the treatment gap must grapple with this intersection directly — not as a special case, but as the condition that reveals what genuine accessibility actually requires.</p>
+      </div>
+      <div class="detail-section">
+        <div class="detail-section-label">Scholars and Practitioners</div>
+        <div class="exemplar-row">
+          <div class="exemplar"><strong>Mia Mingus</strong> — One of the founders of the disability justice framework. Her essays, including "Access Intimacy: The Missing Link" and "Changing the Framework: Disability Justice," articulate the political and relational dimensions of access that compliance frameworks miss entirely.</div>
+          <div class="exemplar"><strong>Leah Lakshmi Piepzna-Samarasinha</strong> — <em>Care Work: Dreaming Disability Justice</em> (2018). The most accessible book-length introduction to disability justice practice, grounded in direct experience and community organising.</div>
+          <div class="exemplar"><strong>Sins Invalid</strong> — The disability justice performance project that produced the foundational principles of the framework. Their <em>Skin, Tooth, and Bone</em> is the primary source document for the ten principles of disability justice.</div>
+        </div>
+      </div>
+      <div class="detail-section">
+        <div class="detail-section-label">Learning Pathways</div>
+        <div class="learning-grid">
+          <div class="learning-card">
+            <div class="learning-type">Formal — MSc</div>
+            <div class="learning-title">Leeds MSc Disability Studies — the academic formation of this expertise</div>
+            <div class="learning-desc">The three-year part-time program that builds the theoretical and research grounding for the disability-depression intersection. Already on the plan. The consulting practice grows directly from the curriculum.</div>
+          </div>
+          <div class="learning-card">
+            <div class="learning-type">Experiential — Consulting</div>
+            <div class="learning-title">Design and offer a disability-informed accessibility review for one health or research organisation</div>
+            <div class="learning-desc">Apply disability justice principles to a real organisation's learning or service design. Write up the case study (with permission). This becomes the first portfolio piece for Accessible Learning Labs consulting.</div>
+          </div>
+        </div>
+      </div>
+      <p class="competency-note">The consulting practice — Accessible Learning Labs — derives its premium positioning directly from this expertise. Most accessibility consultants work from compliance frameworks. Grounding the practice in disability justice, and demonstrating that through published work and graduate credentials, is the differentiator that commands higher rates and more meaningful institutional partnerships.</p>
+    </div>
+  </div>
+
+  <div class="skill-block">
+    <div class="skill-header" onclick="toggleSkill(this)">
+      <span class="skill-tag t-applied">Applied</span>
+      <div class="skill-body">
+        <div class="skill-title">Public Writing &amp; Intellectual Platform Building</div>
+        <div class="skill-sub">Making ideas travel in the space between academic publication and mass media — the form that builds field influence before and alongside formal credentials</div>
+      </div>
+      <button class="toggle-btn">Expand ↓</button>
+    </div>
+    <div class="skill-detail">
+      <div class="detail-body">
+        <p>Public intellectual writing — rigorous, accessible, and grounded in genuine expertise — is a distinct skill from both academic writing and professional communication. It requires the ability to take a complex idea, establish its importance for a general educated reader, develop it with care and nuance, and land it in a form that is genuinely useful. The Substack is the vehicle for this in this career. Written well and consistently, it becomes the intellectual infrastructure that makes everything else more legible — to collaborators, funders, health authority partners, graduate programme supervisors, and the audience that eventually encounters the research.</p>
+        <p>The benchmark is not popularity. It is the capacity to articulate the ideas clearly enough that the people who need to understand them can, and to do so with enough rigour that the writing does not misrepresent the evidence or overstate the conclusions. That standard is both ethical and strategic: it is what distinguishes a serious contributor from an enthusiast.</p>
+      </div>
+      <div class="detail-section">
+        <div class="detail-section-label">Scholars and Practitioners</div>
+        <div class="exemplar-row">
+          <div class="exemplar"><strong>Helen Sword</strong> — <em>Stylish Academic Writing</em> (2012) and <em>Air &amp; Light &amp; Time &amp; Space</em> (2017). Sword's research on what makes academic prose readable provides the bridge between scholarly rigor and public accessibility. Her "writer's diet" test is a practical editing tool.</div>
+          <div class="exemplar"><strong>Ed Yong</strong> — Science journalist and Pulitzer Prize winner (<em>An Immense World</em>, <em>I Contain Multitudes</em>). Not a scholar but an exemplar of what rigorous, careful, accessible writing about complex science looks like at its highest level. A useful stylistic benchmark.</div>
+        </div>
+      </div>
+      <div class="detail-section">
+        <div class="detail-section-label">Learning Pathways</div>
+        <div class="learning-grid">
+          <div class="learning-card">
+            <div class="learning-type">Experiential — Ongoing</div>
+            <div class="learning-title">Publish one Substack piece per month — sustained, for twelve consecutive months</div>
+            <div class="learning-desc">Discipline and consistency over performance and virality. The twelve pieces together form a body of work that demonstrates sustained intellectual engagement with the field. They also form the raw material for a book proposal in year three or four.</div>
+          </div>
+          <div class="learning-card">
+            <div class="learning-type">Experiential — Self-Led</div>
+            <div class="learning-title">Pitch and write one piece for a health-sector or disability-sector publication outside the Substack</div>
+            <div class="learning-desc">Target publications: <em>The Tyee</em>, <em>Healthy Debate</em>, <em>Mad in America</em>, <em>The Disability Visibility Project</em>. An accepted piece in an established publication expands the audience and demonstrates that the writing meets an editorial standard.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dark-block">
+    <h3>The principle beneath the skills</h3>
+    <p>Competence in each of these domains matters. But the rarest and highest-value skill in this entire constellation is the capacity to <strong>hold all of them at once</strong> — to be in the room with a person experiencing depression and simultaneously thinking about the population-level evidence, the training system that would make this replicable, the disability justice analysis of who is currently excluded, and the research question that would make this knowledge travel. That integration is what makes this career singular. The individual skills are learnable. <strong>The integration is the work of the whole path, and it does not arrive on a schedule.</strong></p>
+  </div>
+
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     PANEL 5 — SKILL MATRIX
+══════════════════════════════════════ -->
+<div class="panel" id="panel-matrix">
+<div class="wrap">
+
+  <p class="panel-intro">A consolidated view of all core competency areas, their current development stage, and the primary deployment context. This matrix is a living document — updated as credentials, practice, and publication progress.</p>
+
+  <div class="sec-header">
+    <div class="sec-eye">At a Glance</div>
+    <div class="sec-title">Competency <em>Overview</em></div>
+  </div>
+
+  <table class="matrix">
+    <thead>
+      <tr>
+        <th>Competency</th>
+        <th>Current Stage</th>
+        <th>Primary Deployment</th>
+        <th>Next Development Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Instructional Systems Design</td>
+        <td>Advanced — 15 years applied</td>
+        <td>Health authority L&amp;D; facilitator training systems</td>
+        <td>Document Make Space facilitator training as full ISD package</td>
+      </tr>
+      <tr>
+        <td>Knowledge Translation</td>
+        <td>Intermediate — deployed in Substack practice</td>
+        <td>Substack; consulting deliverables; health sector partnerships</td>
+        <td>Complete KT Canada online course; establish monthly translation discipline</td>
+      </tr>
+      <tr>
+        <td>Universal Design for Learning</td>
+        <td>Intermediate — applied but not yet credentialed</td>
+        <td>Accessible Learning Labs consulting; Make Space curriculum</td>
+        <td>Begin CPACC exam preparation</td>
+      </tr>
+      <tr>
+        <td>Therapeutic Group Facilitation</td>
+        <td>Developing — active practice, no formal clinical supervision</td>
+        <td>Make Space program; community mental health facilitation</td>
+        <td>Establish peer supervision; complete ASIST training</td>
+      </tr>
+      <tr>
+        <td>Critical Appraisal of Health Research</td>
+        <td>Early — foundational literacy developing</td>
+        <td>Substack evidence series; future systematic review</td>
+        <td>LSHTM Epidemiology for Public Health short course</td>
+      </tr>
+      <tr>
+        <td>Qualitative Research Methods</td>
+        <td>Early — conceptual understanding, no applied project yet</td>
+        <td>Make Space qualitative paper; future graduate research</td>
+        <td>Apply Braun &amp; Clarke TA to Make Space feedback data now</td>
+      </tr>
+      <tr>
+        <td>Academic Writing &amp; Publication</td>
+        <td>Early — professional writing strong; academic conventions developing</td>
+        <td>First peer-reviewed paper; conference presentations</td>
+        <td>Begin Belcher's twelve-week writing program with draft paper as target</td>
+      </tr>
+      <tr>
+        <td>Creative Health Facilitation</td>
+        <td>Developing — active, original practice; not yet formally theorised</td>
+        <td>Make Space; future art therapy credential</td>
+        <td>Develop and publish theoretical model of the Other Bodies tools</td>
+      </tr>
+      <tr>
+        <td>Depression Literacy — Clinical</td>
+        <td>Intermediate — general mental health literacy strong; clinical specificity developing</td>
+        <td>Make Space safety and referral; clinical work post-MA</td>
+        <td>LSHTM Global Mental Health course; implement PHQ-9 screening in Make Space</td>
+      </tr>
+      <tr>
+        <td>Health Systems Thinking</td>
+        <td>Early — conceptual; no sector experience yet</td>
+        <td>Health authority roles; consulting; future research</td>
+        <td>Read WHO mhGAP guide; begin health sector informational interview practice</td>
+      </tr>
+      <tr>
+        <td>Disability Justice Framework</td>
+        <td>Intermediate — informed; deepening through Leeds MSc</td>
+        <td>Accessible Learning Labs; Make Space design; consulting</td>
+        <td>Leeds MSc enrolment; write first Substack disability-depression intersection piece</td>
+      </tr>
+      <tr>
+        <td>Public Writing &amp; Intellectual Platform</td>
+        <td>Active — Substack running; developing consistency and depth</td>
+        <td>Field positioning; audience building; knowledge translation</td>
+        <td>Commit to twelve consecutive monthly publications; pitch one external outlet</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="dark-block" style="margin-top: 3rem;">
+    <h3>Reading this matrix honestly</h3>
+    <p>The gaps in this matrix are not weaknesses to be embarrassed about. They are the map of the work ahead — the specific places where deliberate investment, sustained practice, and formal training will produce the most return. <strong>A career that can name its own gaps is a career that is actually building, not just performing confidence.</strong> The discipline is not to close every gap immediately but to close the right gaps in the right order — beginning with the ones that unlock everything else.</p>
+  </div>
+
+  <div class="sec-header" style="margin-top: 3rem;">
+    <div class="sec-eye">The Intersection That Matters</div>
+    <div class="sec-title">Where this skill set <em>becomes singular</em></div>
+  </div>
+
+  <div class="tag-row">
+    <span class="tag">Learning design + task-shifting</span>
+    <span class="tag">Depression + creative health</span>
+    <span class="tag">Disability justice + mental health access</span>
+    <span class="tag">Neuroscience + expressive arts</span>
+    <span class="tag">Research + direct practice</span>
+    <span class="tag">Global health + local care</span>
+    <span class="tag">Evidence + embodied knowledge</span>
+    <span class="tag">Clinical depth + systems scale</span>
+    <span class="tag">Accessibility + depression treatment</span>
+    <span class="tag">Art + clinical science</span>
+  </div>
+
+  <p style="font-size: 0.88rem; color: var(--mid); line-height: 1.72; margin-top: 1.5rem; font-style: italic; max-width: 600px;">These intersections are where underserved, high-value work exists. Most researchers and practitioners live in one domain. This path builds fluency across all of them — in service of one problem. No one else is building this from this particular combination of foundations.</p>
+
+</div>
+</div>
+
+<footer>
+  <span>Skills — Living Document</span>
+  <span>Core Domain · Research &amp; Evidence · Clinical &amp; Creative · Systems &amp; Equity · Skill Matrix</span>
+</footer>
+
+<script>
+  function showPanel(name, btn) {
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('panel-' + name).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  function toggleSkill(header) {
+    const detail = header.nextElementSibling;
+    const btn = header.querySelector('.toggle-btn');
+    const isOpen = detail.classList.contains('open');
+    detail.classList.toggle('open');
+    btn.textContent = isOpen ? 'Expand ↓' : 'Collapse ↑';
+  }
+</script>
+</body>
+</html>
