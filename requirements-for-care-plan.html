@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Requirements for Care — The Working Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --white:#ffffff; --ink:#303e44; --accent:#475f6a; --mid:#6a858f;
+    --light:#e8eef0; --lighter:#f4f7f8; --line:#d4dde1; --faint:#8fa4ad;
+    --maxw:940px; --ease:cubic-bezier(.22,.61,.36,1);
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{margin:0;font-family:'Asap',system-ui,-apple-system,'Segoe UI',sans-serif;
+    font-size:16px;line-height:1.7;color:var(--ink);background:var(--white);
+    -webkit-font-smoothing:antialiased;}
+  h1,h2,h3,h4,h5{margin:0;font-weight:500;line-height:1.25;}
+  p{margin:0 0 1rem;} p:last-child{margin-bottom:0;}
+  ul,ol{margin:0;padding:0;list-style:none;}
+  strong{font-weight:500;}
+  a{color:var(--accent);}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.86em;
+    background:var(--lighter);padding:0.1em 0.35em;border:1px solid var(--line);}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 3.5rem;}
+
+  .eyebrow{font-size:0.62rem;font-weight:600;letter-spacing:0.2em;
+    text-transform:uppercase;color:var(--faint);margin:0 0 1.1rem;}
+  .rule-label{font-size:0.6rem;font-weight:600;letter-spacing:0.16em;
+    text-transform:uppercase;color:var(--faint);padding-bottom:0.5rem;
+    border-bottom:1px solid var(--line);margin-bottom:1.2rem;}
+
+  header{padding:4.5rem 0 2.8rem;border-bottom:1px solid var(--line);}
+  header h1{font-size:clamp(2rem,5vw,3rem);letter-spacing:-0.015em;margin-bottom:1.4rem;}
+  header h1 em{font-weight:400;color:var(--accent);}
+  .lede{font-size:1.02rem;color:var(--mid);max-width:41rem;}
+
+  .thesis{padding:3rem 0 0.5rem;}
+  .thesis-inner{border-left:2px solid var(--accent);padding:0.2rem 0 0.2rem 1.6rem;max-width:41rem;}
+  .thesis-inner p{font-size:0.97rem;color:var(--mid);}
+  .thesis-inner p strong{color:var(--ink);}
+
+  section.block{padding:3.4rem 0 0;}
+  section.block > h2{font-size:1.5rem;margin-bottom:0.85rem;}
+  section.block > h2 em{color:var(--accent);font-weight:400;}
+  section.block > .intro{max-width:41rem;color:var(--mid);font-size:0.97rem;}
+
+  .track{border-top:1px solid var(--ink);margin-top:2rem;padding-top:1.6rem;}
+  .track + .track{border-top:1px solid var(--line);margin-top:2.6rem;}
+  .track-head{display:grid;grid-template-columns:7.5rem 1fr;gap:0 2rem;align-items:start;}
+  .track-tag{font-size:0.6rem;font-weight:600;letter-spacing:0.16em;
+    text-transform:uppercase;color:var(--accent);padding-top:0.4rem;}
+  .track-head h3{font-size:1.22rem;margin-bottom:0.55rem;}
+  .track-head h3 em{font-weight:400;color:var(--accent);}
+  .track-head > div > p{font-size:0.95rem;color:var(--mid);max-width:38rem;}
+  .track-body{margin-top:1.5rem;padding-left:9.5rem;}
+
+  h4.sub{font-size:0.95rem;margin:1.5rem 0 0.6rem;}
+  .steps li{font-size:0.9rem;color:var(--mid);line-height:1.65;
+    padding:0.32rem 0 0.32rem 1.7rem;position:relative;counter-increment:s;}
+  .steps{counter-reset:s;}
+  .steps li::before{content:counter(s);position:absolute;left:0;top:0.34rem;
+    font-size:0.62rem;font-weight:600;color:var(--faint);letter-spacing:0.05em;}
+  .steps li strong{color:var(--ink);}
+
+  .plain li{font-size:0.9rem;color:var(--mid);line-height:1.65;
+    padding:0.3rem 0 0.3rem 1.15rem;position:relative;}
+  .plain li::before{content:'—';position:absolute;left:0;color:var(--line);}
+  .plain li strong{color:var(--ink);}
+
+  table{border-collapse:collapse;width:100%;margin-top:1rem;font-size:0.86rem;}
+  th,td{border:1px solid var(--line);padding:0.65rem 0.8rem;text-align:left;
+    vertical-align:top;line-height:1.55;}
+  th{background:var(--lighter);font-weight:600;font-size:0.6rem;
+    letter-spacing:0.11em;text-transform:uppercase;color:var(--faint);}
+  td strong{color:var(--ink);}
+  td{color:var(--mid);}
+
+  .callout{border:1px solid var(--line);border-left:3px solid var(--accent);
+    background:var(--lighter);padding:1.2rem 1.35rem;margin-top:1.4rem;}
+  .callout-label{font-size:0.58rem;font-weight:600;letter-spacing:0.17em;
+    text-transform:uppercase;color:var(--accent);margin-bottom:0.6rem;}
+  .callout p{font-size:0.89rem;color:var(--ink);}
+  .callout p + p{margin-top:0.7rem;}
+
+  .venues{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));
+    gap:1px;background:var(--line);border:1px solid var(--line);margin-top:1.3rem;}
+  .venue{background:var(--white);padding:1.1rem 1.25rem;}
+  .venue h5{font-size:0.9rem;margin-bottom:0.3rem;}
+  .venue .meta{font-size:0.62rem;font-weight:600;letter-spacing:0.1em;
+    text-transform:uppercase;color:var(--faint);margin-bottom:0.5rem;}
+  .venue p{font-size:0.83rem;color:var(--mid);line-height:1.58;}
+
+  .order{padding:3.6rem 0 0;}
+  .order h2{font-size:1.5rem;margin-bottom:0.85rem;}
+  .order h2 em{color:var(--accent);font-weight:400;}
+  .order > p{max-width:41rem;color:var(--mid);font-size:0.97rem;}
+  .move{border-top:1px solid var(--line);padding:1.35rem 0;
+    display:grid;grid-template-columns:9rem 1fr;gap:0 2rem;}
+  .move-when{font-size:0.6rem;font-weight:600;letter-spacing:0.14em;
+    text-transform:uppercase;color:var(--accent);padding-top:0.25rem;}
+  .move h4{font-size:1rem;margin-bottom:0.35rem;}
+  .move p{font-size:0.88rem;color:var(--mid);max-width:39rem;}
+
+  .closing{margin:4rem 0 0;background:var(--ink);}
+  .closing .wrap{padding-top:2.6rem;padding-bottom:2.6rem;}
+  .closing p{font-size:1rem;font-style:italic;line-height:1.75;
+    color:rgba(255,255,255,0.82);max-width:44rem;}
+  .closing strong{color:#fff;font-weight:500;font-style:normal;}
+
+  footer{padding:1.7rem 0;border-top:1px solid var(--line);
+    font-size:0.6rem;font-weight:600;letter-spacing:0.15em;
+    text-transform:uppercase;color:var(--faint);
+    display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+
+  @media (max-width:760px){
+    .wrap{padding:0 1.5rem;}
+    header{padding-top:3rem;}
+    .track-head{grid-template-columns:1fr;gap:0.6rem;}
+    .track-tag{padding-top:0;}
+    .track-body{padding-left:0;}
+    .move{grid-template-columns:1fr;gap:0.4rem;}
+    table{font-size:0.8rem;}
+    th,td{padding:0.5rem 0.55rem;}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <p class="eyebrow">Requirements for Care — The Working Plan</p>
+    <h1>How to run this alone,<br /><em>and be taken seriously anyway.</em></h1>
+    <p class="lede">An operational plan for an unaffiliated researcher. Every step is costed in effort rather than money, every gate has a stated condition, and the three things that normally require an institution — data access, credibility, and a second coder — each have a named workaround.</p>
+  </div>
+</header>
+
+<div class="thesis">
+  <div class="wrap">
+    <div class="thesis-inner">
+      <p><strong>What changed when the plan was checked.</strong> Two operational assumptions were verified before this was written, and one of them reshapes the whole study. The AACT database, maintained by the Clinical Trials Transformation Initiative, holds every protocol and result element from ClinicalTrials.gov in a relational database, refreshed daily, freely accessible via a cloud PostgreSQL account or as a static download, with support for R, pgAdmin and psql. <strong>The eligibility criteria are a queryable field.</strong></p>
+      <p>This means the corpus is not assembled by hand at forty documents. It is assembled by query at whatever size the sampling logic justifies, with the full population available as a denominator. That converts the study from a small document analysis into something with a population frame — a considerably stronger design, obtained for free, by someone with no institution.</p>
+      <p><strong>The credibility mechanism, also verified.</strong> OSF registration is free, requires no affiliation, timestamps and freezes a plan, and offers a Secondary Data Preregistration template built for exactly this: a study using an existing dataset. For an unaffiliated researcher this is the single highest-leverage act available. A preregistered analysis plan from an independent scholar is more credible than an unregistered one from a professor, and it costs an afternoon.</p>
+      <p><strong>The principle the plan is built on.</strong> Independence removes permission, funding, and colleagues. It does not remove rigour, and rigour is the only currency available. Every design decision below chooses the more defensible option over the faster one, because a paper from an unaffiliated author will be read more sceptically and must survive it.</p>
+    </div>
+  </div>
+</div>
+
+<section class="block">
+  <div class="wrap">
+    <p class="rule-label">Phase zero</p>
+    <h2>Two hours that could stop <em>all of this.</em></h2>
+    <p class="intro">Do these before writing a word. Both were promised in the previous document and neither has been run. Either could narrow the contribution; one could remove it.</p>
+
+    <div class="track">
+      <div class="track-head">
+        <div class="track-tag">Check A</div>
+        <div>
+          <h3>Critical psychology and mad studies.</h3>
+          <p>That literature has argued for decades that psychological services exclude the people who most need them. It may already hold this argument without the measurement half.</p>
+        </div>
+      </div>
+      <div class="track-body">
+        <p style="font-size:0.9rem;color:var(--mid);max-width:38rem;"><strong>Search terms, in this order:</strong> <em>mad studies psychological therapy exclusion</em>; <em>critical psychology IAPT critique access</em>; <em>service user led research therapy eligibility</em>; <em>psychiatric survivor research access to talking therapies</em>; <em>epistemic injustice psychotherapy access</em>. Look in <em>Disability &amp; Society</em>, <em>Journal of Critical Psychology</em>, and the service-user research literature rather than clinical journals — this work is often published outside the venues a clinical search reaches.</p>
+        <p style="font-size:0.9rem;color:var(--mid);max-width:38rem;margin-top:0.8rem;"><strong>If it comes back occupied:</strong> the position is extension, not origination — and better for it. The measurement half remains yours, the critique becomes something you cite rather than construct, and you gain a literature that will read this work sympathetically. Rewrite the framing, keep the study.</p>
+      </div>
+    </div>
+
+    <div class="track">
+      <div class="track-head">
+        <div class="track-tag">Check B</div>
+        <div>
+          <h3>Whether Memory Support has reached unguided materials.</h3>
+          <p>The mechanism-proximity argument depends partly on there being no therapist available to compensate in self-directed formats.</p>
+        </div>
+      </div>
+      <div class="track-body">
+        <p style="font-size:0.9rem;color:var(--mid);max-width:38rem;"><strong>How:</strong> read the Berkeley group's recent output directly rather than searching around it. Their work is largely deposited in PubMed Central and eScholarship, both free. Look specifically for applications to digital, unguided, or self-directed formats, and for any coding of the materials themselves rather than therapist behaviour.</p>
+        <p style="font-size:0.9rem;color:var(--mid);max-width:38rem;margin-top:0.8rem;"><strong>If it comes back occupied:</strong> the argument narrows to eligibility criteria alone and drops the materials-design extension. Still a contribution, and a cleaner one.</p>
+      </div>
+    </div>
+
+    <div class="track">
+      <div class="track-head">
+        <div class="track-tag">Check C</div>
+        <div>
+          <h3>Read Plosky and colleagues properly, not the abstract.</h3>
+          <p>This is the paper the study extends. The extension must be stated in their terms.</p>
+        </div>
+      </div>
+      <div class="track-body">
+        <p style="font-size:0.9rem;color:var(--mid);max-width:38rem;">Read the coding frame, the categories, the stated limitations, and the recommendations. Ask one question throughout: <strong>does their frame already handle mechanism proximity under another name?</strong> If it does, this study becomes a replication in a single modality and should be reconsidered. If it does not, their limitations section is the opening paragraph of your introduction.</p>
+        <p style="font-size:0.9rem;color:var(--mid);max-width:38rem;margin-top:0.8rem;"><strong>Then write to them.</strong> A short, specific email about the psychological-therapy case — where the excluded capability is the intervention mechanism rather than a logistical condition — costs nothing. The worst outcome is silence. A realistic outcome is a correction that saves months. The best outcome is a collaborator with an institution, which solves the second-coder problem and the access problem at once.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <p class="rule-label">The three obstacles</p>
+    <h2>What independence actually costs, <em>and how each is paid.</em></h2>
+    <p class="intro">Not motivation or time — those are the visible problems. The three that stop unaffiliated research are data, credibility, and a second pair of eyes. Each has a specific answer here.</p>
+
+    <table>
+      <thead>
+        <tr><th style="width:10rem;">Obstacle</th><th>The answer</th><th style="width:10rem;">Cost</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Data access</strong></td>
+          <td>AACT. Free cloud PostgreSQL account, or a static database download, refreshed daily from ClinicalTrials.gov, with eligibility criteria as a field. No affiliation required. Learn enough SQL to write one filtered query — a weekend, and there is a published researcher's guide. For UK service-side trials, the ISRCTN registry is separately public.</td>
+          <td>One weekend</td>
+        </tr>
+        <tr>
+          <td><strong>Literature access</strong></td>
+          <td>Partial, and workable. PubMed Central, medRxiv, eScholarship and institutional repositories cover much of this field. Unpaywall finds legal open versions. Authors send papers when asked directly, and almost always do. Public library interlibrary loan covers the rest. Budget the friction rather than pretending it is absent — this is the genuine daily cost of working outside an institution.</td>
+          <td>Ongoing friction</td>
+        </tr>
+        <tr>
+          <td><strong>Credibility</strong></td>
+          <td>Preregistration, before touching the data. OSF is free, requires no affiliation, timestamps and freezes the plan, and has a Secondary Data Preregistration template for exactly this design. Deposit the coding manual and the data alongside. An independent researcher with a frozen prior plan is in a stronger evidential position than an affiliated one without.</td>
+          <td>One afternoon</td>
+        </tr>
+        <tr>
+          <td><strong>Second coder</strong></td>
+          <td>The only obstacle requiring another person, and it is not optional — mechanism proximity is a contestable judgment and single-coder reliability will be the first thing a reviewer attacks. Recruit one clinical psychologist and, ideally, one person with lived experience of using these services. Offer co-authorship, which costs nothing and is the correct attribution anyway. Approach through the disability studies and service-user research networks rather than cold-emailing departments.</td>
+          <td>Weeks of asking</td>
+        </tr>
+        <tr>
+          <td><strong>Ethics approval</strong></td>
+          <td>Not required, and say why rather than claiming an exemption you do not hold. TCPS 2 (2022) Article 2.2: research relying exclusively on publicly available information does not require review. Registry records are published documents about studies, not about identifiable people. State the reasoning in the methods section. If the service corpus later adds interviews, that portion needs review and a host institution to provide it.</td>
+          <td>One paragraph</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <p class="rule-label">The study, specified</p>
+    <h2>Decisions to make <em>before the data is touched.</em></h2>
+    <p class="intro">Everything here goes into the preregistration. Deciding it afterwards is what preregistration exists to prevent, and the discipline matters more for an independent researcher than for anyone else.</p>
+
+    <h4 class="sub">The sampling frame</h4>
+    <ol class="steps">
+      <li><strong>Define the modality boundary first, and defend it.</strong> Psychological or behavioural interventions for depression in adults. Exclude pharmacological, device, and combination trials — but say why in one sentence, because the exclusion is the study's premise: in these modalities the capability at issue is the delivery mechanism rather than a logistical condition.</li>
+      <li><strong>State a date window and a registry.</strong> A defensible starting point is interventional studies registered in a recent ten-year window. Report the query verbatim, the date it was run, and the number returned. The query <em>is</em> the sampling method, and publishing it makes the study reproducible by anyone.</li>
+      <li><strong>Decide the size on reliability, not ambition.</strong> Because the corpus is queried rather than hand-collected, the constraint is coding capacity, not access. A few hundred records is achievable and gives a population denominator besides. Report the full population and the coded sample, so the reader can see what was left out.</li>
+      <li><strong>Archive at capture.</strong> Registry records are revised. Save the AACT snapshot date, and archive individual records at the moment of capture. A study of documents that have since changed is worthless without them.</li>
+      <li><strong>Keep the working file boring.</strong> One row per record, one column per code, provenance in the same row: registry ID, snapshot date, archive link, sponsor type, country, modality, delivery format.</li>
+    </ol>
+
+    <div class="callout">
+      <p class="callout-label">The one design decision that carries the paper</p>
+      <p><strong>Mechanism proximity needs a rubric written before coding, not a judgment made during it.</strong> Three points: <em>remote</em> — the capability is unrelated to how the intervention works, as literacy is to an injection. <em>Adjacent</em> — the capability supports delivery but alternatives plainly exist, as travel is to a therapy that could be delivered remotely. <em>Constitutive</em> — the capability is the route through which the intervention acts, as reading is to a written self-help programme.</p>
+      <p>Write the rubric with worked examples of each, freeze it in the preregistration, and pilot it on twenty records with your second coder before touching the rest. <strong>If agreement is poor, that is the study's central finding and belongs in the paper</strong> — a discipline that cannot agree on what its treatments work through has a validity problem more interesting than any exclusion count.</p>
+    </div>
+
+    <h4 class="sub">The analysis, stated in advance</h4>
+    <ul class="plain">
+      <li><strong>The headline number.</strong> Proportion of capability requirements coded as method rather than construct, with the proportion at each level of mechanism proximity. This is the finding; everything else supports it.</li>
+      <li><strong>The authority number.</strong> Proportion of capability requirements with no stated grounding. Report broad investigator-discretion clauses separately, since they are the absence of a stated authority rather than the presence of one.</li>
+      <li><strong>The uncomfortable cross-tabulation.</strong> Mechanism proximity against stated justification. The prediction worth preregistering is that requirements closest to the mechanism are the <em>least</em> likely to carry a justification — because the closer a requirement sits to how a treatment works, the more obviously necessary it feels and the less anyone has been asked to defend it. If that holds it is a real finding. If it inverts, say so.</li>
+      <li><strong>What is exploratory, labelled as such.</strong> Chain position, voice, and anything noticed during coding. Preregistration protects the confirmatory claims; it does not forbid looking at the rest, provided the distinction is printed.</li>
+    </ul>
+  </div>
+</section>
+
+<div class="order">
+  <div class="wrap">
+    <p class="rule-label">Gates, not deadlines</p>
+    <h2>The sequence, <em>with stopping conditions.</em></h2>
+    <p>Each stage has a condition for proceeding. An independent researcher's scarcest resource is uninterrupted attention, and the way it is wasted is by continuing past the point where the answer was already available.</p>
+
+    <div class="move">
+      <div class="move-when">Gate 1</div>
+      <div>
+        <h4>Run checks A, B and C — proceed only if the claim survives</h4>
+        <p>Two hours plus one careful read. <strong>Stop condition:</strong> if mad studies already holds the argument <em>with</em> a measurement frame, stop and reconsider. If it holds it without one, reframe as extension and continue. If Plosky's frame already covers mechanism proximity, stop.</p>
+      </div>
+    </div>
+    <div class="move">
+      <div class="move-when">Gate 2</div>
+      <div>
+        <h4>Write the rubric and recruit one second coder</h4>
+        <p>Do not skip to the data because the data is now easy to get. <strong>Stop condition:</strong> no second coder found after a genuine round of asking means running the pilot solo and reporting it as a single-coder pilot rather than a study — honest, publishable as a research note, and it makes recruiting easier next time by giving people something concrete to join.</p>
+      </div>
+    </div>
+    <div class="move">
+      <div class="move-when">Gate 3</div>
+      <div>
+        <h4>Preregister, then pull the corpus</h4>
+        <p>In that order, and the order is the whole point. Register the query, the rubric, the codes, the analysis plan and the prediction. Then run the query. <strong>Stop condition:</strong> none — this is the cheapest and most valuable step in the plan.</p>
+      </div>
+    </div>
+    <div class="move">
+      <div class="move-when">Gate 4</div>
+      <div>
+        <h4>Pilot twenty records, double-coded</h4>
+        <p>The real test. <strong>Stop condition:</strong> if mechanism proximity will not code reliably after one rubric revision, drop it, report the failure, and the study becomes a modality-specific replication of existing work. That is a smaller paper and still worth writing — but know which one you are writing before you code three hundred records.</p>
+      </div>
+    </div>
+    <div class="move">
+      <div class="move-when">Gate 5</div>
+      <div>
+        <h4>Code the full sample and write the conceptual piece alongside</h4>
+        <p>The argument needs no data and should not wait for it: in psychological therapy the capabilities required to enter the evidence base are the capabilities required to receive the treatment, and neither has been tested for validity. Preprint it while the coding runs. It establishes the ground publicly and it is the piece that makes the empirical paper legible when it lands.</p>
+      </div>
+    </div>
+    <div class="move">
+      <div class="move-when">Gate 6</div>
+      <div>
+        <h4>Deposit everything, then submit</h4>
+        <p>Dataset, coding manual, rubric, query, and transparent-changes document to OSF under CC-BY, at the same time as submission rather than after acceptance. Infrastructure gets cited and reused; a single article does not. For an independent researcher the deposited manual may do more work over ten years than the paper it came from.</p>
+      </div>
+    </div>
+    <div class="move">
+      <div class="move-when">Gate 7</div>
+      <div>
+        <h4>Only then, the service corpus</h4>
+        <p>Messier, harder to sample defensibly, far more likely to put an institution on the defensive — and the half nobody else is looking at. It is what turns a methods critique into an access argument. <strong>Stop condition:</strong> do not start it until the trial corpus has produced a stable, published frame to carry across.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="block">
+  <div class="wrap">
+    <p class="rule-label">Sustaining it</p>
+    <h2>How this survives <em>eighteen months of nobody asking.</em></h2>
+    <p class="intro">The failure mode for independent research is not being wrong. It is stopping. Four structural defences, none of which require anyone else's cooperation.</p>
+    <ul class="plain" style="margin-top:1.2rem;">
+      <li><strong>Make every stage produce something citable.</strong> The preregistration is citable the day it is posted. The rubric is citable. The conceptual preprint is citable. The dataset is citable. By the time the paper is under review there should already be four things in the world with your name on them — which matters enormously when the review takes nine months and nobody has said anything encouraging.</li>
+      <li><strong>Write in public while the slow work runs.</strong> One piece per examined requirement, using corpus material as it accumulates. It builds the argument's audience, it makes the dataset a by-product rather than a competitor, and it is the only part of this that produces a response inside a week.</li>
+      <li><strong>Keep a decision log, not a diary.</strong> One file, one line per decision, dated: what was chosen, what was rejected, and why. It becomes the methods section, it protects against reconstructing reasoning after the fact, and on the days the work feels like nothing it is evidence that it is not.</li>
+      <li><strong>Set a review date rather than a finish date.</strong> Every six months, one question: is the claim still true, and is the sequence still right? The falsification lists in the companion documents are the agenda. A plan reviewed twice a year survives contact with a changing field; a plan with a finish date does not survive its first surprise.</li>
+    </ul>
+
+    <div class="callout" style="margin-top:1.6rem;">
+      <p class="callout-label">The honest risk</p>
+      <p>The regulatory ground is moving. Amended Section 504 regulations now carry explicit clinical trial inclusion requirements, and a federal disability body reported on this in 2024. That is unambiguously good, and it means the descriptive finding — that these requirements are stated as methods and rarely justified — has a shelf life. <strong>Which is an argument for the validity frame rather than against the study:</strong> when the rules change, the question of whether a requirement is <em>justified</em> gets answered administratively, and the question of whether it is <em>valid</em> is left standing. Build the durable half.</p>
+    </div>
+  </div>
+</section>
+
+<div class="closing">
+  <div class="wrap">
+    <p>The corpus is a query away, the preregistration is free, and the ethics reasoning fits in a paragraph. <strong>The only thing here that genuinely requires another person is a second coder</strong> — and the correct answer to that is to offer co-authorship to a clinical psychologist and to someone who has used these services, which is better research as well as an easier ask. Everything else is a weekend of SQL, a rubric written carefully, and the discipline to register the plan before looking at the data.</p>
+    <p style="margin-top:1rem;font-size:0.85rem;opacity:0.75;">Operational facts in this plan — AACT access and structure, OSF registration templates and cost — were verified in August 2026. Database schemas, registry interfaces, and registration templates change. Confirm both before building anything on them, and record the date when you do. Checks A and B remain unrun.</p>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;width:100%;">
+    <span>Requirements for Care — The Working Plan</span>
+    <span>Check · Register · Pilot · Code · Deposit</span>
+  </div>
+</footer>
+
+</body>
+</html>
