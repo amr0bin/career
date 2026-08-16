@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>The Wider Ground — Where Else the Work Can Go</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --white:#ffffff; --ink:#303e44; --accent:#475f6a; --mid:#6a858f;
+    --light:#e8eef0; --lighter:#f4f7f8; --line:#d4dde1; --faint:#8fa4ad;
+    --maxw:940px; --ease:cubic-bezier(.22,.61,.36,1);
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{margin:0;font-family:'Asap',system-ui,-apple-system,'Segoe UI',sans-serif;
+    font-size:16px;line-height:1.7;color:var(--ink);background:var(--white);
+    -webkit-font-smoothing:antialiased;}
+  h1,h2,h3,h4,h5{margin:0;font-weight:500;line-height:1.25;}
+  p{margin:0 0 1rem;} p:last-child{margin-bottom:0;}
+  ul,ol{margin:0;padding:0;list-style:none;}
+  strong{font-weight:500;}
+  a{color:var(--accent);}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.86em;
+    background:var(--lighter);padding:0.1em 0.35em;border:1px solid var(--line);}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 3.5rem;}
+
+  .eyebrow{font-size:0.62rem;font-weight:600;letter-spacing:0.2em;
+    text-transform:uppercase;color:var(--faint);margin:0 0 1.1rem;}
+  .rule-label{font-size:0.6rem;font-weight:600;letter-spacing:0.16em;
+    text-transform:uppercase;color:var(--faint);padding-bottom:0.5rem;
+    border-bottom:1px solid var(--line);margin-bottom:1.2rem;}
+
+  header{padding:4.5rem 0 2.8rem;border-bottom:1px solid var(--line);}
+  header h1{font-size:clamp(2rem,5vw,3rem);letter-spacing:-0.015em;margin-bottom:1.4rem;}
+  header h1 em{font-weight:400;color:var(--accent);}
+  .lede{font-size:1.02rem;color:var(--mid);max-width:41rem;}
+
+  .thesis{padding:3rem 0 0.5rem;}
+  .thesis-inner{border-left:2px solid var(--accent);padding:0.2rem 0 0.2rem 1.6rem;max-width:41rem;}
+  .thesis-inner p{font-size:0.97rem;color:var(--mid);}
+  .thesis-inner p strong{color:var(--ink);}
+
+  section.block{padding:3.4rem 0 0;}
+  section.block > h2{font-size:1.5rem;margin-bottom:0.85rem;}
+  section.block > h2 em{color:var(--accent);font-weight:400;}
+  section.block > .intro{max-width:41rem;color:var(--mid);font-size:0.97rem;}
+
+  .track{border-top:1px solid var(--ink);margin-top:2rem;padding-top:1.6rem;}
+  .track + .track{border-top:1px solid var(--line);margin-top:2.6rem;}
+  .track-head{display:grid;grid-template-columns:7.5rem 1fr;gap:0 2rem;align-items:start;}
+  .track-tag{font-size:0.6rem;font-weight:600;letter-spacing:0.16em;
+    text-transform:uppercase;color:var(--accent);padding-top:0.4rem;}
+  .track-head h3{font-size:1.22rem;margin-bottom:0.55rem;}
+  .track-head h3 em{font-weight:400;color:var(--accent);}
+  .track-head > div > p{font-size:0.95rem;color:var(--mid);max-width:38rem;}
+  .track-body{margin-top:1.5rem;padding-left:9.5rem;}
+
+  h4.sub{font-size:0.95rem;margin:1.5rem 0 0.6rem;}
+  .steps li{font-size:0.9rem;color:var(--mid);line-height:1.65;
+    padding:0.32rem 0 0.32rem 1.7rem;position:relative;counter-increment:s;}
+  .steps{counter-reset:s;}
+  .steps li::before{content:counter(s);position:absolute;left:0;top:0.34rem;
+    font-size:0.62rem;font-weight:600;color:var(--faint);letter-spacing:0.05em;}
+  .steps li strong{color:var(--ink);}
+
+  .plain li{font-size:0.9rem;color:var(--mid);line-height:1.65;
+    padding:0.3rem 0 0.3rem 1.15rem;position:relative;}
+  .plain li::before{content:'—';position:absolute;left:0;color:var(--line);}
+  .plain li strong{color:var(--ink);}
+
+  table{border-collapse:collapse;width:100%;margin-top:1rem;font-size:0.86rem;}
+  th,td{border:1px solid var(--line);padding:0.65rem 0.8rem;text-align:left;
+    vertical-align:top;line-height:1.55;}
+  th{background:var(--lighter);font-weight:600;font-size:0.6rem;
+    letter-spacing:0.11em;text-transform:uppercase;color:var(--faint);}
+  td strong{color:var(--ink);}
+  td{color:var(--mid);}
+
+  .callout{border:1px solid var(--line);border-left:3px solid var(--accent);
+    background:var(--lighter);padding:1.2rem 1.35rem;margin-top:1.4rem;}
+  .callout-label{font-size:0.58rem;font-weight:600;letter-spacing:0.17em;
+    text-transform:uppercase;color:var(--accent);margin-bottom:0.6rem;}
+  .callout p{font-size:0.89rem;color:var(--ink);}
+  .callout p + p{margin-top:0.7rem;}
+
+  .venues{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));
+    gap:1px;background:var(--line);border:1px solid var(--line);margin-top:1.3rem;}
+  .venue{background:var(--white);padding:1.1rem 1.25rem;}
+  .venue h5{font-size:0.9rem;margin-bottom:0.3rem;}
+  .venue .meta{font-size:0.62rem;font-weight:600;letter-spacing:0.1em;
+    text-transform:uppercase;color:var(--faint);margin-bottom:0.5rem;}
+  .venue p{font-size:0.83rem;color:var(--mid);line-height:1.58;}
+
+  .order{padding:3.6rem 0 0;}
+  .order h2{font-size:1.5rem;margin-bottom:0.85rem;}
+  .order h2 em{color:var(--accent);font-weight:400;}
+  .order > p{max-width:41rem;color:var(--mid);font-size:0.97rem;}
+  .move{border-top:1px solid var(--line);padding:1.35rem 0;
+    display:grid;grid-template-columns:9rem 1fr;gap:0 2rem;}
+  .move-when{font-size:0.6rem;font-weight:600;letter-spacing:0.14em;
+    text-transform:uppercase;color:var(--accent);padding-top:0.25rem;}
+  .move h4{font-size:1rem;margin-bottom:0.35rem;}
+  .move p{font-size:0.88rem;color:var(--mid);max-width:39rem;}
+
+  .closing{margin:4rem 0 0;background:var(--ink);}
+  .closing .wrap{padding-top:2.6rem;padding-bottom:2.6rem;}
+  .closing p{font-size:1rem;font-style:italic;line-height:1.75;
+    color:rgba(255,255,255,0.82);max-width:44rem;}
+  .closing strong{color:#fff;font-weight:500;font-style:normal;}
+
+  footer{padding:1.7rem 0;border-top:1px solid var(--line);
+    font-size:0.6rem;font-weight:600;letter-spacing:0.15em;
+    text-transform:uppercase;color:var(--faint);
+    display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+
+  @media (max-width:760px){
+    .wrap{padding:0 1.5rem;}
+    header{padding-top:3rem;}
+    .track-head{grid-template-columns:1fr;gap:0.6rem;}
+    .track-tag{padding-top:0;}
+    .track-body{padding-left:0;}
+    .move{grid-template-columns:1fr;gap:0.4rem;}
+    table{font-size:0.8rem;}
+    th,td{padding:0.5rem 0.55rem;}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <p class="eyebrow">The Wider Ground — Working Document</p>
+    <h1>Where else the work can go,<br /><em>with the ground checked first.</em></h1>
+    <p class="lede">Six candidate areas, each searched before being claimed. Three are occupied and should be abandoned or narrowed. One is half-open and has a door standing wide. Two are genuinely empty, and one of those is where the practice already lives.</p>
+  </div>
+</header>
+
+<div class="thesis">
+  <div class="wrap">
+    <div class="thesis-inner">
+      <p><strong>Why this document exists.</strong> The essential-requirements programme is a beachhead, and a good one: narrow, unclaimed, testable from a laptop, and it answers a standing national invitation. But it was chosen for <em>provability</em> rather than magnitude, and those are different properties. It draws on four literatures out of a practice the map now shows holds a dozen. It builds standing in the field being left rather than the field being entered. Both are defensible trades. Neither should be made by default.</p>
+      <p><strong>The discipline applied to itself.</strong> The companion documents record a failure: a claim of empty ground, generated by reasoning from the inside, that turned out to be wrong. Every area below therefore arrives with its search attached and its verdict stated before its promise. Three of six came back occupied. That is the method working, not the method failing — an hour of searching has removed three years of misdirected effort.</p>
+      <p><strong>What the searching changed.</strong> The single biggest reframe is that the gap is not <em>learning design in mental health</em>, which is being colonised steadily from several directions at once. It is <strong>learning design for the cognition the condition actually produces</strong> — a gap that exists because the clinical literature and the learning literature have never had reason to meet, and which is measurable, publishable, and open.</p>
+    </div>
+  </div>
+</div>
+
+<section class="block">
+  <div class="wrap">
+    <p class="rule-label">The checks</p>
+    <h2>What came back, <em>area by area.</em></h2>
+    <p class="intro">Searched August 2026. Verdicts are about what has been <em>found</em>, not what exists — absence of evidence in six searches is weaker than a systematic review, and every one of these should be re-run before anything is claimed in print.</p>
+
+    <table>
+      <thead>
+        <tr><th style="width:14rem;">Area</th><th style="width:8rem;">Verdict</th><th>What was found</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Readability of mental health materials</strong></td>
+          <td><strong>Occupied</strong></td>
+          <td>Thoroughly done and repeatedly. Multiple studies across psychotic disorders, general mental health websites, VA resources and patient leaflets, all reaching the same finding: materials sit well above the recommended reading level. A seventh study would add nothing. <em>Abandon as a standalone question.</em></td>
+        </tr>
+        <tr>
+          <td><strong>Plain language summaries in research</strong></td>
+          <td><strong>Occupied</strong></td>
+          <td>A systematic review of theory, guidelines and empirical research already exists, and a 2025 cross-sectional study analysed the full corpus of NIHR plain language summaries from 2014 to 2022 — over twelve hundred documents — for readability and jargon. The corpus study I would have proposed has been run, on a better corpus, by a funded team. <em>Abandon.</em></td>
+        </tr>
+        <tr>
+          <td><strong>A competency framework for learning designers</strong></td>
+          <td><strong>Occupied</strong></td>
+          <td>IBSTPI has published instructional designer competencies since 1986, now in a fourth edition, validated with over a thousand practitioners across six continents. Publishing an eight-competency framework as an original contribution would be reinventing a forty-year-old standard in public. <em>Abandon as originated work.</em> What survives is narrower and more interesting: no widely used ID competency set treats accessibility or disability as a domain rather than a checklist item. That is a critique of an existing standard, not a new standard, and it is a much smaller and more defensible thing to write.</td>
+        </tr>
+        <tr>
+          <td><strong>Accessibility of digital mental health</strong></td>
+          <td><strong>Filling fast</strong></td>
+          <td>Live and accelerating. Frontiers has published on accessibility in mental health apps and on inclusive design with disabled stakeholders in usability testing; there is a 2026 systematic review of accessibility recommendations for interfaces serving people with disabilities, and a 2026 mixed-methods study of blind users and digital mental health tracking that names paywall-gated accessibility evaluation as a structural feature. <em>Do not enter at the interface level.</em> Note carefully what that study argues, though: when peer-support and community features are part of the therapeutic offering, their accessibility is intervention accessibility rather than interface accessibility. That distinction is the seam, and it is not being worked.</td>
+        </tr>
+        <tr>
+          <td><strong>Learning design in task-shifting</strong></td>
+          <td><strong>Half open</strong></td>
+          <td>More occupied than expected and less well than expected — see below.</td>
+        </tr>
+        <tr>
+          <td><strong>Designing for depressed cognition</strong></td>
+          <td><strong>Open</strong></td>
+          <td>The strongest finding in the whole search. See below.</td>
+        </tr>
+        <tr>
+          <td><strong>Access to creative health</strong></td>
+          <td><strong>Open</strong></td>
+          <td>Barriers acknowledged and never designed for. See below.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <p class="rule-label">Three grounds</p>
+    <h2>Where there is <em>actually room.</em></h2>
+    <p class="intro">One half-open with a door standing wide, and two empty. Ordered by how much of the combination each requires.</p>
+
+    <!-- GROUND ONE -->
+    <div class="track">
+      <div class="track-head">
+        <div class="track-tag">Ground 1</div>
+        <div>
+          <h3>Designing for the cognition depression produces — <em>the empty centre.</em></h3>
+          <p>The clearest gap found, and the one that uses the most of the practice at once. It exists because two literatures that both concern learning have never had a reason to meet.</p>
+        </div>
+      </div>
+      <div class="track-body">
+
+        <h4 class="sub">The three facts that make it a gap</h4>
+        <ol class="steps">
+          <li><strong>Depression impairs learning, and this is not contested.</strong> Meta-analytic work shows deficits across executive function, memory and attention. Impaired concentration is a formal diagnostic criterion for a major depressive episode. The population receiving the material is defined, in part, by reduced capacity to process it.</li>
+          <li><strong>Retention of material is a named mechanism of therapeutic outcome.</strong> Trial protocols in this area state it plainly: recall of session content is a logical prerequisite to applying it, and is treated as a core mechanism behind cognitive behavioural therapy. There is even an instrument for measuring it. So the field already believes learning is the mechanism.</li>
+          <li><strong>The instructional adaptation work has been done — for a different condition.</strong> Adapted CBT protocols for moderate to severe traumatic brain injury specify one to two key concepts per session, deliberate repetition, checks for understanding, written session summaries, and between-session prompts, each mapped to the impairment it addresses. That is competent instructional design, published, in a clinical protocol. <strong>There is no equivalent for depression, despite depression affecting orders of magnitude more people and impairing the same functions.</strong></li>
+        </ol>
+
+        <div class="callout">
+          <p class="callout-label">What is not the gap</p>
+          <p>Applying cognitive load theory to health and behaviour change programmes in general is being done — there is a 2025 paper of exactly that title, offering principles and recommendations. Do not write that paper. The gap is the specific case: a population whose defining symptoms include the impairment, a mechanism the field already names, and an existing adaptation template from an adjacent condition. Generic is taken; specific is open.</p>
+        </div>
+
+        <h4 class="sub">What can be built, in order of cost</h4>
+        <ul class="plain">
+          <li><strong>The conceptual paper.</strong> No data, no permission. The argument that self-help and psychoeducational materials for depression are designed for a cognition their users do not have, and that the TBI adaptations are a ready template. Draws construct validity, learning science, disability studies and programme design together on a question where all four bear.</li>
+          <li><strong>A document analysis of publicly available materials.</strong> The corpus method already designed, moved to a corpus that matters — NHS and provincial self-help booklets, published psychoeducation, freely available workbooks. Coded not for readability, which is answered, but against learning-science criteria: segmentation, worked examples, spacing, retrieval, redundancy, signalling, whether the design assumes sustained attention it should not assume. Same TCPS 2 reasoning, same absence of permission required.</li>
+          <li><strong>The link nobody has closed.</strong> The self-help evidence base is enormous and measures symptom outcomes — RCTs, meta-analyses, Cochrane reviews. It does not measure whether people learned the thing. That is a research programme, not a paper, and it is what a dissertation is for.</li>
+        </ul>
+
+        <div class="callout">
+          <p class="callout-label">Why this one and not essential requirements</p>
+          <p>It uses more of the combination, it is in the destination field rather than the origin field, it feeds the studio practice directly rather than running parallel to it, and it has a mechanism claim rather than only a critique. It is also less certain, harder to place, and has no standing invitation attached. Run both. Do not choose yet.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- GROUND TWO -->
+    <div class="track">
+      <div class="track-head">
+        <div class="track-tag">Ground 2</div>
+        <div>
+          <h3>Access to creative health — <em>a field growing faster than its own inclusion.</em></h3>
+          <p>Arts on prescription and social prescribing are expanding rapidly through the NHS, the WHO evidence base, and now a US field guide. The access question is acknowledged in the literature and has never been treated as a design problem.</p>
+        </div>
+      </div>
+      <div class="track-body">
+        <p style="font-size:0.9rem;color:var(--mid);max-width:38rem;">The 2024 systematic review with meta-analysis on arts on prescription does report barriers — but they appear as an aside, and they are almost entirely logistical: transport, parking, mobility, and the observation that people with more health conditions and lower starting wellbeing attend less. That last finding is the whole problem stated without being recognised: <strong>the programme systematically loses the people it would help most, and the response has been to note it rather than to design for it.</strong> Separately, a 28-country European study documents barriers to cultural participation for disabled people, including arts professionals' lack of disability knowledge — but it is about cultural participation, not about health interventions delivered through art.</p>
+
+        <p style="font-size:0.9rem;color:var(--mid);max-width:38rem;margin-top:1rem;">Nobody has put those two literatures in one room. Doing so requires disability studies, accessibility standards, programme design, and facilitation craft — and it is the only area on this list where <em>the practice already runs the intervention</em>. Make Space is a creative health programme. Its access design is a case study waiting to be written up, and the studio is both the site and the evidence.</p>
+
+        <div class="callout">
+          <p class="callout-label">The lowest-cost version</p>
+          <p>Document the access design of the existing practice, honestly, including what does not work. One programme, described properly against the standards, with the reasoning shown. It requires no new research, no permission beyond participant consent for anything quoted, and it is the piece that makes the studio legible to the creative health field rather than only to its participants.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- GROUND THREE -->
+    <div class="track">
+      <div class="track-head">
+        <div class="track-tag">Ground 3</div>
+        <div>
+          <h3>Task-shifting training — <em>half occupied, with a door standing open.</em></h3>
+          <p>The claim that no instructional designer has reached this field was wrong, and the correction matters. But what was found is thinner than it looks, and it comes with an unusual invitation attached.</p>
+        </div>
+      </div>
+      <div class="track-body">
+
+        <h4 class="sub">What is already there</h4>
+        <ul class="plain">
+          <li><strong>Instructional design is being used, shallowly.</strong> Digital training programmes for non-specialist providers delivering depression care — in India, and now in the United States — describe their development as informed by ADDIE and human-centred design. But ADDIE appears as a process label rather than a body of learning science, and the citation carrying it is a general instructional-design-models paper in a minor management journal. The learning science underneath is absent.</li>
+          <li><strong>Competence assessment is well developed.</strong> The ENACT scale exists for peer rating of common-factors clinical competency in task-sharing programmes, developed through mental health Gap Action Programme trainings in Nepal. Do not build a competency instrument here.</li>
+          <li><strong>Training design is an active research question.</strong> A recent scoping review on the impact of task-sharing on non-specialist providers finds studies recommending additional training and supervision components — troubleshooting time before client contact, coping skills for the providers themselves, structured real-life role-plays, refresher training and long-term supervision. Every one of those is a design recommendation arrived at empirically, without design theory.</li>
+        </ul>
+
+        <div class="callout">
+          <p class="callout-label">The door</p>
+          <p><em>Global Mental Health</em>, published by Cambridge, has run a Teaching and Learning section since 2014. Its founding statement names its mandate as the public health need for effective and widely accessible mental health teaching and learning methods, tools, metrics, networks and communities — and explicitly invites contributions, on the grounds that an inadequately trained workforce has historically been the greatest single contributor to the mental health treatment gap.</p>
+          <p><strong>That is a peer-reviewed journal section, open for over a decade, soliciting exactly this expertise.</strong> It is the closest thing to a standing invitation found anywhere in this search, and it is considerably more direct than the AFMC one. Read the section's back catalogue before writing anything: it is either the best possible venue or the reason not to bother, and one afternoon settles which.</p>
+        </div>
+
+        <p style="font-size:0.9rem;color:var(--mid);max-width:38rem;margin-top:1rem;"><strong>What survives as a contribution.</strong> Not <em>bring instructional design to global mental health</em> — they have it. Rather: the training literature has arrived empirically at recommendations that learning science derived decades ago, has no framework connecting them, and is designing for non-specialist learners whose own conditions, literacy, and circumstances are rarely part of the design. That is a synthesis piece, it is short, and it is aimed at a section that asked for it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="order">
+  <div class="wrap">
+    <p class="rule-label">The wider path</p>
+    <h2>How the pieces <em>sit together now.</em></h2>
+    <p>Two programmes, not one, running at different speeds and hedging each other. Essential requirements is the certain one; depressed cognition is the consequential one. Everything else is either support for those two or has been removed by the searching.</p>
+
+    <div class="move">
+      <div class="move-when">The spine</div>
+      <div>
+        <h4>One method, two corpora</h4>
+        <p>The document-analysis method is the transferable asset, not the finding. Built once, it runs on essential requirements documents and on depression self-help materials with the same design, the same ethics reasoning, and the same coding discipline. Building it twice is not duplicated work — it is a method demonstrated across two fields, which is a stronger claim than either study alone. Design the coding manual so it is obviously portable.</p>
+      </div>
+    </div>
+    <div class="move">
+      <div class="move-when">The hedge</div>
+      <div>
+        <h4>Origin field and destination field, deliberately</h4>
+        <p>Essential requirements builds standing in postsecondary accessibility, where the network already exists and the invitation is live. Depressed cognition builds standing in mental health, where the career is going and nothing yet exists. Running only the first arrives at the doctorate with a reputation in the wrong field. Running only the second arrives with nothing published at all. The two together are the actual portfolio.</p>
+      </div>
+    </div>
+    <div class="move">
+      <div class="move-when">The near work</div>
+      <div>
+        <h4>Three pieces that need no data</h4>
+        <p>The depressed-cognition conceptual paper. The task-shifting synthesis for the Teaching and Learning section. The access design of the existing creative health practice, written up honestly. All three are desk work or documentation of work already done, none requires permission, and each lands in a different field.</p>
+      </div>
+    </div>
+    <div class="move">
+      <div class="move-when">The correction</div>
+      <div>
+        <h4>Two things removed, on purpose</h4>
+        <p>The competency framework and the plain-language corpus study are struck. They were plausible, they were mine to propose, and the searching killed them. Recording the removals matters as much as recording the additions — a plan that only ever grows is a plan nobody is checking.</p>
+      </div>
+    </div>
+    <div class="move">
+      <div class="move-when">The studio's new role</div>
+      <div>
+        <h4>The practice stops being separate from the research</h4>
+        <p>Under the previous plan, Make Space was the intervention and the scholarship ran alongside it. Under this one, the studio is a site for two of the three open grounds: it is a creative health programme whose access design is publishable, and it is a place where the question of whether people can learn under depression is answered every week in the room. The pre/post measure already identified as the highest-leverage small move now carries a second purpose — it is the beginning of an outcome dataset for both.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="block">
+  <div class="wrap">
+    <p class="rule-label">Honesty about the premise</p>
+    <h2>How you would know <em>if this is wrong.</em></h2>
+    <p class="intro">Five ways, each with a test. The first two are the ones most likely to bite, and neither has been run.</p>
+    <ul class="plain" style="margin-top:1.2rem;">
+      <li><strong>Six searches is not a systematic review.</strong> <em>Unrun.</em> Everything above rests on a single search session in one afternoon. That is enough to kill three ideas confidently — finding something is proof; not finding it is not. It is not enough to claim absence in print. Before any of these is written up, run a proper structured search with recorded terms and dates, and expect at least one verdict to move.</li>
+      <li><strong>The depressed-cognition gap may be occupied under other vocabulary.</strong> <em>Unrun, and the highest-value hour available.</em> Clinical psychology may be doing this work under terms a learning designer would not search for — treatment adherence, homework compliance, skills acquisition, memory support in therapy, therapy engagement. Search those before writing a word. A field usually has a name for its own problems, and it is rarely the name an outsider brings.</li>
+      <li><strong>The Teaching and Learning section may already be full of this.</strong> <em>Unrun and cheap.</em> A decade of a journal section soliciting exactly this expertise may mean the invitation was answered years ago. Read the back catalogue. One afternoon, and it either opens a venue or removes an item.</li>
+      <li><strong>Creative health access may be moving now.</strong> <em>Unrun.</em> The field is growing quickly and the barriers are already acknowledged in its own reviews, which means someone is likely working on it. Check the arts and health associations and recent conference programmes, not just the journals — practice fields publish late.</li>
+      <li><strong>Two programmes may be one too many.</strong> <em>Untestable in advance; watch for it.</em> The argument for running both is hedging. The risk is that the hedge produces two half-finished studies and standing in neither field. The honest signal is the corpus pilot: if twenty documents in the first corpus takes longer than expected, the second corpus waits rather than starting alongside.</li>
+    </ul>
+
+    <div class="callout" style="margin-top:1.6rem;">
+      <p class="callout-label">The rule this document is built on</p>
+      <p>Three of six areas here were removed by searching, and one of the three was proposed with real confidence. That ratio should be expected rather than embarrassing — an idea generated from inside a practice is a hypothesis about the world, and hypotheses generated that way are wrong most of the time. The cost of checking is an hour. The cost of not checking is discovering it in peer review, or in year three. Nothing gets added to this document without its search attached.</p>
+    </div>
+  </div>
+</section>
+
+<div class="closing">
+  <div class="wrap">
+    <p>The combination is wider than the first programme built on it. Two areas are open, one door is standing wide, and three plausible ideas have been removed at the cost of an afternoon. <strong>None of it requires a degree, a role, a grant, or permission from anyone</strong> — and the most consequential thing found is not a new field to enter but a question nobody has asked: whether the people we hand materials to, at the moment they can least concentrate, can learn what those materials are for.</p>
+    <p style="margin-top:1rem;font-size:0.85rem;opacity:0.75;">All verdicts in this document rest on searches run in August 2026, in a single session, with terms not recorded systematically. They are sufficient to abandon an idea and insufficient to claim absence in print. Re-run with recorded terms before publication, and record the date when you do.</p>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;width:100%;">
+    <span>The Wider Ground — Working Document</span>
+    <span>Checked · Removed · Open · Ordered</span>
+  </div>
+</footer>
+
+</body>
+</html>
