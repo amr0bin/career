@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Requirements for Care — Working Document</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --white:#ffffff; --ink:#303e44; --accent:#475f6a; --mid:#6a858f;
+    --light:#e8eef0; --lighter:#f4f7f8; --line:#d4dde1; --faint:#8fa4ad;
+    --maxw:940px; --ease:cubic-bezier(.22,.61,.36,1);
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{margin:0;font-family:'Asap',system-ui,-apple-system,'Segoe UI',sans-serif;
+    font-size:16px;line-height:1.7;color:var(--ink);background:var(--white);
+    -webkit-font-smoothing:antialiased;}
+  h1,h2,h3,h4,h5{margin:0;font-weight:500;line-height:1.25;}
+  p{margin:0 0 1rem;} p:last-child{margin-bottom:0;}
+  ul,ol{margin:0;padding:0;list-style:none;}
+  strong{font-weight:500;}
+  a{color:var(--accent);}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.86em;
+    background:var(--lighter);padding:0.1em 0.35em;border:1px solid var(--line);}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 3.5rem;}
+
+  .eyebrow{font-size:0.62rem;font-weight:600;letter-spacing:0.2em;
+    text-transform:uppercase;color:var(--faint);margin:0 0 1.1rem;}
+  .rule-label{font-size:0.6rem;font-weight:600;letter-spacing:0.16em;
+    text-transform:uppercase;color:var(--faint);padding-bottom:0.5rem;
+    border-bottom:1px solid var(--line);margin-bottom:1.2rem;}
+
+  header{padding:4.5rem 0 2.8rem;border-bottom:1px solid var(--line);}
+  header h1{font-size:clamp(2rem,5vw,3rem);letter-spacing:-0.015em;margin-bottom:1.4rem;}
+  header h1 em{font-weight:400;color:var(--accent);}
+  .lede{font-size:1.02rem;color:var(--mid);max-width:41rem;}
+
+  .thesis{padding:3rem 0 0.5rem;}
+  .thesis-inner{border-left:2px solid var(--accent);padding:0.2rem 0 0.2rem 1.6rem;max-width:41rem;}
+  .thesis-inner p{font-size:0.97rem;color:var(--mid);}
+  .thesis-inner p strong{color:var(--ink);}
+
+  section.block{padding:3.4rem 0 0;}
+  section.block > h2{font-size:1.5rem;margin-bottom:0.85rem;}
+  section.block > h2 em{color:var(--accent);font-weight:400;}
+  section.block > .intro{max-width:41rem;color:var(--mid);font-size:0.97rem;}
+
+  .track{border-top:1px solid var(--ink);margin-top:2rem;padding-top:1.6rem;}
+  .track + .track{border-top:1px solid var(--line);margin-top:2.6rem;}
+  .track-head{display:grid;grid-template-columns:7.5rem 1fr;gap:0 2rem;align-items:start;}
+  .track-tag{font-size:0.6rem;font-weight:600;letter-spacing:0.16em;
+    text-transform:uppercase;color:var(--accent);padding-top:0.4rem;}
+  .track-head h3{font-size:1.22rem;margin-bottom:0.55rem;}
+  .track-head h3 em{font-weight:400;color:var(--accent);}
+  .track-head > div > p{font-size:0.95rem;color:var(--mid);max-width:38rem;}
+  .track-body{margin-top:1.5rem;padding-left:9.5rem;}
+
+  h4.sub{font-size:0.95rem;margin:1.5rem 0 0.6rem;}
+  .steps li{font-size:0.9rem;color:var(--mid);line-height:1.65;
+    padding:0.32rem 0 0.32rem 1.7rem;position:relative;counter-increment:s;}
+  .steps{counter-reset:s;}
+  .steps li::before{content:counter(s);position:absolute;left:0;top:0.34rem;
+    font-size:0.62rem;font-weight:600;color:var(--faint);letter-spacing:0.05em;}
+  .steps li strong{color:var(--ink);}
+
+  .plain li{font-size:0.9rem;color:var(--mid);line-height:1.65;
+    padding:0.3rem 0 0.3rem 1.15rem;position:relative;}
+  .plain li::before{content:'—';position:absolute;left:0;color:var(--line);}
+  .plain li strong{color:var(--ink);}
+
+  table{border-collapse:collapse;width:100%;margin-top:1rem;font-size:0.86rem;}
+  th,td{border:1px solid var(--line);padding:0.65rem 0.8rem;text-align:left;
+    vertical-align:top;line-height:1.55;}
+  th{background:var(--lighter);font-weight:600;font-size:0.6rem;
+    letter-spacing:0.11em;text-transform:uppercase;color:var(--faint);}
+  td strong{color:var(--ink);}
+  td{color:var(--mid);}
+
+  .callout{border:1px solid var(--line);border-left:3px solid var(--accent);
+    background:var(--lighter);padding:1.2rem 1.35rem;margin-top:1.4rem;}
+  .callout-label{font-size:0.58rem;font-weight:600;letter-spacing:0.17em;
+    text-transform:uppercase;color:var(--accent);margin-bottom:0.6rem;}
+  .callout p{font-size:0.89rem;color:var(--ink);}
+  .callout p + p{margin-top:0.7rem;}
+
+  .venues{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));
+    gap:1px;background:var(--line);border:1px solid var(--line);margin-top:1.3rem;}
+  .venue{background:var(--white);padding:1.1rem 1.25rem;}
+  .venue h5{font-size:0.9rem;margin-bottom:0.3rem;}
+  .venue .meta{font-size:0.62rem;font-weight:600;letter-spacing:0.1em;
+    text-transform:uppercase;color:var(--faint);margin-bottom:0.5rem;}
+  .venue p{font-size:0.83rem;color:var(--mid);line-height:1.58;}
+
+  .order{padding:3.6rem 0 0;}
+  .order h2{font-size:1.5rem;margin-bottom:0.85rem;}
+  .order h2 em{color:var(--accent);font-weight:400;}
+  .order > p{max-width:41rem;color:var(--mid);font-size:0.97rem;}
+  .move{border-top:1px solid var(--line);padding:1.35rem 0;
+    display:grid;grid-template-columns:9rem 1fr;gap:0 2rem;}
+  .move-when{font-size:0.6rem;font-weight:600;letter-spacing:0.14em;
+    text-transform:uppercase;color:var(--accent);padding-top:0.25rem;}
+  .move h4{font-size:1rem;margin-bottom:0.35rem;}
+  .move p{font-size:0.88rem;color:var(--mid);max-width:39rem;}
+
+  .closing{margin:4rem 0 0;background:var(--ink);}
+  .closing .wrap{padding-top:2.6rem;padding-bottom:2.6rem;}
+  .closing p{font-size:1rem;font-style:italic;line-height:1.75;
+    color:rgba(255,255,255,0.82);max-width:44rem;}
+  .closing strong{color:#fff;font-weight:500;font-style:normal;}
+
+  footer{padding:1.7rem 0;border-top:1px solid var(--line);
+    font-size:0.6rem;font-weight:600;letter-spacing:0.15em;
+    text-transform:uppercase;color:var(--faint);
+    display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+
+  @media (max-width:760px){
+    .wrap{padding:0 1.5rem;}
+    header{padding-top:3rem;}
+    .track-head{grid-template-columns:1fr;gap:0.6rem;}
+    .track-tag{padding-top:0;}
+    .track-body{padding-left:0;}
+    .move{grid-template-columns:1fr;gap:0.4rem;}
+    table{font-size:0.8rem;}
+    th,td{padding:0.5rem 0.55rem;}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <p class="eyebrow">Requirements for Care — Working Document</p>
+    <h1>What a treatment requires of a person,<br /><em>and whether it should.</em></h1>
+    <p class="lede">One contribution, narrowed until it survived four rounds of checking. Three larger versions of this idea were killed by searching. What remains is smaller, provable, and — as far as five search sessions can establish — genuinely unheld.</p>
+  </div>
+</header>
+
+<div class="thesis">
+  <div class="wrap">
+    <div class="thesis-inner">
+      <p><strong>Read the corrections before the claim.</strong> This document is the fourth attempt at naming a unique contribution in this area. The first three were removed by searching, and the fourth was cut down by it. That record is the reason to trust what is left, and it is printed first on purpose.</p>
+      <p><strong>What was killed.</strong> <em>Applying learning science to depression care</em> — occupied. Allison Harvey's group at Berkeley has built the Memory Support Intervention over a decade, with randomised trials, twelve-month outcomes, validated instruments, and eight strategies explicitly derived from the cognitive psychology <em>and education</em> literatures. <em>Studying who drops out of self-help</em> — occupied, including an individual-patient-data meta-analysis and a machine-learning study on more than eighty-five thousand patients. <em>Disabled people are unjustifiably excluded from clinical trials</em> — occupied, and thoroughly: Plosky and colleagues analysed ninety-seven protocols from ClinicalTrials.gov across dementia, depression, diabetes and lung cancer in <em>Health Affairs</em> in 2022, coding disability categories, documented justifications and permitted accommodations; a scoping review has examined disability as an exclusion criterion across 2,710 trials; the US National Council on Disability reported on it federally in 2024.</p>
+      <p><strong>What survives, stated once.</strong> All of that asks whether an exclusion was <em>justified</em>. None of it asks whether the requirement is <em>valid</em> — whether it names the capability the treatment actually depends on, or one route to it. Those are different questions, and only the second is a measurement question.</p>
+      <p>And the difference has nowhere sharper than psychological therapy, for one reason nobody in that literature has had cause to notice. <strong>In a drug trial, <em>must be able to read</em> is a logistical criterion. In a therapy trial it is the delivery mechanism of the treatment itself.</strong> Reading, remembering, attending, and self-regulating are not conditions of receiving psychological treatment; in most modalities they are the treatment. Which makes the construct-or-method question live in psychological therapy in a way it simply is not for a pill — and makes it inseparable from the fact that the condition being treated impairs exactly those capacities.</p>
+    </div>
+  </div>
+</div>
+
+<section class="block">
+  <div class="wrap">
+    <p class="rule-label">The contribution</p>
+    <h2>Requirement validity, <em>pointed at treatment.</em></h2>
+    <p class="intro">The same object studied in the essential-requirements programme — a published criterion, uncited, deciding who may pass — relocated from professional admission to therapeutic access. Same method, same coding discipline, same absence of required permission.</p>
+
+    <div class="callout">
+      <p class="callout-label">The question, in one sentence</p>
+      <p>What capabilities does a psychological therapy require of a person before it will work — are those requirements the constructs the treatment depends on or particular methods of meeting them, on whose authority do they rest, and who is removed by requirements nobody has been asked to defend?</p>
+    </div>
+
+    <h4 class="sub">Why it needs all four literatures, and why nobody currently holds them here</h4>
+    <table>
+      <thead>
+        <tr><th style="width:12rem;">Lens</th><th>What it contributes here</th><th style="width:11rem;">Who holds it now</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Construct validity</strong></td>
+          <td>Separates <em>the capability the treatment genuinely depends on</em> from <em>one bodily or cognitive route to it</em>. Engaging with the content is a construct. Reading it unaided in English is a method. This distinction is entirely absent from the exclusion-criteria literature, which asks only whether a justification was recorded.</td>
+          <td>Nobody, in this setting</td>
+        </tr>
+        <tr>
+          <td><strong>Duty to accommodate</strong></td>
+          <td>Supplies the standard the justification literature is reaching for without naming: not <em>was a reason given</em> but <em>is this a bona fide requirement, and was the reasoning demonstrable</em>. The procedural duty is precisely what a broad investigator-discretion clause fails.</td>
+          <td>Partly — access and adjustments work in talking therapies</td>
+        </tr>
+        <tr>
+          <td><strong>Disability studies</strong></td>
+          <td>Asks whose cognition the programme was built for, and refuses the move that treats an impairment as a property of the person rather than a mismatch with a design. It is what stops the answer being <em>better triage</em>.</td>
+          <td>Yes, but without measurement</td>
+        </tr>
+        <tr>
+          <td><strong>Programme design</strong></td>
+          <td>Traces what moves when a requirement is rewritten — the modality, the materials, the fidelity claim, the outcome measure, the guideline that rests on it.</td>
+          <td>Nobody, in this setting</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      <p class="callout-label">The chain nobody has traced</p>
+      <p>Each link has been studied alone. A capability requirement enters a therapy trial as a practical convenience. The trial produces an efficacy estimate in a population from which people who could not meet it were removed. The estimate enters a guideline. The guideline becomes a service specification. The specification becomes an eligibility rule at the point of referral — and the same capability is now required of a person seeking care, on the authority of evidence generated by excluding people who lacked it.</p>
+      <p><strong>That circle is the contribution.</strong> It requires measurement to name the requirement, law to test its authority, disability studies to see it at all, and programme design to follow it along the chain. It is one argument, and it is available to a person with a laptop.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <p class="rule-label">The study</p>
+    <h2>What can be built <em>with no permission at all.</em></h2>
+    <p class="intro">Two corpora, both public, both structured, neither requiring ethics approval under TCPS 2 Article 2.2. The method is the one already designed for the essential-requirements corpus; this is its second application, and the portability is itself a finding.</p>
+
+    <div class="track">
+      <div class="track-head">
+        <div class="track-tag">Corpus one</div>
+        <div>
+          <h3>Psychological therapy trial protocols — <em>who entered the evidence base.</em></h3>
+          <p>Registry records for psychological therapy trials in depression are public, structured, and machine-readable. The disability-exclusion work has been done across therapeutic areas in general; separating psychological therapy out, where the excluded capability <em>is</em> the treatment mechanism, has not.</p>
+        </div>
+      </div>
+      <div class="track-body">
+        <p style="font-size:0.9rem;color:var(--mid);max-width:38rem;">The material is already visible to anyone who looks. Registered protocols in this area routinely require that a participant be able to understand spoken and basic written English; be able to read and write simple texts; be able to travel to the service independently or with support; be able to maintain focus and sit still during assessment; communicate verbally; or clear a cognitive screening cutoff — the last of these sometimes stated frankly as being because the adaptations required could not be accommodated in the study. Each of these is a capability requirement stated as a method, none is tested against the construct the therapy claims to work through, and their aggregate defines the population in which the treatment is said to be effective.</p>
+
+        <div class="callout">
+          <p class="callout-label">Positioned as extension, not origination</p>
+          <p>Cite Plosky and colleagues from the first draft. This study adds three things to that work rather than replacing it: a modality where the excluded capability is the intervention mechanism rather than a logistical condition; a validity frame in place of a justification frame; and the onward chain into service eligibility. That is a smaller claim than novelty and a far more defensible one — and it makes the existing team a potential collaborator rather than a competitor.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="track">
+      <div class="track-head">
+        <div class="track-tag">Corpus two</div>
+        <div>
+          <h3>Service and referral documents — <em>who receives the treatment.</em></h3>
+          <p>The untouched half. Everything found in the searching concerns eligibility for <em>research</em>. Nobody has run the same analysis on the documents that decide eligibility for <em>care</em>.</p>
+        </div>
+      </div>
+      <div class="track-body">
+        <p style="font-size:0.9rem;color:var(--mid);max-width:38rem;">Service specifications, stepped-care allocation guidance, self-help programme entry conditions, and referral briefings are published or obtainable. They contain requirements of exactly the kind the essential-requirements corpus was built to code. One NHS-facing briefing on referring people with a learning disability to talking therapies advises considering, before referral, whether the individual can recognise that there is a problem and can make changes with support, on the stated grounds that these are essential components in getting benefit. Read as a clinician that is prudent. Read as a document analyst it is a technical standard: a capability requirement, uncited, applied before access, determining who is referred.</p>
+
+        <p style="font-size:0.9rem;color:var(--mid);max-width:38rem;margin-top:1rem;">The field already knows the mechanism it produces. Guidance in the same area states plainly that people who have difficulty completing the outcome measures and are not supported to do so are highly likely to drop out of therapy. The knowledge is present; the instrument for examining it is not.</p>
+      </div>
+    </div>
+
+    <h4 class="sub">The coding frame</h4>
+    <p style="font-size:0.9rem;color:var(--mid);max-width:38rem;">The essential-requirements frame, carried across with three codes changed. Its portability is a claim in its own right: if one instrument codes both admission standards and treatment eligibility, the two are the same object, which is the argument the whole programme rests on.</p>
+
+    <table>
+      <thead>
+        <tr><th style="width:12rem;">Code</th><th>What it asks in this setting</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>1. Construct or method</strong></td><td>Is the requirement the capability the treatment works through, or one route to it? <em>Able to engage with structured material</em> is a construct. <em>Able to read and write simple texts</em> is a method. The ratio is the headline finding, exactly as in the first corpus.</td></tr>
+        <tr><td><strong>2. Locus of authority</strong></td><td>Is the requirement grounded in a safety rationale, a fidelity argument, a guideline, or nothing? Expect a high proportion of nothing, and expect broad discretion clauses to function as the absence of a stated authority rather than the presence of one.</td></tr>
+        <tr><td><strong>3. Mechanism proximity</strong></td><td><em>New, and the code that distinguishes this study from the existing work.</em> How close is the excluded capability to the treatment's claimed mechanism of action? A literacy requirement in a diabetes trial is remote from the mechanism; in a written-materials CBT trial it is the mechanism. Where proximity is high, exclusion is not a sampling decision — it is an untested claim that the treatment cannot work another way.</td></tr>
+        <tr><td><strong>4. Bodily and cognitive specification</strong></td><td>Count requirements phrased in sensory, motor, linguistic, attentional or memory terms. This is where the assumed default mind becomes countable, and in a depression population it is where the diagnostic criteria and the eligibility criteria begin to overlap.</td></tr>
+        <tr><td><strong>5. Temporal assumptions</strong></td><td>Session attendance, completion windows, homework cadence, fixed progression. The layer that removes episodic and fluctuating conditions before any adjustment conversation begins.</td></tr>
+        <tr><td><strong>6. Accommodation and support</strong></td><td>Whether support, assistive technology, or an alternative format is permitted, silent, or implicitly forbidden. Existing work reports this for trials in general; recording it alongside mechanism proximity is what makes it interpretable.</td></tr>
+        <tr><td><strong>7. Voice</strong></td><td>Any evidence that disabled people, or people with lived experience of the condition, were involved in setting the criteria. Expect near-zero, which is the finding.</td></tr>
+        <tr><td><strong>8. Chain position</strong></td><td><em>New.</em> Where the requirement sits in the sequence from trial to guideline to service specification to referral, and whether the same wording recurs downstream. A requirement that appears verbatim in all four is the strongest possible evidence for the argument, and finding even a handful would carry the paper.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      <p class="callout-label">Methodological decisions to make early</p>
+      <p><strong>Pilot on twenty, expect to lose two codes.</strong> Mechanism proximity is the highest-yield and the hardest to code reliably; it will need a stated rubric and probably a three-point scale rather than a judgment. If it will not code, the study becomes a replication of existing work in a new modality, which is still publishable and considerably less interesting.</p>
+      <p><strong>Get a second coder for mechanism proximity specifically.</strong> A clinical psychologist, not an accessibility professional. If a therapist and a learning designer disagree about whether reading is the mechanism of a written CBT intervention, that disagreement is a finding and belongs in the paper.</p>
+      <p><strong>Do not name services or investigators.</strong> Aggregate reporting with unattributed examples. The argument is structural, the people who wrote these criteria were not being careless, and naming them converts a contribution into an accusation.</p>
+    </div>
+  </div>
+</section>
+
+<div class="order">
+  <div class="wrap">
+    <p class="rule-label">An order, not a schedule</p>
+    <h2>What to do, <em>and in what sequence.</em></h2>
+    <p>Two checks stand before anything is written. They are cheap, and one of them could still remove this.</p>
+
+    <div class="move">
+      <div class="move-when">Before anything</div>
+      <div>
+        <h4>Run the two outstanding checks</h4>
+        <p>Neither has been run, and both are named in the falsification list below. The critical psychology and mad studies literature may already hold the exclusion argument without the measurement half. And the Memory Support programme may already have reached unguided materials, which would narrow the mechanism-proximity argument considerably. Two hours, and the result changes what gets written rather than whether.</p>
+      </div>
+    </div>
+    <div class="move">
+      <div class="move-when">First</div>
+      <div>
+        <h4>Read Plosky and colleagues properly</h4>
+        <p>Not the abstract. The coding frame, the categories, the reported limitations, and what the authors say should happen next. This is the paper this study extends, and the extension has to be stated in their terms rather than around them. If their frame already handles mechanism proximity under another name, better to find that in an afternoon than in review.</p>
+      </div>
+    </div>
+    <div class="move">
+      <div class="move-when">Then</div>
+      <div>
+        <h4>Pilot twenty protocols</h4>
+        <p>Registry records only, depression only, psychological therapy only. Twenty is enough to establish whether mechanism proximity codes reliably, which is the whole question. Archive every record at capture.</p>
+      </div>
+    </div>
+    <div class="move">
+      <div class="move-when">Then</div>
+      <div>
+        <h4>Write the conceptual piece while the corpus builds</h4>
+        <p>The argument needs no data: in psychological therapy, the capabilities required to enter the evidence base are the capabilities required to receive the treatment, and neither has been tested for validity. Short, arguable, and it establishes the ground publicly while the empirical work runs. Preprint on completion.</p>
+      </div>
+    </div>
+    <div class="move">
+      <div class="move-when">Then</div>
+      <div>
+        <h4>Add the service corpus</h4>
+        <p>Only after the trial corpus has produced a stable frame. The service documents are messier, harder to sample defensibly, and much more likely to put an institution on the defensive — but they are the half nobody else is looking at, and they are what turns a methods critique into an access argument.</p>
+      </div>
+    </div>
+    <div class="move">
+      <div class="move-when">Alongside, throughout</div>
+      <div>
+        <h4>Keep the first corpus running</h4>
+        <p>The essential-requirements study does not pause for this. Two corpora, one instrument, two fields — the origin field where the network exists and the destination field where the career is going. Demonstrating the method transfers is a stronger claim than either study makes alone, and it is the reason to do both rather than choose.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="block">
+  <div class="wrap">
+    <p class="rule-label">Honesty about the premise</p>
+    <h2>How you would know <em>if this is wrong.</em></h2>
+    <p class="intro">Six ways. Two are unrun and were promised; recording that they are unrun is the point of writing them down.</p>
+    <ul class="plain" style="margin-top:1.2rem;">
+      <li><strong>Critical psychology and mad studies may hold this already.</strong> <em>Unrun, promised, and the most likely to bite.</em> That literature has spent decades arguing that psychological services exclude the people who need them most, and may well have made the requirements argument without the measurement half. If so the position is the AFMC position again: extension rather than origination, more accurate and more collaborative. Search before writing, and expect to be citing rather than coining.</li>
+      <li><strong>The Memory Support programme may have reached unguided materials.</strong> <em>Unrun, promised.</em> The mechanism-proximity argument rests partly on there being no therapist available to compensate in self-directed formats. If that work has already moved into unguided self-help, the argument narrows to eligibility criteria alone — still a contribution, and a smaller one. Read the programme's recent output directly.</li>
+      <li><strong>Mechanism proximity may not code.</strong> <em>Testable in the pilot, and the study's central risk.</em> It is the code that makes this different from existing work, and it requires a judgment about what a therapy works through that reasonable people will contest. If two coders cannot agree on a twenty-protocol subsample, say so in print and report the frame without it.</li>
+      <li><strong>The chain may not be traceable.</strong> <em>Unrun.</em> Code eight assumes requirements recur recognisably from trial to guideline to service document. They may be reworded at every step, in which case the argument holds conceptually and cannot be evidenced. Test on three requirements before committing to the code.</li>
+      <li><strong>Regulation may be moving faster than the paper.</strong> <em>Partly answered, and it is.</em> Amended Section 504 regulations in the United States now carry explicit clinical trial inclusion requirements, and a federal disability body reported on this in 2024. That is good for the world and it compresses the window. Check the current regulatory position before framing anything as an open problem, and expect the ground to keep moving.</li>
+      <li><strong>Five sessions is not a systematic review.</strong> <em>Standing.</em> Everything here rests on searching done across five conversations. It has been enough to kill four ideas, which is what searching is good at. It is not enough to claim absence in print. Before submission, run a structured search with recorded terms and dates, and expect at least one verdict to move.</li>
+    </ul>
+
+    <div class="callout" style="margin-top:1.6rem;">
+      <p class="callout-label">Why the corrections are printed first</p>
+      <p>Four ideas were removed to arrive at this one, three of them proposed with real confidence. The surviving claim is narrower than any of them and is the only one with a search behind every clause. That ratio should be expected: an idea generated from inside a practice is a hypothesis about the world, and hypotheses generated that way are usually wrong. Nothing is added to this document without its check attached, and nothing is claimed as absent without a date.</p>
+    </div>
+  </div>
+</section>
+
+<div class="closing">
+  <div class="wrap">
+    <p>The requirement that decides who becomes a nurse and the requirement that decides who receives treatment are the same object, written by different people, examined by neither. <strong>One instrument reads both.</strong> Building it needs no degree, no role, no grant, no ethics approval, and no permission from anyone — and the first twenty documents can be collected this month.</p>
+    <p style="margin-top:1rem;font-size:0.85rem;opacity:0.75;">Claims of absence in this document rest on searching conducted in August 2026 across five sessions, with terms not systematically recorded. Two named checks remain unrun. The regulatory position on disability inclusion in clinical research is actively changing. Re-run with recorded terms before publication, and record the date when you do.</p>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;width:100%;">
+    <span>Requirements for Care — Working Document</span>
+    <span>Validity · Authority · Mechanism · Access</span>
+  </div>
+</footer>
+
+</body>
+</html>
