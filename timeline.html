@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Timeline — Andrea Robin</title>
+<meta name="description" content="Six streams across five stages: what is running at full rhythm, what is at its floor, what is paused, and what pays for each stage." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,400;0,500;0,600;1,400&family=Newsreader:ital,opsz,wght@0,6..72,200;0,6..72,300;0,6..72,400;1,6..72,300&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#ffffff;
+    --wash:#f7f6f5;
+    --hair:#e4e2e1;
+    --quiet:#a29f9f;
+    --label:#65625f;
+    --body:#5d5a5b;
+    --ink:#3f3d3e;
+    --measure:36rem;
+    --serif:'Newsreader', Georgia, 'Times New Roman', serif;
+    --sans:'Asap', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  }
+
+  *,*::before,*::after{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--body);
+    font-family:var(--sans);
+    font-size:16.5px;
+    line-height:1.72;
+    font-weight:400;
+    -webkit-font-smoothing:antialiased;
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation:none !important;transition:none !important;}
+  }
+
+  a{color:inherit;}
+  a:focus-visible,summary:focus-visible,button:focus-visible,[tabindex]:focus-visible{
+    outline:2px solid var(--ink);outline-offset:3px;
+  }
+
+  .skip{
+    position:absolute;left:-9999px;top:0;background:var(--ink);color:#fff;
+    padding:.6rem 1rem;z-index:100;font-size:.8rem;
+  }
+  .skip:focus{left:0;}
+
+  /* ── Navigation ───────────────────────────── */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,255,255,.94);
+    backdrop-filter:saturate(180%) blur(8px);
+    border-bottom:1px solid var(--hair);
+  }
+  .nav-inner{
+    max-width:64rem;margin:0 auto;padding:.8rem 1.6rem;
+    display:flex;flex-wrap:wrap;align-items:baseline;gap:.35rem 1.15rem;
+  }
+  .nav-mark{
+    font-family:var(--serif);font-size:1.02rem;font-weight:300;
+    color:var(--ink);margin-right:auto;letter-spacing:.005em;
+  }
+  .nav-inner a{
+    font-size:.63rem;font-weight:500;letter-spacing:.11em;
+    text-transform:uppercase;color:var(--label);text-decoration:none;white-space:nowrap;
+    padding:.15rem 0;border-bottom:1px solid transparent;
+  }
+  .nav-inner a:hover{color:var(--ink);border-bottom-color:var(--quiet);}
+
+  /* ── Shell ────────────────────────────────── */
+  .wrap{max-width:46rem;margin:0 auto;padding:0 1.6rem;}
+  .wrap-wide{max-width:64rem;margin:0 auto;padding:0 1.6rem;}
+  .col{max-width:var(--measure);}
+  section{padding:4.6rem 0;border-bottom:1px solid var(--hair);scroll-margin-top:4.2rem;}
+  section:last-of-type{border-bottom:none;}
+
+  .eyebrow{
+    font-size:.64rem;font-weight:600;letter-spacing:.19em;
+    text-transform:uppercase;color:var(--label);margin:0 0 1.6rem;
+  }
+
+  h1{
+    font-family:var(--serif);font-weight:200;
+    font-size:clamp(2.2rem,5.6vw,3.15rem);line-height:1.1;
+    letter-spacing:-.012em;color:var(--ink);margin:0 0 1.5rem;
+  }
+  h1 em{font-style:italic;font-weight:300;}
+  h2{
+    font-family:var(--serif);font-weight:200;
+    font-size:clamp(1.6rem,3.4vw,2.1rem);line-height:1.18;
+    letter-spacing:-.008em;color:var(--ink);margin:0 0 1.4rem;
+  }
+  h2 em{font-style:italic;font-weight:300;}
+  h3{
+    font-family:var(--serif);font-weight:300;font-size:1.3rem;
+    line-height:1.3;color:var(--ink);margin:0 0 .5rem;letter-spacing:-.004em;
+  }
+  h4{
+    font-size:.63rem;font-weight:600;letter-spacing:.17em;
+    text-transform:uppercase;color:var(--label);margin:0 0 .55rem;
+  }
+  p{margin:0 0 1.15rem;max-width:var(--measure);}
+  p:last-child{margin-bottom:0;}
+  strong{font-weight:600;color:var(--ink);}
+  em{font-style:italic;}
+
+  .lede{
+    font-family:var(--serif);font-weight:300;
+    font-size:clamp(1.12rem,2.2vw,1.36rem);line-height:1.58;
+    color:var(--ink);max-width:none;
+  }
+
+  ul{margin:0 0 1.15rem;padding:0;list-style:none;max-width:var(--measure);}
+  li{position:relative;padding:.28rem 0 .28rem 1.15rem;line-height:1.62;}
+  li::before{
+    content:'';position:absolute;left:0;top:1.02em;
+    width:.42rem;height:1px;background:var(--quiet);
+  }
+  li:last-child{padding-bottom:0;}
+
+  /* ── Hero ─────────────────────────────────── */
+  header.hero{padding:6.5rem 0 4.4rem;border-bottom:1px solid var(--hair);}
+  .hero .col{max-width:none;}
+  .hero-note{
+    margin-top:2.6rem;padding-top:1.5rem;border-top:1px solid var(--hair);
+    font-size:.92rem;color:var(--label);max-width:33rem;
+  }
+
+  /* ── Controls ─────────────────────────────── */
+  .controls{
+    margin:0 0 2.2rem;padding:1.25rem 0 1.35rem;
+    border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);
+  }
+  .controls h4{margin-bottom:.85rem;}
+  .chips{display:flex;flex-wrap:wrap;gap:.45rem;}
+  .chip{
+    font-family:var(--sans);font-size:.72rem;font-weight:500;letter-spacing:.02em;
+    color:var(--label);background:var(--paper);
+    border:1px solid var(--hair);border-radius:0;
+    padding:.34rem .78rem;cursor:pointer;line-height:1.4;
+    transition:border-color .15s, color .15s, background .15s;
+  }
+  .chip:hover{border-color:var(--quiet);color:var(--ink);}
+  .chip[aria-pressed="true"]{
+    background:var(--ink);border-color:var(--ink);color:#fff;
+  }
+  .chip[aria-pressed="true"]::before{content:'✓ ';font-size:.7em;}
+  .chip-plain{margin-left:auto;}
+  .controls-row{display:flex;flex-wrap:wrap;align-items:flex-end;gap:1.4rem;}
+  .controls-row > div{flex:1 1 22rem;}
+  .hint{font-size:.8rem;color:var(--quiet);margin:.85rem 0 0;max-width:38rem;}
+
+  /* ── The matrix ───────────────────────────── */
+  .scroller{
+    overflow-x:auto;margin:0 0 1.2rem;
+    border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);
+  }
+  table{border-collapse:collapse;width:100%;min-width:54rem;font-size:.86rem;}
+  caption{text-align:left;font-size:.8rem;color:var(--quiet);padding:.7rem 0;}
+  th,td{
+    text-align:left;vertical-align:top;padding:.85rem .9rem;
+    border-bottom:1px solid var(--hair);border-right:1px solid var(--hair);
+  }
+  th:last-child,td:last-child{border-right:none;}
+  thead th{
+    background:var(--paper);position:sticky;top:0;z-index:2;
+    border-bottom:1px solid var(--quiet);padding-top:1rem;padding-bottom:.9rem;
+  }
+  .st-name{
+    font-family:var(--serif);font-weight:300;font-size:1.02rem;
+    color:var(--ink);display:block;line-height:1.25;
+  }
+  .st-num{
+    font-size:.58rem;font-weight:600;letter-spacing:.17em;
+    text-transform:uppercase;color:var(--label);display:block;margin-bottom:.2rem;
+  }
+  .st-span{font-size:.72rem;color:var(--quiet);display:block;margin-top:.25rem;line-height:1.4;}
+  thead th a{text-decoration:none;border-bottom:1px solid transparent;}
+  thead th a:hover .st-name{border-bottom:1px solid var(--quiet);}
+  tbody th{
+    background:var(--wash);width:9.5rem;font-weight:500;color:var(--ink);
+    font-size:.8rem;letter-spacing:.01em;
+  }
+  tbody th span{display:block;font-size:.71rem;color:var(--label);font-weight:400;margin-top:.15rem;line-height:1.45;}
+  .lvl-word{
+    display:block;font-size:.62rem;font-weight:600;letter-spacing:.15em;
+    text-transform:uppercase;color:var(--label);margin:.35rem 0 .3rem;
+  }
+  .bar{display:flex;gap:2px;}
+  .bar i{display:block;width:.85rem;height:.3rem;background:var(--hair);}
+  .bar i.on{background:var(--ink);}
+  td p{font-size:.83rem;line-height:1.55;margin:0;color:var(--body);max-width:none;}
+  tr.off{display:none;}
+  tr.money th{background:var(--ink);color:#fff;}
+  tr.money th span{color:rgba(255,255,255,.72);}
+  tr.money td{background:var(--wash);}
+  tr.money td p{color:var(--ink);}
+
+  .key{
+    display:flex;flex-wrap:wrap;gap:1.3rem;font-size:.78rem;color:var(--label);
+    margin:0 0 .4rem;
+  }
+  .key div{display:flex;align-items:center;gap:.45rem;}
+
+  /* ── Stage detail ─────────────────────────── */
+  .stage{
+    position:relative;padding:0 0 3.4rem 3.6rem;
+  }
+  .stage::before{
+    content:'';position:absolute;left:.72rem;top:.55rem;bottom:0;
+    width:1px;background:var(--hair);
+  }
+  .stage:last-child::before{bottom:auto;height:2.2rem;}
+  .stage::after{
+    content:'';position:absolute;left:.35rem;top:.5rem;
+    width:.78rem;height:.78rem;border-radius:50%;
+    background:var(--paper);border:1px solid var(--quiet);
+  }
+  .stage-num{
+    font-size:.63rem;font-weight:600;letter-spacing:.17em;
+    text-transform:uppercase;color:var(--label);display:block;margin-bottom:.35rem;
+  }
+  .stage-gloss{
+    font-family:var(--serif);font-style:italic;font-weight:300;
+    font-size:1.02rem;color:var(--label);margin:0 0 1.25rem;line-height:1.5;
+  }
+  .entry{
+    font-size:.9rem;color:var(--label);margin:0 0 1.6rem;
+    padding-left:1.1rem;border-left:1px solid var(--hair);
+  }
+  .entry strong{color:var(--ink);}
+
+  details.lane{border-top:1px solid var(--hair);}
+  details.lane:last-of-type{border-bottom:1px solid var(--hair);}
+  details.lane.off{display:none;}
+  details.lane > summary{
+    list-style:none;cursor:pointer;padding:.85rem 0;
+    display:flex;align-items:baseline;gap:.9rem;flex-wrap:wrap;
+  }
+  details.lane > summary::-webkit-details-marker{display:none;}
+  .lane-name{
+    font-size:.94rem;font-weight:500;color:var(--ink);flex:1 1 10rem;
+  }
+  .lane-state{
+    font-size:.62rem;font-weight:600;letter-spacing:.15em;
+    text-transform:uppercase;color:var(--label);
+  }
+  .lane-sign{
+    font-size:1.1rem;color:var(--quiet);line-height:1;width:1rem;text-align:right;
+  }
+  details.lane[open] .lane-sign{color:var(--ink);}
+  .lane-body{padding:0 0 1.5rem;}
+  .lane-body ul{margin-bottom:0;font-size:.93rem;}
+  .lane-body p{font-size:.93rem;}
+
+  .done{background:var(--wash);padding:1.05rem 1.2rem;margin-top:1.7rem;max-width:var(--measure);}
+  .done h4{margin-bottom:.35rem;}
+  .done p{margin:0;font-size:.93rem;color:var(--ink);}
+
+  .flag{
+    margin-top:1.6rem;padding:1rem 0 0;border-top:1px solid var(--hair);
+    max-width:var(--measure);
+  }
+  .flag h4{margin-bottom:.4rem;}
+  .flag p{font-size:.9rem;margin:0;}
+
+  /* ── Grids ────────────────────────────────── */
+  .grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(13.5rem,1fr));
+    gap:2.1rem 2.4rem;margin-top:.6rem;
+  }
+  .grid > div{max-width:none;}
+  .grid p{font-size:.93rem;max-width:none;}
+  .grid ul{font-size:.93rem;max-width:none;}
+
+  .ranked{counter-reset:r;margin-top:.6rem;}
+  .ranked > div{
+    padding:1.5rem 0;border-top:1px solid var(--hair);
+    display:grid;grid-template-columns:2.6rem 1fr;gap:0 1rem;align-items:start;
+  }
+  .ranked > div:last-child{border-bottom:1px solid var(--hair);}
+  .ranked > div::before{
+    counter-increment:r;content:counter(r,decimal-leading-zero);
+    font-size:.63rem;font-weight:600;letter-spacing:.13em;color:var(--quiet);
+    padding-top:.42rem;
+  }
+  .ranked h3{font-size:1.12rem;margin-bottom:.35rem;}
+  .ranked p{font-size:.93rem;margin:0;max-width:var(--measure);}
+  .ranked p + p{margin-top:.7rem;}
+
+  .verify > div{
+    padding:1.3rem 0;border-top:1px solid var(--hair);
+    display:grid;grid-template-columns:8.5rem 1fr;gap:.3rem 1.4rem;
+  }
+  .verify > div:last-child{border-bottom:1px solid var(--hair);}
+  .verify h4{margin:.22rem 0 0;}
+  .verify p{margin:0;font-size:.93rem;}
+  @media (max-width:38rem){
+    .verify > div{grid-template-columns:1fr;}
+    .ranked > div{grid-template-columns:1fr;gap:.3rem;}
+    .stage{padding-left:2.6rem;}
+  }
+
+  footer{padding:3.4rem 0 4.6rem;}
+  .foot{
+    display:flex;flex-wrap:wrap;gap:.5rem 1.6rem;justify-content:space-between;
+    font-size:.7rem;letter-spacing:.09em;text-transform:uppercase;color:var(--quiet);
+  }
+
+  @media print{
+    nav,.controls,.hint{display:none;}
+    details.lane > summary{padding:.4rem 0;}
+    section{padding:1.6rem 0;break-inside:avoid;}
+    .scroller{overflow:visible;}
+    table{min-width:0;font-size:.66rem;}
+  }
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-mark">Timeline</span>
+    <a href="#matrix">The matrix</a>
+    <a href="#stages">The stages</a>
+    <a href="#money">What pays for it</a>
+    <a href="#collisions">Collisions</a>
+    <a href="#verify">To confirm</a>
+    <a href="career.html">Career</a>
+  </div>
+</nav>
+
+<main id="main">
+
+<header class="hero">
+  <div class="wrap">
+    <div class="col">
+      <p class="eyebrow">Living document</p>
+      <h1>Six streams, five stages, <em>one page</em>.</h1>
+      <p class="lede">The plan has never felt fragmented because it is fragmented. It feels that way because it has been written down six times, one stream at a time, and never once laid side by side. This is the side-by-side view: what is running at full rhythm in each stage, what is deliberately at its floor, what has not started, and what pays for it.</p>
+      <p class="hero-note">Follows <strong>career.html</strong> as the spine. Where the earlier sequence documents disagree with it, this page follows career.html, because it is the later and more decided of the two. Nothing here is keyed to a date except the four things that genuinely are.</p>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════ THE MATRIX ══════════════════ -->
+<section id="matrix">
+  <div class="wrap-wide">
+    <p class="eyebrow">The whole path at once</p>
+    <h2>Everything that is running, in <em>every</em> stage</h2>
+    <p style="max-width:38rem">Six streams run across all five stages. None of them stops entirely and none of them runs flat out for the whole path — what changes is only the volume. Reading down a column tells you what a given stage actually feels like. Reading across a row tells you what happens to one stream over the whole path.</p>
+
+    <div class="controls">
+      <div class="controls-row">
+        <div>
+          <h4>Show streams</h4>
+          <div class="chips" id="laneChips">
+            <button class="chip" type="button" aria-pressed="true" data-lane="study">Study</button>
+            <button class="chip" type="button" aria-pressed="true" data-lane="work">Salaried work</button>
+            <button class="chip" type="button" aria-pressed="true" data-lane="practice">Practice &amp; publishing</button>
+            <button class="chip" type="button" aria-pressed="true" data-lane="consult">Consulting &amp; products</button>
+            <button class="chip" type="button" aria-pressed="true" data-lane="service">Service</button>
+            <button class="chip" type="button" aria-pressed="true" data-lane="studio">Studio</button>
+            <button class="chip" type="button" aria-pressed="true" data-lane="money">What pays</button>
+          </div>
+        </div>
+        <div style="flex:0 1 auto">
+          <h4>Detail</h4>
+          <div class="chips">
+            <button class="chip" type="button" id="openAll">Open all detail</button>
+            <button class="chip" type="button" id="closeAll">Close all detail</button>
+          </div>
+        </div>
+      </div>
+      <p class="hint">Turning a stream off hides it from the matrix and from every stage below, so a single stream can be read on its own — useful when the question is “what happens to Make Space” rather than “what happens in year three”.</p>
+    </div>
+
+    <div class="key">
+      <div><span class="bar" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span> Peak — the stage is built around it</div>
+      <div><span class="bar" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span> Full — normal volume</div>
+      <div><span class="bar" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i><i></i></span> Reduced — deliberately smaller</div>
+      <div><span class="bar" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></span> Floor — minimum rhythm, defended</div>
+      <div><span class="bar" aria-hidden="true"><i></i><i></i><i></i><i></i></span> Not running</div>
+    </div>
+
+    <div class="scroller" tabindex="0" role="region" aria-label="Stream intensity by stage, scrollable table">
+      <table id="matrix-table">
+        <caption>Every cell states its level in words as well as in the bar. Stage names link to the detail below.</caption>
+        <thead>
+          <tr>
+            <th scope="col"><span class="st-num">Stream</span><span class="st-name" style="font-size:.85rem">By stage →</span></th>
+            <th scope="col"><a href="#stage-1"><span class="st-num">Stage one</span><span class="st-name">Ground</span></a><span class="st-span">No fixed length. Underway now.</span></th>
+            <th scope="col"><a href="#stage-2"><span class="st-num">Stage two</span><span class="st-name">Leeds</span></a><span class="st-span">24 months part-time; up to four years permitted.</span></th>
+            <th scope="col"><a href="#stage-3"><span class="st-num">Stage three</span><span class="st-name">The counselling master's</span></a><span class="st-span">Around three years.</span></th>
+            <th scope="col"><a href="#stage-4"><span class="st-num">Stage four</span><span class="st-name">The doctorate</span></a><span class="st-span">Four years full-time, plus internship.</span></th>
+            <th scope="col"><a href="#stage-5"><span class="st-num">Stage five</span><span class="st-name">Practice</span></a><span class="st-span">Does not close.</span></th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr data-lane="study">
+            <th scope="row">Study<span>Formal, credentialed</span></th>
+            <td><span class="lvl-word">Reduced</span><span class="bar" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i><i></i></span><p>CPACC, self-paced. Prerequisite inventory against the equivalency table. The Leeds application.</p></td>
+            <td><span class="lvl-word">Peak</span><span class="bar" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><p>Nine Leeds modules plus the applied project, and the five undergraduate prerequisites alongside.</p></td>
+            <td><span class="lvl-word">Full</span><span class="bar" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><p>Forty-eight credits, a six-credit thesis, and practicum placements.</p></td>
+            <td><span class="lvl-word">Peak</span><span class="bar" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><p>Full-time before candidacy. Comprehensives, dissertation, and a 1,600-hour internship.</p></td>
+            <td><span class="lvl-word">Closed</span><span class="bar" aria-hidden="true"><i></i><i></i><i></i><i></i></span><p>Continuing competence only. The credentialing is finished.</p></td>
+          </tr>
+
+          <tr data-lane="work">
+            <th scope="row">Salaried work<span>The employed role</span></th>
+            <td><span class="lvl-word">Full</span><span class="bar" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><p>Move the role inside a BC university — student services, accessibility services, or learning design.</p></td>
+            <td><span class="lvl-word">Full</span><span class="bar" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><p>Held at full time. The only stage where a degree and a salary genuinely coexist.</p></td>
+            <td><span class="lvl-word">Reduced</span><span class="bar" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i><i></i></span><p>One day a week goes to the supervised clinical course in year two. The full-time role ends in its current form.</p></td>
+            <td><span class="lvl-word">Not running</span><span class="bar" aria-hidden="true"><i></i><i></i><i></i><i></i></span><p>Replaced by funding, assistantships, and the internship stipend — or the stage is not entered.</p></td>
+            <td><span class="lvl-word">Full</span><span class="bar" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><p>The university counselling centre. Salaried, with colleagues and institutional footing.</p></td>
+          </tr>
+
+          <tr data-lane="practice">
+            <th scope="row">Practice &amp; publishing<span>Make Space, papers, the writing</span></th>
+            <td><span class="lvl-word">Peak</span><span class="bar" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><p>The screening measure goes in. Four resources published, the conceptual paper submitted.</p></td>
+            <td><span class="lvl-word">Reduced</span><span class="bar" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i><i></i></span><p>Weekly session and reflective note held. The corpus study runs inside the Leeds project.</p></td>
+            <td><span class="lvl-word">Floor</span><span class="bar" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></span><p>One session weekly, one piece monthly. The thesis is the writing that counts.</p></td>
+            <td><span class="lvl-word">Floor</span><span class="bar" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></span><p>The dissertation absorbs the publishing. Make Space runs at its floor or is handed to a trained facilitator.</p></td>
+            <td><span class="lvl-word">Full</span><span class="bar" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><p>A research programme with its own resource base, and the manualised training system.</p></td>
+          </tr>
+
+          <tr data-lane="consult">
+            <th scope="row">Consulting &amp; products<span>Accessible Learning Labs</span></th>
+            <td><span class="lvl-word">Full</span><span class="bar" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><p>Priced as a specialism. The first Groundwork workbook ships — small, deliberately incomplete.</p></td>
+            <td><span class="lvl-word">Reduced</span><span class="bar" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i><i></i></span><p>Holds existing clients, does not grow. Branch workbooks ship on a cadence. One retainer secured.</p></td>
+            <td><span class="lvl-word">Full</span><span class="bar" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><p>Becomes the flexible income rather than the side project. Fits around daytime placement.</p></td>
+            <td><span class="lvl-word">Floor</span><span class="bar" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></span><p>Product income continues without hours. Consulting hard-capped so the doctorate is not carried on it.</p></td>
+            <td><span class="lvl-word">Reduced</span><span class="bar" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i><i></i></span><p>Premium rate, chosen projects. No longer load-bearing.</p></td>
+          </tr>
+
+          <tr data-lane="service">
+            <th scope="row">Service<span>Crisis Centre of BC</span></th>
+            <td><span class="lvl-word">Peak</span><span class="bar" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><p>Apply early — cohorts are limited. Roughly 110 hours of training plus 32 supervised hours, then shifts begin.</p></td>
+            <td><span class="lvl-word">Full</span><span class="bar" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><p>250 credited service hours at four a week, with reviews at three and nine months. Then the reference letter.</p></td>
+            <td><span class="lvl-word">Complete</span><span class="bar" aria-hidden="true"><i></i><i></i><i></i><i></i></span><p>Finished before the application was written. Its work is done: the reference, the hours, and the answer.</p></td>
+            <td><span class="lvl-word">Complete</span><span class="bar" aria-hidden="true"><i></i><i></i><i></i><i></i></span><p>Closed.</p></td>
+            <td><span class="lvl-word">Chosen</span><span class="bar" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></span><p>Board work, supervision of volunteers, or nothing. Elective from here.</p></td>
+          </tr>
+
+          <tr data-lane="studio">
+            <th scope="row">Studio<span>Dear Ordinary</span></th>
+            <td><span class="lvl-word">Floor</span><span class="bar" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></span><p>One piece per quarter, protected as firmly as any deadline.</p></td>
+            <td><span class="lvl-word">Floor</span><span class="bar" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></span><p>Unchanged. The floor is the point — it is what stops the analytical work going brittle.</p></td>
+            <td><span class="lvl-word">Floor</span><span class="bar" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></span><p>Unchanged.</p></td>
+            <td><span class="lvl-word">Floor</span><span class="bar" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></span><p>Unchanged, and load-bearing in a different sense: it is the thing that makes these years survivable.</p></td>
+            <td><span class="lvl-word">Full</span><span class="bar" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><p>Expands. This is the stream that was protected in order to be expanded here.</p></td>
+          </tr>
+
+          <tr data-lane="money" class="money">
+            <th scope="row">What pays for it<span>The income in play</span></th>
+            <td><p><strong>Salary plus consulting.</strong> The accumulation begins. Size the two troughs on one page of arithmetic now, years early.</p></td>
+            <td><p><strong>Salary plus consulting, at peak.</strong> Fees are payable module by module. This is where the buffer is built or it is not built at all.</p></td>
+            <td><p><strong>First trough.</strong> Buffer, plus consulting turned flexible, plus whatever the products earn without hours.</p></td>
+            <td><p><strong>Deep trough.</strong> Funding, assistantships, internship stipend, product income. Entered funded or not entered.</p></td>
+            <td><p><strong>Four uncorrelated streams.</strong> Salary, private caseload, teaching, licensed materials. No single one can coerce a decision.</p></td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ STAGES ══════════════════ -->
+<section id="stages">
+  <div class="wrap">
+    <p class="eyebrow">Stage by stage</p>
+    <h2>What each stage <em>actually</em> asks for</h2>
+    <p>Each stage states what it requires to enter, what runs inside it, and the single condition that closes it. The streams are listed in the order they consume attention in that stage, not in a fixed order — which is itself information.</p>
+  </div>
+
+  <div class="wrap">
+    <div class="path" style="margin-top:2.8rem">
+
+      <!-- STAGE 1 -->
+      <div class="stage" id="stage-1">
+        <span class="stage-num">Stage one</span>
+        <h3>Ground</h3>
+        <p class="stage-gloss">Put the existing work on the record, get inside a university, and answer the question the whole path rests on.</p>
+        <p class="entry"><strong>Requires nothing.</strong> This stage is underway. It contains no enrolment, which is what gives the publishing, the job search, and the crisis-line training room to happen at all.</p>
+
+        <details class="lane" data-lane="service">
+          <summary><span class="lane-name">Service — the Crisis Centre application</span><span class="lane-state">Peak</span><span class="lane-sign" aria-hidden="true">+</span></summary>
+          <div class="lane-body">
+            <p>This goes first in the stage, not because it is the largest item but because it is the one with a queue in front of it. Cohorts are limited, intake windows are fixed, and applying does not guarantee a place.</p>
+            <ul>
+              <li>Roughly 110 hours of basic training plus 32 supervised hours, then 250 credited service hours at a mandatory four a week, including overnight and fringe shifts</li>
+              <li>Volunteers pay for basic training themselves — a real cost, and one to confirm before committing</li>
+              <li>Accredited by the American Association of Suicidology, and recognised across BC as relevant experience for counselling psychology admission</li>
+              <li>A reference letter follows completion</li>
+            </ul>
+            <p>What it actually buys is not the letter. It is a direct answer, years earlier than the sequence documents allowed for, to the question every later stage assumes: is sitting with one person in acute distress, in real time, work I want. Make Space is group facilitation and does not answer it.</p>
+          </div>
+        </details>
+
+        <details class="lane" data-lane="work">
+          <summary><span class="lane-name">Salaried work — move inside a BC university</span><span class="lane-state">Full</span><span class="lane-sign" aria-hidden="true">+</span></summary>
+          <div class="lane-body">
+            <p>Student services, accessibility services, or learning design at UBC, SFU, or UVic. The sector matters more than the title. It places the role inside the institution the path ends in, among the people who will later write references, supervise practicum, and sit on hiring committees.</p>
+            <p>There is a second reason, and it belongs in the financial plan rather than the career one: staff status at a BC university is the single most plausible route to subsidised tuition and to a flexible arrangement during the counselling master's. Both need confirming with the specific employer, and both are worth confirming <em>before</em> choosing between offers.</p>
+          </div>
+        </details>
+
+        <details class="lane" data-lane="practice">
+          <summary><span class="lane-name">Practice &amp; publishing — get the work on the record</span><span class="lane-state">Peak</span><span class="lane-sign" aria-hidden="true">+</span></summary>
+          <div class="lane-body">
+            <ul>
+              <li><strong>Outcome measurement in Make Space.</strong> A validated depression screen at the start and end of each cycle. The smallest change with the largest downstream effect — it turns a practice into a programme with a defensible claim, and it turns a curriculum into something licensable</li>
+              <li><strong>The four accessibility resources, published.</strong> All written, none public. Revise the essential-requirements piece first; its scarcity claim predates the AFMC technical standards reform</li>
+              <li><strong>The conceptual paper, submitted.</strong> No affiliation required, and it changes the tenor of every application and conversation that follows</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="lane" data-lane="study">
+          <summary><span class="lane-name">Study — CPACC and the paperwork that has a deadline behind it</span><span class="lane-state">Reduced</span><span class="lane-sign" aria-hidden="true">+</span></summary>
+          <div class="lane-body">
+            <ul>
+              <li><strong>CPACC.</strong> Self-paced, inexpensive, and the only credential in the plan that raises earning power inside the current job search. Every month it is deferred is a month of foregone rate</li>
+              <li><strong>The prerequisite inventory.</strong> Check the earlier UBC coursework against the department's published equivalency table before enrolling in anything, since equivalency is no longer adjudicated in advance</li>
+              <li><strong>The Leeds application.</strong> Two intakes, March and September 2027</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="lane" data-lane="consult">
+          <summary><span class="lane-name">Consulting &amp; products — start the engine that earns without you</span><span class="lane-state">Full</span><span class="lane-sign" aria-hidden="true">+</span></summary>
+          <div class="lane-body">
+            <p>Two moves, and the second is the one the portfolio has described for years without building.</p>
+            <ul>
+              <li><strong>Price the consulting as a specialism, not a service.</strong> The scarcity is the intersection — disability studies, accommodation law, essential requirements, and learning design held together — not any one component. It takes an afternoon to rewrite and it changes the rate</li>
+              <li><strong>Ship the first Groundwork workbook.</strong> Small enough to finish in weeks, deliberately incomplete, because the branches are what it advertises. Its return this quarter is credibility and an email list, not cash — but the stream needs eighteen to twenty-four months to become meaningful, which is exactly why it starts here and not in the trough</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="lane" data-lane="studio">
+          <summary><span class="lane-name">Studio — one piece a quarter</span><span class="lane-state">Floor</span><span class="lane-sign" aria-hidden="true">+</span></summary>
+          <div class="lane-body">
+            <p>Dear Ordinary at its own pace, protected as firmly as any deadline. It is the embodied knowing the analytical work cannot generate alone, and the mechanism by which this many modes are held at once without going brittle.</p>
+          </div>
+        </details>
+
+        <details class="lane" data-lane="money">
+          <summary><span class="lane-name">What pays — and the one page of arithmetic that is overdue</span><span class="lane-state">Accumulation</span><span class="lane-sign" aria-hidden="true">+</span></summary>
+          <div class="lane-body">
+            <p>Salary plus consulting, at the highest earning capacity relative to demands anywhere on the path. Three financial moves belong here rather than later:</p>
+            <ul>
+              <li><strong>Size both troughs.</strong> Tuition, plus the earnings not made, plus the number of years of it, for Stage three and Stage four separately. One page. It is years early, and that is the point</li>
+              <li><strong>Start the buffer now</strong>, not when Stage three appears on the horizon</li>
+              <li><strong>Confirm the employer's tuition benefit and flexible-hours provisions</strong> while there is still a choice of employer</li>
+            </ul>
+          </div>
+        </details>
+
+        <div class="done">
+          <h4>Complete when</h4>
+          <p>The CPACC is held, the four resources are live, the paper is submitted, one Make Space cohort has pre- and post-data, the working role is inside a post-secondary institution, and Crisis Centre training is complete with shifts underway. The 250 service hours continue into Stage two; the training is what closes this one.</p>
+        </div>
+      </div>
+
+      <!-- STAGE 2 -->
+      <div class="stage" id="stage-2">
+        <span class="stage-num">Stage two</span>
+        <h3>Leeds</h3>
+        <p class="stage-gloss">The only degree in this path that can be held alongside a salary — which makes it the only stage where the buffer can be built.</p>
+        <p class="entry"><strong>Requires</strong> a bachelor's degree with relevant experience. Fifteen years of applied accessibility practice clears the stated route comfortably. Applications are individually assessed and may include an interview.</p>
+
+        <details class="lane" data-lane="study">
+          <summary><span class="lane-name">Study — the MSc and the prerequisites, at the same time</span><span class="lane-state">Peak</span><span class="lane-sign" aria-hidden="true">+</span></summary>
+          <div class="lane-body">
+            <p>MSc Disability Studies, Rights and Inclusion — University of Leeds, online, part-time.</p>
+            <ul>
+              <li><strong>Nine taught modules</strong> of fifteen credits, eight weeks each. Roughly ten hours of guided learning and ten hours of independent study per week while a module is running — the honest weekly cost, and the reason every other stream drops to its floor during module weeks</li>
+              <li><strong>The forty-five-credit applied project.</strong> This is where the essential-requirements corpus study gets written, supervised, credited and <em>finished</em>. Doing it inside a programme with a deadline is the difference between a study that exists and one that is always about to begin</li>
+              <li><strong>The five undergraduate prerequisites</strong> alongside: interviewing skills, counselling theories, learning or cognitive psychology, abnormal psychology, and statistics. Evening and online</li>
+              <li><strong>The supervisor conversation.</strong> Admission to the research-thesis master's depends on supervisory expertise being available in the declared research area, and disability is named among the department's core research foci</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="lane" data-lane="service">
+          <summary><span class="lane-name">Service — the 250 hours land inside this stage</span><span class="lane-state">Full</span><span class="lane-sign" aria-hidden="true">+</span></summary>
+          <div class="lane-body">
+            <p>Four hours a week of crisis line and text support, with skills reviews at three and nine months, running through the same months as the Leeds modules. This is the first real collision in the plan and it has a designed answer: Leeds permits breaks between modules and allows up to four years to complete. Taking fewer modules during the year the service hours are accumulating is a use of the programme's design, not a lapse in the plan.</p>
+            <p>The reference letter and the completed hours need to be in hand well before the counselling master's application is written, which is the actual deadline governing this stream.</p>
+          </div>
+        </details>
+
+        <details class="lane" data-lane="work">
+          <summary><span class="lane-name">Salaried work — held at full time, on purpose</span><span class="lane-state">Full</span><span class="lane-sign" aria-hidden="true">+</span></summary>
+          <div class="lane-body">
+            <p>The placement of Leeds here is structural rather than sentimental. Every later stage requires daytime hours: the counselling master's has practicum placements, and the doctorate requires full-time study before candidacy. This is the only window in the whole path where a graduate degree and a full-time salary can coexist. Taken later, it cannot be taken at all.</p>
+            <p>The financial discipline that follows is a single refusal: coursework does not justify a reduction in earnings that the programme does not require.</p>
+          </div>
+        </details>
+
+        <details class="lane" data-lane="consult">
+          <summary><span class="lane-name">Consulting &amp; products — hold the clients, ship the branches</span><span class="lane-state">Reduced</span><span class="lane-sign" aria-hidden="true">+</span></summary>
+          <div class="lane-body">
+            <p>The practice holds existing clients and does not take new scope. What does grow is the part that does not cost hours later:</p>
+            <ul>
+              <li><strong>Branch workbooks on a cadence.</strong> The accessibility branch has a different buyer from the rest — an organisation with a training line item, and no comparable product on the market. Do not let the first price set the second</li>
+              <li><strong>One retainer, secured before Stage three.</strong> A single long-running relationship at a capped monthly scope is worth more in a trough than three project clients, because it survives a daytime placement schedule</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="lane" data-lane="practice">
+          <summary><span class="lane-name">Practice &amp; publishing — the weekly session and the reflective note</span><span class="lane-state">Reduced</span><span class="lane-sign" aria-hidden="true">+</span></summary>
+          <div class="lane-body">
+            <p>Make Space continues at one session weekly, with a brief reflective note after each one. That note is the whole discipline of this stage: three years of them become a qualitative paper that needs no doctoral affiliation. The public writing drops to its floor of one substantial piece monthly and stays there.</p>
+          </div>
+        </details>
+
+        <details class="lane" data-lane="studio">
+          <summary><span class="lane-name">Studio — unchanged</span><span class="lane-state">Floor</span><span class="lane-sign" aria-hidden="true">+</span></summary>
+          <div class="lane-body">
+            <p>One piece per quarter. The floor does not move during the busiest stage; that is what makes it a floor rather than a preference.</p>
+          </div>
+        </details>
+
+        <details class="lane" data-lane="money">
+          <summary><span class="lane-name">What pays — the accumulation window</span><span class="lane-state">Peak earning</span><span class="lane-sign" aria-hidden="true">+</span></summary>
+          <div class="lane-body">
+            <p>Full salary plus consulting, against fees payable module by module — around £1,170 per taught module and £2,220 for the project on the currently published figures, which turns a degree into a series of affordable decisions rather than one large one.</p>
+            <p>Stated plainly, because nothing else in the plan says it: <strong>almost every dollar that carries Stages three and four is earned in Stage one and Stage two.</strong> There is no later window. That reframes Leeds as a financial stage as much as an academic one, and it is the strongest argument for pushing rate hard right now.</p>
+          </div>
+        </details>
+
+        <div class="done">
+          <h4>Complete when</h4>
+          <p>The applied project is submitted, all five prerequisites are held with transcripts in hand, at least one supervisor whose work touches disability has agreed to a conversation, and the 250 service hours are complete with the reference letter received.</p>
+        </div>
+      </div>
+
+      <!-- STAGE 3 -->
+      <div class="stage" id="stage-3">
+        <span class="stage-num">Stage three</span>
+        <h3>The counselling master's</h3>
+        <p class="stage-gloss">Clinical formation, the research training the doctorate is assessed on, and the first stage where the salary cannot hold its current shape.</p>
+        <p class="entry"><strong>Requires</strong> the five prerequisites, a B+ senior average, an available supervisor in the declared research area, and a criminal record clearance before the supervised clinical placement. The MA rather than the MEd — both carry the same counselling core and accreditation, but the MA adds statistics, research methods, a thesis and an oral examination, which is precisely what a doctoral application is read for.</p>
+
+        <details class="lane" data-lane="study">
+          <summary><span class="lane-name">Study — coursework, thesis, practicum</span><span class="lane-state">Full</span><span class="lane-sign" aria-hidden="true">+</span></summary>
+          <div class="lane-body">
+            <ul>
+              <li>Forty-eight credits of coursework and a six-credit thesis. Recent graduates average three years</li>
+              <li>The thesis on the disability and depression intersection — the same question the whole path is organised around, given its first formal treatment</li>
+              <li>Practicum placements requested in post-secondary counselling and disability services, so the clinical hours accrue in the setting the career ends in</li>
+            </ul>
+            <p>One scheduling fact belongs in the plan rather than in the surprise: the supervised clinical course runs in the second year and requires one day a week away from work.</p>
+          </div>
+        </details>
+
+        <details class="lane" data-lane="work">
+          <summary><span class="lane-name">Salaried work — the shape changes here</span><span class="lane-state">Reduced</span><span class="lane-sign" aria-hidden="true">+</span></summary>
+          <div class="lane-body">
+            <p>A senior full-time role cannot be carried alongside daytime practicum placements, and planning as though it can is what puts every later stage under strain. The arrangement is made at the <em>start</em> of the stage, alongside the financial plan that carries it, not discovered inside it.</p>
+            <p>Four arrangements, in rough order of how much they preserve:</p>
+            <ul>
+              <li>Reduced hours with the same employer — best if the employer is the university and the practicum can be negotiated around a four-day week</li>
+              <li>A secondment or internal move to a role with daytime flexibility</li>
+              <li>Contract work replacing employment, priced at specialism rate to make fewer hours viable</li>
+              <li>A leave, funded from the buffer, for the second year only</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="lane" data-lane="consult">
+          <summary><span class="lane-name">Consulting &amp; products — now the flexible income, not the side project</span><span class="lane-state">Full</span><span class="lane-sign" aria-hidden="true">+</span></summary>
+          <div class="lane-body">
+            <p>This is the stage the retainer and the workbook line were built for. Consulting becomes the income that bends around a placement schedule, and the products are the part that keeps earning during weeks with no capacity at all. Neither can be started here — a stream begun in a trough arrives too late to help with it.</p>
+          </div>
+        </details>
+
+        <details class="lane" data-lane="practice">
+          <summary><span class="lane-name">Practice &amp; publishing — at the floor</span><span class="lane-state">Floor</span><span class="lane-sign" aria-hidden="true">+</span></summary>
+          <div class="lane-body">
+            <p>One Make Space session weekly, one substantial piece of writing monthly. Clinical training comes first in this stage, and saying so in advance is what stops it being negotiated week by week.</p>
+          </div>
+        </details>
+
+        <details class="lane" data-lane="service">
+          <summary><span class="lane-name">Service — complete</span><span class="lane-state">Complete</span><span class="lane-sign" aria-hidden="true">+</span></summary>
+          <div class="lane-body">
+            <p>The crisis line hours finished in Stage two, and its three products — the reference letter, the supervised distress experience on the application, and a first-hand answer to whether this work is wanted — are all in hand before this stage begins. Nothing is owed to it here.</p>
+          </div>
+        </details>
+
+        <details class="lane" data-lane="studio">
+          <summary><span class="lane-name">Studio — unchanged</span><span class="lane-state">Floor</span><span class="lane-sign" aria-hidden="true">+</span></summary>
+          <div class="lane-body"><p>One piece per quarter.</p></div>
+        </details>
+
+        <details class="lane" data-lane="money">
+          <summary><span class="lane-name">What pays — the first trough</span><span class="lane-state">Trough</span><span class="lane-sign" aria-hidden="true">+</span></summary>
+          <div class="lane-body">
+            <p>Reduced salary, plus the buffer, plus consulting turned flexible, plus product income. Four sources, none of them sufficient alone, which is the design.</p>
+            <p>There is also a legitimate fourth lever the portfolio should say out loud: <strong>the trough can be made shallower by taking this stage more slowly</strong>, part-time where the programme permits, at the cost of years. Time is the cheapest currency this plan has, and the plan is keyed to conditions rather than dates precisely so that this trade is available.</p>
+          </div>
+        </details>
+
+        <div class="done">
+          <h4>Complete when</h4>
+          <p>The thesis is defended, the degree is conferred, and the practicum hours are complete.</p>
+        </div>
+      </div>
+
+      <!-- STAGE 4 -->
+      <div class="stage" id="stage-4">
+        <span class="stage-num">Stage four</span>
+        <h3>The doctorate</h3>
+        <p class="stage-gloss">The credential that opens the title, the practice and the lectern at once — and the single largest financial exposure in the path.</p>
+        <p class="entry"><strong>Requires</strong> the master's, a supervisor who wants the work, a publication record that makes the profile legible on its own terms — and <strong>funding</strong>, a condition of equal standing to the other three. By this stage the conceptual paper, the four resources, the corpus study and the thesis have all been in the world for years.</p>
+
+        <details class="lane" data-lane="study">
+          <summary><span class="lane-name">Study — full-time, and that is not negotiable</span><span class="lane-state">Peak</span><span class="lane-sign" aria-hidden="true">+</span></summary>
+          <div class="lane-body">
+            <ul>
+              <li>Fifty-one credits over four years, plus theory and specialty comprehensive examinations</li>
+              <li>A sixteen-hundred-hour pre-doctoral internship</li>
+              <li>A dissertation on access, accommodation, and depression in professional and post-secondary education</li>
+            </ul>
+            <p>Full-time study is required before advancement to candidacy. Every financial arrangement in this stage follows from that one sentence.</p>
+          </div>
+        </details>
+
+        <details class="lane" data-lane="money">
+          <summary><span class="lane-name">What pays — enter funded, or do not enter</span><span class="lane-state">Deep trough</span><span class="lane-sign" aria-hidden="true">+</span></summary>
+          <div class="lane-body">
+            <p>An unfunded doctorate here does not merely cost tuition. It switches off the capital engine during what would otherwise be the highest-earning years available, for a credential that has a stated floor beneath it — a master's and registration as a clinical counsellor still deliver the university post, the private practice and sessional teaching. Funded, this is an excellent decision. Unfunded, it is the most expensive item in the plan by an order of magnitude, and the honest answer may be no.</p>
+            <p>Five sources to have confirmed and, where possible, secured <em>before</em> the application, not after the offer:</p>
+            <ul>
+              <li>Departmental funding packages and multi-year fellowships</li>
+              <li>Tri-council awards and provincial graduate scholarships</li>
+              <li>Teaching and research assistantships, which also build the teaching record the educational leadership stream is assessed on</li>
+              <li>The pre-doctoral internship stipend, where the accredited internship carries one</li>
+              <li>Employer support or tuition benefit, if the Stage one role is still held in some form</li>
+            </ul>
+            <p>Behind all five: product income that does not need hours, and the buffer. Everything else in this document is, in one way or another, preparation for this stage being affordable.</p>
+          </div>
+        </details>
+
+        <details class="lane" data-lane="work">
+          <summary><span class="lane-name">Salaried work — not running</span><span class="lane-state">Not running</span><span class="lane-sign" aria-hidden="true">+</span></summary>
+          <div class="lane-body">
+            <p>Employment in its earlier form ends here. Assistantships and the internship are the closest equivalent, and they are part of the programme rather than alongside it.</p>
+          </div>
+        </details>
+
+        <details class="lane" data-lane="consult">
+          <summary><span class="lane-name">Consulting &amp; products — capped, deliberately</span><span class="lane-state">Floor</span><span class="lane-sign" aria-hidden="true">+</span></summary>
+          <div class="lane-body">
+            <p>Product income continues without costing hours, which is the entire reason it was built. Consulting is hard-capped — the temptation in this stage is to take the project that makes the year survivable and lose the year to it. A named monthly ceiling, set at the start, is easier to hold than a judgement made when tired.</p>
+          </div>
+        </details>
+
+        <details class="lane" data-lane="practice">
+          <summary><span class="lane-name">Practice &amp; publishing — the dissertation absorbs it</span><span class="lane-state">Floor</span><span class="lane-sign" aria-hidden="true">+</span></summary>
+          <div class="lane-body">
+            <p>Make Space runs at its floor or, better, is handed to a trained facilitator — which is also the first real test of whether the method transfers. Public writing reduces to whatever the dissertation naturally produces.</p>
+          </div>
+        </details>
+
+        <details class="lane" data-lane="studio">
+          <summary><span class="lane-name">Studio — load-bearing in a different sense</span><span class="lane-state">Floor</span><span class="lane-sign" aria-hidden="true">+</span></summary>
+          <div class="lane-body">
+            <p>One piece per quarter, and in this stage it is the thing that makes the years survivable rather than an indulgence competing with them.</p>
+          </div>
+        </details>
+
+        <details class="lane" data-lane="service">
+          <summary><span class="lane-name">Service — closed</span><span class="lane-state">Complete</span><span class="lane-sign" aria-hidden="true">+</span></summary>
+          <div class="lane-body"><p>Nothing owed.</p></div>
+        </details>
+
+        <div class="done">
+          <h4>Complete when</h4>
+          <p>The dissertation is defended and the internship is complete.</p>
+        </div>
+      </div>
+
+      <!-- STAGE 5 -->
+      <div class="stage" id="stage-5">
+        <span class="stage-num">Stage five</span>
+        <h3>Registration and practice</h3>
+        <p class="stage-gloss">The three settings running together, and the point of the whole financial structure: no single stream can coerce a decision.</p>
+        <p class="entry"><strong>Requires</strong> the doctorate, supervised hours, and the written and oral examinations. Registration requirements are confirmed directly with the College rather than from summaries.</p>
+
+        <details class="lane" data-lane="work">
+          <summary><span class="lane-name">Salaried work — the university counselling centre</span><span class="lane-state">Full</span><span class="lane-sign" aria-hidden="true">+</span></summary>
+          <div class="lane-body">
+            <p>Salaried, with colleagues, students and institutional footing — and, by then, more than a decade already spent inside the sector.</p>
+          </div>
+        </details>
+
+        <details class="lane" data-lane="practice">
+          <summary><span class="lane-name">Practice &amp; publishing — a small private caseload and a research programme</span><span class="lane-state">Full</span><span class="lane-sign" aria-hidden="true">+</span></summary>
+          <div class="lane-body">
+            <p>Depression and disability, at psychologist scope and rate, deliberately small. Therapy income is linear and capped by hours in a body; it is the room, not the engine, and sizing it by desire rather than need is the whole point of the preceding twenty years of structure.</p>
+            <p>Alongside it: the manualised training system, the published method, and the research programme with its own resource base.</p>
+          </div>
+        </details>
+
+        <details class="lane" data-lane="study">
+          <summary><span class="lane-name">Study — closed</span><span class="lane-state">Closed</span><span class="lane-sign" aria-hidden="true">+</span></summary>
+          <div class="lane-body">
+            <p>Continuing competence requirements only. Teaching and supervision replace being taught: sessional instruction, then clinical supervision of practicum students, then the educational leadership stream, which assesses teaching excellence and curriculum contribution and requires the terminal degree now in hand.</p>
+          </div>
+        </details>
+
+        <details class="lane" data-lane="consult">
+          <summary><span class="lane-name">Consulting &amp; products — chosen, not needed</span><span class="lane-state">Reduced</span><span class="lane-sign" aria-hidden="true">+</span></summary>
+          <div class="lane-body">
+            <p>Premium rate, selected projects, licensed training materials still earning. The test that tells you the structure worked: <em>would I take this if I did not need the money?</em></p>
+          </div>
+        </details>
+
+        <details class="lane" data-lane="studio">
+          <summary><span class="lane-name">Studio — expands</span><span class="lane-state">Full</span><span class="lane-sign" aria-hidden="true">+</span></summary>
+          <div class="lane-body">
+            <p>This is the stream that was held at a protected floor for twenty years in order to be expanded here. Nothing else in the plan grows at this point; this one does.</p>
+          </div>
+        </details>
+
+        <details class="lane" data-lane="service">
+          <summary><span class="lane-name">Service — elective</span><span class="lane-state">Chosen</span><span class="lane-sign" aria-hidden="true">+</span></summary>
+          <div class="lane-body">
+            <p>Board work, supervision of crisis line volunteers, or nothing at all. From here it is a choice rather than a requirement, which is a different relationship to it.</p>
+          </div>
+        </details>
+
+        <details class="lane" data-lane="money">
+          <summary><span class="lane-name">What pays — four uncorrelated streams</span><span class="lane-state">Optionality</span><span class="lane-sign" aria-hidden="true">+</span></summary>
+          <div class="lane-body">
+            <p>Salary, a small private caseload, teaching and supervision income, licensed materials and whatever the writing has become. They fail in different ways and at different times, which is what makes losing any one of them an inconvenience rather than an emergency.</p>
+          </div>
+        </details>
+
+        <div class="done">
+          <h4>Complete when</h4>
+          <p>It does not close. This is the practice.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ MONEY ══════════════════ -->
+<section id="money">
+  <div class="wrap">
+    <p class="eyebrow">The part that was missing</p>
+    <h2>What pays for the years that <em>will not</em> pay for themselves</h2>
+    <p class="lede">There are exactly two stages in this path that a salary cannot carry, and they are known in advance. Everything financial in the plan is about arriving at them prepared rather than discovering them from inside.</p>
+
+    <h3 style="margin-top:2.8rem">The two troughs, named</h3>
+    <div class="grid" style="margin-top:1.2rem">
+      <div>
+        <h4>Stage three · shallow, long</h4>
+        <p>One day a week away from work in the second year, plus practicum placements in daytime hours. Income drops rather than stops. It can be made shallower by taking the degree more slowly, if the programme permits — which is itself a thing to confirm.</p>
+      </div>
+      <div>
+        <h4>Stage four · deep, and optional</h4>
+        <p>Full-time study before candidacy, for four years, plus a sixteen-hundred-hour internship. Income stops in its earlier form entirely. This one has a floor beneath it: the plan still delivers a university post, a private practice and sessional teaching without it.</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top:3.2rem">Four things can carry a trough. They are not equally reliable.</h3>
+    <div class="ranked">
+      <div>
+        <div>
+          <h3>The buffer</h3>
+          <p>Entirely within your control, and the only source that cannot be withdrawn by someone else. It requires two numbers that do not currently exist in any document in this repository: the annual cost of the life actually wanted, and the size of each trough. That page of arithmetic is the highest-value thing available this month and it does not wait on anything.</p>
+          <p>The buffer is built in Stage one and Stage two or it is not built. There is no later window, because every stage after Stage two reduces income by design.</p>
+        </div>
+      </div>
+      <div>
+        <div>
+          <h3>Institutional money</h3>
+          <p>The most under-explored source in the plan, and the reason Stage one's target is a role <em>inside</em> a BC university rather than merely inside health. Staff tuition benefits, internal flexible-hours provisions, assistantships, departmental funding packages, scholarship eligibility, and an accredited internship stipend all sit here.</p>
+          <p>None of it is confirmed. All of it is checkable now, and some of it should influence which offer is accepted in Stage one — which is the only reason it appears this early on the page.</p>
+        </div>
+      </div>
+      <div>
+        <div>
+          <h3>Income that does not need hours</h3>
+          <p>The Groundwork workbooks, licensed training materials, a course, eventually the manualised facilitator curriculum. This is the only kind of income that survives a stage with no spare capacity in it, and it is the mechanism by which a therapist with a deliberately small caseload is nonetheless secure.</p>
+          <p>Its constraint is time-to-maturity. A product line takes eighteen to twenty-four months to earn anything meaningful, which means it must be started in Stage one to be useful in Stage three, and cannot be started in a trough to solve one.</p>
+        </div>
+      </div>
+      <div>
+        <div>
+          <h3>Retained consulting at a floor</h3>
+          <p>One or two long-running relationships at a capped monthly scope, priced as a specialism rather than a service. More valuable in a trough than several project clients, because a retainer survives an unpredictable placement schedule and a project does not.</p>
+          <p>The risk it carries is the opposite one: consulting expands to fill whatever room it is given, and the stage most in need of income is the stage least able to afford the hours. Hence the cap, set in advance.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="margin-top:3.2rem">What to build now, in order</h3>
+    <p>Multiple streams is the right instinct and building five at once during a job search is how it fails. Three things, in this sequence, each started only when the one before it is running:</p>
+    <ul>
+      <li><strong>One product line.</strong> Groundwork, foundation workbook first, small enough to ship in weeks</li>
+      <li><strong>One retained relationship.</strong> Named scope, monthly, at specialism rate</li>
+      <li><strong>One buffer,</strong> with a floor that is not spent whatever the opportunity</li>
+    </ul>
+    <p>Everything else — the caseload, teaching income, the book — arrives on its own schedule and none of it needs to be engineered now.</p>
+
+    <div class="done" style="margin-top:2.6rem">
+      <h4>The rule that makes the rest of it work</h4>
+      <p>No stage that reduces income is entered before it has been sized and funded. Applied to Stage four this is stricter still: funding is a condition of entry with the same standing as the question and the supervisor. Not a hope attached to a decision already made.</p>
+    </div>
+
+    <p style="margin-top:2.2rem;font-size:.9rem;color:var(--label);max-width:38rem">This page describes structure, not products. Any decision about accounts, tax treatment, or investments belongs with an accountant or fee-only planner familiar with the BC picture.</p>
+  </div>
+</section>
+
+<!-- ══════════════════ COLLISIONS ══════════════════ -->
+<section id="collisions">
+  <div class="wrap">
+    <p class="eyebrow">Where the streams actually conflict</p>
+    <h2>Four collisions, and what <em>gives</em></h2>
+    <p>Fragmentation is not caused by the number of streams. It is caused by not having decided in advance which one yields when two of them want the same week. These are the four places on the path where that happens, each with the answer written down before it is needed.</p>
+
+    <div class="ranked" style="margin-top:2rem">
+      <div>
+        <div>
+          <h3>Crisis line training against a live Leeds module</h3>
+          <p>110 hours of training plus 32 supervised hours does not fit beside 20 hours a week of module study and a full-time role. <strong>What gives:</strong> the training finishes in Stage one and the shifts are steady before a first module starts. On current shape that points to the September 2027 Leeds intake rather than March — six months of established shifts is a much better footing than starting both in the same month.</p>
+        </div>
+      </div>
+      <div>
+        <div>
+          <h3>The prerequisite deadline against the module schedule</h3>
+          <p>The five prerequisites must be complete by 31 December in the year of application; the Leeds modules have no such date and the programme allows up to four years. <strong>What gives:</strong> the modules. Anything with a fixed external date outranks anything without one, every time.</p>
+        </div>
+      </div>
+      <div>
+        <div>
+          <h3>The 250 service hours against module weeks</h3>
+          <p>Four hours a week, mandatory, including overnight and fringe shifts, running through the same months as coursework. <strong>What gives:</strong> the pace of the degree. Leeds permits breaks between modules; taking fewer modules during the service year is a use of the programme's design, not a lapse.</p>
+        </div>
+      </div>
+      <div>
+        <div>
+          <h3>Stage three's practicum against the salaried role</h3>
+          <p>Daytime placements and a supervised clinical course one day a week cannot coexist with a senior full-time post. <strong>What gives:</strong> the role, in its current form — and the arrangement replacing it is made at the start of the stage, alongside the financial plan, rather than negotiated in the middle of a placement.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="done" style="margin-top:2.4rem">
+      <h4>The floors that are never traded</h4>
+      <p>One Make Space session weekly. One substantial piece of writing monthly. One studio piece quarterly. These have a minimum that is defended and a maximum that is refused, in every stage including the worst one. They are not what the plan can spare — they are the raw material every later stage draws on.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ VERIFY ══════════════════ -->
+<section id="verify">
+  <div class="wrap">
+    <p class="eyebrow">Fixed dates, and what is not yet confirmed</p>
+    <h2>What is set by others</h2>
+    <p>Four things carry external dates. Everything else moves at whatever pace the work and the life allow. The verification items are ordered by what it would cost to be wrong about them, and each is checked with the source institution rather than a secondary summary.</p>
+
+    <div class="verify" style="margin-top:2rem">
+      <div>
+        <h4>Fixed date</h4>
+        <p><strong>31 December.</strong> Prerequisite courses must be complete by this date in the year of application to the counselling psychology master's. Every enrolment decision in Stage two anchors here.</p>
+      </div>
+      <div>
+        <h4>Fixed date</h4>
+        <p><strong>March and September 2027.</strong> The two Leeds intakes. Missing one means the next; the programme allows up to four years to complete once started.</p>
+      </div>
+      <div>
+        <h4>Fixed date</h4>
+        <p><strong>29 November 2027.</strong> Psychotherapy becomes a regulated profession in British Columbia under the College of Health and Care Professionals. Qualifying-programme standards are still being set and bear directly on the master's choice.</p>
+      </div>
+      <div>
+        <h4>Fixed date</h4>
+        <p><strong>Crisis Centre intake windows.</strong> Cohorts are limited and dates are fixed. This is the item most likely to set the shape of the next eighteen months, and the one to confirm first.</p>
+      </div>
+      <div>
+        <h4>Verify first</h4>
+        <p><strong>The employer's tuition benefit and flexible-hours provisions</strong> at each of UBC, SFU and UVic. This is new to the plan and it is high-value: it bears on which Stage one offer to accept, and it is the cheapest available reduction to both troughs.</p>
+      </div>
+      <div>
+        <h4>Verify first</h4>
+        <p><strong>Doctoral funding structures</strong> — package levels, scholarship eligibility, assistantship rates, and whether the accredited pre-doctoral internship carries a stipend. Stage four's entry condition cannot be assessed without these.</p>
+      </div>
+      <div>
+        <h4>Verify first</h4>
+        <p><strong>Whether the counselling master's permits genuinely part-time enrolment,</strong> and how practicum hours are scheduled within it. The proposal to shallow the first trough by extending it depends entirely on this.</p>
+      </div>
+      <div>
+        <h4>Verify first</h4>
+        <p><strong>Current tuition and practicum costs</strong> for each named programme, and the Leeds fee for 2027 entry — the published total applies to earlier starts and will not carry forward. Neither trough can be sized without these.</p>
+      </div>
+      <div>
+        <h4>Verify first</h4>
+        <p><strong>Crisis Centre basic training cost,</strong> which volunteers pay themselves, and the comparable routes if declined — the Crisis Centre for Northern BC and Crisis Text Line both produce supervised distress work and a reference.</p>
+      </div>
+      <div>
+        <h4>Verify first</h4>
+        <p><strong>Which prerequisites the earlier UBC coursework already satisfies,</strong> against the published equivalency table, and whether admissions testing is currently required. Departmental and calendar listings disagree, and the answer changes the preparation timeline by months.</p>
+      </div>
+    </div>
+
+    <div class="done" style="margin-top:2.4rem">
+      <h4>How this document is kept</h4>
+      <p>One review, twice a year, with two questions: is this stage finished, and has any cell in the matrix changed level. Between reviews the plan is not reopened — which is what makes it possible to put the whole of a day's attention into the day's actual work.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <span>Timeline — Living Document</span>
+      <span>Ground · Leeds · The Counselling Master's · The Doctorate · Practice</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  var chips = Array.prototype.slice.call(document.querySelectorAll('#laneChips .chip'));
+  var rows = Array.prototype.slice.call(document.querySelectorAll('#matrix-table tbody tr'));
+  var lanes = Array.prototype.slice.call(document.querySelectorAll('details.lane'));
+
+  function apply(lane, on){
+    rows.forEach(function(r){
+      if(r.getAttribute('data-lane') === lane){ r.classList.toggle('off', !on); }
+    });
+    lanes.forEach(function(d){
+      if(d.getAttribute('data-lane') === lane){
+        d.classList.toggle('off', !on);
+        if(!on){ d.open = false; }
+      }
+    });
+  }
+
+  chips.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var on = btn.getAttribute('aria-pressed') !== 'true';
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      apply(btn.getAttribute('data-lane'), on);
+    });
+  });
+
+  function visibleLanes(){
+    return lanes.filter(function(d){ return !d.classList.contains('off'); });
+  }
+
+  var openAll = document.getElementById('openAll');
+  var closeAll = document.getElementById('closeAll');
+
+  openAll.addEventListener('click', function(){
+    visibleLanes().forEach(function(d){ d.open = true; });
+  });
+  closeAll.addEventListener('click', function(){
+    lanes.forEach(function(d){ d.open = false; });
+  });
+
+  // Clicking a stage heading in the matrix opens that stage's detail
+  Array.prototype.slice.call(document.querySelectorAll('#matrix-table thead a')).forEach(function(a){
+    a.addEventListener('click', function(){
+      var id = a.getAttribute('href').slice(1);
+      var stage = document.getElementById(id);
+      if(!stage) return;
+      var first = stage.querySelector('details.lane:not(.off)');
+      if(first){ first.open = true; }
+    });
+  });
+
+  // Open everything before printing, restore after
+  var restore = [];
+  window.addEventListener('beforeprint', function(){
+    restore = lanes.map(function(d){ return d.open; });
+    lanes.forEach(function(d){ d.open = true; });
+  });
+  window.addEventListener('afterprint', function(){
+    lanes.forEach(function(d, i){ d.open = restore[i]; });
+  });
+})();
+</script>
+
+</body>
+</html>
