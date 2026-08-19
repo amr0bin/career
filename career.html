@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Career — Andrea Robin</title>
+<meta name="description" content="One path: registered psychologist in British Columbia, specialising in disability. The stages, what each one requires, and what to build while waiting." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,400;0,500;0,600;1,400&family=Newsreader:ital,opsz,wght@0,6..72,200;0,6..72,300;0,6..72,400;1,6..72,300&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#ffffff;
+    --wash:#f7f6f5;
+    --hair:#e4e2e1;
+    --quiet:#a29f9f;
+    --label:#65625f;
+    --body:#5d5a5b;
+    --ink:#3f3d3e;
+    --measure:36rem;
+    --serif:'Newsreader', Georgia, 'Times New Roman', serif;
+    --sans:'Asap', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  }
+
+  *,*::before,*::after{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--body);
+    font-family:var(--sans);
+    font-size:16.5px;
+    line-height:1.72;
+    font-weight:400;
+    -webkit-font-smoothing:antialiased;
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation:none !important;transition:none !important;}
+  }
+
+  a{color:inherit;}
+  a:focus-visible,summary:focus-visible{outline:2px solid var(--ink);outline-offset:3px;}
+
+  .skip{
+    position:absolute;left:-9999px;top:0;background:var(--ink);color:#fff;
+    padding:.6rem 1rem;z-index:100;font-size:.8rem;
+  }
+  .skip:focus{left:0;}
+
+  /* ── Navigation ───────────────────────────── */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,255,255,.94);
+    backdrop-filter:saturate(180%) blur(8px);
+    border-bottom:1px solid var(--hair);
+  }
+  .nav-inner{
+    max-width:56rem;margin:0 auto;padding:.8rem 1.6rem;
+    display:flex;flex-wrap:wrap;align-items:baseline;gap:.35rem 1.15rem;
+  }
+  .nav-mark{
+    font-family:var(--serif);font-size:1.02rem;font-weight:300;
+    color:var(--ink);margin-right:auto;letter-spacing:.005em;
+  }
+  .nav-inner a{
+    font-size:.63rem;font-weight:500;letter-spacing:.11em;
+    text-transform:uppercase;color:var(--label);text-decoration:none;white-space:nowrap;
+    padding:.15rem 0;border-bottom:1px solid transparent;
+  }
+  .nav-inner a:hover{color:var(--ink);border-bottom-color:var(--quiet);}
+
+  /* ── Shell ────────────────────────────────── */
+  .wrap{max-width:46rem;margin:0 auto;padding:0 1.6rem;}
+  .col{max-width:var(--measure);}
+  section{padding:4.6rem 0;border-bottom:1px solid var(--hair);scroll-margin-top:4rem;}
+  section:last-of-type{border-bottom:none;}
+
+  .eyebrow{
+    font-size:.64rem;font-weight:600;letter-spacing:.19em;
+    text-transform:uppercase;color:var(--label);margin:0 0 1.6rem;
+  }
+
+  h1{
+    font-family:var(--serif);font-weight:200;
+    font-size:clamp(2.2rem,5.6vw,3.15rem);line-height:1.1;
+    letter-spacing:-.012em;color:var(--ink);margin:0 0 1.5rem;
+  }
+  h1 em{font-style:italic;font-weight:300;}
+  h2{
+    font-family:var(--serif);font-weight:200;
+    font-size:clamp(1.6rem,3.4vw,2.1rem);line-height:1.18;
+    letter-spacing:-.008em;color:var(--ink);margin:0 0 1.4rem;
+  }
+  h2 em{font-style:italic;font-weight:300;}
+  h3{
+    font-family:var(--serif);font-weight:300;font-size:1.3rem;
+    line-height:1.3;color:var(--ink);margin:0 0 .5rem;letter-spacing:-.004em;
+  }
+  h4{
+    font-size:.63rem;font-weight:600;letter-spacing:.17em;
+    text-transform:uppercase;color:var(--label);margin:0 0 .55rem;
+  }
+  p{margin:0 0 1.15rem;max-width:var(--measure);}
+  p:last-child{margin-bottom:0;}
+  strong{font-weight:600;color:var(--ink);}
+  em{font-style:italic;}
+
+  .lede{
+    font-family:var(--serif);font-weight:300;
+    font-size:clamp(1.12rem,2.2vw,1.36rem);line-height:1.58;
+    color:var(--ink);max-width:none;
+  }
+
+  ul{margin:0 0 1.15rem;padding:0;list-style:none;max-width:var(--measure);}
+  li{position:relative;padding:.28rem 0 .28rem 1.15rem;line-height:1.62;}
+  li::before{
+    content:'';position:absolute;left:0;top:1.02em;
+    width:.42rem;height:1px;background:var(--quiet);
+  }
+  li:last-child{padding-bottom:0;}
+
+  /* ── Hero ─────────────────────────────────── */
+  header.hero{padding:6.5rem 0 4.8rem;border-bottom:1px solid var(--hair);}
+  .hero .col{max-width:none;}
+  .hero-note{
+    margin-top:2.6rem;padding-top:1.5rem;border-top:1px solid var(--hair);
+    font-size:.92rem;color:var(--label);max-width:33rem;
+  }
+
+  /* ── Collapse figure ──────────────────────── */
+  .collapse{
+    margin:2.4rem 0 0;padding:1.9rem 0 0;border-top:1px solid var(--hair);
+    display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:1.9rem 2.4rem;
+  }
+  .collapse div{padding-left:1.1rem;border-left:1px solid var(--hair);}
+  .collapse p{margin:0;font-size:.93rem;}
+
+  /* ── The path ─────────────────────────────── */
+  .path{margin-top:1rem;}
+  .stage{
+    position:relative;padding:0 0 3.4rem 3.6rem;
+  }
+  .stage::before{
+    content:'';position:absolute;left:.72rem;top:.55rem;bottom:0;
+    width:1px;background:var(--hair);
+  }
+  .stage:last-child::before{bottom:auto;height:2.2rem;}
+  .stage::after{
+    content:'';position:absolute;left:.35rem;top:.5rem;
+    width:.78rem;height:.78rem;border-radius:50%;
+    background:var(--paper);border:1px solid var(--quiet);
+  }
+  .stage-num{
+    font-size:.63rem;font-weight:600;letter-spacing:.17em;
+    text-transform:uppercase;color:var(--label);display:block;margin-bottom:.35rem;
+  }
+  .stage-gloss{
+    font-family:var(--serif);font-style:italic;font-weight:300;
+    font-size:1.02rem;color:var(--label);margin:0 0 1.25rem;line-height:1.5;
+  }
+  .triad{
+    margin-top:1.5rem;padding-top:1.4rem;border-top:1px solid var(--hair);
+    display:grid;gap:1.6rem;
+  }
+  .triad > div{max-width:var(--measure);}
+  .triad p,.triad ul{font-size:.93rem;}
+  .triad ul{margin-bottom:0;}
+  .done{
+    background:var(--wash);padding:1.05rem 1.2rem;
+  }
+  .done h4{margin-bottom:.35rem;}
+  .done p{margin:0;font-size:.93rem;color:var(--ink);}
+
+  /* ── Two-column blocks ────────────────────── */
+  .grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(13.5rem,1fr));
+    gap:2.1rem 2.4rem;margin-top:.6rem;
+  }
+  .grid p{font-size:.93rem;margin:0;}
+  .grid h3{font-size:1.12rem;margin-bottom:.4rem;}
+
+  /* ── Confirm list ─────────────────────────── */
+  .rows{margin-top:.4rem;}
+  .row{
+    display:grid;grid-template-columns:7.5rem 1fr;gap:.4rem 1.4rem;
+    padding:1.15rem 0;border-top:1px solid var(--hair);
+  }
+  .row:last-child{border-bottom:1px solid var(--hair);}
+  .row-key{
+    font-size:.63rem;font-weight:600;letter-spacing:.15em;
+    text-transform:uppercase;color:var(--label);padding-top:.32em;
+  }
+  .row p{margin:0;font-size:.93rem;}
+
+  /* ── Closing ──────────────────────────────── */
+  .closing{padding:5rem 0 4rem;}
+  .closing p{
+    font-family:var(--serif);font-weight:300;
+    font-size:clamp(1.1rem,2.1vw,1.3rem);line-height:1.6;
+    color:var(--ink);max-width:33rem;
+  }
+
+  footer{
+    border-top:1px solid var(--hair);padding:1.8rem 0 3.2rem;
+    font-size:.66rem;letter-spacing:.13em;text-transform:uppercase;
+    color:var(--label);
+  }
+  footer .wrap{display:flex;flex-wrap:wrap;gap:.5rem 2rem;justify-content:space-between;}
+
+  @media (max-width:640px){
+    body{font-size:16px;}
+    section{padding:3.4rem 0;}
+    header.hero{padding:4rem 0 3.4rem;}
+    .collapse{grid-template-columns:1fr;gap:1.4rem;}
+    .stage{padding-left:2.6rem;}
+    .stage::before{left:.47rem;}
+    .stage::after{left:.1rem;}
+    .row{grid-template-columns:1fr;}
+    .row-key{padding-top:0;}
+    .nav-inner{flex-wrap:nowrap;overflow-x:auto;gap:1.25rem;padding:.7rem 1.1rem;
+      scrollbar-width:none;}
+    .nav-inner::-webkit-scrollbar{display:none;}
+    .nav-mark{display:none;}
+    section{scroll-margin-top:3rem;}
+  }
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<nav aria-label="Sections">
+  <div class="nav-inner">
+    <span class="nav-mark">Career</span>
+    <a href="#destination">Destination</a>
+    <a href="#path">The path</a>
+    <a href="#held">Held throughout</a>
+    <a href="#purpose">What it is for</a>
+    <a href="#ready">Staying ready</a>
+    <a href="#confirm">To confirm</a>
+  </div>
+</nav>
+
+<main id="main">
+
+<header class="hero">
+  <div class="wrap">
+    <div class="col">
+      <p class="eyebrow">Living document</p>
+      <h1>One qualification, one specialism, <em>five stages.</em></h1>
+      <p class="lede">Registered Psychologist in British Columbia, specialising in disability — practising inside a university, holding a small private caseload, and teaching.</p>
+      <p class="hero-note">This document exists so that the plan can be held in one hand. Every stage below states what it requires to enter, what I build while I am in it, and the single condition that closes it. Nothing here depends on knowing how long anything will take.</p>
+    </div>
+  </div>
+</header>
+
+<section id="destination">
+  <div class="wrap">
+    <p class="eyebrow">The destination</p>
+    <div class="col">
+      <h2>Four things that turn out to be <em>one path.</em></h2>
+      <p>The work I want is a counselling psychologist's work, aimed at disability. Students and adults whose depression is entangled with a body or a mind that institutions were not built for. A university counselling centre as the daily setting, because that is where those people are and where the accommodation systems that shape their lives are administered. A small private practice alongside it. Teaching, supervision, and eventually a faculty appointment.</p>
+      <p>Written as four ambitions, this is unmanageable. Written accurately, it is one qualification and one specialism.</p>
+    </div>
+    <div class="collapse">
+      <div>
+        <h4>The qualification</h4>
+        <p>A doctorate in counselling psychology. In British Columbia it is the only route to the protected title, and it is also the terminal degree the university teaching stream requires. Registration is what permits a private practice at psychologist scope, and what permits supervising practicum students. One credential opens all four doors.</p>
+      </div>
+      <div>
+        <h4>The specialism</h4>
+        <p>Disability, and I already hold it. Roughly a hundred mapped contributions across accessibility, universal design, and learning systems. The essential-requirements corpus work. Accommodation law and clinical placement access. This is not something to go and acquire — it is the thing that makes a counselling psychologist rare rather than one of many.</p>
+      </div>
+      <div>
+        <h4>What this leaves out</h4>
+        <p>The international task-shifting programme, the epidemiology track, the LSHTM global mental health master's, and the scale-out research career. All defensible; none required for the life described above. They can return later, from a position of registration and standing, or not at all. The Leeds MSc stays, because it is the specialism itself rather than a second direction.</p>
+      </div>
+      <div>
+        <h4>The floor beneath it</h4>
+        <p>If the doctorate never gets funded or the timing never arrives, a master's and registration as a clinical counsellor still deliver the university post, the private practice, and sessional teaching. The protected title and the tenure-track stream would be lost. Knowing the floor exists is what makes the full version reasonable to attempt.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="path">
+  <div class="wrap">
+    <p class="eyebrow">The path</p>
+    <div class="col">
+      <h2>Five stages, each closing on <em>a condition met.</em></h2>
+      <p>Keyed to years, a plan produces a permanent low-grade sense of being behind. Keyed to conditions, it asks one answerable question at a time: is this stage finished, and am I ready for the next.</p>
+    </div>
+
+    <div class="path">
+
+      <article class="stage">
+        <span class="stage-num">Stage one</span>
+        <h3>Ground</h3>
+        <p class="stage-gloss">Put the existing work on the record, and get inside a university.</p>
+        <p>Nothing in this stage requires enrolment, permission, or a change in circumstances. It is composed entirely of work already begun, and it makes every application that follows easier to write.</p>
+        <p>One item is new, and it is here for a reason beyond the application file. Everything downstream assumes that sitting with one person in acute distress, in real time, is work I want. Make Space is group facilitation; it does not answer that question. A supervised year on a distress line answers it directly, at the cost of one shift a week — which makes it the cheapest possible test of the single assumption the whole path rests on. The sequence documents left that question open until after the counselling master's. It can be answered years earlier, from experience rather than ambition.</p>
+
+        <div class="triad">
+          <div>
+            <h4>Requires</h4>
+            <p>Nothing. This stage is underway.</p>
+          </div>
+          <div>
+            <h4>The work</h4>
+            <ul>
+              <li><strong>CPACC.</strong> Self-paced, against a published body of knowledge. It renders fifteen years of applied accessibility work legible to a hiring panel in a single line.</li>
+              <li><strong>Publish the four accessibility resources.</strong> All written, none public. Revise the essential-requirements piece first — its scarcity claim predates the AFMC technical standards reform, and that is an hour's work, not a rewrite.</li>
+              <li><strong>Move the role into a British Columbia university.</strong> Student services, accessibility services, or learning design at UBC, SFU, or UVic. This places me inside the institution the path ends in, among the people who will later write references, supervise practicum, and sit on hiring committees.</li>
+              <li><strong>Outcome measurement in Make Space.</strong> A validated depression screen at the start and end of each cycle. The smallest change with the largest downstream effect: it turns a practice into a programme with a defensible claim.</li>
+              <li><strong>Apply to the Crisis Centre of BC as a Crisis Services Responder.</strong> Distress line and text support, under staff supervision. The programme is accredited by the American Association of Suicidology and the Centre states plainly that it is recognised by universities across the province as relevant experience for counselling psychology admission. Enrolment is limited and applying does not guarantee a place, so it goes in early. The commitment is real: roughly 110 hours of basic training plus 32 supervised hours, then 250 credited service hours at a mandatory four hours a week, including overnight and fringe shifts, with skills reviews at three and nine months. A reference letter follows completion.</li>
+              <li><strong>Submit the conceptual paper.</strong> No affiliation required, and it changes the tenor of every application and conversation after it.</li>
+            </ul>
+          </div>
+          <div class="done">
+            <h4>Complete when</h4>
+            <p>The CPACC is held, the four resources are live, the paper is submitted, one Make Space cohort has pre- and post-data, the working role is inside a post-secondary institution, and Crisis Centre training is complete with shifts underway. The 250 service hours continue into the next stage; the training is what closes this one.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="stage">
+        <span class="stage-num">Stage two</span>
+        <h3>The disability master's</h3>
+        <p class="stage-gloss">The only degree in this path that can be held alongside a salary.</p>
+        <p>MSc Disability Studies, Rights and Inclusion — University of Leeds, online, part-time over twenty-four months, with intakes in March and September 2027. Leeds has taught disability studies since 1990 and its Centre for Disability Studies was the first university centre in the UK dedicated to the field. The programme is delivered by the School of Sociology and Social Policy and informed by that centre.</p>
+        <p>Its placement here is structural rather than sentimental. Every later stage requires daytime hours: the counselling master's has practicum placements, and the doctorate requires full-time study before candidacy. This is the only window in the whole path where a graduate degree and a full-time salary can coexist. Taken later, it cannot be taken at all.</p>
+        <p>The crisis line runs through this stage. Four hours a week alongside twenty hours of module study is not sustainable at full pace, and it does not have to be: Leeds permits breaks between modules and allows up to four years to complete. Taking fewer modules during the year the 250 service hours are accumulating is a use of the programme's design, not a lapse. The reference letter and the completed hours are in hand well before the counselling master's application is written.</p>
+        <p>The undergraduate prerequisites for the counselling master's run in the same period. They are evening and online undergraduate courses, and Leeds permits breaks between modules, so the two fit inside one stage rather than consuming two.</p>
+
+        <div class="triad">
+          <div>
+            <h4>Requires</h4>
+            <p>A bachelor's degree with relevant experience — the stated route is a 2:1 in any subject plus relevant experience, or a 2:2 with at least three years of it. Fifteen years of applied accessibility practice clears this comfortably. Applications are individually assessed and may include an interview.</p>
+          </div>
+          <div>
+            <h4>The work</h4>
+            <ul>
+              <li><strong>Nine taught modules of fifteen credits</strong>, eight weeks each, covering disability theory, human rights and the CRPD, policy reform, global challenges, research methods, and change-making practice. Roughly ten hours of guided learning and ten hours of independent study per week while a module is running — the honest weekly cost, and the reason other streams drop to their minimum rhythms during module weeks.</li>
+              <li><strong>The forty-five-credit applied project.</strong> It may address a specific challenge in partnership with an organisation — an employer counts — or be a research project making recommendations for policy or professional practice. This is where the essential-requirements corpus study gets written, supervised, credited, and finished. Doing it inside a programme with a deadline is the difference between a study that exists and one that is always about to begin.</li>
+              <li><strong>The five undergraduate prerequisites</strong>, alongside: interviewing skills, counselling theories, learning or cognitive psychology, abnormal psychology, and statistics. Career counselling was removed from the requirement for the 2026 admission cycle onward. Each is checked against the department's published equivalency table before enrolling, since equivalency is no longer adjudicated in advance, and the earlier UBC coursework is inventoried first so nothing is repeated.</li>
+              <li><strong>The supervisor conversation.</strong> Admission to the research-thesis counselling master's depends on supervisory expertise being available in the declared research area, and disability is named among the department's core research foci. A completed disability studies MSc and a supervised applied project are precisely what make that conversation straightforward.</li>
+            </ul>
+            <p>Fees are £12,750 in total and payable module by module — around £1,170 per taught module and £2,220 for the project. That structure matters more than the number: it turns a degree into a series of affordable decisions rather than one large one.</p>
+          </div>
+          <div class="done">
+            <h4>Complete when</h4>
+            <p>The applied project is submitted, all five prerequisites are held with transcripts in hand, and at least one supervisor whose work touches disability has agreed to a conversation.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="stage">
+        <span class="stage-num">Stage three</span>
+        <h3>The counselling master's</h3>
+        <p class="stage-gloss">Clinical formation, and the research training the doctorate is assessed on.</p>
+        <p>The MA rather than the MEd. Both carry the same counselling core and the same professional accreditation; the MA adds statistics, research methods, a thesis, and an oral examination — which is precisely what a doctoral application is read for.</p>
+
+        <div class="triad">
+          <div>
+            <h4>Requires</h4>
+            <p>The five prerequisites, a B+ senior average, an available supervisor in the declared research area, and a criminal record clearance before the supervised clinical placement. The published sources disagree on required experience: the university calendar names three years of helping-relationship work, the department page states no minimum. Make Space has been that experience for years either way.</p>
+          </div>
+          <div>
+            <h4>The work</h4>
+            <ul>
+              <li>Forty-eight credits of coursework and a six-credit thesis. Recent graduates average three years.</li>
+              <li>The thesis on the disability and depression intersection — the same question the whole path is organised around, given its first formal treatment.</li>
+              <li>Practicum placements requested in post-secondary counselling and disability services, so the clinical hours accrue in the setting the career ends in.</li>
+            </ul>
+            <p>One scheduling fact belongs in the plan rather than in the surprise: the supervised clinical course runs in the second year and requires one day a week away from work. It is planned for at the start of the stage, alongside the financial arrangement that carries it.</p>
+          </div>
+          <div class="done">
+            <h4>Complete when</h4>
+            <p>The thesis is defended, the degree is conferred, and the practicum hours are complete.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="stage">
+        <span class="stage-num">Stage four</span>
+        <h3>The doctorate</h3>
+        <p class="stage-gloss">The credential that opens the title, the practice, and the lectern at once.</p>
+        <p>UBC's counselling psychology doctorate is accredited by the Canadian Psychological Association, which is what registration requires, and it is designed explicitly to train counselling psychologists as researchers, practitioners, and educators — the three-way shape this career takes. The department names disability among the core research foci of the discipline. That is the reason for this programme rather than another.</p>
+
+        <div class="triad">
+          <div>
+            <h4>Requires</h4>
+            <p>The master's, a supervisor who wants the work, and a publication record that makes the profile legible on its own terms. By this stage the conceptual paper, the four resources, and the thesis have all been in the world for years.</p>
+          </div>
+          <div>
+            <h4>The work</h4>
+            <ul>
+              <li>Fifty-one credits over four years of full-time study, plus theory and specialty comprehensive examinations</li>
+              <li>A sixteen-hundred-hour pre-doctoral internship</li>
+              <li>A dissertation on access, accommodation, and depression in professional and post-secondary education</li>
+            </ul>
+            <p>Full-time study is required before advancement to candidacy. This is the single largest financial exposure in the path, and the plan for it — reduced hours, contract work, funding, or a leave — is made at the start of the stage rather than discovered inside it.</p>
+          </div>
+          <div class="done">
+            <h4>Complete when</h4>
+            <p>The dissertation is defended and the internship is complete.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="stage">
+        <span class="stage-num">Stage five</span>
+        <h3>Registration and practice</h3>
+        <p class="stage-gloss">The three settings, running together.</p>
+        <p>Registration with the College of Health and Care Professionals of British Columbia follows the doctorate: the accredited degree, the pre-doctoral internship, a period of supervised practice, and written and oral examinations. Requirements are confirmed directly with the College rather than from summaries.</p>
+
+        <div class="triad">
+          <div>
+            <h4>Requires</h4>
+            <p>The doctorate, supervised hours, and the examinations.</p>
+          </div>
+          <div>
+            <h4>The work</h4>
+            <ul>
+              <li><strong>The university counselling centre.</strong> Salaried, with colleagues, students, and institutional footing — and, by then, more than a decade already spent inside the sector.</li>
+              <li><strong>A small private practice.</strong> Depression and disability, at psychologist scope and rate, deliberately small.</li>
+              <li><strong>Teaching and leadership.</strong> Sessional instruction first, then clinical supervision of practicum students, then the educational leadership stream, which assesses teaching excellence and curriculum contribution — and requires the terminal degree now in hand.</li>
+            </ul>
+          </div>
+          <div class="done">
+            <h4>Complete when</h4>
+            <p>It does not close. This is the practice.</p>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="held">
+  <div class="wrap">
+    <p class="eyebrow">Held throughout</p>
+    <div class="col">
+      <h2>Four practices that run at <em>every stage.</em></h2>
+      <p>These are not additions to the plan. They are the plan's raw material, and each one becomes something else by being kept. What changes across the stages is only their volume — each has a minimum rhythm that is defended and a maximum that is refused.</p>
+    </div>
+    <div class="grid">
+      <div>
+        <h3>Make Space</h3>
+        <p>A weekly community mental health programme in creative health, with original conceptual tools. Once the screening instrument is in place, the remaining discipline is documentation: a brief reflective note after each session becomes field notes, and three years of them become a qualitative paper that needs no doctoral affiliation. Minimum rhythm: one session weekly.</p>
+      </div>
+      <div>
+        <h3>The public writing</h3>
+        <p>Practitioner-facing work on accessibility, disability, and learning design. It builds the readership that will later adopt and cite the research, and it is the laboratory in which each formal paper is first worked out. Minimum rhythm: one substantial piece monthly.</p>
+      </div>
+      <div>
+        <h3>The consulting practice</h3>
+        <p>Priced as a specialism rather than a service: the scarcity is the intersection of disability studies, accommodation law, essential requirements, and learning design, not any one of them. It holds existing clients during coursework and does not grow. It is the flexible income that makes the trough stages survivable.</p>
+      </div>
+      <div>
+        <h3>The studio</h3>
+        <p>Dear Ordinary, at its own pace. It is the embodied knowing the analytical work cannot generate alone, and the mechanism by which this many modes are held without going brittle. Minimum rhythm: one piece per quarter, protected as firmly as any deadline.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="purpose">
+  <div class="wrap">
+    <p class="eyebrow">What it is for</p>
+    <div class="col">
+      <h2>The specific gap this <em>closes.</em></h2>
+      <p>Disabled students report depression at higher rates than their non-disabled peers, and then meet a support structure that treats access and mental health as two separate offices with two separate intake forms. The counselling centre addresses the distress. The accessibility office addresses the accommodation. Very few people sit in either room able to see that a student's flattening mood and their unmet access need are the same problem viewed from two angles.</p>
+      <p>That is the gap. It is not a gap in compassion or in funding — it is a gap in combined expertise, and it is unusually narrow. A registered psychologist who can hold a clinical hour and also read a programme's essential requirements document and say precisely why it is indefensible is close to unique in this province.</p>
+      <p>The reach is wider than a caseload. A student helped in the counselling room is one person. A professional programme's technical standards rewritten from method to construct changes who is able to enter that profession at all, for every cohort that follows. The same expertise does both, and the second is only available to someone the institution already recognises as a clinician.</p>
+      <p>This is also the argument for the research. The dissertation is not an academic exercise appended to a clinical career; it is the instrument by which one person's practice becomes something other institutions can adopt without me in the room.</p>
+    </div>
+  </div>
+</section>
+
+<section id="ready">
+  <div class="wrap">
+    <p class="eyebrow">Staying ready</p>
+    <div class="col">
+      <h2>How to spend attention <em>while waiting.</em></h2>
+      <p>The risk in a long path is not failing an examination. It is arriving at each stage having spent the interval on the wrong things, and treating the intervals themselves as dead time to be endured. Four working rules.</p>
+      <ul>
+        <li><strong>Prepare one stage ahead, never three.</strong> While in Ground, the only forward-looking task is the prerequisite inventory and the Leeds application. While at Leeds, it is the supervisor conversation. Anything further out is speculation, and holding it costs attention without producing readiness.</li>
+        <li><strong>Nothing on this path is a hoop.</strong> Abnormal psychology, learning theory, and statistics are not obstacles placed before the interesting part — they are the interesting part, arriving early. Statistics in particular is what makes it possible to read a depression trial and judge it, which is the literacy the whole plan rests on. Studied as content rather than as a requirement, these courses are the first months of the work itself.</li>
+        <li><strong>Let each stage produce something citable.</strong> A published resource, a submitted paper, a dataset, a thesis. By the point of doctoral application there should already be several things in the world carrying my name — which matters enormously during the stretches when no institution has yet said anything encouraging.</li>
+        <li><strong>Keep a decision log rather than a diary.</strong> One file, one line per decision, dated: what was chosen, what was rejected, and why. It becomes the methods section later, it prevents reconstructing reasoning after the fact, and on the days the work feels like nothing it is evidence that it is not.</li>
+      </ul>
+      <p>One review, twice a year, with one question: is this stage finished, and is the sequence still right. Between reviews the plan is not reopened. That is what makes it possible to put the whole of a day's attention into the day's actual work.</p>
+    </div>
+  </div>
+</section>
+
+<section id="confirm">
+  <div class="wrap">
+    <p class="eyebrow">To confirm</p>
+    <div class="col">
+      <h2>What is set by others, and what <em>I have not yet verified.</em></h2>
+      <p>Two things carry external dates. Everything else moves at whatever pace the work and the life allow. The verification items below are ordered by what it would cost to be wrong about them, and each is checked with the source institution rather than a secondary summary.</p>
+    </div>
+    <div class="rows">
+      <div class="row">
+        <div class="row-key">Fixed date</div>
+        <p><strong>31 December.</strong> Prerequisite courses must be complete by this date in the year of application to UBC's counselling psychology master's. Every enrolment decision in Stage two anchors here.</p>
+      </div>
+      <div class="row">
+        <div class="row-key">Fixed date</div>
+        <p><strong>March and September 2027.</strong> The two Leeds intakes. Missing one means the next; the programme allows up to four years to complete once started.</p>
+      </div>
+      <div class="row">
+        <div class="row-key">Fixed date</div>
+        <p><strong>29 November 2027.</strong> Psychotherapy becomes a regulated profession in British Columbia under the College of Health and Care Professionals. What is being regulated is the title. Qualifying-programme standards are still being set, and they bear directly on the master's choice.</p>
+      </div>
+      <div class="row">
+        <div class="row-key">Verify first</div>
+        <p>Current registration requirements for Registered Psychologist with the College — degree, internship, supervised practice, and the examination sequence — from the College's own publications.</p>
+      </div>
+      <div class="row">
+        <div class="row-key">Verify first</div>
+        <p>Which of the five prerequisites the earlier UBC coursework already satisfies, against the department's published equivalency table.</p>
+      </div>
+      <div class="row">
+        <div class="row-key">Verify first</div>
+        <p>Whether admissions testing is currently required for the master's. Departmental and calendar listings disagree, and the answer changes the preparation timeline by months.</p>
+      </div>
+      <div class="row">
+        <div class="row-key">Verify first</div>
+        <p>Whether UVic and SFU operate comparable counselling psychology routes and teaching-focused faculty streams, and under what titles. Only UBC has been checked. Symmetry should not be assumed.</p>
+      </div>
+      <div class="row">
+        <div class="row-key">Verify first</div>
+        <p>Whether a minimum period of helping-relationship experience is in fact required for admission. The university calendar and the department page currently contradict each other.</p>
+      </div>
+      <div class="row">
+        <div class="row-key">Source before use</div>
+        <p>The prevalence claim in <em>What it is for</em>. It is consistent with the literature but is stated here from memory, and it should carry a citation before it appears in any application, paper, or public piece.</p>
+      </div>
+      <div class="row">
+        <div class="row-key">Decide</div>
+        <p><strong>March or September 2027</strong> for the Leeds intake. The rule: whichever start allows Stage one to be genuinely finished first, which now includes having crisis line shifts established rather than just beginning. Six months of steady shifts before a first module starts is a much better footing than starting both in the same month. On current shape that points to September.</p>
+      </div>
+      <div class="row">
+        <div class="row-key">Verify first</div>
+        <p>Crisis Centre application deadlines and training cohort dates, and the cost of basic training, which volunteers pay themselves. Cohorts are limited and intake windows are fixed, so this is the item most likely to set the shape of the next eighteen months.</p>
+      </div>
+      <div class="row">
+        <div class="row-key">If declined</div>
+        <p>Comparable routes, in order of fit. The Crisis Centre for Northern BC accepts remote responders, trains in roughly 70 hours at no cost, includes ASIST certification, and asks one four-hour shift a week for a year. Crisis Text Line is remote and asks 200 hours at four a week. Either produces supervised distress work and a reference; neither is the Vancouver programme, and admission there is worth a second attempt.</p>
+      </div>
+      <div class="row">
+        <div class="row-key">Verify first</div>
+        <p>The Leeds fee for 2027 entry. The published total applies to starts between September 2025 and July 2026 and will not carry forward. Confirm whether module-by-module payment is available for a self-funded international student.</p>
+      </div>
+      <div class="row">
+        <div class="row-key">Verify first</div>
+        <p>Current tuition and practicum costs for each named programme, and doctoral funding structures. The financial plan for Stage four cannot be built without them, and fees do not carry forward from a previous year.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="closing">
+  <div class="wrap">
+    <p>The work has been underway for fifteen years. What remains is a sequence of stages, each with a known entrance and a single closing condition — and the pace at which they arrive changes very little about what this eventually amounts to.</p>
+  </div>
+</div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Career — Living Document</span>
+    <span>Ground · Leeds · The Counselling Master's · The Doctorate · Practice</span>
+  </div>
+</footer>
+
+</body>
+</html>
