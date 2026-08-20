@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deployment — Andrea Robin</title>
+<link href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --white:   #ffffff;
+    --ink:     #303e44;
+    --accent:  #475f6a;
+    --mid:     #6a858f;
+    --light:   #e8eef0;
+    --lighter: #f4f7f8;
+    --line:    #d4dde1;
+    --faint:   #8fa4ad;
+  }
+
+  body {
+    background: var(--white);
+    color: var(--ink);
+    font-family: 'Asap', system-ui, sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    font-size: 16px;
+  }
+
+  /* ── HEADER ── */
+  header {
+    padding: 4rem 3.5rem 3rem;
+    border-bottom: 1px solid var(--line);
+    max-width: 900px;
+  }
+  .eyebrow {
+    font-size: 0.68rem; font-weight: 500; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--mid); margin-bottom: 1.4rem;
+  }
+  h1 {
+    font-size: clamp(2rem, 4.5vw, 3.4rem); font-weight: 300;
+    line-height: 1.12; letter-spacing: -0.01em; margin-bottom: 1.2rem;
+  }
+  h1 em { font-style: italic; color: var(--accent); }
+  .header-sub {
+    font-size: 1rem; color: var(--mid); max-width: 580px; line-height: 1.75;
+  }
+
+  /* ── FREEDOM BANNER ── */
+  .freedom-banner {
+    margin: 0;
+    padding: 2rem 3.5rem;
+    background: var(--ink);
+    border-bottom: 1px solid var(--line);
+  }
+  .freedom-label {
+    font-size: 0.58rem; font-weight: 500; letter-spacing: 0.22em;
+    text-transform: uppercase; color: rgba(255,255,255,0.4);
+    margin-bottom: 0.9rem;
+  }
+  .freedom-text {
+    font-size: clamp(1rem, 2.2vw, 1.22rem); font-weight: 300;
+    font-style: italic; line-height: 1.7; color: rgba(255,255,255,0.88);
+    max-width: 720px;
+  }
+  .freedom-text strong { font-weight: 500; color: #fff; font-style: normal; }
+
+  /* ── TABS ── */
+  .tabs {
+    display: flex; border-bottom: 1px solid var(--line);
+    padding: 0 3.5rem; background: var(--white);
+    position: sticky; top: 0; z-index: 100; overflow-x: auto;
+  }
+  .tab-btn {
+    font-family: 'Asap', sans-serif; font-size: 0.7rem; font-weight: 500;
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--faint);
+    background: none; border: none; padding: 1.1rem 0;
+    margin-right: 2.5rem; cursor: pointer; position: relative;
+    transition: color 0.25s; white-space: nowrap; flex-shrink: 0;
+  }
+  .tab-btn::after {
+    content: ''; position: absolute; bottom: -1px; left: 0; right: 0;
+    height: 2px; background: var(--accent);
+    transform: scaleX(0); transform-origin: left; transition: transform 0.3s ease;
+  }
+  .tab-btn.active { color: var(--ink); }
+  .tab-btn.active::after { transform: scaleX(1); }
+
+  /* ── PANELS ── */
+  .panel { display: none; }
+  .panel.active { display: block; animation: fadeUp 0.3s ease; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── SHARED WRAP ── */
+  .wrap { padding: 3rem 3.5rem; max-width: 860px; }
+
+  .panel-intro {
+    font-size: 1rem; color: var(--mid); font-style: italic;
+    line-height: 1.75; margin-bottom: 2.8rem; max-width: 620px;
+  }
+
+  /* ── SECTION HEADER ── */
+  .sec-header {
+    margin-bottom: 1.8rem; margin-top: 3rem;
+    padding-bottom: 0.85rem; border-bottom: 1px solid var(--line);
+  }
+  .sec-header:first-of-type { margin-top: 0; }
+  .sec-eye {
+    font-size: 0.57rem; font-weight: 500; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--faint); margin-bottom: 0.35rem;
+  }
+  .sec-title { font-size: 1.2rem; font-weight: 300; line-height: 1.3; }
+  .sec-title em { font-style: italic; color: var(--accent); }
+  .sec-desc {
+    font-size: 0.87rem; color: var(--mid); font-style: italic;
+    line-height: 1.7; margin-top: 0.4rem; max-width: 580px;
+  }
+
+  /* ── ACTION BLOCKS ── */
+  .action {
+    margin-bottom: 1.1rem;
+    border: 1px solid var(--line);
+    background: var(--white);
+  }
+  .action-header {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: start;
+    gap: 1.1rem;
+    padding: 1.3rem 1.5rem;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .action-header:hover { background: var(--lighter); }
+
+  .action-tag {
+    font-size: 0.54rem; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 0.22em 0.6em; border-radius: 2px;
+    white-space: nowrap; margin-top: 0.15rem;
+  }
+  .t-now    { background: var(--accent); color: #fff; }
+  .t-free   { background: var(--light); color: var(--accent); border: 1px solid var(--line); }
+  .t-build  { border: 1px solid var(--line); color: var(--faint); }
+  .t-grow   { background: var(--lighter); border: 1px solid var(--line); color: var(--mid); }
+
+  .action-body { flex: 1; }
+  .action-title { font-size: 1.02rem; font-weight: 500; line-height: 1.3; margin-bottom: 0.2rem; }
+  .action-sub { font-size: 0.82rem; color: var(--mid); font-style: italic; line-height: 1.6; }
+
+  .toggle-btn {
+    font-family: 'Asap', sans-serif; font-size: 0.6rem; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent);
+    background: none; border: none; cursor: pointer;
+    white-space: nowrap; padding-top: 0.15rem; flex-shrink: 0;
+  }
+
+  .action-detail {
+    display: none; padding: 0 1.5rem 1.5rem;
+    border-top: 1px solid var(--line);
+    animation: fadeUp 0.22s ease;
+  }
+  .action-detail.open { display: block; }
+
+  .detail-body {
+    font-size: 0.88rem; color: var(--mid); line-height: 1.72;
+    padding-top: 1.1rem;
+  }
+  .detail-body p { margin-bottom: 0.8rem; }
+  .detail-body p:last-child { margin-bottom: 0; }
+
+  .steps-list { list-style: none; margin-top: 0.9rem; }
+  .steps-list li {
+    font-size: 0.86rem; color: var(--mid); padding: 0.22rem 0 0.22rem 1.1rem;
+    position: relative; line-height: 1.6;
+  }
+  .steps-list li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 0.78rem; }
+
+  .resource-row {
+    display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.9rem;
+  }
+  .resource {
+    font-size: 0.72rem; font-weight: 500; padding: 0.3em 0.75em;
+    border: 1px solid var(--line); color: var(--accent); border-radius: 2px;
+    text-decoration: none; transition: background 0.18s;
+  }
+  .resource:hover { background: var(--lighter); }
+
+  .action-note {
+    font-size: 0.8rem; color: var(--mid); font-style: italic;
+    line-height: 1.68; border-left: 2px solid var(--line);
+    padding-left: 0.9rem; margin-top: 0.9rem;
+  }
+
+  /* ── TIMELINE (NOW panel) ── */
+  .tl-wrap { padding: 3rem 3.5rem; max-width: 820px; }
+  .tl-month {
+    font-size: 0.58rem; font-weight: 500; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--faint);
+    margin-top: 2.4rem; margin-bottom: 1rem;
+    padding-bottom: 0.5rem; border-bottom: 1px solid var(--line);
+  }
+  .tl-month:first-of-type { margin-top: 0; }
+  .tl-row {
+    display: grid; grid-template-columns: 130px 1fr;
+    gap: 0.6rem 1.2rem; margin-bottom: 0.65rem;
+    align-items: baseline;
+  }
+  .tl-when {
+    font-size: 0.75rem; font-weight: 500; color: var(--accent);
+    text-align: right; padding-top: 0.05rem;
+  }
+  .tl-what { font-size: 0.9rem; color: var(--ink); line-height: 1.55; }
+  .tl-what em { font-style: italic; color: var(--mid); }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 1.8rem 3.5rem; border-top: 1px solid var(--line);
+    font-size: 0.62rem; font-weight: 500; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--faint);
+    display: flex; justify-content: space-between; margin-top: 2rem;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    header, .freedom-banner, .wrap, .tl-wrap { padding: 2rem 1.5rem; }
+    .tabs { padding: 0 1.5rem; }
+    .tab-btn { margin-right: 1.4rem; }
+    .action-header { grid-template-columns: auto 1fr; }
+    .toggle-btn { display: none; }
+    .action-detail { display: block; }
+    .tl-row { grid-template-columns: 1fr; gap: 0.2rem; }
+    .tl-when { text-align: left; }
+    footer { flex-direction: column; gap: 0.4rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <p class="eyebrow">Deployment — Living Document</p>
+  <h1>What I can do <em>right now</em><br>at every stage of the path.</h1>
+  <p class="header-sub">This document answers one question: where do I have the freedom to act, even without more credentials, more authority, or more time? The answer is: more places than it feels like. This is the map of those places, organised by what is available now and what opens at each stage of training.</p>
+</header>
+
+<div class="freedom-banner">
+  <div class="freedom-label">The principle underneath all of this</div>
+  <div class="freedom-text">The people who have the most impact are not the ones who waited until they were fully prepared. They are the ones who <strong>deployed as they built</strong> — let the deployment inform the building, and arrived at full authority with a body of work already behind them. The depression treatment gap does not need a completed PhD before it gets attention. It needs attention now, at the level that is currently possible, with the plan to deepen and extend that contribution over twenty years. <strong>The work is already happening. The task is to treat it with the seriousness it deserves.</strong></div>
+</div>
+
+<nav class="tabs">
+  <button class="tab-btn active" onclick="showPanel('now',this)">Phase one — No Prerequisites</button>
+  <button class="tab-btn" onclick="showPanel('leedsyears',this)">Phase two · Frame</button>
+  <button class="tab-btn" onclick="showPanel('lshtmyears',this)">Phase two · Frame</button>
+  <button class="tab-btn" onclick="showPanel('mayears',this)">Phase three</button>
+  <button class="tab-btn" onclick="showPanel('phdyears',this)">Phase four</button>
+  <button class="tab-btn" onclick="showPanel('timeline',this)">12-Month Plan</button>
+</nav>
+
+
+<!-- ══════════════════════════════════════
+     PANEL 1 — NOW
+══════════════════════════════════════ -->
+<div class="panel active" id="panel-now">
+<div class="wrap">
+
+  <p class="panel-intro">Everything in this tab is available right now — no new credential, no institutional affiliation, no permission required. These are the moves that cost the least and compound the most. Some are already running and need only to be named and treated seriously. Others are within reach in the next three to six months.</p>
+
+  <div class="sec-header">
+    <div class="sec-eye">Already Running — Name It and Treat It Seriously</div>
+    <div class="sec-title">The Work That Is <em>Already Deployment</em></div>
+    <p class="sec-desc">These things are already happening. The shift required is not adding new work — it is recognising what is already underway as the beginning of a body of contribution, and treating it accordingly.</p>
+  </div>
+
+  <div class="action">
+    <div class="action-header" onclick="toggleAction(this)">
+      <span class="action-tag t-now">Phase one &#183; now</span>
+      <div class="action-body">
+        <div class="action-title">Complete the CPACC Credential</div>
+        <div class="action-sub">Moved forward from Phase two &#183; Self-paced &#183; The one credential that changes what can be earned this year</div>
+      </div>
+      <button class="toggle-btn">Expand &#8595;</button>
+    </div>
+    <div class="action-detail">
+      <div class="detail-body">
+        <p>The CPACC content does overlap with the Leeds MSc &#8212; disability rights, universal design, accessibility standards, assistive technology &#8212; and that overlap was the original reason to pair them. It was the wrong conclusion from a correct observation. Leeds is a multi-year part-time degree; the CPACC is a self-paced exam against a published body of knowledge, and it is the only item in this document that can be held <em>before</em> the next role is signed. Everything downstream is funded by that role.</p>
+        <p>Held now, it does three things at once: it makes fifteen years of applied accessibility work legible to hiring panels and procurement processes in a single line; it raises the rate the consulting practice can defend; and it gives the four written-but-unpublished accessibility resources a deadline to ship against.</p>
+        <ul class="steps-list">
+          <li>Confirm the exam session date and the application deadline that precedes it &#8212; everything anchors there</li>
+          <li>Run the twelve-week study design: one domain studied, one resource published, in that order</li>
+          <li>Put the credential into the CV, the site, and every live application the day it is granted</li>
+        </ul>
+        <div class="resource-row">
+          <a class="resource" href="https://www.accessibilityassociation.org/cpacc" target="_blank" rel="noopener">CPACC &#8212; IAAP</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="action">
+    <div class="action-header" onclick="toggleAction(this)">
+      <span class="action-tag t-now">Running</span>
+      <div class="action-body">
+        <div class="action-title">Make Space — Reframe as a Community Mental Health Program</div>
+        <div class="action-sub">Weekly facilitation · Year-long curriculum · Original clinical tools · Already reaching people with depression</div>
+      </div>
+      <button class="toggle-btn">Expand ↓</button>
+    </div>
+    <div class="action-detail">
+      <div class="detail-body">
+        <p>Make Space is not a personal curriculum shared publicly. It is a community mental health early intervention for depression — a year-long structured curriculum in creative health facilitation, with original conceptual tools (the Other Bodies emotional compass, star chart, topography, and emotion stories) that have no direct equivalent in the published literature. It is already reaching people. It is already doing something.</p>
+        <p>The reframe costs nothing. What changes is how it is documented, how it is described professionally, and how it is treated in applications, conversations with researchers, and eventual publications. A session log kept now becomes field notes. A participant feedback mechanism added now becomes preliminary outcome data. A reflective journal entry written after each session now becomes the raw material of a qualitative study in two years.</p>
+        <ul class="steps-list">
+          <li>Begin keeping a brief reflective journal entry after each session — what was observed, what surprised, what the tools produced in participants</li>
+          <li>Add a simple optional feedback mechanism at the end of each curriculum phase — not a formal instrument, just a few open questions about experience</li>
+          <li>Describe Make Space in professional bios and applications as a community mental health facilitation program in creative health, not as a personal project</li>
+          <li>Begin using the language of creative health and depression prevention when describing the work publicly</li>
+        </ul>
+      </div>
+      <p class="action-note">The Other Bodies tools are original clinical instruments. They should be described that way — not as design artefacts or illustrations, but as conceptual tools for emotional mapping developed through creative health facilitation practice.</p>
+    </div>
+  </div>
+
+  <div class="action">
+    <div class="action-header" onclick="toggleAction(this)">
+      <span class="action-tag t-now">Running</span>
+      <div class="action-body">
+        <div class="action-title">Accessible Learning Labs Substack — Treat It as Public Scholarship</div>
+        <div class="action-sub">Weekly · Practitioner audience · Building the intellectual platform that amplifies future research</div>
+      </div>
+      <button class="toggle-btn">Expand ↓</button>
+    </div>
+    <div class="action-detail">
+      <div class="detail-body">
+        <p>The Substack is the highest-compounding professional asset running right now. Every piece published on accessibility, disability justice, and learning design for health organisations is contributing to the intellectual infrastructure of a field that needs exactly this thinking. It is building an audience of practitioners who will eventually be the people who adopt, cite, and build on the research.</p>
+        <p>The move is to make it do double work. Each month, pick one idea from the emerging conceptual paper on learning systems and accessible depression care and develop it publicly. The Substack becomes the laboratory for the paper. The paper becomes the formalisation of what the Substack has been working out. They compound together.</p>
+        <ul class="steps-list">
+          <li>Write one post per month that builds toward the conceptual paper — the relationship between learning system design and intervention efficacy, what accessibility means in depression treatment, why training infrastructure is the bottleneck the field has not named</li>
+          <li>Begin explicitly naming depression, creative health, and the global treatment gap in Substack copy and description — make the focus visible to search and to new readers</li>
+          <li>Cross-reference the Substack in every professional bio, application, and research introduction as evidence of sustained public intellectual engagement with the field</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="action">
+    <div class="action-header" onclick="toggleAction(this)">
+      <span class="action-tag t-now">Running</span>
+      <div class="action-body">
+        <div class="action-title">andrearobin.com Case Studies — Name Them as Implementation Evidence</div>
+        <div class="action-sub">Three documented projects · Systems-level impact · Health sector and research institution experience</div>
+      </div>
+      <button class="toggle-btn">Expand ↓</button>
+    </div>
+    <div class="action-detail">
+      <div class="detail-body">
+        <p>The three case studies — province-wide transition to care-based service, national research institution learning evaluation, equitable experiential learning at scale — are already evidence of systems-level implementation work. In the global mental health framework, this is exactly the kind of work that matters: not individual service delivery, but the design of systems that change how many people receive care.</p>
+        <p>They need to be named in the language of the field being entered. The province-wide care transition is an implementation project in disability case management — it belongs in the same conversation as implementation science for mental health systems. The learning evaluation framework for a national research institution is knowledge translation infrastructure. The equitable experiential learning project is accessible learning design at scale.</p>
+        <ul class="steps-list">
+          <li>Rewrite the case study descriptions to use implementation science and global health language alongside the learning design framing</li>
+          <li>Add a brief reflective framing to each case study connecting it explicitly to the depression and mental health access work</li>
+          <li>Reference these case studies in applications and research introductions as prior work in mental health systems implementation</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-header">
+    <div class="sec-eye">Phase one — No Prerequisites, Within Reach Now</div>
+    <div class="sec-title">The Moves That <em>Change Everything Downstream</em></div>
+    <p class="sec-desc">These actions are available right now. Each one changes the quality of every application, conversation, and collaboration that follows it. None requires a credential or an institutional affiliation.</p>
+  </div>
+
+  <div class="action">
+    <div class="action-header" onclick="toggleAction(this)">
+      <span class="action-tag t-free">Highest priority</span>
+      <div class="action-body">
+        <div class="action-title">Write the Conceptual Paper</div>
+        <div class="action-sub">Three to six months · No affiliation required · Changes every application and conversation from this point forward</div>
+      </div>
+      <button class="toggle-btn">Expand ↓</button>
+    </div>
+    <div class="action-detail">
+      <div class="detail-body">
+        <p>This is the single highest-leverage move available right now. The argument is specific and only this combination of expertise can make it: that designing the learning systems which train practitioners to deliver depression interventions is as important as designing the interventions themselves — and that accessibility must be built into both from the beginning, not retrofitted at the end.</p>
+        <p>This paper, published in a peer-reviewed journal, changes the LSHTM MSc application, the MA application, the PhD application, every grant application, and every professional introduction. It is the first move from practice into scholarship. It does not require a university. It requires the reading, the argument, and the writing.</p>
+        <ul class="steps-list">
+          <li>Read: Cochrane reviews on psychological treatments for depression, Patel's task-shifting trials, Fancourt's 2019 Lancet paper, two or three papers from Implementation Science on mental health intervention delivery</li>
+          <li>Draft the argument — not a literature review, but a conceptual contribution that names the gap and proposes a framework</li>
+          <li>Target: Global Mental Health (Cambridge, open access) as primary; Arts in Psychotherapy or International Journal of Mental Health Systems as alternatives</li>
+          <li>Timeline: three months to draft, three months to submission</li>
+        </ul>
+        <div class="resource-row">
+          <a class="resource" href="https://www.cochranelibrary.com" target="_blank" rel="noopener">Cochrane Library</a>
+          <a class="resource" href="https://www.cambridge.org/core/journals/global-mental-health" target="_blank" rel="noopener">Global Mental Health Journal</a>
+          <a class="resource" href="https://implementationscience.biomedcentral.com/" target="_blank" rel="noopener">Implementation Science</a>
+          <a class="resource" href="https://www.sciencedirect.com/journal/the-arts-in-psychotherapy" target="_blank" rel="noopener">Arts in Psychotherapy</a>
+        </div>
+      </div>
+      <p class="action-note">The paper does not need to be perfect before submission. It needs to make a real argument that the field has not made. Reviewers will improve it. The act of submitting is the move.</p>
+    </div>
+  </div>
+
+  <div class="action">
+    <div class="action-header" onclick="toggleAction(this)">
+      <span class="action-tag t-free">High priority</span>
+      <div class="action-body">
+        <div class="action-title">Read the Foundational Literature</div>
+        <div class="action-sub">Three months · Self-directed · Transforms the quality of everything that follows</div>
+      </div>
+      <button class="toggle-btn">Expand ↓</button>
+    </div>
+    <div class="action-detail">
+      <div class="detail-body">
+        <p>These are not background reading. They are the intellectual framework the future research will sit inside. Read them before anything else, in this order. They will change how the Substack is written, how Make Space is framed, how the conceptual paper is argued, and how every professional conversation about this work is conducted.</p>
+        <ul class="steps-list">
+          <li><strong>Vikram Patel</strong> — Where There Is No Psychiatrist. The most important practical text in global mental health. Task-shifting, community care, what it actually means to treat depression at scale.</li>
+          <li><strong>Lancet Commission on Global Mental Health 2018</strong> — The foundational policy document. Defines the treatment gap, sets the agenda, maps where additional effort has the most leverage.</li>
+          <li><strong>Fancourt &amp; Finn, The Lancet 2019</strong> — The epidemiological foundation for creative health as a legitimate intervention for depression. The evidence base the creative health work will eventually contribute to.</li>
+          <li><strong>WHO mhGAP Intervention Guide</strong> — The WHO protocol for non-specialist delivery of mental health interventions. Essential for designing scalable approaches that can be delivered by community practitioners.</li>
+          <li><strong>Cochrane Reviews on Psychological Treatments for Depression</strong> — The most rigorous summaries of what works, for whom, and at what effect size. Read the depression reviews first.</li>
+        </ul>
+        <div class="resource-row">
+          <a class="resource" href="https://www.thelancet.com/journals/lanpsy/article/PIIS2215-0366(18)30443-4/fulltext" target="_blank" rel="noopener">Lancet Commission 2018</a>
+          <a class="resource" href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(19)31869-6/fulltext" target="_blank" rel="noopener">Fancourt &amp; Finn 2019</a>
+          <a class="resource" href="https://www.who.int/publications/i/item/9789241549790" target="_blank" rel="noopener">WHO mhGAP Guide</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="action">
+    <div class="action-header" onclick="toggleAction(this)">
+      <span class="action-tag t-free">High priority</span>
+      <div class="action-body">
+        <div class="action-title">Apply to 80,000 Hours 1-1 Advising</div>
+        <div class="action-sub">Ten minutes · Free · The strategy conversation this path now warrants</div>
+      </div>
+      <button class="toggle-btn">Expand ↓</button>
+    </div>
+    <div class="action-detail">
+      <div class="detail-body">
+        <p>The application takes ten minutes. There is now enough clarity — about the problem, the method, the path, and the comparative advantage — that the conversation would be genuinely productive rather than generic. The advising team specialises in exactly this: people with a well-formed direction who need strategic sharpening, not orientation.</p>
+        <p>The worst outcome is that they don't have capacity right now and invite a reapplication in six months. The best outcome is a conversation that sharpens the strategy and connects to the researchers, practitioners, and organisations in the global mental health and effective altruism space who are most relevant to where this path is going.</p>
+        <ul class="steps-list">
+          <li>Apply at 80000hours.org/speak-with-us — the application is short and asks about the problem you want to work on, your background, and your key uncertainties</li>
+          <li>Frame the application around depression, creative health, learning systems design for task-shifting, and the global treatment gap — be specific, not general</li>
+          <li>If not accepted this round, apply again in six months — the clarity will only have grown</li>
+        </ul>
+        <div class="resource-row">
+          <a class="resource" href="https://80000hours.org/speak-with-us/" target="_blank" rel="noopener">Apply for 1-1 Advising</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="action">
+    <div class="action-header" onclick="toggleAction(this)">
+      <span class="action-tag t-free">Start now</span>
+      <div class="action-body">
+        <div class="action-title">Make One Deliberate Contact in the Global Mental Health Field</div>
+        <div class="action-sub">One letter · Genuine intellectual engagement · The beginning of the international network</div>
+      </div>
+      <button class="toggle-btn">Expand ↓</button>
+    </div>
+    <div class="action-detail">
+      <div class="detail-body">
+        <p>Not a cold pitch. A genuine intellectual engagement with someone whose work connects directly to this path. Read three papers by Daisy Fancourt. Read three papers by Vikram Patel. Identify one specific idea in their work that connects to something already being done or thought. Write to them — or to a researcher in their group — with a specific, substantive observation or question.</p>
+        <p>The letter that will get a response is not "I admire your work." It is something like: "I am a learning designer and practitioner working on creative health approaches to depression in community settings. Your paper on social prescribing and depression outcomes raises a question I have been thinking about — what does your data tell us about the mechanism, and how does that change how we think about training the facilitators who deliver these programs?" That is a letter a researcher will want to respond to.</p>
+        <ul class="steps-list">
+          <li>Read Fancourt's publication record — begin with the 2019 Lancet paper and follow the citations</li>
+          <li>Read Patel's task-shifting trials — the Healthy Activity Program and Thinking Healthy Program papers</li>
+          <li>Identify the specific connection between their work and the learning systems design and creative health facilitation practice</li>
+          <li>Write one letter — specific, substantive, not asking for anything, beginning a conversation</li>
+        </ul>
+        <div class="resource-row">
+          <a class="resource" href="https://iris.ucl.ac.uk/iris/browse/profile?upi=DFANC16" target="_blank" rel="noopener">Daisy Fancourt — UCL</a>
+          <a class="resource" href="https://www.hsph.harvard.edu/vikram-patel/" target="_blank" rel="noopener">Vikram Patel — Harvard</a>
+        </div>
+      </div>
+      <p class="action-note">One genuine contact in this field, cultivated carefully over the next year, is worth more than any conference registration. The global mental health research community is smaller and more accessible than it appears from the outside.</p>
+    </div>
+  </div>
+
+  <div class="action">
+    <div class="action-header" onclick="toggleAction(this)">
+      <span class="action-tag t-free">Start now</span>
+      <div class="action-body">
+        <div class="action-title">Submit the Other Bodies Tools for Peer Commentary</div>
+        <div class="action-sub">Practice paper or conference abstract · Original clinical instruments made visible to the field</div>
+      </div>
+      <button class="toggle-btn">Expand ↓</button>
+    </div>
+    <div class="action-detail">
+      <div class="detail-body">
+        <p>The Other Bodies tools — the emotional compass, the star chart, the topography, the emotion stories — are original conceptual and clinical instruments. They are sitting on a website. They deserve a wider audience and a more formal conversation with the field.</p>
+        <p>A short descriptive piece — what the tools are, how they were developed, what they are designed to do — submitted as a clinical innovation note or practice paper to Arts in Psychotherapy or the Journal of Creativity in Mental Health is a legitimate first publication. This is not a research paper. It is a description of original work, shared with the field, inviting commentary and collaboration.</p>
+        <ul class="steps-list">
+          <li>Write a 2,000–3,000 word descriptive piece on the Other Bodies tools — their conceptual basis, how they were developed through facilitation practice, how they function in a creative health session</li>
+          <li>Submit to Arts in Psychotherapy as a clinical innovation note, or to the Journal of Creativity in Mental Health as a practice paper</li>
+          <li>Alternatively, write a conference abstract and submit to the Canadian Art Therapy Association annual conference or the World Alliance for Arts Education arts and health track</li>
+        </ul>
+        <div class="resource-row">
+          <a class="resource" href="https://www.sciencedirect.com/journal/the-arts-in-psychotherapy" target="_blank" rel="noopener">Arts in Psychotherapy</a>
+          <a class="resource" href="https://www.tandfonline.com/journals/wcrm20" target="_blank" rel="noopener">Journal of Creativity in Mental Health</a>
+          <a class="resource" href="https://www.canadianarttherapy.org/" target="_blank" rel="noopener">Canadian Art Therapy Association</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="action">
+    <div class="action-header" onclick="toggleAction(this)">
+      <span class="action-tag t-free">Start now</span>
+      <div class="action-body">
+        <div class="action-title">Begin LSHTM Epidemiology for Public Health Short Course</div>
+        <div class="action-sub">Online · Part-time · The foundational vocabulary for reading depression research</div>
+      </div>
+      <button class="toggle-btn">Expand ↓</button>
+    </div>
+    <div class="action-detail">
+      <div class="detail-body">
+        <p>The first of three LSHTM short courses. The goal is specific: to be able to read a depression trial, understand what it is claiming, and engage with research teams as a credible collaborator. This is a literacy, not a retraining. Two courses in total — this one and Introduction to Statistics for Public Health — give the research vocabulary that every subsequent credential assumes.</p>
+        <ul class="steps-list">
+          <li>Enrol in Epidemiology for Public Health at LSHTM — available online, part-time, self-paced within a structured window</li>
+          <li>Complete before applying to the LSHTM MSc — these courses materially strengthen that application</li>
+          <li>Follow with Introduction to Statistics for Public Health, then Global Mental Health</li>
+        </ul>
+        <div class="resource-row">
+          <a class="resource" href="https://www.lshtm.ac.uk/study/courses/short-courses/epidemiology-public-health" target="_blank" rel="noopener">Epidemiology for Public Health — LSHTM</a>
+          <a class="resource" href="https://www.lshtm.ac.uk/study/courses/short-courses/statistics-public-health" target="_blank" rel="noopener">Statistics for Public Health — LSHTM</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="action">
+    <div class="action-header" onclick="toggleAction(this)">
+      <span class="action-tag t-build">Job search</span>
+      <div class="action-body">
+        <div class="action-title">Secure the Right Job — Health Sector Anchor</div>
+        <div class="action-sub">Active now · Health authority, research institution, or global health NGO · The environmental shift that changes everything downstream</div>
+      </div>
+      <button class="toggle-btn">Expand ↓</button>
+    </div>
+    <div class="action-detail">
+      <div class="detail-body">
+        <p>The right job is in the health sector — not higher education broadly. Moving the day job inside health builds the vocabulary, the relationships, and the systemic context that shape everything downstream. The title matters less than the sector and the culture. The right employer sees outside intellectual and creative work as an asset, not a conflict.</p>
+        <ul class="steps-list">
+          <li><strong>Health authorities:</strong> BC Mental Health and Substance Use Services, Vancouver Coastal Health, Fraser Health — senior learning design roles inside health systems</li>
+          <li><strong>Research institutions:</strong> BC Children's Hospital Research Institute, Centre for Addictions Research of BC, CAMH Toronto — learning and knowledge translation in mental health research</li>
+          <li><strong>Global health NGOs:</strong> IDRC, IRC Canada, Save the Children Canada — organisations with international mandates where learning design is applied to global programming</li>
+          <li><strong>Screen for:</strong> portfolio-friendly culture, genuine scope, health system proximity — ask directly in interviews how they view staff who maintain active research or creative practices</li>
+        </ul>
+      </div>
+      <p class="action-note">The job search is the most load-bearing near-term move after the conceptual paper. Everything else is more sustainable with stable income in a sector that is building toward, rather than adjacent to, the work.</p>
+    </div>
+  </div>
+
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     PANEL 2 — LEEDS MSC YEARS
+══════════════════════════════════════ -->
+<div class="panel" id="panel-leedsyears">
+<div class="wrap">
+
+  <p class="panel-intro">During Phase two, the disability justice framework gains scholarly standing and the disability-depression intersection becomes a legitimate research thread. Deployment during this period deepens what is already running and adds the first peer-reviewed publications to the record.</p>
+
+  <div class="sec-header">
+    <div class="sec-eye">Continue Throughout</div>
+    <div class="sec-title">What Keeps Running — <em>Without Interruption</em></div>
+    <p class="sec-desc">These streams do not pause during Phase two. They intensify and become more informed.</p>
+  </div>
+
+  <div class="action">
+    <div class="action-header" onclick="toggleAction(this)">
+      <span class="action-tag t-now">Continue</span>
+      <div class="action-body">
+        <div class="action-title">Make Space — Deepen the Documentation</div>
+        <div class="action-sub">The Leeds disability studies framework now directly informs the facilitation practice and the research framing</div>
+      </div>
+      <button class="toggle-btn">Expand ↓</button>
+    </div>
+    <div class="action-detail">
+      <div class="detail-body">
+        <p>By this point Make Space has at least one to two years of documentation behind it. The Leeds MSc gives the disability justice and critical theory framework that makes sense of the accessibility dimensions of the program — why it is designed the way it is, who it is designed to include, and what that means for community mental health practice.</p>
+        <ul class="steps-list">
+          <li>Begin connecting the Make Space facilitation practice explicitly to disability studies frameworks from the Leeds curriculum — in the Substack, in session notes, in public writing</li>
+          <li>Identify participants for a small qualitative study on the experience of creative facilitation for emotional difficulty — this becomes the first peer-reviewed paper from the facilitation practice</li>
+          <li>Write up the Other Bodies tools paper if not yet submitted — the Leeds framework strengthens the disability and accessibility dimensions of that piece</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="action">
+    <div class="action-header" onclick="toggleAction(this)">
+      <span class="action-tag t-now">Continue</span>
+      <div class="action-body">
+        <div class="action-title">Substack — Disability-Depression Intersection Made Explicit</div>
+        <div class="action-sub">The Leeds learning informs the public writing in real time</div>
+      </div>
+      <button class="toggle-btn">Expand ↓</button>
+    </div>
+    <div class="action-detail">
+      <div class="detail-body">
+        <p>The Substack during Phase two becomes a public record of thinking through the disability-depression intersection — in accessible, practitioner-facing language that the academic literature rarely produces. This is knowledge translation happening in real time, building an audience for the research that will eventually formalise these ideas.</p>
+        <ul class="steps-list">
+          <li>Write one piece per month on the disability-depression intersection, drawing directly from the Leeds curriculum — disability as a social and political reality, who gets left out of mental health systems, what accessible design means at the systems level</li>
+          <li>Share Leeds coursework insights in accessible language — not academic writing, but the ideas made available to practitioners</li>
+          <li>Build the series toward a draft of the second paper — on disability, depression, and the design of accessible community mental health interventions</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-header">
+    <div class="sec-eye">New During Phase Two</div>
+    <div class="sec-title">What Opens Up — <em>With the Leeds Framework Behind It</em></div>
+  </div>
+
+  <div class="action">
+    <div class="action-header" onclick="toggleAction(this)">
+      <span class="action-tag t-build">Phase two</span>
+      <div class="action-body">
+        <div class="action-title">Begin the LSHTM Short Courses</div>
+        <div class="action-sub">Epidemiology, then Statistics, then Global Mental Health — the bridge to the LSHTM MSc</div>
+      </div>
+      <button class="toggle-btn">Expand ↓</button>
+    </div>
+    <div class="action-detail">
+      <div class="detail-body">
+        <p>The three LSHTM short courses run part-time online and can be completed across Phase two without conflict. Completing them before the LSHTM MSc application strengthens that application materially and ensures the MSc content is accessible from day one.</p>
+        <ul class="steps-list">
+          <li>Epidemiology for Public Health — complete early in Phase two</li>
+          <li>Introduction to Statistics for Public Health — complete mid Phase two</li>
+          <li>Global Mental Health — complete late in Phase two, if the LSHTM master&#8217;s is taken up</li>
+        </ul>
+        <div class="resource-row">
+          <a class="resource" href="https://www.lshtm.ac.uk/study/courses/short-courses" target="_blank" rel="noopener">LSHTM Short Courses</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="action">
+    <div class="action-header" onclick="toggleAction(this)">
+      <span class="action-tag t-build">Phase two</span>
+      <div class="action-body">
+        <div class="action-title">Submit the Qualitative Paper on Make Space</div>
+        <div class="action-sub">First peer-reviewed publication from the facilitation practice · Accessible to submit without a doctoral affiliation</div>
+      </div>
+      <button class="toggle-btn">Expand ↓</button>
+    </div>
+    <div class="action-detail">
+      <div class="detail-body">
+        <p>By the middle of Phase two, Make Space will have two to three years of documentation behind it. A small qualitative paper — reflexive thematic analysis of practitioner observations, or participant experience data if the feedback mechanism has been running — is achievable and publishable from an MSc student position.</p>
+        <ul class="steps-list">
+          <li>Design the paper around the qualitative data already being collected from Make Space sessions — practitioner reflections, participant feedback, observations of what the Other Bodies tools produce</li>
+          <li>Use reflexive thematic analysis as the method — it is well-suited to practitioner-researcher work and does not require a large sample</li>
+          <li>Target: Arts in Psychotherapy, Journal of Creativity in Mental Health, or Frontiers in Psychology — Arts section</li>
+        </ul>
+      </div>
+      <p class="action-note">An MSc student affiliation at Leeds or access to a supervisor is sufficient for publication in these journals. The Leeds MSc provides that affiliation.</p>
+    </div>
+  </div>
+
+  <div class="action">
+    <div class="action-header" onclick="toggleAction(this)">
+      <span class="action-tag t-build">Phase two</span>
+      <div class="action-body">
+        <div class="action-title">Present at One Conference</div>
+        <div class="action-sub">Canadian Art Therapy Association · Disability studies · Creative health — first public research presence</div>
+      </div>
+      <button class="toggle-btn">Expand ↓</button>
+    </div>
+    <div class="action-detail">
+      <div class="detail-body">
+        <p>A conference presentation or poster during Phase two — on Make Space, on the Other Bodies tools, or on the disability-depression intersection — is the first step into the professional research community in person. Bursaries are often available for postgraduate students.</p>
+        <ul class="steps-list">
+          <li>Submit an abstract to the Canadian Art Therapy Association annual conference — the Make Space work belongs in this community</li>
+          <li>Consider the Society for Disability Studies annual conference — the Leeds framework positions the disability-depression intersection paper for this audience</li>
+          <li>Apply for student or early-career bursaries — most conferences offer these and the Leeds affiliation makes them accessible</li>
+        </ul>
+        <div class="resource-row">
+          <a class="resource" href="https://www.canadianarttherapy.org/" target="_blank" rel="noopener">Canadian Art Therapy Association</a>
+          <a class="resource" href="https://disstudies.org/" target="_blank" rel="noopener">Society for Disability Studies</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     PANEL 3 — LSHTM MSC YEARS
+══════════════════════════════════════ -->
+<div class="panel" id="panel-lshtmyears">
+<div class="wrap">
+
+  <p class="panel-intro">The LSHTM Phase two are where research literacy becomes research competence. The thesis is the most important output of this phase — but deployment during these years also includes the first international research relationships, the first systematic review, and the first formal presence in the global mental health field.</p>
+
+  <div class="sec-header">
+    <div class="sec-eye">During the LSHTM MSc</div>
+    <div class="sec-title">From Reading to <em>Producing</em></div>
+  </div>
+
+  <div class="action">
+    <div class="action-header" onclick="toggleAction(this)">
+      <span class="action-tag t-build">Phase two</span>
+      <div class="action-body">
+        <div class="action-title">Write and Submit the MSc Thesis as a Publishable Paper</div>
+        <div class="action-sub">Systematic review of creative approaches to depression · First substantial peer-reviewed research contribution</div>
+      </div>
+      <button class="toggle-btn">Expand ↓</button>
+    </div>
+    <div class="action-detail">
+      <div class="detail-body">
+        <p>The thesis should be designed from the beginning to be publishable. A systematic or scoping review of the evidence on arts-based and creative interventions for depression answers a question the field is asking, produces something genuinely useful, and is achievable at MSc level. It becomes the evidence map that the doctoral dissertation builds on.</p>
+        <ul class="steps-list">
+          <li>Design the thesis as a systematic or scoping review — this method is well-suited to MSc level, produces a standalone publishable paper, and requires no primary data collection</li>
+          <li>Register the review protocol on PROSPERO before beginning — this is standard practice and signals rigour</li>
+          <li>Submit the completed review to Global Mental Health or The Lancet Psychiatry as a systematic review paper — LSHTM affiliation substantially strengthens this submission</li>
+        </ul>
+        <div class="resource-row">
+          <a class="resource" href="https://www.crd.york.ac.uk/prospero/" target="_blank" rel="noopener">PROSPERO — Review Registration</a>
+          <a class="resource" href="https://www.cambridge.org/core/journals/global-mental-health" target="_blank" rel="noopener">Global Mental Health</a>
+          <a class="resource" href="https://www.thelancet.com/journals/lanpsy/home" target="_blank" rel="noopener">The Lancet Psychiatry</a>
+        </div>
+      </div>
+      <p class="action-note">A published systematic review from the LSHTM MSc, combined with the earlier conceptual paper, constitutes a meaningful publication record before the doctoral application. This is what makes the PhD application to a strong program competitive.</p>
+    </div>
+  </div>
+
+  <div class="action">
+    <div class="action-header" onclick="toggleAction(this)">
+      <span class="action-tag t-build">Phase two</span>
+      <div class="action-body">
+        <div class="action-title">Build the First International Research Relationship</div>
+        <div class="action-sub">LSHTM network · Supervisors and peers · The infrastructure for everything international that follows</div>
+      </div>
+      <button class="toggle-btn">Expand ↓</button>
+    </div>
+    <div class="action-detail">
+      <div class="detail-body">
+        <p>The LSHTM MSc provides direct access to one of the most important networks in global mental health. The supervisor relationship, the peer cohort, and the faculty connections are infrastructure that cannot be built any other way. Use them deliberately.</p>
+        <ul class="steps-list">
+          <li>Choose the thesis supervisor based on alignment with depression, creative health, or implementation science — this person becomes the first significant research mentor in the field</li>
+          <li>Engage actively with the LSHTM peer cohort — these are future collaborators, co-investigators, and connections to organisations in low-and-middle-income countries</li>
+          <li>Attend at least one LSHTM event, seminar, or conference — even virtually — to become visible to the faculty and research community beyond the thesis supervisor</li>
+          <li>Identify one researcher at LSHTM or in the LSHTM network working on depression in low-resource settings and begin a genuine intellectual exchange</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="action">
+    <div class="action-header" onclick="toggleAction(this)">
+      <span class="action-tag t-build">Phase two</span>
+      <div class="action-body">
+        <div class="action-title">Present at a Global Mental Health Conference</div>
+        <div class="action-sub">Movement for Global Mental Health · LSHTM events · First international research presence</div>
+      </div>
+      <button class="toggle-btn">Expand ↓</button>
+    </div>
+    <div class="action-detail">
+      <div class="detail-body">
+        <p>During Phase two, the research profile is strong enough — conceptual paper published, systematic review underway, LSHTM affiliation established — to present at a global mental health conference. This is the move into the international conversation.</p>
+        <ul class="steps-list">
+          <li>Submit an abstract to a Movement for Global Mental Health event or associated conference — the systematic review or conceptual paper is appropriate material</li>
+          <li>Apply for early-career or student bursaries — the LSHTM affiliation and publication record make these accessible</li>
+          <li>Use the conference to make deliberate contact with researchers working in depression and creative health in low-and-middle-income country contexts</li>
+        </ul>
+        <div class="resource-row">
+          <a class="resource" href="https://www.mhinnovation.net/" target="_blank" rel="noopener">Movement for Global Mental Health</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="action">
+    <div class="action-header" onclick="toggleAction(this)">
+      <span class="action-tag t-build">Phase two</span>
+      <div class="action-body">
+        <div class="action-title">Apply for a Small Research Grant</div>
+        <div class="action-sub">CIHR graduate award · Wellcome early career · The skill of writing for funders built early</div>
+      </div>
+      <button class="toggle-btn">Expand ↓</button>
+    </div>
+    <div class="action-detail">
+      <div class="detail-body">
+        <p>Grant writing is the most demanding test of research literacy — and the practical skill that makes an independent research program possible. Begin during Phase two with graduate fellowships and small project grants, not because the money is essential at this stage, but because the writing practice is.</p>
+        <ul class="steps-list">
+          <li>Apply for CIHR graduate fellowships — the depression and creative health focus is eligible under the mental health and psychosocial intervention categories</li>
+          <li>Explore Wellcome Trust early-career funding for researchers working at the intersection of arts, mental health, and global health</li>
+          <li>Write at least one unsuccessful application — the review feedback is invaluable, and the writing practice compounds across every subsequent application</li>
+        </ul>
+        <div class="resource-row">
+          <a class="resource" href="https://cihr-irsc.gc.ca/e/193.html" target="_blank" rel="noopener">CIHR Graduate Fellowships</a>
+          <a class="resource" href="https://wellcome.org/grant-funding/schemes/mental-health" target="_blank" rel="noopener">Wellcome Trust Mental Health</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     PANEL 4 — MA YEARS
+══════════════════════════════════════ -->
+<div class="panel" id="panel-mayears">
+<div class="wrap">
+
+  <p class="panel-intro">The MA in Counselling Psychology years are where the intellectual work becomes embodied. The clinical formation is primary — but deployment during this period also includes the first clinical writing, the first formal supervision experience, and the beginnings of the Make Space evidence base as a documented program.</p>
+
+  <div class="sec-header">
+    <div class="sec-eye">During the MA</div>
+    <div class="sec-title">Where Knowledge Becomes <em>Clinical</em></div>
+  </div>
+
+  <div class="action">
+    <div class="action-header" onclick="toggleAction(this)">
+      <span class="action-tag t-build">Phase three</span>
+      <div class="action-body">
+        <div class="action-title">Practicum Placements — Depression as the Focus from Day One</div>
+        <div class="action-sub">Mood disorder clinics · Community mental health · Primary care · The clinical knowledge that makes everything credible</div>
+      </div>
+      <button class="toggle-btn">Expand ↓</button>
+    </div>
+    <div class="action-detail">
+      <div class="detail-body">
+        <p>The practicum is not just a requirement to complete — it is the most important learning of the MA. Request placements where depression is a primary presenting concern. This is where the research literature meets the room. Every clinical observation during the practicum becomes material for the doctoral dissertation and for the eventual research program.</p>
+        <ul class="steps-list">
+          <li>Request mood disorder clinic placements, community mental health centre placements, or primary care mental health settings where depression is a primary concern</li>
+          <li>Keep detailed reflective notes on clinical observations — what works, what the room asks for, where creative and expressive approaches feel natural and where they do not</li>
+          <li>Begin integrating creative and expressive approaches into clinical work under supervision — document carefully what this produces</li>
+          <li>Discuss the creative health research agenda with practicum supervisors — they become part of the network and may become collaborators</li>
+        </ul>
+      </div>
+      <p class="action-note">The practicum hours are also provisional registration hours. Work toward provisional registration as a counsellor as early as the MA allows — this enables beginning to see clients independently (under supervision) before the PhD is complete.</p>
+    </div>
+  </div>
+
+  <div class="action">
+    <div class="action-header" onclick="toggleAction(this)">
+      <span class="action-tag t-build">Phase three</span>
+      <div class="action-body">
+        <div class="action-title">Write the MA Thesis on Depression and Creative Approaches</div>
+        <div class="action-sub">Clinical case study, qualitative study, or theoretical paper · Third peer-reviewed publication in development</div>
+      </div>
+      <button class="toggle-btn">Expand ↓</button>
+    </div>
+    <div class="action-detail">
+      <div class="detail-body">
+        <p>The MA thesis should build directly on the existing publication record — the conceptual paper, the Other Bodies tools paper, and the LSHTM systematic review — while adding the clinical dimension that only the practicum experience can provide. A well-designed MA thesis is publishable as a third paper in the growing research record.</p>
+        <ul class="steps-list">
+          <li>Design the thesis around the integration of creative approaches into depression treatment — drawing on clinical observations from the practicum and the theoretical framework built across the earlier credentials</li>
+          <li>Consider a qualitative case study design or an interpretative phenomenological analysis of the experience of creative-integrated depression therapy</li>
+          <li>Target: Psychotherapy Research, Counselling Psychology Quarterly, or Arts in Psychotherapy for submission after completion</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="action">
+    <div class="action-header" onclick="toggleAction(this)">
+      <span class="action-tag t-build">Phase three</span>
+      <div class="action-body">
+        <div class="action-title">Make Space — Pilot the Facilitator Training Model</div>
+        <div class="action-sub">Train one or two facilitators · Begin testing the multiplier · The step from personal practice to scalable program</div>
+      </div>
+      <button class="toggle-btn">Expand ↓</button>
+    </div>
+    <div class="action-detail">
+      <div class="detail-body">
+        <p>By Phase three, Make Space has three to five years of documentation behind it and a qualitative paper in the published record. The next step toward scalability is training other facilitators to deliver the model. This does not require waiting for the PhD. It requires the documentation, the reflective practice, and the willingness to teach what has been learned.</p>
+        <ul class="steps-list">
+          <li>Identify one or two practitioners — from the creative health or counselling communities — to train in the Make Space facilitation model</li>
+          <li>Design the training deliberately — using the learning design expertise to create something that is transferable, documented, and evaluable</li>
+          <li>Document the training process and the trained facilitators' experience — this becomes the data for a paper on creative health facilitator training</li>
+          <li>Use provisional registration as a counsellor to provide clinical oversight of the facilitation as appropriate</li>
+        </ul>
+      </div>
+      <p class="action-note">Training one facilitator and documenting what they produce is the proof of concept for the multiplier model. It is also the data for a paper. And it is the beginning of Make Space as something that exists beyond one practitioner.</p>
+    </div>
+  </div>
+
+  <div class="action">
+    <div class="action-header" onclick="toggleAction(this)">
+      <span class="action-tag t-build">Phase three</span>
+      <div class="action-body">
+        <div class="action-title">Apply for the PhD — With a Research Profile Already in Place</div>
+        <div class="action-sub">Three publications · Clinical training · LSHTM network · The application that writes itself</div>
+      </div>
+      <button class="toggle-btn">Expand ↓</button>
+    </div>
+    <div class="action-detail">
+      <div class="detail-body">
+        <p>By the end of Phase three, the PhD application is a description of work already done rather than an aspiration about work to be done. Three peer-reviewed publications, an LSHTM MSc, a Leeds MSc, clinical practicum experience with depressed clients, a running facilitation program with evidence behind it, and a clear research agenda — this is an unusually strong application to a research-focused clinical psychology doctoral program.</p>
+        <ul class="steps-list">
+          <li>Identify supervisors at UBC, SFU, or Toronto whose research touches depression AND creative health, arts-based intervention, community mental health, or implementation science</li>
+          <li>Reach out to potential supervisors before applying — describe the research agenda specifically and ask whether they are taking students with this focus</li>
+          <li>Write the research proposal around the dissertation question — scalable creative interventions for depression in underserved populations — with the prior publications as the evidence that this is a tractable, well-grounded research agenda</li>
+          <li>Apply for CIHR doctoral fellowships at the same time as the PhD application</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     PANEL 5 — PhD YEARS
+══════════════════════════════════════ -->
+<div class="panel" id="panel-phdyears">
+<div class="wrap">
+
+  <p class="panel-intro">The Phase four are where the research program becomes independent and the clinical authority is established. Deployment during this period includes the dissertation papers, the first empirical studies, the grant applications that fund the post-doctoral research, and the international partnerships that extend the work beyond Canada.</p>
+
+  <div class="sec-header">
+    <div class="sec-eye">During the PhD</div>
+    <div class="sec-title">Research Independence — <em>The Work That Travels</em></div>
+  </div>
+
+  <div class="action">
+    <div class="action-header" onclick="toggleAction(this)">
+      <span class="action-tag t-grow">Phase four</span>
+      <div class="action-body">
+        <div class="action-title">Design the Dissertation for Maximum Publication Output</div>
+        <div class="action-sub">Three papers · Each chapter publishable · The dissertation as the research program, not a hoop</div>
+      </div>
+      <button class="toggle-btn">Expand ↓</button>
+    </div>
+    <div class="action-detail">
+      <div class="detail-body">
+        <p>A well-designed dissertation generates two to three publishable papers — a theoretical framing paper, an empirical study, and a discussion of implications. Each chapter is a paper in preparation. By the end of the PhD, the publication record is substantial enough to support an academic position, a grant application, and an independent research program.</p>
+        <ul class="steps-list">
+          <li>Design the dissertation as a series of papers rather than a traditional monograph — confirm this is acceptable with the doctoral program and supervisor</li>
+          <li>Chapter one: theoretical framework paper — the case for creative approaches to depression and the learning systems design argument — target Global Mental Health or Psychological Medicine</li>
+          <li>Chapter two: empirical study — feasibility trial, single-case experimental design, or qualitative study of creative-integrated depression treatment — target Behaviour Research and Therapy or Arts in Psychotherapy</li>
+          <li>Chapter three: implementation science paper — how the intervention can be delivered at scale through non-specialist practitioners — target Implementation Science</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="action">
+    <div class="action-header" onclick="toggleAction(this)">
+      <span class="action-tag t-grow">Phase four</span>
+      <div class="action-body">
+        <div class="action-title">Build at Least One International Research Partnership</div>
+        <div class="action-sub">Low-and-middle-income country collaboration · LSHTM network · The global dimension made real</div>
+      </div>
+      <button class="toggle-btn">Expand ↓</button>
+    </div>
+    <div class="action-detail">
+      <div class="detail-body">
+        <p>The global mental health dimension of this work becomes active during Phase four. A research exchange, a data sharing agreement, or a collaborative paper with an institution in a low-or-middle-income country — facilitated through the LSHTM network and the contacts built during Phase two — is the move that makes the career genuinely international rather than aspirationally so.</p>
+        <ul class="steps-list">
+          <li>Pursue a research exchange through LSHTM partnership programs or Canadian global health networks — even a short visit to a partner institution grounds the international work in genuine relationship</li>
+          <li>Develop a collaborative paper with a researcher in a low-resource setting — something that could not be written without both perspectives</li>
+          <li>Apply for CIHR global health research grants or Wellcome grants for international collaborative work during Phase four</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="action">
+    <div class="action-header" onclick="toggleAction(this)">
+      <span class="action-tag t-grow">Phase four</span>
+      <div class="action-body">
+        <div class="action-title">Begin Seeing Clients — Clinical Practice Runs Alongside the Research</div>
+        <div class="action-sub">Provisional registration · Depression caseload · The room and the dissertation inform each other</div>
+      </div>
+      <button class="toggle-btn">Expand ↓</button>
+    </div>
+    <div class="action-detail">
+      <div class="detail-body">
+        <p>With provisional registration from the MA and supervised hours building during the PhD practicum, seeing clients for depression is possible during Phase four. The clinical work is not a distraction from the research — it is the source of the clinical knowledge that makes the research credible. The room and the dissertation inform each other.</p>
+        <ul class="steps-list">
+          <li>Maintain a supervised clinical caseload focused on depression throughout the PhD — negotiate the hours with the doctoral program to ensure clinical work is permitted alongside the research</li>
+          <li>Integrate creative and expressive approaches under supervision — document what this produces as potential dissertation data</li>
+          <li>Accumulate supervised hours toward eventual registration as a Registered Psychologist in BC</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="action">
+    <div class="action-header" onclick="toggleAction(this)">
+      <span class="action-tag t-grow">Phase four</span>
+      <div class="action-body">
+        <div class="action-title">Make Space — Social Prescribing Partnerships</div>
+        <div class="action-sub">Health system integration · Formal referral pathways · The program with evidence behind it becomes eligible for this</div>
+      </div>
+      <button class="toggle-btn">Expand ↓</button>
+    </div>
+    <div class="action-detail">
+      <div class="detail-body">
+        <p>By Phase four, Make Space has a qualitative paper published, a trained facilitator running the program alongside, and several years of documentation. Social prescribing programs — where GPs and mental health practitioners refer patients to community-based creative and arts activities — are actively looking for evidence-based programs to refer to. Make Space, with research behind it, becomes eligible for formal integration.</p>
+        <ul class="steps-list">
+          <li>Approach BC health authority social prescribing programs with the Make Space evidence base — the research documentation is the pitch</li>
+          <li>Develop a formal referral protocol with at least one GP practice or community mental health centre</li>
+          <li>Use the social prescribing partnership as a research site for the dissertation or a subsequent paper — real-world implementation data is exactly what the field needs</li>
+        </ul>
+        <div class="resource-row">
+          <a class="resource" href="https://www.healthbc.org/" target="_blank" rel="noopener">Health BC</a>
+          <a class="resource" href="https://www.vch.ca/" target="_blank" rel="noopener">Vancouver Coastal Health</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="action">
+    <div class="action-header" onclick="toggleAction(this)">
+      <span class="action-tag t-grow">Phase four</span>
+      <div class="action-body">
+        <div class="action-title">Apply for Post-Doctoral Funding and Build the Independent Research Program</div>
+        <div class="action-sub">CIHR · SSHRC · Wellcome · The grants that fund the work after the degree</div>
+      </div>
+      <button class="toggle-btn">Expand ↓</button>
+    </div>
+    <div class="action-detail">
+      <div class="detail-body">
+        <p>The last year of the PhD is when the post-doctoral research program is designed and the funding applications are written. By this point the publication record, the clinical experience, the international partnerships, and the Make Space evidence base all contribute to a compelling case for independent research funding.</p>
+        <ul class="steps-list">
+          <li>Apply for CIHR post-doctoral fellowships in the final year of the PhD — the mental health and psychosocial intervention categories, and potentially the global health categories, are both relevant</li>
+          <li>Apply for SSHRC funding for the arts and humanities dimensions of the creative health research — the BFA and the fine art practice make this application unusually strong</li>
+          <li>Consider a Wellcome early-career award for the international collaborative work — the LSHTM network is the pathway to this funding</li>
+        </ul>
+        <div class="resource-row">
+          <a class="resource" href="https://cihr-irsc.gc.ca/e/193.html" target="_blank" rel="noopener">CIHR</a>
+          <a class="resource" href="https://www.sshrc-crsh.gc.ca/" target="_blank" rel="noopener">SSHRC</a>
+          <a class="resource" href="https://wellcome.org/" target="_blank" rel="noopener">Wellcome Trust</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     PANEL 6 — 12-MONTH PLAN
+══════════════════════════════════════ -->
+<div class="panel" id="panel-timeline">
+<div class="tl-wrap">
+
+  <p class="panel-intro">A concrete plan for the next twelve months. Not aspirational — specific, sequenced, and achievable alongside the job search and the existing portfolio. Review this at months three, six, and twelve and update it as circumstances change.</p>
+
+  <div class="tl-month">Months 1–3 — Read and Frame</div>
+
+  <div class="tl-row">
+    <div class="tl-when">Week 1–2</div>
+    <div class="tl-what">Apply to 80,000 Hours 1-1 advising — <em>takes ten minutes, do it this week</em></div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-when">Month 1</div>
+    <div class="tl-what">Read: Patel's Where There Is No Psychiatrist + the 2018 Lancet Commission on Global Mental Health</div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-when">Month 1</div>
+    <div class="tl-what">Begin Make Space reflective journal — one entry per session, starting this week</div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-when">Month 1</div>
+    <div class="tl-what">Add a simple optional feedback mechanism to Make Space — two or three open questions at the end of each phase</div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-when">Month 2</div>
+    <div class="tl-what">Read: Fancourt &amp; Finn 2019 Lancet paper + Cochrane reviews on psychological treatments for depression</div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-when">Month 2</div>
+    <div class="tl-what">Read three papers each by Daisy Fancourt and Vikram Patel — identify the specific connection to the learning systems and creative health work</div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-when">Month 3</div>
+    <div class="tl-what">Read: WHO mhGAP Intervention Guide + two to three Implementation Science papers on mental health intervention delivery</div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-when">Month 3</div>
+    <div class="tl-what">Write one deliberate letter to a researcher in the global mental health field — specific, substantive, not asking for anything</div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-when">Month 3</div>
+    <div class="tl-what">Rewrite andrearobin.com case studies to use implementation science and mental health systems language</div>
+  </div>
+
+  <div class="tl-month">Months 3–6 — Write and Submit</div>
+
+  <div class="tl-row">
+    <div class="tl-when">Month 3–4</div>
+    <div class="tl-what">Outline and draft the conceptual paper — learning systems design as infrastructure for accessible depression care</div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-when">Month 4</div>
+    <div class="tl-what">Write the Other Bodies tools descriptive piece — 2,000–3,000 words, ready for submission as a clinical innovation note</div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-when">Month 4–5</div>
+    <div class="tl-what">Begin LSHTM Epidemiology for Public Health short course — enrol and begin working through the content</div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-when">Month 5</div>
+    <div class="tl-what">Write one targeted Substack post on the disability-depression intersection — the first of a monthly series building toward the second paper</div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-when">Month 5–6</div>
+    <div class="tl-what">Revise and finalise the conceptual paper draft — share with one trusted reader for feedback before submission</div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-when">Month 6</div>
+    <div class="tl-what">Submit the Other Bodies tools piece to Arts in Psychotherapy or Journal of Creativity in Mental Health</div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-when">Month 6</div>
+    <div class="tl-what">Write the Canadian Art Therapy Association conference abstract — on Make Space or the Other Bodies tools</div>
+  </div>
+
+  <div class="tl-month">Months 6–9 — Submit and Begin Graduate Preparation</div>
+
+  <div class="tl-row">
+    <div class="tl-when">Month 6–7</div>
+    <div class="tl-what">Submit the conceptual paper to Global Mental Health (Cambridge) — <em>send it</em></div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-when">Month 7</div>
+    <div class="tl-what">Complete LSHTM Epidemiology for Public Health short course — assess appetite for the statistics course that follows</div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-when">Month 7–8</div>
+    <div class="tl-what">Begin researching Leeds MSc application requirements — identify the application deadline and any prerequisite documentation needed</div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-when">Month 8</div>
+    <div class="tl-what">Begin LSHTM Introduction to Statistics for Public Health — enrol and begin</div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-when">Month 8–9</div>
+    <div class="tl-what">Write Substack post two and three on the depression and creative health evidence base — monthly cadence established</div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-when">Month 9</div>
+    <div class="tl-what">Draft the Leeds MSc personal statement — the conceptual paper and Substack record are the evidence of sustained intellectual engagement with this area</div>
+  </div>
+
+  <div class="tl-month">Months 9–12 — Build and Apply</div>
+
+  <div class="tl-row">
+    <div class="tl-when">Month 9–10</div>
+    <div class="tl-what">Complete LSHTM Introduction to Statistics for Public Health</div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-when">Month 10</div>
+    <div class="tl-what">Review Make Space documentation from the first year of reflective journaling — assess whether a qualitative paper is taking shape</div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-when">Month 10–11</div>
+    <div class="tl-what">Submit Leeds MSc application — personal statement grounded in the conceptual paper, the facilitation practice, and the disability justice work</div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-when">Month 11</div>
+    <div class="tl-what">Begin LSHTM Global Mental Health short course — the third and final preparatory course before the LSHTM MSc</div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-when">Month 12</div>
+    <div class="tl-what">Review: what has been submitted, what is published, what is in progress — update this document and the My Vision document accordingly</div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-when">Month 12</div>
+    <div class="tl-what">Name one thing that surprised you about the year — one thing you learned from the deployment that changed how you understand the building — <em>write it down</em></div>
+  </div>
+
+</div>
+</div>
+
+
+<footer>
+  <span>Deployment — Living Document</span>
+  <span>Freedom to act at every stage</span>
+</footer>
+
+<script>
+  function showPanel(name, btn) {
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('panel-' + name).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  function toggleAction(header) {
+    const detail = header.nextElementSibling;
+    const btn = header.querySelector('.toggle-btn');
+    if (!btn) return;
+    const isOpen = detail.classList.contains('open');
+    detail.classList.toggle('open');
+    btn.textContent = isOpen ? 'Expand ↓' : 'Collapse ↑';
+  }
+</script>
+</body>
+</html>

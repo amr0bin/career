@@ -1,0 +1,1736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Vision — Andrea Robin</title>
+<link href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --white:     #ffffff;
+    --ink:       #303e44;
+    --accent:    #475f6a;
+    --mid:       #6a858f;
+    --light:     #e8eef0;
+    --lighter:   #f4f7f8;
+    --line:      #d4dde1;
+    --faint:     #8fa4ad;
+  }
+
+  body {
+    background: var(--white);
+    color: var(--ink);
+    font-family: 'Asap', system-ui, sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    font-size: 16px;
+  }
+
+  /* ── HEADER ── */
+  header {
+    padding: 4rem 3.5rem 3rem;
+    border-bottom: 1px solid var(--line);
+    max-width: 900px;
+  }
+  .eyebrow {
+    font-size: 0.68rem; font-weight: 500; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--mid); margin-bottom: 1.4rem;
+  }
+  h1 {
+    font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 300;
+    line-height: 1.12; letter-spacing: -0.01em; margin-bottom: 1.2rem;
+  }
+  h1 em { font-style: italic; color: var(--accent); }
+  .header-sub {
+    font-size: 1rem; color: var(--mid); max-width: 600px; line-height: 1.75;
+  }
+
+  /* ── TABS ── */
+  .tabs {
+    display: flex; border-bottom: 1px solid var(--line);
+    padding: 0 3.5rem; background: var(--white);
+    position: sticky; top: 0; z-index: 100;
+    overflow-x: auto;
+  }
+  .tab-btn {
+    font-family: 'Asap', sans-serif; font-size: 0.7rem; font-weight: 500;
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--faint);
+    background: none; border: none; padding: 1.1rem 0;
+    margin-right: 2.5rem; cursor: pointer; position: relative;
+    transition: color 0.25s; white-space: nowrap; flex-shrink: 0;
+  }
+  .tab-btn::after {
+    content: ''; position: absolute; bottom: -1px; left: 0; right: 0;
+    height: 2px; background: var(--accent);
+    transform: scaleX(0); transform-origin: left; transition: transform 0.3s ease;
+  }
+  .tab-btn.active { color: var(--ink); }
+  .tab-btn.active::after { transform: scaleX(1); }
+
+  /* ── PANELS ── */
+  .panel { display: none; }
+  .panel.active { display: block; animation: fadeUp 0.35s ease; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── SHARED ── */
+  .panel-intro {
+    font-size: 1rem; color: var(--mid); font-style: italic;
+    line-height: 1.75; margin-bottom: 3rem; max-width: 620px;
+  }
+
+  /* ── BADGES ── */
+  .badge {
+    display: inline-block; font-size: 0.54rem; font-weight: 500;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 0.2em 0.55em; border-radius: 2px;
+  }
+  .b-done    { background: var(--accent); color: #fff; }
+  .b-active  { background: var(--light); color: var(--accent); border: 1px solid var(--line); }
+  .b-planned { border: 1px solid var(--line); color: var(--faint); }
+  .b-intent  { background: var(--lighter); border: 1px solid var(--line); color: var(--mid); }
+  .b-opt     { background: var(--lighter); border: 1px solid var(--line); color: var(--mid); }
+  .b-parallel{ background: var(--ink); color: #fff; }
+
+  /* ── TAGS ── */
+  .tag-row { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.65rem; }
+  .tag {
+    font-size: 0.57rem; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 0.22em 0.65em;
+    background: var(--lighter); color: var(--mid); border-radius: 2px;
+  }
+
+  /* ══════════════════════════════
+     TAB 1 — EDUCATION TIMELINE
+  ══════════════════════════════ */
+  .tl-wrap { padding: 3rem 3.5rem; max-width: 840px; }
+
+  .tl-section-label {
+    font-size: 0.6rem; font-weight: 500; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--faint);
+    margin-bottom: 1.6rem; margin-top: 3rem; padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .tl-section-label:first-of-type { margin-top: 0; }
+
+  .tl-item {
+    display: grid; grid-template-columns: 110px 18px 1fr;
+    position: relative;
+  }
+  .tl-left {
+    text-align: right; padding-right: 1.4rem; padding-top: 0.1rem;
+    padding-bottom: 2.6rem; display: flex; flex-direction: column;
+    align-items: flex-end; gap: 0.4rem;
+  }
+  .tl-phase {
+    font-size: 0.57rem; font-weight: 500; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--faint);
+  }
+  .tl-connector {
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .tl-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    border: 2px solid var(--line); background: var(--white);
+    flex-shrink: 0; margin-top: 3px;
+    transition: background 0.3s, border-color 0.3s; z-index: 1;
+  }
+  .tl-line { width: 1px; flex: 1; background: var(--line); margin-top: 3px; }
+  .tl-item.done .tl-dot { background: var(--accent); border-color: var(--accent); }
+  .tl-item.active-item .tl-dot { background: var(--light); border-color: var(--accent); }
+  .tl-item:last-child .tl-line { display: none; }
+  .tl-right { padding-left: 1.8rem; padding-bottom: 2.6rem; }
+
+  .edu-title { font-size: 1.1rem; font-weight: 500; line-height: 1.3; margin-bottom: 0.2rem; }
+  .edu-inst {
+    font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem;
+  }
+  .edu-inst a { color: var(--accent); text-decoration: none; }
+  .edu-inst a:hover { text-decoration: underline; }
+  .edu-desc { font-size: 0.9rem; color: var(--mid); font-style: italic; line-height: 1.7; }
+
+  /* ══════════════════════════════
+     TAB 2 — CAREER PATHS
+  ══════════════════════════════ */
+  .career-wrap { padding: 3rem 3.5rem; }
+  .career-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+    gap: 1px; background: var(--line); border: 1px solid var(--line);
+    max-width: 980px;
+  }
+  .career-card {
+    background: var(--white); padding: 1.8rem;
+    cursor: pointer; transition: background 0.2s;
+  }
+  .career-card:hover { background: var(--lighter); }
+  .card-num {
+    font-size: 0.57rem; font-weight: 500; letter-spacing: 0.2em;
+    color: var(--faint); margin-bottom: 0.7rem;
+  }
+  .card-title { font-size: 1.03rem; font-weight: 500; line-height: 1.35; margin-bottom: 0.55rem; }
+  .card-desc { font-size: 0.87rem; color: var(--mid); font-style: italic; line-height: 1.65; margin-bottom: 0.9rem; }
+  .expand-btn {
+    font-family: 'Asap', sans-serif; font-size: 0.6rem; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent);
+    background: none; border: none; cursor: pointer; padding: 0;
+    display: block; margin-bottom: 0.2rem;
+  }
+  .expand-btn:hover { opacity: 0.7; }
+  .card-details {
+    display: none; margin-top: 0.8rem; padding-top: 0.8rem;
+    border-top: 1px solid var(--line); animation: fadeUp 0.25s ease;
+  }
+  .card-details.open { display: block; }
+  .specialties { list-style: none; }
+  .specialties li {
+    font-size: 0.86rem; color: var(--mid); padding: 0.18rem 0 0.18rem 1rem;
+    position: relative; line-height: 1.5;
+  }
+  .specialties li::before { content: '–'; position: absolute; left: 0; color: var(--accent); }
+  .card-footer {
+    font-size: 0.62rem; font-weight: 500; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--accent);
+    border-top: 1px solid var(--line); padding-top: 0.8rem; margin-top: 0.8rem;
+  }
+
+  /* ══════════════════════════════
+     TAB 3 — POSITIONING
+  ══════════════════════════════ */
+  .pos-wrap { padding: 3rem 3.5rem; max-width: 780px; }
+  .statement-block {
+    border-left: 3px solid var(--accent); padding: 1.5rem 1.8rem;
+    background: var(--lighter); margin-bottom: 2.5rem;
+  }
+  .statement-block p { font-size: 1.15rem; font-weight: 300; font-style: italic; line-height: 1.75; }
+  .dark-block { background: var(--ink); padding: 2rem; margin-bottom: 2rem; }
+  .dark-block h3 { font-size: 0.95rem; font-weight: 500; color: #fff; margin-bottom: 0.5rem; }
+  .dark-block .sub {
+    font-size: 0.87rem; color: rgba(255,255,255,0.5);
+    font-style: italic; line-height: 1.65; margin-bottom: 1.2rem;
+  }
+  .ix-row { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .ix-tag {
+    font-size: 0.57rem; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 0.3em 0.75em;
+    border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.65);
+    border-radius: 2px;
+  }
+  .section-label {
+    font-size: 0.62rem; font-weight: 500; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--faint); margin-bottom: 1rem;
+  }
+  .pillars {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1px; background: var(--line); border: 1px solid var(--line);
+    margin-bottom: 2rem;
+  }
+  .pillar { background: var(--white); padding: 1.5rem; }
+  .pillar-label {
+    font-size: 0.6rem; font-weight: 500; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 0.4rem;
+  }
+  .pillar-title { font-size: 1rem; font-weight: 500; margin-bottom: 0.4rem; }
+  .pillar-desc { font-size: 0.85rem; color: var(--mid); font-style: italic; line-height: 1.6; }
+  .closing-block { border: 1px solid var(--line); padding: 1.5rem 1.8rem; background: var(--lighter); }
+  .closing-block p { font-size: 0.97rem; font-style: italic; color: var(--mid); line-height: 1.78; }
+
+  /* ══════════════════════════════
+     TABS 4–5 — STEP PANELS
+  ══════════════════════════════ */
+  .step-wrap { padding: 3rem 3.5rem; max-width: 860px; }
+
+  .step-phase {
+    margin-bottom: 2rem; margin-top: 3.2rem;
+    padding-bottom: 0.9rem; border-bottom: 1px solid var(--line);
+  }
+  .step-phase:first-of-type { margin-top: 0; }
+  .step-phase-eye {
+    font-size: 0.57rem; font-weight: 500; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--faint); margin-bottom: 0.4rem;
+  }
+  .step-phase-title { font-size: 1.22rem; font-weight: 300; line-height: 1.3; }
+  .step-phase-title em { font-style: italic; color: var(--accent); }
+  .step-phase-desc {
+    font-size: 0.88rem; color: var(--mid); font-style: italic;
+    line-height: 1.7; margin-top: 0.45rem; max-width: 580px;
+  }
+
+  .step-block { margin-bottom: 1.2rem; border: 1px solid var(--line); background: var(--white); }
+  .step-header {
+    display: grid; grid-template-columns: 88px 1fr auto;
+    align-items: start; gap: 1.1rem; padding: 1.35rem 1.5rem;
+    cursor: pointer; transition: background 0.2s;
+  }
+  .step-header:hover { background: var(--lighter); }
+  .step-left { display: flex; flex-direction: column; gap: 0.32rem; align-items: flex-start; }
+  .step-num { font-size: 0.54rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--faint); }
+  .step-body { flex: 1; }
+  .step-title { font-size: 1.04rem; font-weight: 500; line-height: 1.3; margin-bottom: 0.25rem; }
+  .step-sub { font-size: 0.82rem; color: var(--mid); font-style: italic; line-height: 1.6; }
+  .toggle-btn {
+    font-family: 'Asap', sans-serif; font-size: 0.6rem; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent);
+    background: none; border: none; cursor: pointer; white-space: nowrap;
+    padding-top: 0.2rem; flex-shrink: 0;
+  }
+
+  .step-detail {
+    display: none; padding: 0 1.5rem 1.5rem;
+    border-top: 1px solid var(--line);
+    animation: fadeUp 0.25s ease;
+  }
+  .step-detail.open { display: block; }
+  .detail-intro {
+    font-size: 0.88rem; color: var(--mid); font-style: italic;
+    line-height: 1.7; padding-top: 1.1rem; margin-bottom: 1.1rem;
+  }
+  .options-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 1px; background: var(--line); border: 1px solid var(--line);
+    margin-bottom: 1.1rem;
+  }
+  .opt { background: var(--white); padding: 1.1rem 1.15rem; }
+  .opt-label {
+    font-size: 0.54rem; font-weight: 500; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--faint); margin-bottom: 0.32rem;
+  }
+  .opt-name { font-size: 0.92rem; font-weight: 500; line-height: 1.3; margin-bottom: 0.28rem; color: var(--ink); }
+  .opt-name a { color: var(--accent); text-decoration: none; }
+  .opt-name a:hover { text-decoration: underline; }
+  .opt-desc { font-size: 0.8rem; color: var(--mid); line-height: 1.62; }
+  .step-note {
+    font-size: 0.82rem; color: var(--mid); font-style: italic;
+    line-height: 1.7; border-left: 2px solid var(--line); padding-left: 1rem;
+  }
+
+  /* ══════════════════════════════
+     TAB 6 — CHALLENGES
+  ══════════════════════════════ */
+  .ch-wrap { padding: 3rem 3.5rem; max-width: 860px; }
+
+  .ch-intro-block {
+    border-left: 3px solid var(--accent);
+    padding: 1.4rem 1.8rem;
+    background: var(--lighter);
+    margin-bottom: 3rem;
+  }
+  .ch-intro-block p {
+    font-size: 1rem; font-weight: 300; font-style: italic;
+    line-height: 1.75; color: var(--ink);
+  }
+
+  .ch-block {
+    margin-bottom: 1.4rem;
+    border: 1px solid var(--line);
+    background: var(--white);
+  }
+
+  .ch-header {
+    display: grid;
+    grid-template-columns: 100px 1fr auto;
+    align-items: start;
+    gap: 1.2rem;
+    padding: 1.4rem 1.6rem;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .ch-header:hover { background: var(--lighter); }
+
+  .ch-left {
+    display: flex; flex-direction: column;
+    gap: 0.35rem; align-items: flex-start;
+  }
+
+  .ch-num {
+    font-size: 0.55rem; font-weight: 500;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--faint);
+  }
+
+  .ch-badge {
+    font-size: 0.54rem; font-weight: 500;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 0.2em 0.55em; border-radius: 2px;
+  }
+  .cb-timeline  { background: var(--light); color: var(--accent); border: 1px solid var(--line); }
+  .cb-evidence  { border: 1px solid var(--line); color: var(--faint); }
+  .cb-field     { background: var(--lighter); border: 1px solid var(--line); color: var(--mid); }
+  .cb-portfolio { background: var(--ink); color: #fff; }
+  .cb-power     { background: var(--accent); color: #fff; }
+  .cb-identity  { border: 1px dashed var(--line); color: var(--faint); }
+
+  .ch-body { flex: 1; }
+  .ch-title {
+    font-size: 1.05rem; font-weight: 500;
+    line-height: 1.3; margin-bottom: 0.3rem;
+  }
+  .ch-sub {
+    font-size: 0.82rem; color: var(--mid);
+    font-style: italic; line-height: 1.6;
+  }
+
+  .ch-toggle {
+    font-family: 'Asap', sans-serif; font-size: 0.6rem; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent);
+    background: none; border: none; cursor: pointer;
+    white-space: nowrap; padding-top: 0.2rem; flex-shrink: 0;
+  }
+
+  .ch-detail {
+    display: none; padding: 0 1.6rem 1.6rem;
+    border-top: 1px solid var(--line);
+  }
+  .ch-detail.open { display: block; animation: fadeUp 0.25s ease; }
+
+  .ch-statement {
+    font-size: 0.92rem; color: var(--mid); font-style: italic;
+    line-height: 1.75; padding-top: 1.2rem; margin-bottom: 1.4rem;
+  }
+
+  .ch-section-eye {
+    font-size: 0.56rem; font-weight: 500; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--faint);
+    margin-top: 1.6rem; margin-bottom: 0.8rem;
+    padding-bottom: 0.4rem; border-bottom: 1px solid var(--line);
+  }
+  .ch-section-eye:first-of-type { margin-top: 0.4rem; }
+
+  .ch-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
+    gap: 1px; background: var(--line); border: 1px solid var(--line);
+    margin-bottom: 1.2rem;
+  }
+
+  .ch-opt { background: var(--white); padding: 1.1rem 1.2rem; }
+
+  .ch-opt-label {
+    font-size: 0.54rem; font-weight: 500; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--faint); margin-bottom: 0.35rem;
+  }
+
+  .ch-opt-name {
+    font-size: 0.92rem; font-weight: 500;
+    line-height: 1.3; margin-bottom: 0.3rem; color: var(--ink);
+  }
+  .ch-opt-name a { color: var(--accent); text-decoration: none; }
+  .ch-opt-name a:hover { text-decoration: underline; }
+
+  .ch-opt-desc { font-size: 0.8rem; color: var(--mid); line-height: 1.62; }
+
+  .ch-note {
+    font-size: 0.82rem; color: var(--mid); font-style: italic;
+    line-height: 1.7; border-left: 2px solid var(--accent);
+    padding-left: 1rem; margin-top: 0.4rem;
+  }
+
+  .dark-banner {
+    background: var(--ink); padding: 1.5rem 1.6rem; margin-top: 2.5rem;
+  }
+  .dark-banner p {
+    font-size: 0.95rem; font-weight: 300; font-style: italic;
+    line-height: 1.72; color: rgba(255,255,255,0.85);
+  }
+  .dark-banner strong { font-weight: 500; color: #fff; font-style: normal; }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 1.8rem 3.5rem; border-top: 1px solid var(--line);
+    font-size: 0.62rem; font-weight: 500; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--faint);
+    display: flex; justify-content: space-between; margin-top: 2rem;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    header, .tl-wrap, .career-wrap, .pos-wrap, .step-wrap { padding: 2rem 1.5rem; }
+    .tabs { padding: 0 1.5rem; }
+    .tab-btn { margin-right: 1.4rem; }
+    .tl-item { grid-template-columns: 68px 16px 1fr; }
+    .pillars { grid-template-columns: 1fr; }
+    .step-header { grid-template-columns: 70px 1fr auto; gap: 0.8rem; }
+    .ch-header { grid-template-columns: 80px 1fr; }
+    .ch-toggle { display: none; }
+    .ch-detail { display: block; }
+    footer { flex-direction: column; gap: 0.4rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <p class="eyebrow">My Vision — Living Document</p>
+  <h1>Working on the thing that<br><em>matters most.</em></h1>
+  <p class="header-sub">Depression is the leading cause of disability worldwide. More than three quarters of people experiencing it in low-income countries receive no care at all. This is the plan for working on that — locally, in the room with a person, and at the scale where systems change. It is built from creativity, learning science, disability justice, neurobiology, and fifteen years of knowing how to make knowledge travel.</p>
+</header>
+
+<nav class="tabs">
+  <button class="tab-btn active" onclick="showPanel('education',this)">Education</button>
+  <button class="tab-btn" onclick="showPanel('career',this)">Portfolio &amp; Career</button>
+  <button class="tab-btn" onclick="showPanel('positioning',this)">Positioning</button>
+  <button class="tab-btn" onclick="showPanel('depressionplan',this)">Depression Plan</button>
+  <button class="tab-btn" onclick="showPanel('researchlit',this)">Research Literacy</button>
+  <button class="tab-btn" onclick="showPanel('challenges',this)">Challenges</button>
+</nav>
+
+
+<!-- ══════════════════════════════════════
+     PANEL 1 — EDUCATION
+══════════════════════════════════════ -->
+<div class="panel active" id="panel-education">
+<div class="tl-wrap">
+  <p class="panel-intro">The education path has been rebuilt around a single purpose: becoming someone who can help people with depression directly, generate evidence about what works, and design the systems that make those approaches available to the people who need them most. Every credential either serves that or it is not on this list. The phases below are not durations. Each one closes when a condition is met rather than when a year elapses, so the path holds at whatever pace the work and the life allow.</p>
+
+  <!-- COMPLETE -->
+  <div class="tl-section-label">Foundation — Complete</div>
+
+  <div class="tl-item done">
+    <div class="tl-left"><span class="tl-phase">Creative</span><span class="badge b-done">Complete</span></div>
+    <div class="tl-connector"><div class="tl-dot"></div><div class="tl-line"></div></div>
+    <div class="tl-right">
+      <div class="edu-title">Bachelor of Fine Arts</div>
+      <div class="edu-inst">Emily Carr University of Art &amp; Design</div>
+      <p class="edu-desc">The creative foundation. Learning to see, make, and think through form — a sensibility that now shapes how I understand learning, healing, and expression. The BFA is not the past. It is the methodology of the clinical and research work to come.</p>
+      <div class="tag-row"><span class="tag">Creative thinking</span><span class="tag">Visual arts</span><span class="tag">Conceptual rigour</span><span class="tag">Making as knowing</span></div>
+    </div>
+  </div>
+
+  <div class="tl-item done">
+    <div class="tl-left"><span class="tl-phase">Practice</span><span class="badge b-done">15 Years</span></div>
+    <div class="tl-connector"><div class="tl-dot"></div><div class="tl-line"></div></div>
+    <div class="tl-right">
+      <div class="edu-title">Learning Design &amp; Knowledge Systems</div>
+      <div class="edu-inst">Public sector · Higher education · Research institutions · Canada</div>
+      <p class="edu-desc">Fifteen years building learning ecosystems across some of the most complex institutions in Canada. Understanding how knowledge is made, held, and transmitted at scale is the comparative advantage that no one else in this field will have. This is what makes the depression work scalable.</p>
+      <div class="tag-row"><span class="tag">Learning design</span><span class="tag">Instructional systems</span><span class="tag">Institutional change</span><span class="tag">Curriculum</span><span class="tag">Knowledge translation</span></div>
+    </div>
+  </div>
+
+  <div class="tl-item done">
+    <div class="tl-left"><span class="tl-phase">Science</span><span class="badge b-done">Complete</span></div>
+    <div class="tl-connector"><div class="tl-dot"></div><div class="tl-line"></div></div>
+    <div class="tl-right">
+      <div class="edu-title">Neurobiology</div>
+      <div class="edu-inst">Dalhousie University — 2 years research-based</div>
+      <p class="edu-desc">Grounding the practice in brain science. Understanding how nervous systems learn, adapt, and are shaped by experience — including the neurobiology of depression — gives the clinical and creative health work a biological substrate that most practitioners in this field do not have.</p>
+      <div class="tag-row"><span class="tag">Neuroscience</span><span class="tag">Neurobiology of depression</span><span class="tag">Research methods</span></div>
+    </div>
+  </div>
+
+  <!-- NEAR TERM -->
+  <div class="tl-section-label">Phase One — Ground</div>
+
+  <div class="tl-item planned">
+    <div class="tl-left"><span class="tl-phase">Access</span><span class="badge b-planned">Phase one · now</span></div>
+    <div class="tl-connector"><div class="tl-dot"></div><div class="tl-line"></div></div>
+    <div class="tl-right">
+      <div class="edu-title">Certified Professional in Accessibility Core Competencies (CPACC)</div>
+      <div class="edu-inst"><a href="https://www.accessibilityassociation.org/cpacc" target="_blank" rel="noopener">International Association of Accessibility Professionals</a></div>
+      <p class="edu-desc">Moved forward, deliberately. This was previously placed alongside the Leeds modules; it belongs here, during the job search, because it is the only credential on this entire list that changes what can be earned <em>this year</em>. It converts fifteen years of applied accessibility and universal design work — already mapped across a twenty-five-node accessibility cluster — into a marker that recruiters, procurement processes, and public-sector job competitions can read at a glance. It is self-paced, inexpensive relative to every other item here, and it raises the ceiling on the instructional and learning design roles that fund everything downstream. The disability–depression thread it keeps visible is real, and it is not the reason to do it now. The reason to do it now is leverage.</p>
+      <div class="tag-row"><span class="tag">Accessibility</span><span class="tag">Universal design</span><span class="tag">Job-search leverage</span><span class="tag">Earning power</span><span class="tag">Disability-depression intersection</span></div>
+    </div>
+  </div>
+
+  <div class="tl-section-label">Phase Two — Frame</div>
+
+  <div class="tl-item planned">
+    <div class="tl-left"><span class="tl-phase">Justice</span><span class="badge b-planned">Phase two</span></div>
+    <div class="tl-connector"><div class="tl-dot"></div><div class="tl-line"></div></div>
+    <div class="tl-right">
+      <div class="edu-title">MSc in Disability Studies, Rights and Inclusion</div>
+      <div class="edu-inst"><a href="https://courses.leeds.ac.uk/d326/disability-studies-rights-and-inclusion-msc" target="_blank" rel="noopener">University of Leeds — Online</a></div>
+      <p class="edu-desc">A rigorous specialisation in disability as a social, political, and lived reality — from one of the world's leading departments in the field. This gives the disability justice framework a formal scholarly foundation that practice experience alone cannot provide. Disability intersects with depression at every level: who gets diagnosed, who gets treated, who gets left out, and why. The MSc at Leeds grounds the accessibility and equity work in critical theory and international policy, and positions the disability-depression intersection as a research thread with genuine scholarly standing. Fully online and modular, with breaks permitted between modules — taking one is a use of the programme&#8217;s design, not a lapse in the plan. Runs alongside the LSHTM short courses rather than before them.</p>
+      <div class="tag-row"><span class="tag">Disability studies</span><span class="tag">Disability justice</span><span class="tag">Critical theory</span><span class="tag">Policy</span><span class="tag">Disability-depression intersection</span><span class="tag">Online</span></div>
+    </div>
+  </div>
+
+  <div class="tl-item planned">
+    <div class="tl-left"><span class="tl-phase">Literacy</span><span class="badge b-planned">Phase two</span></div>
+    <div class="tl-connector"><div class="tl-dot"></div><div class="tl-line"></div></div>
+    <div class="tl-right">
+      <div class="edu-title">LSHTM Short Courses — Epidemiology &amp; Statistics</div>
+      <div class="edu-inst"><a href="https://www.lshtm.ac.uk/study/courses/short-courses" target="_blank" rel="noopener">London School of Hygiene &amp; Tropical Medicine — Online</a></div>
+      <p class="edu-desc">Two short courses that give research literacy without a retraining as a population scientist. Epidemiology for Public Health, then Introduction to Statistics for Public Health. The goal is specific: to read a depression trial, understand what it is claiming, and engage with research teams as a credible collaborator. Two courses. A literacy, not an identity.</p>
+      <div class="tag-row"><span class="tag">Research literacy</span><span class="tag">Study design</span><span class="tag">Reading trials</span><span class="tag">Public health language</span></div>
+    </div>
+  </div>
+
+  <div class="tl-item planned">
+    <div class="tl-left"><span class="tl-phase">Field</span><span class="badge b-planned">Phase two</span></div>
+    <div class="tl-connector"><div class="tl-dot"></div><div class="tl-line"></div></div>
+    <div class="tl-right">
+      <div class="edu-title">LSHTM — Global Mental Health Short Course</div>
+      <div class="edu-inst"><a href="https://www.lshtm.ac.uk/study/courses/short-courses/global-mental-health" target="_blank" rel="noopener">London School of Hygiene &amp; Tropical Medicine — Online</a></div>
+      <p class="edu-desc">After the epidemiology and statistics foundations are in place, this course enters the global mental health ecosystem — the treatment gap, the task-shifting evidence, the policy landscape. It also connects to a global cohort of practitioners and researchers who become the first international professional relationships in this field.</p>
+      <div class="tag-row"><span class="tag">Global mental health</span><span class="tag">Treatment gap</span><span class="tag">Task-shifting</span><span class="tag">Field network</span></div>
+    </div>
+  </div>
+
+  <div class="tl-item planned">
+    <div class="tl-left"><span class="tl-phase">Optional</span><span class="badge b-opt">Optional</span></div>
+    <div class="tl-connector"><div class="tl-dot"></div><div class="tl-line"></div></div>
+    <div class="tl-right">
+      <div class="edu-title">Harvard Global Mental Health: Trauma &amp; Recovery</div>
+      <div class="edu-inst"><a href="https://www.harvardglobalhealth.org/global-mental-health-trauma-and-recovery/" target="_blank" rel="noopener">Harvard Medical School — Partly Online</a></div>
+      <p class="edu-desc">A credible optional addition — not a required step, but a meaningful one if the timing works. Designed for practitioners in low-resource settings but taken by people worldwide, it covers trauma-informed approaches and culturally adapted interventions for depression. The real value is the community: an international cohort of practitioners who become the first professional relationships in the global mental health field. Worth pursuing if it fits within Phase two without creating overload.</p>
+      <div class="tag-row"><span class="tag">Optional</span><span class="tag">Trauma-informed practice</span><span class="tag">Cultural adaptation</span><span class="tag">Depression in global context</span><span class="tag">International network</span></div>
+    </div>
+  </div>
+
+  <!-- CLINICAL -->
+  <div class="tl-section-label">Phase Three — The Room</div>
+
+  <div class="tl-item planned">
+    <div class="tl-left"><span class="tl-phase">Therapy</span><span class="badge b-planned">Phase three</span></div>
+    <div class="tl-connector"><div class="tl-dot"></div><div class="tl-line"></div></div>
+    <div class="tl-right">
+      <div class="edu-title">MA in Counselling Psychology</div>
+      <div class="edu-inst">SFU · UBC · or UVic — Depression as the clinical focus from day one</div>
+      <p class="edu-desc">The therapeutic formation that everything else requires. Beginning after the Leeds MSc and LSHTM short courses establishes research literacy and a disability justice framework before the clinical training begins — arriving with more than the average applicant, and with a specific research focus already formed. The practicum placements are oriented toward depression — mood disorder clinics, community mental health, primary care. This is where the intellectual work becomes embodied knowledge: sitting with depressed people, learning what helps, learning what the room asks for. It is cohort-based, with several hundred supervised practicum hours in daytime placements, and cannot be carried alongside a full-time senior role — so the financial plan for reduced hours belongs at the start of this phase, not in the middle of it.</p>
+      <div class="tag-row"><span class="tag">Clinical formation</span><span class="tag">Depression</span><span class="tag">Practicum</span><span class="tag">Provisional registration</span><span class="tag">Expressive arts integration</span></div>
+    </div>
+  </div>
+
+  <!-- DOCTORAL -->
+  <div class="tl-section-label">Phase Four — The Question</div>
+
+  <div class="tl-item planned">
+    <div class="tl-left"><span class="tl-phase">PhD</span><span class="badge b-intent">Phase four</span></div>
+    <div class="tl-connector"><div class="tl-dot"></div><div class="tl-line"></div></div>
+    <div class="tl-right">
+      <div class="edu-title">Doctorate — Chosen for the Question</div>
+      <div class="edu-inst">Interdisciplinary health research · Implementation science · Clinical psychology — supervisor before programme</div>
+      <p class="edu-desc">Where everything converges. The dissertation sits at the intersection of creative or arts-based approaches to depression, accessible delivery models, and learning systems design for task-shifting those approaches to non-specialist practitioners. Original. Tractable. Nobody else has this combination of expertise to bring to it. The supervisor is the program — chosen for alignment with depression, creative health, community-based intervention, or implementation science. This phase begins only when there is a question that cannot be answered without doctoral resources, and a supervisor who wants the work. Registration and research authority are separable: the master&#8217;s route carries the room, and an interdisciplinary doctorate carries the research. Not entering is a legitimate outcome.</p>
+      <div class="tag-row"><span class="tag">Research authority</span><span class="tag">Clinical licensure</span><span class="tag">Depression</span><span class="tag">Creative health</span><span class="tag">Implementation science</span><span class="tag">Registered Psychologist</span></div>
+    </div>
+  </div>
+
+  <!-- OPTIONAL -->
+  <div class="tl-section-label">Optional — Post-Doctorate</div>
+
+  <div class="tl-item planned">
+    <div class="tl-left"><span class="tl-phase">Global</span><span class="badge b-opt">Optional</span></div>
+    <div class="tl-connector"><div class="tl-dot"></div><div class="tl-line"></div></div>
+    <div class="tl-right">
+      <div class="edu-title">MSc in Global Mental Health — or Shorter Alternatives</div>
+      <div class="edu-inst"><a href="https://www.lshtm.ac.uk/study/courses/masters-degrees/global-mental-health" target="_blank" rel="noopener">London School of Hygiene &amp; Tropical Medicine — Part-time Distance</a></div>
+      <p class="edu-desc">By the post-doctoral stage, clinical authority and research standing are established. The LSHTM MSc in Global Mental Health — if not yet completed — formalises the international dimension of the work and opens the LSHTM graduate network. It is a significant investment at this stage, however, and several shorter alternatives may serve the same strategic purpose without adding a full degree program to a career already at full deployment. Consider the options below before committing to the full MSc.</p>
+      <div class="tag-row"><span class="tag">Optional</span><span class="tag">Global mental health</span><span class="tag">Research methods</span><span class="tag">Health systems</span><span class="tag">LSHTM network</span></div>
+      <div style="margin-top:1.1rem; display:grid; grid-template-columns: repeat(auto-fill, minmax(210px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line);">
+        <div style="background:var(--white);padding:1rem 1.1rem;">
+          <div class="edu-inst" style="margin-bottom:0.3rem;">Full degree</div>
+          <div style="font-size:0.92rem;font-weight:500;margin-bottom:0.25rem;"><a href="https://www.lshtm.ac.uk/study/courses/masters-degrees/global-mental-health" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;">MSc Global Mental Health — LSHTM</a></div>
+          <div style="font-size:0.8rem;color:var(--mid);line-height:1.6;">The full credential. Part-time distance, two to three years. Provides the thesis, the LSHTM network, and the formal research standing in global health. Most appropriate if pursuing a formal academic or policy role with an explicit global health mandate.</div>
+        </div>
+        <div style="background:var(--white);padding:1rem 1.1rem;">
+          <div class="edu-inst" style="margin-bottom:0.3rem;">Short course series</div>
+          <div style="font-size:0.92rem;font-weight:500;margin-bottom:0.25rem;"><a href="https://www.lshtm.ac.uk/study/courses/short-courses" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;">LSHTM Short Course Certificate — Mental Health</a></div>
+          <div style="font-size:0.8rem;color:var(--mid);line-height:1.6;">A structured cluster of LSHTM short courses — Global Mental Health, Mental Health Policy, and Implementation Science — completed over one to two years. Provides LSHTM affiliation and network access without a full degree commitment. The most efficient option if the research program is already established.</div>
+        </div>
+        <div style="background:var(--white);padding:1rem 1.1rem;">
+          <div class="edu-inst" style="margin-bottom:0.3rem;">Alternative MSc</div>
+          <div style="font-size:0.92rem;font-weight:500;margin-bottom:0.25rem;"><a href="https://www.kcl.ac.uk/study/postgraduate-taught/courses/global-mental-health-msc" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;">MSc Global Mental Health — King's College London</a></div>
+          <div style="font-size:0.8rem;color:var(--mid);line-height:1.6;">Strong implementation science and culturally adapted intervention focus. Distance options available. A close alternative to LSHTM if the specific King's faculty alignment is stronger — particularly relevant if the research program has developed connections to the King's network during Phase four.</div>
+        </div>
+        <div style="background:var(--white);padding:1rem 1.1rem;">
+          <div class="edu-inst" style="margin-bottom:0.3rem;">Fellowship</div>
+          <div style="font-size:0.92rem;font-weight:500;margin-bottom:0.25rem;"><a href="https://www.globalmentalhealth.org/" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;">Global Mental Health Peer Network — Fellowship Programs</a></div>
+          <div style="font-size:0.8rem;color:var(--mid);line-height:1.6;">Post-doctoral fellowships in global mental health provide network access, mentorship, and international research relationships without a degree commitment. Often the highest-leverage option for a practitioner-researcher who already has doctoral standing — prioritises relationships over credentials.</div>
+        </div>
+        <div style="background:var(--white);padding:1rem 1.1rem;">
+          <div class="edu-inst" style="margin-bottom:0.3rem;">Executive program</div>
+          <div style="font-size:0.92rem;font-weight:500;margin-bottom:0.25rem;"><a href="https://www.hsph.harvard.edu/executive-and-continuing-professional-education/" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;">Harvard T.H. Chan — Executive Programs in Global Health</a></div>
+          <div style="font-size:0.8rem;color:var(--mid);line-height:1.6;">Short intensive executive education programs in global health and health systems. Designed for mid-career professionals with established expertise. Provides Harvard affiliation, a peer network of senior practitioners, and targeted content — without the time commitment of a full MSc.</div>
+        </div>
+        <div style="background:var(--white);padding:1rem 1.1rem;">
+          <div class="edu-inst" style="margin-bottom:0.3rem;">Skip entirely</div>
+          <div style="font-size:0.92rem;font-weight:500;margin-bottom:0.25rem;">If the LSHTM network is already built</div>
+          <div style="font-size:0.8rem;color:var(--mid);line-height:1.6;">If Phase four have produced international research partnerships, publications in global mental health journals, and a genuine network of collaborators in low-and-middle-income country contexts, the MSc may add credential overhead without adding meaningful new capability. The network is the real value — if it already exists, the degree that provides it becomes optional.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tl-item planned">
+    <div class="tl-left"><span class="tl-phase">Integration</span><span class="badge b-opt">Optional</span></div>
+    <div class="tl-connector"><div class="tl-dot"></div><div class="tl-line"></div></div>
+    <div class="tl-right">
+      <div class="edu-title">Advanced Diploma in Art Therapy</div>
+      <div class="edu-inst"><a href="https://www.vati.bc.ca/art-therapy/at-program-streams/" target="_blank" rel="noopener">Vancouver Art Therapy Institute — Distance Stream</a></div>
+      <p class="edu-desc">After the doctorate, if it still calls. The clinical and research foundation is fully established. The art therapy credential brings the BFA into direct clinical service — for people whose healing happens not through words alone but through image, material, and making. Two short residential intensives in Vancouver; otherwise completable from anywhere. Not a credential required for anything else on this path. The integration of everything, at the point when there is full authority to use it.</p>
+      <div class="tag-row"><span class="tag">Art therapy</span><span class="tag">Expressive arts</span><span class="tag">Creative-clinical integration</span><span class="tag">Distance learning</span></div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     PANEL 2 — PORTFOLIO & CAREER
+══════════════════════════════════════ -->
+<div class="panel" id="panel-career">
+<div class="career-wrap">
+  <p class="panel-intro">A portfolio career built around one central purpose: depression, and the people who cannot currently access effective support for it. Each stream feeds the others. The switching between modes is not inefficiency — it is epistemology. Click any card to explore.</p>
+
+  <div class="career-grid">
+
+    <div class="career-card" onclick="toggleCard(this)">
+      <div class="card-num">01</div>
+      <div class="card-title">Core Income — Learning Design in Health</div>
+      <div class="card-desc">The stable professional foundation. Day job in the health sector, where learning design expertise is applied directly to mental health programming or health systems capacity building.</div>
+      <button class="expand-btn">Explore roles ↓</button>
+      <div class="card-details">
+        <ul class="specialties">
+          <li>Health authority learning &amp; development — BC Mental Health &amp; Substance Use, VCH, Fraser Health</li>
+          <li>Research institution knowledge translation — BC Children's Hospital Research Institute, CAMH</li>
+          <li>Global health NGO with Canadian office — IDRC, IRC Canada, Save the Children</li>
+          <li>Screen for: portfolio-friendly culture, genuine scope, health system proximity</li>
+        </ul>
+      </div>
+      <div class="card-footer">Stable income · Health sector entry · Portfolio protected</div>
+    </div>
+
+    <div class="career-card" onclick="toggleCard(this)">
+      <div class="card-num">02</div>
+      <div class="card-title">Consulting — Accessible Learning Labs</div>
+      <div class="card-desc">Organizations cannot hire the full profile — but they can bring it in. Accessible learning design, UDL, disability equity, and accessible mental health systems at the intersection of the field's most underprovided needs.</div>
+      <button class="expand-btn">Explore scope ↓</button>
+      <div class="card-details">
+        <ul class="specialties">
+          <li>Accessibility review and UDL-grounded course redesign for health and research organisations</li>
+          <li>Learning system design for mental health practitioner training programs</li>
+          <li>Disability-informed accessible depression care — policy consulting</li>
+          <li>Substack fieldwork as the compounding intellectual asset — builds audience, inquiry, and credibility simultaneously</li>
+        </ul>
+      </div>
+      <div class="card-footer">Growth income · Disability-depression thread · Premium specialisation</div>
+    </div>
+
+    <div class="career-card" onclick="toggleCard(this)">
+      <div class="card-num">03</div>
+      <div class="card-title">Clinical Practice — Depression Specialist</div>
+      <div class="card-desc">A caseload built around people experiencing depression, using integrated creative and expressive approaches as part of the therapeutic work. The room, the relationship, the person. Available post-MA, growing post-PhD.</div>
+      <button class="expand-btn">Explore specialties ↓</button>
+      <div class="card-details">
+        <ul class="specialties">
+          <li>Depression — with integrated expressive arts approaches</li>
+          <li>Neurodivergence and disability identity, where these intersect with depression</li>
+          <li>Chronic illness and grief</li>
+          <li>Creatives and gifted adults experiencing depression</li>
+          <li>Burnout and career-related depressive episodes</li>
+        </ul>
+      </div>
+      <div class="card-footer">Meaningful work · Clinical authority · Direct impact</div>
+    </div>
+
+    <div class="career-card" onclick="toggleCard(this)">
+      <div class="card-num">04</div>
+      <div class="card-title">Creative Health — Therapeutic Studio</div>
+      <div class="card-desc">Make Space and related facilitation as community mental health early intervention for depression. Not therapy — the kind of regular, structured creative engagement that evidence shows reduces depression severity and prevents escalation.</div>
+      <button class="expand-btn">Explore trajectory ↓</button>
+      <div class="card-details">
+        <ul class="specialties">
+          <li>Make Space — weekly online facilitation, year-long curriculum, living case study of creative health practice</li>
+          <li>Other Bodies tools — emotional compass, star chart, topography — original clinical creative instruments</li>
+          <li>Document, study, publish — Make Space becomes an evidence-based program over time</li>
+          <li>Train facilitators to deliver the model — the multiplier that scales the creative health work beyond one practitioner</li>
+          <li>Social prescribing integration — partnering with health systems for formal program referrals</li>
+        </ul>
+      </div>
+      <div class="card-footer">Meaning layer · Community reach · Evidence in the making</div>
+    </div>
+
+    <div class="career-card" onclick="toggleCard(this)">
+      <div class="card-num">05</div>
+      <div class="card-title">Research — Depression &amp; Creative Health</div>
+      <div class="card-desc">A coherent body of work examining how creative and arts-based approaches to depression can be designed, adapted, and delivered at scale — in underserved settings, through non-specialist practitioners, with accessibility at the centre.</div>
+      <button class="expand-btn">Explore threads ↓</button>
+      <div class="card-details">
+        <ul class="specialties">
+          <li>Conceptual paper — learning systems design as infrastructure for accessible depression care (write now)</li>
+          <li>Systematic review — what the evidence shows about creative approaches to depression (MSc thesis)</li>
+          <li>Implementation science — how creative depression interventions are taken up in real-world settings (PhD)</li>
+          <li>Task-shifting and training systems — how non-specialists can be trained to deliver simplified approaches</li>
+          <li>Disability, depression, and access — the underresearched intersection</li>
+          <li>International partnerships — low-and-middle-income country collaborations via LSHTM network</li>
+        </ul>
+      </div>
+      <div class="card-footer">Legacy contribution · Knowledge that travels · The multiplier</div>
+    </div>
+
+    <div class="career-card" onclick="toggleCard(this)">
+      <div class="card-num">06</div>
+      <div class="card-title">Academic Leadership — Teaching &amp; Training</div>
+      <div class="card-desc">Contributing to the next generation of practitioners and researchers. Post-PhD, an academic role with a global health and depression focus allows the research program, the clinical training of others, and the institutional presence to all run simultaneously.</div>
+      <button class="expand-btn">Explore scope ↓</button>
+      <div class="card-details">
+        <ul class="specialties">
+          <li>Counselling or clinical psychology — depression, creative health, accessible practice</li>
+          <li>Global mental health — task-shifting, implementation science, health systems</li>
+          <li>Learning design and knowledge translation in health contexts</li>
+          <li>Disability studies and the disability-depression intersection</li>
+          <li>Supervision of practicum students and emerging researchers</li>
+        </ul>
+      </div>
+      <div class="card-footer">Prestige · Research platform · Training the next generation</div>
+    </div>
+
+    <div class="career-card" onclick="toggleCard(this)">
+      <div class="card-num">07</div>
+      <div class="card-title">Fine Art Practice — Dear Ordinary</div>
+      <div class="card-desc">An eight-phase visual and conceptual art series exploring the body, grief, and the sacred in everyday life. Not required to be useful. The practice that keeps the clinical and research work honest, embodied, and generative.</div>
+      <button class="expand-btn">Explore the series ↓</button>
+      <div class="card-details">
+        <ul class="specialties">
+          <li>Drawings, paintings, and written reflections — shared quarterly as they happen</li>
+          <li>Grounded question: what if the ordinary body, in the ordinary day, is already enough?</li>
+          <li>Eight phases — body, ground, grief, the sacred — questions that deepen rather than resolve</li>
+          <li>The switching is the mechanism. Protecting Dear Ordinary protects the whole portfolio.</li>
+        </ul>
+      </div>
+      <div class="card-footer">Meaning · Embodied knowing · The practice that makes everything else possible</div>
+    </div>
+
+    <div class="career-card" onclick="toggleCard(this)">
+      <div class="card-num">08</div>
+      <div class="card-title">Thought Leadership &amp; Public Writing</div>
+      <div class="card-desc">Writing, speaking, and shaping the public conversation at the intersection of depression, creative health, disability justice, and accessible care. The Substack as public scholarship. Books and keynotes as the long form.</div>
+      <button class="expand-btn">Explore formats ↓</button>
+      <div class="card-details">
+        <ul class="specialties">
+          <li>Accessible Learning Labs Substack — weekly, the highest-compounding professional asset</li>
+          <li>Conceptual and research papers — from the field's periphery to its centre over time</li>
+          <li>Books — for practitioners, for people living with depression, for the field</li>
+          <li>Keynote speaking at global mental health, arts in health, and accessible learning conferences</li>
+          <li>Media — accessible public communication about depression that the field rarely produces well</li>
+        </ul>
+      </div>
+      <div class="card-footer">Platform · Reach · Lasting influence</div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     PANEL 3 — POSITIONING
+══════════════════════════════════════ -->
+<div class="panel" id="panel-positioning">
+<div class="pos-wrap">
+  <p class="panel-intro">Most people working on depression are trained in one lane. This path is different — and the intersection is where the rarest contribution lives.</p>
+
+  <div class="statement-block">
+    <p>I am building toward becoming a clinician, researcher, and practitioner whose specific expertise is depression — how it works in the body and the brain, how it responds to creative and expressive approaches, how those approaches can be made accessible to the people who currently cannot reach them, and how the learning systems that train practitioners to deliver them can be designed to scale. No one else is building this from this particular combination of foundations.</p>
+  </div>
+
+  <div class="dark-block">
+    <h3>Unusual competitive advantage — the intersections that matter</h3>
+    <p class="sub">The fields that sit between these pairs are where underserved, high-value work exists. Most researchers and practitioners live in one. This path builds fluency across all of them — in service of one problem.</p>
+    <div class="ix-row">
+      <span class="ix-tag">Depression + creative health</span>
+      <span class="ix-tag">Clinical depth + systems scale</span>
+      <span class="ix-tag">Learning design + task-shifting</span>
+      <span class="ix-tag">Disability + mental health access</span>
+      <span class="ix-tag">Neuroscience + expressive arts</span>
+      <span class="ix-tag">Research + direct practice</span>
+      <span class="ix-tag">Global health + local care</span>
+      <span class="ix-tag">Art + clinical science</span>
+      <span class="ix-tag">Accessibility + depression treatment</span>
+      <span class="ix-tag">Evidence + embodied knowledge</span>
+    </div>
+  </div>
+
+  <p class="section-label">The portfolio model</p>
+  <div class="pillars">
+    <div class="pillar">
+      <div class="pillar-label">Core income</div>
+      <div class="pillar-title">Learning Design in Health</div>
+      <p class="pillar-desc">A senior role in the health sector — health authority, research institution, or global health organisation — where learning design expertise is applied directly to mental health systems. The stable foundation that makes everything else sustainable.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-label">Growth income</div>
+      <div class="pillar-title">Accessible Learning Labs</div>
+      <p class="pillar-desc">Consulting at the intersection of accessibility, disability equity, and learning systems design for health and research organisations. The Substack builds the intellectual platform. The consulting builds the case studies that become research.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-label">Clinical &amp; research</div>
+      <div class="pillar-title">Depression Practice &amp; Research Program</div>
+      <p class="pillar-desc">Direct therapeutic work with people experiencing depression, integrated with a research program on scalable creative approaches to treatment. The clinical work generates the knowledge. The research generates the evidence that travels.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-label">Meaning layer</div>
+      <div class="pillar-title">Creative Health &amp; Fine Art</div>
+      <p class="pillar-desc">Make Space as community mental health early intervention. Dear Ordinary as fine art practice. The switching between these modes and the clinical-research work is not inefficiency. It is the epistemological foundation — the knowledge that the analytical work cannot generate alone.</p>
+    </div>
+  </div>
+
+  <div class="closing-block">
+    <p>Depression is the leading cause of disability worldwide. The person building toward this is not an epidemiologist. She is a psychologist, researcher, facilitator, and artist who understands depression from the inside of clinical work, from the inside of creative practice, and from the inside of the research evidence — and who has spent fifteen years mastering the learning systems design that makes knowledge travel. That specific combination does not exist in the field yet. That is the point.</p>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     PANEL 4 — DEPRESSION PLAN
+══════════════════════════════════════ -->
+<div class="panel" id="panel-depressionplan">
+<div class="step-wrap">
+  <p class="panel-intro">Depression is the leading cause of disability worldwide. More than three quarters of people experiencing it in low-income countries receive no care at all. This is the step-by-step plan for working on that — locally, in the room with a person, and at the scale where systems change. Each step has options, and each phase ends on a condition met rather than a date reached, so the path can flex without losing its direction.</p>
+
+  <div class="step-phase">
+    <div class="step-phase-eye">Phase One · Ground</div>
+    <div class="step-phase-title">Immediate Foundation — <em>Before Changing Anything Structural</em></div>
+    <p class="step-phase-desc">Three moves that cost little and reveal a great deal, run concurrently with the job search and the existing portfolio. <em>Complete when:</em> the conceptual paper is submitted, one Make Space cohort has pre and post data, and the working role is inside the sector.</p>
+  </div>
+
+  <div class="step-block">
+    <div class="step-header" onclick="toggleStep(this)">
+      <div class="step-left"><span class="step-num">Step 01</span><span class="badge b-active">Phase one</span></div>
+      <div class="step-body"><div class="step-title">Read the Foundational Literature</div><div class="step-sub">Three months · No prerequisites · Transforms the quality of everything that follows</div></div>
+      <button class="toggle-btn">Explore ↓</button>
+    </div>
+    <div class="step-detail">
+      <p class="detail-intro">These are not background reading. They are the intellectual framework the future research will sit inside. Read them in this order.</p>
+      <div class="options-grid">
+        <div class="opt"><div class="opt-label">Start here</div><div class="opt-name"><a href="https://www.macmillan.com/books/9781509549573/wherethereisno" target="_blank" rel="noopener">Where There Is No Psychiatrist — Vikram Patel</a></div><div class="opt-desc">The most important practical text in global mental health. Task-shifting, community care, and what it actually means to treat depression at scale. The model for the career, not a detour from it.</div></div>
+        <div class="opt"><div class="opt-label">Then this</div><div class="opt-name"><a href="https://www.thelancet.com/journals/lanpsy/article/PIIS2215-0366(18)30443-4/fulltext" target="_blank" rel="noopener">Lancet Commission on Global Mental Health 2018</a></div><div class="opt-desc">The foundational policy document for the current state of the field. Defines the treatment gap, sets the agenda, maps where additional effort has the most leverage.</div></div>
+        <div class="opt"><div class="opt-label">Creative health evidence</div><div class="opt-name"><a href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(19)31869-6/fulltext" target="_blank" rel="noopener">Fancourt &amp; Finn, The Lancet 2019</a></div><div class="opt-desc">The epidemiological foundation for creative health as a legitimate intervention for depression. This is the evidence base the creative health work will eventually contribute to and build on.</div></div>
+        <div class="opt"><div class="opt-label">Systems</div><div class="opt-name"><a href="https://www.who.int/publications/i/item/9789241549790" target="_blank" rel="noopener">WHO mhGAP Intervention Guide</a></div><div class="opt-desc">The WHO protocol for non-specialist delivery of mental health interventions. Essential for designing scalable approaches that can be delivered by community practitioners.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step-block">
+    <div class="step-header" onclick="toggleStep(this)">
+      <div class="step-left"><span class="step-num">Step 02</span><span class="badge b-active">Phase one</span></div>
+      <div class="step-body"><div class="step-title">Write the Conceptual Paper</div><div class="step-sub">Three to six months · No university affiliation required · First presence in the research ecosystem</div></div>
+      <button class="toggle-btn">Explore ↓</button>
+    </div>
+    <div class="step-detail">
+      <p class="detail-intro">The argument that only this combination of expertise can make: that designing the training systems which deliver depression interventions is as important as designing the interventions themselves — and that accessibility must be built into both. Write it now.</p>
+      <div class="options-grid">
+        <div class="opt"><div class="opt-label">Primary target</div><div class="opt-name"><a href="https://www.cambridge.org/core/journals/global-mental-health" target="_blank" rel="noopener">Global Mental Health — Cambridge</a></div><div class="opt-desc">Open access, peer-reviewed, explicitly oriented toward the treatment gap. The right audience for a piece on scalable accessible approaches to depression.</div></div>
+        <div class="opt"><div class="opt-label">Alternative</div><div class="opt-name"><a href="https://www.sciencedirect.com/journal/the-arts-in-psychotherapy" target="_blank" rel="noopener">Arts in Psychotherapy</a></div><div class="opt-desc">The leading peer-reviewed journal for arts-based therapeutic approaches. Best fit if the paper foregrounds the creative health methodology over the systems design framing.</div></div>
+        <div class="opt"><div class="opt-label">Systems angle</div><div class="opt-name"><a href="https://ijmhs.biomedcentral.com/" target="_blank" rel="noopener">International Journal of Mental Health Systems</a></div><div class="opt-desc">Open access, focused on mental health systems design and delivery. Best fit if the paper foregrounds learning systems infrastructure and scalable delivery.</div></div>
+        <div class="opt"><div class="opt-label">The argument</div><div class="opt-name">Learning systems design as infrastructure for accessible depression care</div><div class="opt-desc">The gap the field has not named: you cannot scale a depression intervention without designing the learning system that trains the people who deliver it. That design is as important as the intervention itself — and it must be built for access from the beginning.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step-block">
+    <div class="step-header" onclick="toggleStep(this)">
+      <div class="step-left"><span class="step-num">Step 03</span><span class="badge b-active">Phase one</span></div>
+      <div class="step-body"><div class="step-title">Secure the Right Job</div><div class="step-sub">Active job search · Health sector · Everything else rests on this stability</div></div>
+      <button class="toggle-btn">Explore ↓</button>
+    </div>
+    <div class="step-detail">
+      <p class="detail-intro">The right organisation is in the health sector. Moving the day job inside health builds the vocabulary, the relationships, and the systemic context that shape everything downstream. The title matters less than the sector and the culture.</p>
+      <div class="options-grid">
+        <div class="opt"><div class="opt-label">Strongest fit</div><div class="opt-name">Health Authority Learning &amp; Development</div><div class="opt-desc">BC Mental Health and Substance Use Services, Vancouver Coastal Health, Fraser Health. Senior learning design in health authorities puts you inside health systems while deploying your full existing expertise.</div></div>
+        <div class="opt"><div class="opt-label">Research angle</div><div class="opt-name">Mental Health Research Institution</div><div class="opt-desc">BC Children's Hospital Research Institute, Centre for Addictions Research of BC, CAMH Toronto. Learning and knowledge translation roles in mental health research organisations.</div></div>
+        <div class="opt"><div class="opt-label">International thread</div><div class="opt-name">Global Health NGO — Canadian Office</div><div class="opt-desc">IDRC, IRC Canada, Save the Children Canada. Organisations with explicit global health mandates where learning design expertise is applied to international programming.</div></div>
+        <div class="opt"><div class="opt-label">Screen for this</div><div class="opt-name">Portfolio-friendly culture</div><div class="opt-desc">The right employer sees outside intellectual and creative work as an asset, not a conflict. Ask directly in interviews how they view staff who maintain active research or creative practices alongside their role.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step-phase">
+    <div class="step-phase-eye">Phase Two · Frame</div>
+    <div class="step-phase-title">Graduate Formation — <em>Research Training and the Field Network</em></div>
+    <p class="step-phase-desc">Leeds and the LSHTM short courses, run together rather than in sequence — both online, both modular. <em>Complete when:</em> the Leeds dissertation is submitted, a trial can be read without deferring to someone else, and a second paper is submitted.</p>
+  </div>
+
+  <div class="step-block">
+    <div class="step-header" onclick="toggleStep(this)">
+      <div class="step-left"><span class="step-num">Step 04</span><span class="badge b-planned">Phase two</span></div>
+      <div class="step-body"><div class="step-title">LSHTM Short Courses — Epidemiology, Statistics, Global Mental Health</div><div class="step-sub">Online · Part-time · Stackable · The cheapest test of whether this reorientation is real</div></div>
+      <button class="toggle-btn">Explore ↓</button>
+    </div>
+    <div class="step-detail">
+      <p class="detail-intro">Three short courses in sequence. Each one builds on the last. Together they give the research vocabulary, quantitative literacy, and field orientation that make everything in the MSc and beyond possible.</p>
+      <div class="options-grid">
+        <div class="opt"><div class="opt-label">First</div><div class="opt-name"><a href="https://www.lshtm.ac.uk/study/courses/short-courses/epidemiology-public-health" target="_blank" rel="noopener">Epidemiology for Public Health — LSHTM</a></div><div class="opt-desc">How health outcomes are measured, how populations are studied, what burden-of-disease means. The conceptual vocabulary for reading depression research. Not to design studies — to understand them.</div></div>
+        <div class="opt"><div class="opt-label">Second</div><div class="opt-name"><a href="https://www.lshtm.ac.uk/study/courses/short-courses/statistics-public-health" target="_blank" rel="noopener">Introduction to Statistics for Public Health — LSHTM</a></div><div class="opt-desc">To read a randomised controlled trial on a depression intervention and understand what the effect size actually means. The minimum threshold for credible research collaboration. Not to run models — to interpret them.</div></div>
+        <div class="opt"><div class="opt-label">Third</div><div class="opt-name"><a href="https://www.lshtm.ac.uk/study/courses/short-courses/global-mental-health" target="_blank" rel="noopener">Global Mental Health — LSHTM</a></div><div class="opt-desc">The treatment gap, task-shifting evidence, policy landscape, and a global cohort of practitioners and researchers. The first international professional community in the field this path is entering.</div></div>
+        <div class="opt"><div class="opt-label">Supplement</div><div class="opt-name"><a href="https://www.harvardglobalhealth.org/global-mental-health-trauma-and-recovery/" target="_blank" rel="noopener">Harvard Global Mental Health: Trauma &amp; Recovery</a></div><div class="opt-desc">Runs partly online. Trauma-informed and culturally adapted approaches to depression. Not a degree — a credible signal and the first substantial international practitioner community.</div></div>
+      </div>
+      <p class="step-note">Complete the epidemiology and statistics short courses before applying to the LSHTM MSc. They prepare you for the content and materially strengthen the application.</p>
+    </div>
+  </div>
+
+  <div class="step-block">
+    <div class="step-header" onclick="toggleStep(this)">
+      <div class="step-left"><span class="step-num">Step 05</span><span class="badge b-planned">Optional</span></div>
+      <div class="step-body"><div class="step-title">MSc in Global Mental Health — LSHTM</div><div class="step-sub">Optional · Reopened at the end of Phase two · Part-time distance</div></div>
+      <button class="toggle-btn">Explore ↓</button>
+    </div>
+    <div class="step-detail">
+      <p class="detail-intro">Held here as optional rather than assumed. The three short courses already carry the research literacy this path asks for; the full master&#8217;s adds a thesis, formal standing in global health, and the graduate network — and adds time before the room. Decide it at the end of Phase two, when the international thread will either have become central or not.</p>
+      <div class="options-grid">
+        <div class="opt"><div class="opt-label">Primary</div><div class="opt-name"><a href="https://www.lshtm.ac.uk/study/courses/masters-degrees/global-mental-health" target="_blank" rel="noopener">MSc Global Mental Health — LSHTM</a></div><div class="opt-desc">Part-time distance. Depression is central to the curriculum. The thesis is the strategic opportunity — design it around creative approaches to depression in underserved settings. This becomes the first substantial piece of peer-reviewed research.</div></div>
+        <div class="opt"><div class="opt-label">Alternative A</div><div class="opt-name"><a href="https://www.kcl.ac.uk/study/postgraduate-taught/courses/global-mental-health-msc" target="_blank" rel="noopener">MSc Global Mental Health — King's College London</a></div><div class="opt-desc">Strong implementation science and culturally adapted intervention focus. Distance options available. A close second if LSHTM timing or entry creates barriers.</div></div>
+        <div class="opt"><div class="opt-label">Alternative B</div><div class="opt-name"><a href="https://www.sfu.ca/gradstudies/apply/programs/health-sciences.html" target="_blank" rel="noopener">MSc Health Sciences — SFU</a></div><div class="opt-desc">If remaining in Vancouver is a priority. Mental health equity and community health researchers at SFU. A domestically-grounded option that keeps you inside the local network being built simultaneously.</div></div>
+        <div class="opt"><div class="opt-label">Thesis focus</div><div class="opt-name">Creative interventions for depression — scalability and accessibility</div><div class="opt-desc">Arts-based or creative approaches to depression in low-resource or underserved settings, with a focus on scalable delivery and accessible design. The foundation of the doctoral proposal and the first substantial publication.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step-phase">
+    <div class="step-phase-eye">Phase Three · The Room</div>
+    <div class="step-phase-title">Clinical Formation — <em>The Room, the Relationship, the Person</em></div>
+    <p class="step-phase-desc">The therapeutic formation that gives everything else its roots. <em>Complete when:</em> the degree is finished, supervised hours are underway, and a caseload exists with depression at its centre. This phase may also turn out to be the destination — a registered practice, a running program, and a published body of work is a complete professional life.</p>
+  </div>
+
+  <div class="step-block">
+    <div class="step-header" onclick="toggleStep(this)">
+      <div class="step-left"><span class="step-num">Step 06</span><span class="badge b-planned">Phase three</span></div>
+      <div class="step-body"><div class="step-title">MA in Counselling Psychology</div><div class="step-sub">SFU · UBC · UVic · Depression as the clinical focus from day one · Arriving with a research profile</div></div>
+      <button class="toggle-btn">Explore ↓</button>
+    </div>
+    <div class="step-detail">
+      <p class="detail-intro">Entering after the LSHTM MSc changes everything about this application. Arriving with epidemiological training, a published research thesis on depression and creative health, and fifteen years of systems expertise. The statement of intent names depression, creative approaches, scalable intervention design, and the global mental health treatment gap. It writes itself now in a way it couldn't have before this conversation.</p>
+      <div class="options-grid">
+        <div class="opt"><div class="opt-label">Primary</div><div class="opt-name"><a href="https://www.sfu.ca/education/graduate/mcp.html" target="_blank" rel="noopener">MA Counselling Psychology — SFU</a></div><div class="opt-desc">Strong community mental health practicum placements. Faculty interests include health psychology, expressive arts, and marginalised populations. Application should explicitly name depression and creative approaches as the research focus.</div></div>
+        <div class="opt"><div class="opt-label">Alternative A</div><div class="opt-name"><a href="https://cnps.educ.ubc.ca/graduate/med-ma/master-of-arts-in-counselling-psychology/" target="_blank" rel="noopener">MA Counselling Psychology — UBC</a></div><div class="opt-desc">Access to UBC's Institute of Mental Health. Strong connections to BC health authorities for practicum placement. Larger faculty increases the chance of finding a supervisor closely aligned with the specific depression and creative health research interest.</div></div>
+        <div class="opt"><div class="opt-label">Alternative B</div><div class="opt-name"><a href="https://www.uvic.ca/education/edpsych/graduate/ma/index.php" target="_blank" rel="noopener">MA Counselling Psychology — UVic</a></div><div class="opt-desc">Smaller program, close supervision. Faculty interests include Indigenous mental health and community approaches — relevant to accessible and culturally adapted depression care.</div></div>
+        <div class="opt"><div class="opt-label">Practicum focus</div><div class="opt-name">Mood disorder clinics · Community mental health · Primary care</div><div class="opt-desc">Request placements where depression is the primary presenting concern. The practicum hours should build direct clinical experience with depressed clients — this is where the intellectual work becomes embodied knowledge.</div></div>
+      </div>
+      <p class="step-note">The statement of intent should name Daisy Fancourt, the task-shifting literature, and the global mental health treatment gap. This is not a generic application. It is the application of someone who has spent four years building toward this specific clinical focus.</p>
+    </div>
+  </div>
+
+  <div class="step-phase">
+    <div class="step-phase-eye">Phase Four · The Question</div>
+    <div class="step-phase-title">The Doctorate — Research Authority &amp; <em>Clinical Licensure</em></div>
+    <p class="step-phase-desc">Optional, and entered only on four conditions: a question that needs doctoral resources, a supervisor who wants it, a publication record that makes the profile legible, and a practice stable enough to hold at reduced volume. If those are never all true at once, not entering is a legitimate outcome.</p>
+  </div>
+
+  <div class="step-block">
+    <div class="step-header" onclick="toggleStep(this)">
+      <div class="step-left"><span class="step-num">Step 07</span><span class="badge b-intent">Phase four</span></div>
+      <div class="step-body"><div class="step-title">Doctorate — Chosen for the Question</div><div class="step-sub">Supervisor is the program · Dissertation on creative approaches to depression · Clinical licensure follows</div></div>
+      <button class="toggle-btn">Explore ↓</button>
+    </div>
+    <div class="step-detail">
+      <p class="detail-intro">The supervisor is the most important decision of this phase. Look for someone whose research touches depression AND creative health, arts-based intervention, community-based mental health, or implementation science. Reach out before applying — the relationship defines the program.</p>
+      <div class="options-grid">
+        <div class="opt"><div class="opt-label">Primary</div><div class="opt-name"><a href="https://psych.ubc.ca/graduate/clinical-psychology/" target="_blank" rel="noopener">PhD Clinical Psychology — UBC</a></div><div class="opt-desc">Access to the School of Population and Public Health, strong mental health research infrastructure, and BC health authority connections for implementation research. Look carefully at faculty working in depression, health psychology, and community-based intervention.</div></div>
+        <div class="opt"><div class="opt-label">Alternative A</div><div class="opt-name"><a href="https://www.sfu.ca/psychology/graduate/clinical.html" target="_blank" rel="noopener">PhD Clinical Psychology — SFU</a></div><div class="opt-desc">Faculty interests include health psychology, equity, and community mental health. Smaller program, closer supervision. SFU's culture tends to support interdisciplinary work across faculties.</div></div>
+        <div class="opt"><div class="opt-label">Alternative B</div><div class="opt-name"><a href="https://www.psychology.utoronto.ca/graduate-program/clinical-program" target="_blank" rel="noopener">PhD Clinical Psychology — University of Toronto</a></div><div class="opt-desc">Access to CAMH — the largest mental health teaching hospital in Canada. If the dissertation requires large clinical datasets or implementation at health system scale, Toronto provides infrastructure Vancouver cannot.</div></div>
+        <div class="opt"><div class="opt-label">Dissertation</div><div class="opt-name">Scalable creative interventions for depression in underserved populations</div><div class="opt-desc">Sits at the intersection of arts-based intervention, accessible delivery models, and learning systems design for task-shifting. Original. Tractable. Nobody else has this combination of expertise to do it. Design the thesis so the knowledge travels beyond the clinical context it studies.</div></div>
+      </div>
+      <p class="step-note">Completing the PhD in Clinical Psychology, combined with the MA and supervised hours, leads to registration as a Registered Psychologist in BC — enabling independent practice, supervision of others, psychological assessment, and the clinical authority to lead programs.</p>
+    </div>
+  </div>
+
+  <div class="step-phase">
+    <div class="step-phase-eye">Phase Five · Deployment</div>
+    <div class="step-phase-title">Deployment — <em>Local Practice, Global Contribution</em></div>
+    <p class="step-phase-desc">The work the whole path was building toward. The portfolio sustained throughout. The creative practice protected as epistemology, not decoration.</p>
+  </div>
+
+  <div class="step-block">
+    <div class="step-header" onclick="toggleStep(this)">
+      <div class="step-left"><span class="step-num">Step 08</span><span class="badge b-opt">Phase five</span></div>
+      <div class="step-body"><div class="step-title">Clinical Practice, Research Program &amp; Make Space Evolved</div><div class="step-sub">The three streams running simultaneously · Local and scalable · The portfolio intact</div></div>
+      <button class="toggle-btn">Explore ↓</button>
+    </div>
+    <div class="step-detail">
+      <p class="detail-intro">By this point the shape of the work is revealed through what the preceding phases have actually produced. The likely structure holds three things simultaneously.</p>
+      <div class="options-grid">
+        <div class="opt"><div class="opt-label">Clinical</div><div class="opt-name">Depression practice with integrated creative approaches</div><div class="opt-desc">A caseload focused on depression, using expressive arts approaches as part of the therapeutic work. Private practice or research hospital embedded role. The direct service layer — the room, the relationship, the person.</div></div>
+        <div class="opt"><div class="opt-label">Research</div><div class="opt-name">Creative approaches to depression — implementation and scale</div><div class="opt-desc">A coherent research program on how arts-based and creative approaches to depression can be delivered at scale, in low-resource settings, through non-specialist practitioners. With international partnerships built through the LSHTM network.</div></div>
+        <div class="opt"><div class="opt-label">Community</div><div class="opt-name">Make Space — tested, documented, deployable</div><div class="opt-desc">No longer a personal curriculum shared publicly. An evidence-based community mental health program with research documentation behind it, a training program for facilitators, and social prescribing partnerships with health systems that refer to it.</div></div>
+        <div class="opt"><div class="opt-label">Optional capstone</div><div class="opt-name"><a href="https://www.vati.bc.ca/art-therapy/at-program-streams/" target="_blank" rel="noopener">Art Therapy Diploma — VATI</a></div><div class="opt-desc">If it still calls after the doctorate. The BFA brought into direct clinical service. The integration of everything, at the point when there is full authority to use it.</div></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     PANEL 5 — RESEARCH LITERACY
+══════════════════════════════════════ -->
+<div class="panel" id="panel-researchlit">
+<div class="step-wrap">
+  <p class="panel-intro">Research methods are a language, not a destination. Learning enough of that language to read the evidence, collaborate with researchers, and generate credible knowledge about depression is what this path is for. Every step here is traceable to one question: does this make me more effective at helping people with depression and building the systems that reach more of them?</p>
+
+  <div class="step-phase">
+    <div class="step-phase-eye">Orientation — Read This First</div>
+    <div class="step-phase-title">What This Is — and <em>What It Is Not</em></div>
+    <p class="step-phase-desc">The distinction that shapes every decision in this tab. Epidemiology is a discipline. Research literacy in service of clinical purpose is a skill set. These are not the same thing.</p>
+  </div>
+
+  <div class="step-block">
+    <div class="step-header" onclick="toggleStep(this)">
+      <div class="step-left"><span class="step-num">Framing</span><span class="badge b-active">Start Here</span></div>
+      <div class="step-body"><div class="step-title">The Clinician-Researcher — Not the Epidemiologist</div><div class="step-sub">Vikram Patel as the model · Research fluency in service of the clinical and creative work</div></div>
+      <button class="toggle-btn">Explore ↓</button>
+    </div>
+    <div class="step-detail">
+      <p class="detail-intro">An epidemiologist designs surveillance systems, models disease distribution, and produces population-level statistical evidence. Most never sit with a patient. That is not this path.</p>
+      <div class="options-grid">
+        <div class="opt"><div class="opt-label">What is being built</div><div class="opt-name">Clinician-researcher with research fluency</div><div class="opt-desc">A psychologist who works directly with people experiencing depression, generates evidence about what helps them, and can collaborate credibly with research teams. The clinical work is primary. The research fluency serves it.</div></div>
+        <div class="opt"><div class="opt-label">The analogy</div><div class="opt-name">A lawyer who can read a financial statement</div><div class="opt-desc">Is not an accountant. They are a lawyer with a useful additional literacy. That is exactly what research methods training is here — a literacy that makes collaboration possible, not a disciplinary identity change.</div></div>
+        <div class="opt"><div class="opt-label">The model</div><div class="opt-name">Vikram Patel</div><div class="opt-desc">Sees patients. Runs randomised trials. Trains community practitioners. Advises WHO. Writes books for general readers. Uses epidemiological evidence to make the case for what he already knows from clinical work. This is the shape of the career being built.</div></div>
+        <div class="opt"><div class="opt-label">The test at every step</div><div class="opt-name">Does this serve the person in the room?</div><div class="opt-desc">Every research methods skill acquired should be traceable back to this: does understanding this make me better at helping people with depression, training others to do the same, or building systems that reach the people currently unreached?</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step-phase">
+    <div class="step-phase-eye">Layer One · Ground and Frame</div>
+    <div class="step-phase-title">Reading the Evidence — <em>Fluency in the Field's Language</em></div>
+    <p class="step-phase-desc">The smallest possible investment that gives enough to engage with the global mental health research literature, collaborate with researchers, and write work the field takes seriously.</p>
+  </div>
+
+  <div class="step-block">
+    <div class="step-header" onclick="toggleStep(this)">
+      <div class="step-left"><span class="step-num">Step 01</span><span class="badge b-active">Phase one</span></div>
+      <div class="step-body"><div class="step-title">Read the Depression Evidence Base</div><div class="step-sub">Self-directed · No prerequisites · Makes methods training meaningful</div></div>
+      <button class="toggle-btn">Explore ↓</button>
+    </div>
+    <div class="step-detail">
+      <p class="detail-intro">Before any formal methods training, read the research that defines the current state of depression treatment — to understand what the evidence says and where the gaps are. This is the content knowledge that makes methods training legible.</p>
+      <div class="options-grid">
+        <div class="opt"><div class="opt-label">Treatment evidence</div><div class="opt-name"><a href="https://www.cochranelibrary.com" target="_blank" rel="noopener">Cochrane Reviews — Psychological Treatments for Depression</a></div><div class="opt-desc">Systematic reviews of CBT, behavioural activation, interpersonal therapy, and arts-based approaches. The most rigorous summaries of what works, for whom, and at what effect size. Free online. Read the depression reviews first.</div></div>
+        <div class="opt"><div class="opt-label">Task-shifting evidence</div><div class="opt-name">Patel et al. — Healthy Activity Program and Thinking Healthy Program</div><div class="opt-desc">The core empirical evidence for task-shifted depression treatment in low-resource settings. Reading these trials shows exactly how randomised controlled trials work in global mental health — from the inside of a real, consequential research program.</div></div>
+        <div class="opt"><div class="opt-label">Creative health evidence</div><div class="opt-name">Daisy Fancourt — full publication record on arts and depression</div><div class="opt-desc">Using large epidemiological datasets to study the relationship between arts engagement and depression outcomes. This is the evidence base the creative health work will eventually contribute to. Understand it thoroughly before building on it.</div></div>
+        <div class="opt"><div class="opt-label">Policy</div><div class="opt-name"><a href="https://www.who.int/publications/i/item/9789241506021" target="_blank" rel="noopener">WHO Mental Health Action Plan 2013–2030</a></div><div class="opt-desc">What governments and multilateral bodies are committed to — and where implementation is failing. Understanding this tells you where the leverage points are for systems-level work on depression.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step-block">
+    <div class="step-header" onclick="toggleStep(this)">
+      <div class="step-left"><span class="step-num">Step 02</span><span class="badge b-planned">Phase two</span></div>
+      <div class="step-body"><div class="step-title">LSHTM — Epidemiology for Public Health</div><div class="step-sub">Online · The conceptual vocabulary · Not to design studies — to understand them</div></div>
+      <button class="toggle-btn">Explore ↓</button>
+    </div>
+    <div class="step-detail">
+      <p class="detail-intro">The foundational course. Study design, measures of disease frequency, measures of association, bias, confounding, causation. These concepts appear in every global mental health paper on depression. Understanding them is the difference between engaging with evidence and deferring to it.</p>
+      <div class="options-grid">
+        <div class="opt"><div class="opt-label">Primary</div><div class="opt-name"><a href="https://www.lshtm.ac.uk/study/courses/short-courses/epidemiology-public-health" target="_blank" rel="noopener">Epidemiology for Public Health — LSHTM Online</a></div><div class="opt-desc">Covers study design, measures of disease frequency and association, bias, confounding, and causation. The vocabulary for reading and critiquing depression research. The minimum foundation for the statistics course that follows.</div></div>
+        <div class="opt"><div class="opt-label">Alternative</div><div class="opt-name"><a href="https://www.coursera.org/learn/epidemiology" target="_blank" rel="noopener">Epidemiology: The Basic Science of Public Health — UNC on Coursera</a></div><div class="opt-desc">Lower cost, more flexible. Less prestigious than LSHTM but covers the core concepts. A reasonable alternative if timing or cost creates a barrier — do the LSHTM course when applying to the MSc.</div></div>
+        <div class="opt"><div class="opt-label">Purpose check</div><div class="opt-name">Why this course is on this path</div><div class="opt-desc">The global mental health treatment gap for depression is documented in epidemiological terms — DALYs, prevalence, incidence, treatment coverage rates. Understanding those terms lets you use them in your own writing, grant applications, and conversations with researchers who take them for granted.</div></div>
+      </div>
+      <p class="step-note">This course exists not to produce an epidemiologist but to produce someone who can walk into a global mental health research meeting and understand what is being discussed.</p>
+    </div>
+  </div>
+
+  <div class="step-block">
+    <div class="step-header" onclick="toggleStep(this)">
+      <div class="step-left"><span class="step-num">Step 03</span><span class="badge b-planned">Phase two</span></div>
+      <div class="step-body"><div class="step-title">LSHTM — Introduction to Statistics for Public Health</div><div class="step-sub">Online · Reading trials with confidence · Not becoming a statistician</div></div>
+      <button class="toggle-btn">Explore ↓</button>
+    </div>
+    <div class="step-detail">
+      <p class="detail-intro">The goal is specific and bounded: to be able to read the results section of a clinical trial on a depression intervention and understand what the numbers mean — effect sizes, confidence intervals, p-values, what the statistical model is actually doing.</p>
+      <div class="options-grid">
+        <div class="opt"><div class="opt-label">Course</div><div class="opt-name"><a href="https://www.lshtm.ac.uk/study/courses/short-courses/statistics-public-health" target="_blank" rel="noopener">Introduction to Statistics for Public Health — LSHTM Online</a></div><div class="opt-desc">Descriptive statistics, probability, hypothesis testing, regression — applied in health research. Not a mathematics course. A reasoning course. The emphasis is on what statistical results mean and when to trust them.</div></div>
+        <div class="opt"><div class="opt-label">Practical payoff</div><div class="opt-name">Reading the Fancourt depression papers with new eyes</div><div class="opt-desc">After this course, return to Daisy Fancourt's key papers. The multivariable regression models she uses on large cohort data will now be legible in a way they weren't before. This is the direct payoff for the clinical and creative health work being built toward.</div></div>
+        <div class="opt"><div class="opt-label">What this is not</div><div class="opt-name">Training to conduct statistical analyses independently</div><div class="opt-desc">Research psychologists collaborate with biostatisticians for complex analyses. The role is to understand the outputs well enough to interpret them, question them, and communicate them. A good research team has a statistician. The clinical and intervention knowledge is the contribution here.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step-phase">
+    <div class="step-phase-eye">Layer Two · Frame</div>
+    <div class="step-phase-title">Generating Evidence — <em>From Reading to Producing</em></div>
+    <p class="step-phase-desc">The MSc is where research literacy becomes research competence. The thesis is not a hoop — it is the first substantial piece of evidence generated about depression and creative health.</p>
+  </div>
+
+  <div class="step-block">
+    <div class="step-header" onclick="toggleStep(this)">
+      <div class="step-left"><span class="step-num">Step 04</span><span class="badge b-planned">Phase two</span></div>
+      <div class="step-body"><div class="step-title">Research Methods Training — Embedded in the MSc</div><div class="step-sub">Qualitative and quantitative · Implementation science · The thesis as the real output</div></div>
+      <button class="toggle-btn">Explore ↓</button>
+    </div>
+    <div class="step-detail">
+      <p class="detail-intro">The LSHTM MSc includes formal research methods training. The methods learned here are chosen because they are the ones used to study depression in global health contexts — not methods training in the abstract.</p>
+      <div class="options-grid">
+        <div class="opt"><div class="opt-label">Qualitative methods</div><div class="opt-name">Thematic analysis · Grounded theory · Framework analysis</div><div class="opt-desc">Particularly relevant for studying how creative and expressive approaches to depression are experienced by participants — the texture of what it feels like to engage with art-making as a pathway through depression. Methods that can be conducted independently and that align with existing practice knowledge.</div></div>
+        <div class="opt"><div class="opt-label">Mixed methods</div><div class="opt-name">Outcome measures alongside in-depth accounts of experience</div><div class="opt-desc">The most powerful research in creative health uses both. Mixed methods is increasingly the standard for intervention research. Understanding how to design studies that hold quantitative and qualitative evidence together is a genuine skill that few researchers have.</div></div>
+        <div class="opt"><div class="opt-label">Implementation science</div><div class="opt-name">How interventions move from evidence into practice</div><div class="opt-desc">The study of why evidence-based depression interventions fail to reach most people who need them — and what to do about it. The methodological field that most directly matches the systems-level work being built toward. Learning design expertise is directly applicable here.</div></div>
+        <div class="opt"><div class="opt-label">The thesis</div><div class="opt-name">First original contribution to the evidence base</div><div class="opt-desc">Design it around creative or arts-based approaches to depression in underserved or low-resource settings. The methods approach should be one that can be executed well and produces something genuinely useful — not the most sophisticated method available but the right one for the question being asked.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step-phase">
+    <div class="step-phase-eye">Layer Three · The Question</div>
+    <div class="step-phase-title">Research Independence — <em>The Dissertation and the Grant</em></div>
+    <p class="step-phase-desc">Doctoral methods training is shaped entirely by the dissertation question. Every method developed should be traceable to something specific that question requires.</p>
+  </div>
+
+  <div class="step-block">
+    <div class="step-header" onclick="toggleStep(this)">
+      <div class="step-left"><span class="step-num">Step 05</span><span class="badge b-intent">Phase four</span></div>
+      <div class="step-body"><div class="step-title">Clinical Research Methods — Chosen for the Question</div><div class="step-sub">Feasibility studies · Single-case experimental design · Qualitative deepened · Biostatistician as collaborator</div></div>
+      <button class="toggle-btn">Explore ↓</button>
+    </div>
+    <div class="step-detail">
+      <p class="detail-intro">The methods developed in the PhD should be the right tools for the research question — not the most sophisticated methods available. The question is: what is the most credible way to study whether creative approaches to depression work, and for whom?</p>
+      <div class="options-grid">
+        <div class="opt"><div class="opt-label">Feasibility studies</div><div class="opt-name">Testing creative interventions before scaling them</div><div class="opt-desc">Before a full randomised trial, a feasibility study asks: can this intervention be delivered as intended? Do participants engage? What outcomes should a larger trial measure? This is the right scale for a dissertation on creative approaches to depression — rigorous, achievable, and genuinely useful to the field.</div></div>
+        <div class="opt"><div class="opt-label">Single-case design</div><div class="opt-name">Studying individual response to creative depression interventions</div><div class="opt-desc">Well-suited to clinical psychology research on new interventions. Allows rigorous study of whether a creative health approach is working for a specific person over time. Bridges the gap between clinical observation and research evidence.</div></div>
+        <div class="opt"><div class="opt-label">Qualitative — deepened</div><div class="opt-name">Interpretative phenomenological analysis · Narrative inquiry</div><div class="opt-desc">What is the lived experience of engaging with creative and expressive practices as a pathway through depression? These methods answer that question — and draw on the same sensibility as the fine art and facilitation practice. Not lesser methods. Different questions.</div></div>
+        <div class="opt"><div class="opt-label">Collaboration model</div><div class="opt-name">Biostatistician as collaborator, not dependency</div><div class="opt-desc">The doctoral program has biostatistical support. For quantitative components, collaborate with a statistician rather than attempting to become one. The clinical and intervention knowledge is the contribution. Their expertise is the analytical rigour. This is how research teams work.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step-block">
+    <div class="step-header" onclick="toggleStep(this)">
+      <div class="step-left"><span class="step-num">Step 06</span><span class="badge b-intent">Phase four</span></div>
+      <div class="step-body"><div class="step-title">Grant Writing as Applied Research Literacy</div><div class="step-sub">CIHR · SSHRC · Wellcome · The skill that funds the work and proves the thinking</div></div>
+      <button class="toggle-btn">Explore ↓</button>
+    </div>
+    <div class="step-detail">
+      <p class="detail-intro">Writing a research grant is the most demanding test of research literacy — it requires demonstrating to expert reviewers that you understand the evidence base, can identify a genuine gap, and have the methods to address it. It is also the practical skill that makes an independent research program possible.</p>
+      <div class="options-grid">
+        <div class="opt"><div class="opt-label">Primary funder</div><div class="opt-name"><a href="https://cihr-irsc.gc.ca/e/193.html" target="_blank" rel="noopener">CIHR — Canadian Institutes of Health Research</a></div><div class="opt-desc">The primary federal funder of health research in Canada. Funds mental health research including psychosocial and arts-based interventions. Apply for graduate fellowships and small project grants before the main research program. Practice the genre early.</div></div>
+        <div class="opt"><div class="opt-label">Arts and health</div><div class="opt-name"><a href="https://wellcome.org/grant-funding/schemes/mental-health" target="_blank" rel="noopener">Wellcome Trust — Mental Health Priority Area</a></div><div class="opt-desc">Has made mental health a strategic priority and funds innovative approaches including arts-based interventions. Relevant for the international dimension of the research — particularly work in low-and-middle-income country contexts.</div></div>
+        <div class="opt"><div class="opt-label">Humanities angle</div><div class="opt-name"><a href="https://www.sshrc-crsh.gc.ca/home-accueil-eng.aspx" target="_blank" rel="noopener">SSHRC — Social Sciences and Humanities Research Council</a></div><div class="opt-desc">The creative health and arts-based intervention work sits at the intersection of health and humanities — making SSHRC a relevant funder alongside CIHR. Framing work for both agencies increases the funding surface area substantially.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step-phase">
+    <div class="step-phase-eye">Layer Four · Throughout</div>
+    <div class="step-phase-title">The Outputs — <em>What Research Literacy Actually Produces</em></div>
+    <p class="step-phase-desc">Research literacy is not an internal achievement. It is what allows the clinical and creative work to generate knowledge that others can build on.</p>
+  </div>
+
+  <div class="step-block">
+    <div class="step-header" onclick="toggleStep(this)">
+      <div class="step-left"><span class="step-num">Step 07</span><span class="badge b-active">Ongoing</span></div>
+      <div class="step-body"><div class="step-title">Publication — Starting Now, Growing Over Time</div><div class="step-sub">Conceptual paper first · Thesis second · Empirical studies during and after the PhD</div></div>
+      <button class="toggle-btn">Explore ↓</button>
+    </div>
+    <div class="step-detail">
+      <p class="detail-intro">The publication record builds gradually and each piece reflects the stage of training. The progression is the story of growing research independence in service of one coherent question about depression.</p>
+      <div class="options-grid">
+        <div class="opt"><div class="opt-label">Now</div><div class="opt-name">Conceptual paper — learning systems and accessible depression care</div><div class="opt-desc">No university affiliation required. Write it now. The argument the field has not made: that designing the training systems delivering depression interventions is as important as designing the interventions themselves, and accessibility must be built into both.</div></div>
+        <div class="opt"><div class="opt-label">Phase two</div><div class="opt-name">Systematic review — creative approaches to depression</div><div class="opt-desc">What does the evidence show about arts-based and creative interventions for depression? A rigorous systematic review answers this question, becomes the thesis, and is published as a stand-alone paper — the evidence map the dissertation builds on.</div></div>
+        <div class="opt"><div class="opt-label">Phase four</div><div class="opt-name">Empirical studies from the dissertation</div><div class="opt-desc">The dissertation generates two to three publishable papers. Each chapter is a paper in preparation. This is how the publication record grows substantively — not through isolated efforts but through a single sustained research program.</div></div>
+        <div class="opt"><div class="opt-label">Throughout</div><div class="opt-name">Accessible Learning Labs Substack as public scholarship</div><div class="opt-desc">Not separate from the research record — its public face. Writing clearly about depression, creative health, and accessible care for a practitioner audience is knowledge translation that academic publications cannot do. Both matter. Both compound.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step-block">
+    <div class="step-header" onclick="toggleStep(this)">
+      <div class="step-left"><span class="step-num">Anchor</span><span class="badge b-parallel">Always</span></div>
+      <div class="step-body"><div class="step-title">The Test at Every Decision Point</div><div class="step-sub">Does this make me more effective at helping people with depression — in the room and at scale?</div></div>
+      <button class="toggle-btn">Explore ↓</button>
+    </div>
+    <div class="step-detail">
+      <p class="detail-intro">Research methods training is a means, not an end. At every decision point — which course to take, which methods to develop, which papers to write — the orienting question is the same.</p>
+      <div class="options-grid">
+        <div class="opt"><div class="opt-label">Clinical</div><div class="opt-name">Does this make me better at sitting with a depressed person?</div><div class="opt-desc">Research training that deepens the clinical understanding — by revealing what the evidence shows about depression, what works, and for whom — serves this directly. Research training that pulls attention away from the clinical relationship without obvious payoff should be questioned.</div></div>
+        <div class="opt"><div class="opt-label">Systems</div><div class="opt-name">Does this help design systems that reach people who currently can't access care?</div><div class="opt-desc">Implementation science, learning systems design, and task-shifting research all serve this question directly. Methods that illuminate how to make depression treatment more accessible — across resource levels, cultures, and delivery contexts — are load-bearing on this path.</div></div>
+        <div class="opt"><div class="opt-label">Creative</div><div class="opt-name">Does this deepen understanding of why creative approaches to depression work?</div><div class="opt-desc">The creative health practice needs a research foundation to travel beyond the room where it happens. Methods that build that foundation — qualitative studies of participant experience, feasibility trials, systematic reviews — are in direct service of the core purpose.</div></div>
+        <div class="opt"><div class="opt-label">Portfolio</div><div class="opt-name">Does this keep the switching intact?</div><div class="opt-desc">Research literacy should not collapse the portfolio into a single analytical mode. The fine art practice, the facilitation, the creative health work generate a kind of knowledge about depression that methods training cannot. Both are necessary. The test is whether research work is enriching the creative work or quietly replacing it.</div></div>
+      </div>
+      <p class="step-note">This is not a path toward becoming an epidemiologist. It is a path toward becoming a psychologist, researcher, and practitioner who understands depression deeply enough — from the inside of clinical work, from the inside of creative practice, and from the inside of the research evidence — to contribute something the field genuinely needs and currently lacks.</p>
+    </div>
+  </div>
+
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     PANEL 6 — CHALLENGES
+══════════════════════════════════════ -->
+<div class="panel" id="panel-challenges">
+<div class="ch-wrap">
+
+  <p class="panel-intro">Every serious career plan has genuine weaknesses. Naming them honestly — and working with them rather than around them — is what separates a plan that holds over twenty years from one that quietly collapses under its own ambition. These are the real challenges, assessed through the 80,000 Hours lens, with options for turning each one into deeper competence.</p>
+
+  <div class="ch-intro-block">
+    <p>The challenges below are not reasons to abandon the path. They are the friction points where the most important decisions will be made. A thoughtful, senior person in the global mental health field — someone who cares about the problem and has no stake in making you feel good — would raise every one of these. They are raised here first, so that the answers can be built into the path rather than discovered too late.</p>
+  </div>
+
+  <!-- CHALLENGE 1 -->
+  <div class="ch-block">
+    <div class="ch-header" onclick="toggleChallenge(this)">
+      <div class="ch-left"><span class="ch-num">Challenge 01</span><span class="ch-badge cb-timeline">Timeline</span></div>
+      <div class="ch-body">
+        <div class="ch-title">The path is long, and pace is the thing most easily got wrong</div>
+        <div class="ch-sub">Sequencing risk · Compounding load · Neither rushing nor drifting is free</div>
+      </div>
+      <button class="ch-toggle">Explore ↓</button>
+    </div>
+    <div class="ch-detail">
+      <p class="ch-statement">80,000 Hours is consistently cautious about long credential sequences, and the caution is worth taking seriously — but it is advice about leverage, not about speed. The honest version of this challenge is not &#8220;this takes too long.&#8221; It is that a long path can be got wrong in two opposite directions: by rushing it, so the work thins out and the person carrying it does not last; or by drifting, so phases blur and nothing ever closes. The response to both is the same, and it is the reason this plan is now keyed to conditions rather than years — a stage ends when its condition is met, which is answerable, rather than when a date passes, which only generates a standing sense of being behind.</p>
+
+      <div class="ch-section-eye">The specific risks</div>
+      <div class="ch-options">
+        <div class="ch-opt">
+          <div class="ch-opt-label">Risk A</div>
+          <div class="ch-opt-name">Credential obsolescence</div>
+          <div class="ch-opt-desc">The global mental health field's understanding of what works for depression will continue to evolve. The dissertation question you identify now may be partially answered by others before you complete it. The specific gap you're training to fill may shift.</div>
+        </div>
+        <div class="ch-opt">
+          <div class="ch-opt-label">Risk B</div>
+          <div class="ch-opt-name">Opportunity cost of sequencing</div>
+          <div class="ch-opt-desc">A strict waterfall makes every delay compound. The response is to run what can genuinely run together — Leeds and the LSHTM short courses — and to make the two heaviest stages, the master&#8217;s and any doctorate, conditional rather than scheduled.</div>
+        </div>
+        <div class="ch-opt">
+          <div class="ch-opt-label">Risk C</div>
+          <div class="ch-opt-name">The field moves on</div>
+          <div class="ch-opt-desc">Task-shifting, creative health, and implementation science are growing areas now, and the specific intersection may be better populated by the time the later phases arrive. The response is not to hurry but to publish throughout — a contribution established in the open, phase by phase, does not depend on arriving first.</div>
+        </div>
+        <div class="ch-opt">
+          <div class="ch-opt-label">Risk D</div>
+          <div class="ch-opt-name">Burnout before arrival</div>
+          <div class="ch-opt-desc">Part-time study alongside a career, a consulting practice, and a portfolio of creative projects is a sustained demand however long it runs. The risk is not failure to complete — it is arriving depleted, with the most important work still ahead. This is the argument for naming, in every phase, what is carried and what is set down.</div>
+        </div>
+      </div>
+
+      <div class="ch-section-eye">Options — turning this challenge into positioning</div>
+      <div class="ch-options">
+        <div class="ch-opt">
+          <div class="ch-opt-label">Option A</div>
+          <div class="ch-opt-name">Deploy at every stage, not just at the end</div>
+          <div class="ch-opt-desc">The conceptual paper now. The Other Bodies tools paper during Leeds. The systematic review as the LSHTM thesis. Each credential produces a publication. By the time the PhD is complete, there is already a body of work — not an empty runway followed by a launch. The field knows you before you arrive with the credential.</div>
+        </div>
+        <div class="ch-opt">
+          <div class="ch-opt-label">Option B</div>
+          <div class="ch-opt-name">Close each phase on a condition, not a date</div>
+          <div class="ch-opt-desc">Each phase carries a stated completion condition. The review happens when the condition is met, not on a calendar — and the question at each review is narrow and answerable: is this stage finished, and is the next one right. The plan is the starting hypothesis; the conditions are where it gets updated with real information.</div>
+        </div>
+        <div class="ch-opt">
+          <div class="ch-opt-label">Option C</div>
+          <div class="ch-opt-name">Consider whether Leeds and LSHTM can overlap</div>
+          <div class="ch-opt-desc">Leeds is modular and permits breaks between modules; the LSHTM short courses are also online and stackable. Running them together is now the plan rather than an option — not to compress the path, but so that no stage is waiting on another for no reason.</div>
+        </div>
+        <div class="ch-opt">
+          <div class="ch-opt-label">Option D</div>
+          <div class="ch-opt-name">Treat the learning design career as leverage, not just income</div>
+          <div class="ch-opt-desc">A senior learning design role in the health sector, applied to mental health programming, is not waiting to become relevant — it is already the work. Framing the day job as active deployment, not a holding pattern, changes the psychological experience of the credential runway and produces real systems-level impact throughout.</div>
+        </div>
+      </div>
+      <p class="ch-note">The discipline is treating every stage as deployment rather than preparation — which is already true, since fifteen years of practice, a running program, and a published body of work are in hand before the first credential begins. A person holding those is not on a runway. The pace at which the remaining pieces arrive changes very little about what the work eventually amounts to.</p>
+    </div>
+  </div>
+
+  <!-- CHALLENGE 2 -->
+  <div class="ch-block">
+    <div class="ch-header" onclick="toggleChallenge(this)">
+      <div class="ch-left"><span class="ch-num">Challenge 02</span><span class="ch-badge cb-evidence">Evidence</span></div>
+      <div class="ch-body">
+        <div class="ch-title">The arts-based depression evidence base is thinner than the enthusiasm suggests</div>
+        <div class="ch-sub">RCT evidence is limited · Effect sizes are modest · The field is promising, not settled</div>
+      </div>
+      <button class="ch-toggle">Explore ↓</button>
+    </div>
+    <div class="ch-detail">
+      <p class="ch-statement">The randomised controlled trial evidence for arts-based interventions specifically for depression is weaker than the enthusiasm in creative health circles suggests. Most of the strong evidence is for CBT, behavioural activation, and interpersonal therapy. Fancourt's epidemiological work is rigorous and important, but it establishes association, not mechanism. A peer reviewer at a top journal, or a grant panel at CIHR, will know this. Building a research career on a thin evidence base is a real risk — the work may amount to confirming that the evidence is limited rather than advancing it.</p>
+
+      <div class="ch-section-eye">The specific risks</div>
+      <div class="ch-options">
+        <div class="ch-opt">
+          <div class="ch-opt-label">Risk A</div>
+          <div class="ch-opt-name">Confirmation bias in the research agenda</div>
+          <div class="ch-opt-desc">Someone who has invested fifteen years in creative practice and facilitation has a strong prior belief that creative approaches work. That prior belief can shape research design, interpretation, and publication choices in ways that are invisible from the inside but obvious to external reviewers.</div>
+        </div>
+        <div class="ch-opt">
+          <div class="ch-opt-label">Risk B</div>
+          <div class="ch-opt-name">Null results are possible and important</div>
+          <div class="ch-opt-desc">The systematic review thesis may find that the evidence for arts-based approaches to depression is weaker than expected. The feasibility study in the PhD may find that creative interventions don't outperform active control conditions. These are genuine scientific possibilities, not catastrophes — but they require a research agenda that can hold them.</div>
+        </div>
+        <div class="ch-opt">
+          <div class="ch-opt-label">Risk C</div>
+          <div class="ch-opt-name">The field may consolidate before you arrive</div>
+          <div class="ch-opt-desc">Several well-funded research groups in the UK and US are actively working on arts and health, including depression. By the time the PhD is complete, the systematic review may already exist, the feasibility trials may already be done, and the implementation science questions may be further advanced than anticipated.</div>
+        </div>
+      </div>
+
+      <div class="ch-section-eye">Options — turning this challenge into positioning</div>
+      <div class="ch-options">
+        <div class="ch-opt">
+          <div class="ch-opt-label">Option A</div>
+          <div class="ch-opt-name">Make the thin evidence base the research question, not the assumption</div>
+          <div class="ch-opt-desc">The most credible position is not "arts-based approaches work for depression and I am building the systems to scale them" — it is "the evidence is promising and contested, and my research program will clarify what we actually know and for whom." That is a stronger scientific position and a more honest one.</div>
+        </div>
+        <div class="ch-opt">
+          <div class="ch-opt-label">Option B</div>
+          <div class="ch-opt-name">Study mechanisms, not just outcomes</div>
+          <div class="ch-opt-desc">The most important gap in creative health research is not whether outcomes improve — it is why, for whom, and under what conditions. Mechanism-focused research (what does creative engagement do to the neural, psychological, and social processes involved in depression?) is less crowded, more fundable, and directly leverages the neurobiology background.</div>
+        </div>
+        <div class="ch-opt">
+          <div class="ch-opt-label">Option C</div>
+          <div class="ch-opt-name">Anchor in implementation science rather than efficacy</div>
+          <div class="ch-opt-desc">The implementation question — how do you design training systems that allow community practitioners to deliver creative health approaches at scale — does not require the efficacy question to be fully settled. It is a tractable research question regardless of whether the intervention effect sizes are large or modest, and it is where the learning design expertise is most directly applicable.</div>
+        </div>
+        <div class="ch-opt">
+          <div class="ch-opt-label">Option D</div>
+          <div class="ch-opt-name">Design the systematic review to be genuinely neutral</div>
+          <div class="ch-opt-desc">The MSc thesis systematic review should be designed to find whatever the evidence shows — including evidence that creative approaches don't work as well as hoped. Pre-registering the protocol on PROSPERO before beginning is a public commitment to that neutrality, and a signal to reviewers that the research is rigorous rather than advocacy dressed as science.</div>
+        </div>
+      </div>
+      <p class="ch-note">The evidence base challenge is actually the strongest argument for this research career. If the evidence were settled, the gap would be filled and the contribution would be marginal. The thinness of the evidence is the opportunity — provided the research is designed to advance it rather than simply confirm prior beliefs.</p>
+    </div>
+  </div>
+
+  <!-- CHALLENGE 3 -->
+  <div class="ch-block">
+    <div class="ch-header" onclick="toggleChallenge(this)">
+      <div class="ch-left"><span class="ch-num">Challenge 03</span><span class="ch-badge cb-field">Field entry</span></div>
+      <div class="ch-body">
+        <div class="ch-title">Global mental health is a field with its own politics, gatekeeping, and power structures</div>
+        <div class="ch-sub">North-South dynamics · Insider networks · The risk of arriving as an outsider with solutions</div>
+      </div>
+      <button class="ch-toggle">Explore ↓</button>
+    </div>
+    <div class="ch-detail">
+      <p class="ch-statement">The global mental health field is not a neutral meritocracy. It has histories of researchers from wealthy countries extracting data from low-income populations without meaningful reciprocity. It has academic networks that are difficult to enter from the outside. It has debates about whose knowledge counts — and those debates are live and consequential. Arriving from Vancouver with a plan to "design scalable systems" for depression in low-income countries, without deep relationships in those contexts, risks reproducing exactly the dynamic the field is trying to move beyond.</p>
+
+      <div class="ch-section-eye">The specific risks</div>
+      <div class="ch-options">
+        <div class="ch-opt">
+          <div class="ch-opt-label">Risk A</div>
+          <div class="ch-opt-name">Extractive research relationships</div>
+          <div class="ch-opt-desc">Research partnerships with institutions in low-and-middle-income countries that are designed primarily to serve a Canadian doctoral dissertation, rather than the genuine priorities of local communities and researchers, reproduce a colonial dynamic even when intentions are good. The field is increasingly alert to this and will push back.</div>
+        </div>
+        <div class="ch-opt">
+          <div class="ch-opt-label">Risk B</div>
+          <div class="ch-opt-name">Network inaccessibility</div>
+          <div class="ch-opt-desc">The global mental health field runs on relationships built over years at specific conferences, through specific institutions, and in specific research collaborations. The LSHTM network is the best available entry point from Canada — but it is still an entry point to a world with established insiders, and newcomers are not automatically welcomed into the most important conversations.</div>
+        </div>
+        <div class="ch-opt">
+          <div class="ch-opt-label">Risk C</div>
+          <div class="ch-opt-name">The "solutions from outside" problem</div>
+          <div class="ch-opt-desc">A learning designer from Vancouver arriving with a framework for how community practitioners should be trained to deliver depression interventions may be received sceptically by researchers who have spent careers learning that what works in one context fails in another, and that community ownership of interventions is not optional.</div>
+        </div>
+      </div>
+
+      <div class="ch-section-eye">Options — turning this challenge into positioning</div>
+      <div class="ch-options">
+        <div class="ch-opt">
+          <div class="ch-opt-label">Option A</div>
+          <div class="ch-opt-name">Lead with listening, not frameworks</div>
+          <div class="ch-opt-desc">The first international research relationships should be built through genuine curiosity about what researchers and communities in low-resource settings say they need — not through arriving with a system to offer. The learning design expertise becomes a contribution when it is in service of locally identified priorities, not when it is imported as the solution.</div>
+        </div>
+        <div class="ch-opt">
+          <div class="ch-opt-label">Option B</div>
+          <div class="ch-opt-name">Anchor the local work first</div>
+          <div class="ch-opt-desc">The strongest global health researchers maintain a genuine local practice — direct clinical work, community relationships, local implementation. Anchoring the research in the BC context first — with Indigenous communities, with low-income urban populations, with recent immigrants — builds the humility and local credibility that makes international work more ethical and more effective.</div>
+        </div>
+        <div class="ch-opt">
+          <div class="ch-opt-label">Option C</div>
+          <div class="ch-opt-name">Build South-South and South-North relationships, not only North-South</div>
+          <div class="ch-opt-desc">The most interesting global mental health research is increasingly happening through South-South and South-North collaborations — researchers in India, Kenya, Brazil, and Colombia leading the work, with Canadian and UK partners in supporting roles. Positioning as a learning partner rather than an expert contributor from the outset makes the collaboration more equitable and more durable.</div>
+        </div>
+        <div class="ch-opt">
+          <div class="ch-opt-label">Option D</div>
+          <div class="ch-opt-name">Engage directly with the decolonisation literature</div>
+          <div class="ch-opt-desc">The Leeds MSc in Disability Studies provides exactly the critical theory foundation for thinking rigorously about whose knowledge counts, who benefits from research, and what ethical collaboration actually requires. Apply that framework explicitly to the global mental health work. Show in publications and applications that this isn't naive — it is a considered position.</div>
+        </div>
+      </div>
+      <p class="ch-note">The field entry challenge is the most important one ethically. Getting it right matters not just for career success but for whether the work actually serves the people it claims to serve. The Leeds framework, the local clinical anchor, and the willingness to follow rather than lead in international partnerships are the response.</p>
+    </div>
+  </div>
+
+  <!-- CHALLENGE 4 -->
+  <div class="ch-block">
+    <div class="ch-header" onclick="toggleChallenge(this)">
+      <div class="ch-left"><span class="ch-num">Challenge 04</span><span class="ch-badge cb-portfolio">Portfolio</span></div>
+      <div class="ch-body">
+        <div class="ch-title">The portfolio model is epistemologically justified but practically fragile</div>
+        <div class="ch-sub">Switching costs are real · Fragmentation risk · The meaning layer can become the escape hatch</div>
+      </div>
+      <button class="ch-toggle">Explore ↓</button>
+    </div>
+    <div class="ch-detail">
+      <p class="ch-statement">The portfolio career model — learning design career, consulting practice, creative health facilitation, fine art practice, research program, clinical training — is intellectually coherent and practically ambitious. 80,000 Hours would note that each stream requires real time, real energy, and real attention. The switching between modes that is described as epistemological generates real cognitive overhead. And the streams that feel most meaningful are often the ones most likely to consume the time that the highest-leverage work requires.</p>
+
+      <div class="ch-section-eye">The specific risks</div>
+      <div class="ch-options">
+        <div class="ch-opt">
+          <div class="ch-opt-label">Risk A</div>
+          <div class="ch-opt-name">Dear Ordinary gets quietly sacrificed</div>
+          <div class="ch-opt-desc">The fine art practice is the most vulnerable stream. It has no external accountability, no deadline, no professional consequence for stopping. When Leeds coursework, the LSHTM short courses, the Substack, Make Space, and a full-time job are all running simultaneously, Dear Ordinary is the thing that gets postponed — and postponed again — until it has quietly stopped.</div>
+        </div>
+        <div class="ch-opt">
+          <div class="ch-opt-label">Risk B</div>
+          <div class="ch-opt-name">The consulting practice competes with the research</div>
+          <div class="ch-opt-desc">Consulting income is immediate and tangible. Research outputs are slow and uncertain. During Phase two and Phase four, when income may be constrained and research progress feels invisible, the consulting practice may expand to fill the available space — producing income but consuming the research hours that the credential sequence requires.</div>
+        </div>
+        <div class="ch-opt">
+          <div class="ch-opt-label">Risk C</div>
+          <div class="ch-opt-name">Make Space becomes an avoidance mechanism</div>
+          <div class="ch-opt-desc">Creative facilitation is enjoyable, immediately rewarding, and produces visible impact. Doctoral research is slow, frustrating, and its impact is invisible for years. During difficult doctoral stretches, Make Space can expand from a protected portfolio stream into the place where the hours that should be going to the dissertation actually go.</div>
+        </div>
+        <div class="ch-opt">
+          <div class="ch-opt-label">Risk D</div>
+          <div class="ch-opt-name">The switching generates overhead that isn't accounted for</div>
+          <div class="ch-opt-desc">Moving between the analytical register of research writing and the embodied register of art-making or facilitation takes real time and energy to transition. The portfolio model assumes clean switching. In practice, the transitions consume the space that was supposed to exist between streams.</div>
+        </div>
+      </div>
+
+      <div class="ch-section-eye">Options — turning this challenge into positioning</div>
+      <div class="ch-options">
+        <div class="ch-opt">
+          <div class="ch-opt-label">Option A</div>
+          <div class="ch-opt-name">Protect Dear Ordinary with external accountability</div>
+          <div class="ch-opt-desc">The quarterly sharing structure is good but insufficient. Add a specific commitment — a date, a collaborator, a venue — that makes Dear Ordinary impossible to quietly postpone. The fine art practice is the epistemological foundation of the whole portfolio. It deserves the same structural protection as the Substack deadline or the Leeds assignment due date.</div>
+        </div>
+        <div class="ch-opt">
+          <div class="ch-opt-label">Option B</div>
+          <div class="ch-opt-name">Set explicit time budgets for each stream and defend them</div>
+          <div class="ch-opt-desc">Not aspiration time — actual protected hours in the week, defended from the streams that expand naturally (consulting, facilitation) at the expense of the streams that don't (research writing, art practice). The budget is the discipline. Review it quarterly and name honestly which stream is being subsidised by which.</div>
+        </div>
+        <div class="ch-opt">
+          <div class="ch-opt-label">Option C</div>
+          <div class="ch-opt-name">Treat each stream as having a minimum viable rhythm, not a maximum</div>
+          <div class="ch-opt-desc">Make Space at its minimum viable rhythm is one session per week and a monthly post. Dear Ordinary at its minimum viable rhythm is one piece per quarter. The Substack at its minimum viable rhythm is one post per week. Define the minimum for each stream and protect that minimum — rather than letting any stream expand beyond what the others can afford.</div>
+        </div>
+        <div class="ch-opt">
+          <div class="ch-opt-label">Option D</div>
+          <div class="ch-opt-name">Name the hierarchy explicitly</div>
+          <div class="ch-opt-desc">During Phase two, the hierarchy is: job, coursework, conceptual paper, Substack, Make Space, Dear Ordinary. During Phase three, clinical training comes first. During Phase four, the dissertation comes first. Having a named hierarchy means that when streams compete for the same hours, the decision has already been made.</div>
+        </div>
+      </div>
+      <p class="ch-note">The portfolio is the strength of the career. But portfolios require more structural discipline than single-track careers, not less. The switching is the mechanism — but switching requires boundaries, and boundaries require named priorities. The portfolio survives only if its structure is protected, not assumed.</p>
+    </div>
+  </div>
+
+  <!-- CHALLENGE 5 -->
+  <div class="ch-block">
+    <div class="ch-header" onclick="toggleChallenge(this)">
+      <div class="ch-left"><span class="ch-num">Challenge 05</span><span class="ch-badge cb-power">Leverage</span></div>
+      <div class="ch-body">
+        <div class="ch-title">The theory of change is not yet precise enough to evaluate</div>
+        <div class="ch-sub">How does this career reduce depression burden at scale · The mechanism needs naming · Impact is hard to trace</div>
+      </div>
+      <button class="ch-toggle">Explore ↓</button>
+    </div>
+    <div class="ch-detail">
+      <p class="ch-statement">80,000 Hours asks for a clear theory of change: how, specifically, does this career reduce the suffering of people who currently receive no treatment for depression? The general shape of the answer is present — clinical work, research, training systems, implementation. But the specific mechanism is not yet articulated precisely enough to evaluate. "I will train practitioners who will reach more people" is a theory of change. But how many more people? Through which training system? In which contexts? With what fidelity to the original approach? Without that precision, impact is assumed rather than designed.</p>
+
+      <div class="ch-section-eye">The specific risks</div>
+      <div class="ch-options">
+        <div class="ch-opt">
+          <div class="ch-opt-label">Risk A</div>
+          <div class="ch-opt-name">Busyness mistaken for impact</div>
+          <div class="ch-opt-desc">A portfolio career with many active streams can feel highly impactful without the impact being traceable to specific outcomes. Publishing papers, training facilitators, running sessions, consulting for health organisations — all of this can be genuinely busy without meaningfully reducing the depression burden for people who currently receive nothing.</div>
+        </div>
+        <div class="ch-opt">
+          <div class="ch-opt-label">Risk B</div>
+          <div class="ch-opt-name">The highest-leverage intervention is unclear</div>
+          <div class="ch-opt-desc">Is the most important contribution the clinical practice? The research? The training systems? The policy influence? The answer almost certainly differs by career stage — but without naming it explicitly, the tendency is to do what is most immediately rewarding rather than what has the highest expected impact. The consulting practice is lucrative. The facilitation is immediately meaningful. The research is slow and uncertain. These incentive structures need to be named.</div>
+        </div>
+        <div class="ch-opt">
+          <div class="ch-opt-label">Risk C</div>
+          <div class="ch-opt-name">The multiplier may not multiply as expected</div>
+          <div class="ch-opt-desc">Training one cohort of facilitators is the proof of concept for the multiplier model. But whether trained facilitators actually deliver the Make Space model with fidelity, reach people experiencing depression, and produce meaningful outcomes — rather than delivering a diluted version to people who were already moderately okay — is an empirical question that has not yet been tested.</div>
+        </div>
+      </div>
+
+      <div class="ch-section-eye">Options — turning this challenge into positioning</div>
+      <div class="ch-options">
+        <div class="ch-opt">
+          <div class="ch-opt-label">Option A</div>
+          <div class="ch-opt-name">Write the theory of change explicitly and update it annually</div>
+          <div class="ch-opt-desc">Not a vision statement — a specific causal chain. "I will develop evidence-based creative health interventions for depression, train practitioners to deliver them in low-resource settings, and publish the training systems so that other researchers can adapt and scale them, with the result that X more people per year have access to an evidence-based approach they currently cannot reach." Then test each link in that chain as the career progresses.</div>
+        </div>
+        <div class="ch-opt">
+          <div class="ch-opt-label">Option B</div>
+          <div class="ch-opt-name">Identify the counterfactual contribution at each stage</div>
+          <div class="ch-opt-desc">At each career stage, ask: if I weren't doing this, would someone else do it just as well? For the conceptual paper — possibly. For the systematic review — probably, eventually. For the specific intersection of learning systems design, disability justice, and creative health approaches to depression — almost certainly not. Focus the most energy on the contributions that are most counterfactually significant.</div>
+        </div>
+        <div class="ch-opt">
+          <div class="ch-opt-label">Option C</div>
+          <div class="ch-opt-name">Build in measurement from the beginning</div>
+          <div class="ch-opt-desc">Make Space with a simple outcome measure — a validated depression screening tool administered at the beginning and end of the curriculum — gives you real data about whether the program does what it claims to do. That data is the foundation of the evidence base, the grant application, the social prescribing pitch, and the honest answer to the question of whether the theory of change is working.</div>
+        </div>
+        <div class="ch-opt">
+          <div class="ch-opt-label">Option D</div>
+          <div class="ch-opt-name">Apply for 80,000 Hours advising to pressure-test the theory</div>
+          <div class="ch-opt-desc">Their advisors are specifically trained to help people clarify their theory of change and identify the weakest links. A single advising conversation, with the theory of change written out in advance, is more useful for this purpose than months of self-assessment. Apply this week.</div>
+        </div>
+      </div>
+      <p class="ch-note">The theory of change challenge is not a reason to doubt the path — it is a reason to make the path more precise. The career that can articulate how it reduces suffering, at what scale, through which mechanisms, and with what evidence, is the career that attracts the best collaborators, the best funding, and the best opportunities. Precision is power here.</p>
+    </div>
+  </div>
+
+  <!-- CHALLENGE 6 -->
+  <div class="ch-block">
+    <div class="ch-header" onclick="toggleChallenge(this)">
+      <div class="ch-left"><span class="ch-num">Challenge 06</span><span class="ch-badge cb-evidence">Credibility</span></div>
+      <div class="ch-body">
+        <div class="ch-title">The path requires entering multiple fields as a late-comer without established credentials</div>
+        <div class="ch-sub">Global mental health · Clinical psychology · Academic research · Each field has its own gatekeeping</div>
+      </div>
+      <button class="ch-toggle">Explore ↓</button>
+    </div>
+    <div class="ch-detail">
+      <p class="ch-statement">Clinical psychology doctoral programs in Canada are highly competitive and typically admit students who have completed undergraduate and master's degrees in psychology, with research experience in psychological science. The LSHTM MSc is a strong credential but it is not a psychology credential. The Leeds MSc is a strong credential but it is not a clinical credential. Arriving at a clinical psychology PhD application with a background in learning design and two MScs in disability studies and global mental health may be received as an unusual profile — which can mean either "compelling" or "does not fit our program," depending on the supervisor and the program.</p>
+
+      <div class="ch-section-eye">The specific risks</div>
+      <div class="ch-options">
+        <div class="ch-opt">
+          <div class="ch-opt-label">Risk A</div>
+          <div class="ch-opt-name">PhD application rejection due to non-traditional profile</div>
+          <div class="ch-opt-desc">Canadian clinical psychology PhD programs are accredited and regulated. They typically expect applicants to have undergraduate training in psychology, research experience in empirical psychological science, and references from psychologists. An applicant with two MScs in adjacent fields and a publication record in global mental health journals may not fit the expected profile for some programs.</div>
+        </div>
+        <div class="ch-opt">
+          <div class="ch-opt-label">Risk B</div>
+          <div class="ch-opt-name">Supervisor misalignment</div>
+          <div class="ch-opt-desc">The doctoral program is the supervisor. A supervisor in clinical psychology whose primary research is in CBT protocols, cognitive neuroscience, or personality psychology will not be able to support a dissertation on creative approaches to depression in global health contexts — regardless of how strong the application is. Finding the right supervisor requires research, relationships, and sometimes luck.</div>
+        </div>
+        <div class="ch-opt">
+          <div class="ch-opt-label">Risk C</div>
+          <div class="ch-opt-name">Credibility gaps in peer review</div>
+          <div class="ch-opt-desc">Publishing in clinical psychology journals requires clinical psychology credibility. Publishing in global mental health journals requires public health credibility. The intersection you're working in — arts-based approaches, implementation science, learning systems — crosses multiple disciplines, and reviewers from any one of them may find the work insufficiently rigorous in their own discipline's terms.</div>
+        </div>
+      </div>
+
+      <div class="ch-section-eye">Options — turning this challenge into positioning</div>
+      <div class="ch-options">
+        <div class="ch-opt">
+          <div class="ch-opt-label">Option A</div>
+          <div class="ch-opt-name">Identify the supervisor before identifying the program</div>
+          <div class="ch-opt-desc">The doctoral application should begin with relationship-building, not program research. Identify three to five faculty members whose research sits closest to the dissertation question — creative approaches to depression, implementation science, community-based mental health — and reach out before applying. A supervisor who wants you is more important than a program with a good ranking.</div>
+        </div>
+        <div class="ch-opt">
+          <div class="ch-opt-label">Option B</div>
+          <div class="ch-opt-name">Consider a health psychology or psychological science PhD as an alternative</div>
+          <div class="ch-opt-desc">A PhD in health psychology, psychological science, or interdisciplinary health research may be more accessible for a non-traditional applicant and may be more appropriate for the specific research question. Clinical licensure can sometimes be pursued separately through a post-doctoral supervised practice pathway in some Canadian provinces. Check current BC College of Psychologists registration requirements.</div>
+        </div>
+        <div class="ch-opt">
+          <div class="ch-opt-label">Option C</div>
+          <div class="ch-opt-name">Build the publication record before applying</div>
+          <div class="ch-opt-desc">The strongest non-traditional PhD application has published work. Two peer-reviewed papers — the conceptual paper and the LSHTM thesis as a systematic review — published before the application materially changes how a non-standard profile is received. They demonstrate that the research agenda is real and that the applicant can execute it.</div>
+        </div>
+        <div class="ch-opt">
+          <div class="ch-opt-label">Option D</div>
+          <div class="ch-opt-name">Target programs explicitly open to interdisciplinary applicants</div>
+          <div class="ch-opt-desc">UBC's interdisciplinary graduate programs, SFU's Faculty of Health Sciences, and Toronto's Dalla Lana School of Public Health all have doctoral programs that are explicitly designed for researchers working across disciplinary boundaries. These may be better fits for the specific research agenda than traditional clinical psychology programs — and may lead to the same clinical registration pathway through supervised practice.</div>
+        </div>
+      </div>
+      <p class="ch-note">The credibility challenge is most acute at the PhD application stage. The solution is to build the publication record and the supervisory relationship before applying — so that the application is a description of a research program already underway, not a proposal for one that hasn't started.</p>
+    </div>
+  </div>
+
+  <!-- CHALLENGE 7 -->
+  <div class="ch-block">
+    <div class="ch-header" onclick="toggleChallenge(this)">
+      <div class="ch-left"><span class="ch-num">Challenge 07</span><span class="ch-badge cb-identity">Identity</span></div>
+      <div class="ch-body">
+        <div class="ch-title">The path may be serving personal meaning as much as social good — and those are not always the same</div>
+        <div class="ch-sub">The honest question underneath all of it · Worth sitting with directly</div>
+      </div>
+      <button class="ch-toggle">Explore ↓</button>
+    </div>
+    <div class="ch-detail">
+      <p class="ch-statement">80,000 Hours would ask this directly: is this career path designed to maximise impact on the depression treatment gap, or is it designed to maximise personal meaning and fulfilment while also being genuinely useful? These are not the same question, and the answer to which one is primary shapes every resource allocation decision. A path purely optimised for impact would look different — fewer credentials, faster deployment, more focus on training and systems and less on clinical practice, stronger orientation toward low-income country contexts from the beginning. The path as designed is richer and more whole than that — but it is worth being honest about why.</p>
+
+      <div class="ch-section-eye">The honest questions</div>
+      <div class="ch-options">
+        <div class="ch-opt">
+          <div class="ch-opt-label">Question A</div>
+          <div class="ch-opt-name">Is clinical licensure for impact or for authority?</div>
+          <div class="ch-opt-desc">The MA in Counselling Psychology and PhD in Clinical Psychology lead to Registered Psychologist status. That credential enables independent practice, supervision, and assessment. It is also two credentials pursued for what may be one need. The master&#8217;s route carries the room; an interdisciplinary doctorate carries the research. If the primary lever for reducing depression burden is training systems and research rather than direct clinical practice, it is worth asking which of the two is load-bearing — and whether the second is partly desired for the authority and identity it confers. Phase four is optional in the sequence for exactly this reason.</div>
+        </div>
+        <div class="ch-opt">
+          <div class="ch-opt-label">Question B</div>
+          <div class="ch-opt-name">Is the fine art practice essential or protected?</div>
+          <div class="ch-opt-desc">Dear Ordinary is described as epistemologically necessary — the embodied knowledge that feeds the clinical and research work. That argument is genuine. But it is also worth asking honestly: would the research and clinical work be meaningfully worse without the fine art practice? Or is the fine art practice something that deserves to exist for its own sake, without needing to justify itself through the career? Both answers are legitimate. They just generate different planning decisions.</div>
+        </div>
+        <div class="ch-opt">
+          <div class="ch-opt-label">Question C</div>
+          <div class="ch-opt-name">Is the portfolio model the most impactful structure or the most sustainable one?</div>
+          <div class="ch-opt-desc">A single-track career in global mental health systems — focused entirely on training infrastructure, implementation science, and policy influence — might have higher expected impact by 80,000 Hours metrics than the portfolio model. The portfolio model may be the right choice anyway — because it is sustainable, because it produces better knowledge, because it is honest about who you are. But the choice should be made consciously, not assumed.</div>
+        </div>
+      </div>
+
+      <div class="ch-section-eye">The response that holds</div>
+      <div class="ch-options">
+        <div class="ch-opt">
+          <div class="ch-opt-label">Position A</div>
+          <div class="ch-opt-name">Acknowledge the dual purpose honestly</div>
+          <div class="ch-opt-desc">This career is designed to do genuine good in the world AND to be a life worth living. 80,000 Hours ultimately accepts this — they note that personal fit, sustainability, and genuine engagement produce more impact over a career than a poorly-fitted person on a "higher-priority" path. The dual purpose is not a failure of rigor. It is honest.</div>
+        </div>
+        <div class="ch-opt">
+          <div class="ch-opt-label">Position B</div>
+          <div class="ch-opt-name">Make the meaning/impact trade-offs explicit at each decision point</div>
+          <div class="ch-opt-desc">When Phase three and Phase four are both on the table, and the question is whether the second is primarily for the research credential, the clinical authority, or the personal formation — name that honestly, once, rather than deferring it. When a consulting contract is accepted at the cost of research hours, name that honestly. The discipline is not eliminating meaning from the calculus. It is making the trade-offs visible rather than invisible.</div>
+        </div>
+        <div class="ch-opt">
+          <div class="ch-opt-label">Position C</div>
+          <div class="ch-opt-name">Trust that full presence produces better work</div>
+          <div class="ch-opt-desc">The strongest argument for the portfolio model, the fine art practice, and the clinical formation is empirical: people who are fully present in their work — who bring their whole self rather than a version optimised for impact metrics — tend to produce richer, more original, more durable contributions. The creativity, the embodied knowledge, and the personal meaning are not decorative. They are constitutive of the specific contribution only this person can make.</div>
+        </div>
+      </div>
+      <p class="ch-note">This challenge does not resolve. It is a question worth returning to at every two-year review, every major decision point, every time a new opportunity appears. The answer will change as the career develops and as the relative costs and benefits of each stream become clearer. The discipline is not to resolve it once but to hold it honestly throughout.</p>
+    </div>
+  </div>
+
+  <div class="dark-banner">
+    <p>These challenges are not reasons to doubt the path. They are the friction points where the most important decisions will be made — and where the most important growth will happen. <strong>A career that cannot name its own weaknesses is a career that has not thought carefully enough.</strong> A career that names them, and builds the responses into the plan, is one that is more likely to hold over twenty years — and more likely to produce the contribution that the problem actually needs.</p>
+  </div>
+
+</div>
+</div>
+
+<footer>
+  <span>My Vision — Living Document</span>
+  <span>Education · Portfolio &amp; Career · Positioning · Depression Plan · Research Literacy · Challenges</span>
+</footer>
+
+<script>
+  function showPanel(name, btn) {
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('panel-' + name).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  function toggleChallenge(header) {
+    const detail = header.nextElementSibling;
+    const btn = header.querySelector('.ch-toggle');
+    const isOpen = detail.classList.contains('open');
+    detail.classList.toggle('open');
+    btn.textContent = isOpen ? 'Explore ↓' : 'Collapse ↑';
+  }
+
+  function toggleStep(header) {
+    const detail = header.nextElementSibling;
+    const btn = header.querySelector('.toggle-btn');
+    const isOpen = detail.classList.contains('open');
+    detail.classList.toggle('open');
+    btn.textContent = isOpen ? 'Explore ↓' : 'Collapse ↑';
+  }
+
+  const cardLabels = {
+    '01': 'Explore roles ↓', '02': 'Explore scope ↓', '03': 'Explore specialties ↓',
+    '04': 'Explore trajectory ↓', '05': 'Explore threads ↓', '06': 'Explore scope ↓',
+    '07': 'Explore the series ↓', '08': 'Explore formats ↓'
+  };
+
+  function toggleCard(card) {
+    const details = card.querySelector('.card-details');
+    const btn = card.querySelector('.expand-btn');
+    const num = card.querySelector('.card-num').textContent.trim();
+    const isOpen = details.classList.contains('open');
+    details.classList.toggle('open');
+    btn.textContent = isOpen ? (cardLabels[num] || 'Expand ↓') : 'Collapse ↑';
+  }
+</script>
+</body>
+</html>

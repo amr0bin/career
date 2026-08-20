@@ -1,0 +1,1314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checklist — Andrea Robin</title>
+<link href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --white:   #ffffff;
+    --ink:     #303e44;
+    --accent:  #475f6a;
+    --mid:     #6a858f;
+    --light:   #e8eef0;
+    --lighter: #f4f7f8;
+    --line:    #d4dde1;
+    --faint:   #8fa4ad;
+  }
+
+  body {
+    background: var(--white);
+    color: var(--ink);
+    font-family: 'Asap', system-ui, sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    font-size: 16px;
+  }
+
+  /* ── HEADER ── */
+  header {
+    padding: 4rem 3.5rem 3rem;
+    border-bottom: 1px solid var(--line);
+    max-width: 900px;
+  }
+  .eyebrow {
+    font-size: 0.68rem; font-weight: 500; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--mid); margin-bottom: 1.4rem;
+  }
+  h1 {
+    font-size: clamp(2rem, 4.5vw, 3.4rem); font-weight: 300;
+    line-height: 1.12; letter-spacing: -0.01em; margin-bottom: 1.2rem;
+  }
+  h1 em { font-style: italic; color: var(--accent); }
+  .header-sub {
+    font-size: 1rem; color: var(--mid); max-width: 580px; line-height: 1.75;
+  }
+
+  /* ── PRINCIPLE BANNER ── */
+  .principle-banner {
+    margin: 0;
+    padding: 2rem 3.5rem;
+    background: var(--ink);
+    border-bottom: 1px solid var(--line);
+  }
+  .principle-label {
+    font-size: 0.58rem; font-weight: 500; letter-spacing: 0.22em;
+    text-transform: uppercase; color: rgba(255,255,255,0.4);
+    margin-bottom: 0.9rem;
+  }
+  .principle-text {
+    font-size: clamp(1rem, 2.2vw, 1.22rem); font-weight: 300;
+    font-style: italic; line-height: 1.7; color: rgba(255,255,255,0.88);
+    max-width: 720px;
+  }
+  .principle-text strong { font-weight: 500; color: #fff; font-style: normal; }
+
+  /* ── TABS ── */
+  .tabs {
+    display: flex; border-bottom: 1px solid var(--line);
+    padding: 0 3.5rem; background: var(--white);
+    position: sticky; top: 0; z-index: 100; overflow-x: auto;
+  }
+  .tab-btn {
+    font-family: 'Asap', sans-serif; font-size: 0.7rem; font-weight: 500;
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--faint);
+    background: none; border: none; padding: 1.1rem 0;
+    margin-right: 2.5rem; cursor: pointer; position: relative;
+    transition: color 0.25s; white-space: nowrap; flex-shrink: 0;
+  }
+  .tab-btn::after {
+    content: ''; position: absolute; bottom: -1px; left: 0; right: 0;
+    height: 2px; background: var(--accent); transform: scaleX(0);
+    transition: transform 0.25s;
+  }
+  .tab-btn.active { color: var(--ink); }
+  .tab-btn.active::after { transform: scaleX(1); }
+
+  /* ── PANEL ── */
+  .panel { display: none; }
+  .panel.active { display: block; }
+
+  /* ── SECTION WRAP ── */
+  .wrap { padding: 3rem 3.5rem; max-width: 860px; }
+
+  .panel-intro {
+    font-size: 0.95rem; color: var(--mid); line-height: 1.78;
+    max-width: 620px; margin-bottom: 2.4rem; font-style: italic;
+  }
+
+  /* ── SECTION HEADER ── */
+  .sec-header {
+    margin-bottom: 1.2rem; margin-top: 2.8rem; padding-top: 2rem;
+    border-top: 1px solid var(--line);
+  }
+  .sec-header:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+  .sec-eye {
+    font-size: 0.58rem; font-weight: 500; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--faint); margin-bottom: 0.5rem;
+  }
+  .sec-title {
+    font-size: 1.3rem; font-weight: 300; line-height: 1.3; color: var(--ink);
+  }
+  .sec-title em { font-style: italic; color: var(--accent); }
+  .sec-desc {
+    font-size: 0.88rem; color: var(--mid); line-height: 1.72;
+    max-width: 580px; margin-top: 0.6rem; font-style: italic;
+  }
+
+  /* ── CHECKLIST ITEM ── */
+  .cl-block {
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    margin-bottom: 0.5rem;
+    transition: background 0.15s;
+  }
+  .cl-block.checked { background: var(--lighter); }
+
+  .cl-header {
+    display: grid;
+    grid-template-columns: 2rem auto 1fr auto;
+    gap: 0 1rem;
+    align-items: start;
+    padding: 1rem 1.2rem;
+    cursor: pointer;
+  }
+  .cl-header:hover { background: var(--lighter); }
+
+  /* custom checkbox */
+  .cl-check {
+    appearance: none; -webkit-appearance: none;
+    width: 1.1rem; height: 1.1rem; margin-top: 0.18rem;
+    border: 1.5px solid var(--line); border-radius: 2px;
+    background: var(--white); cursor: pointer; flex-shrink: 0;
+    transition: background 0.15s, border-color 0.15s;
+    position: relative;
+  }
+  .cl-check:checked {
+    background: var(--accent); border-color: var(--accent);
+  }
+  .cl-check:checked::after {
+    content: '✓'; position: absolute; top: -0.05rem; left: 0.12rem;
+    font-size: 0.75rem; color: #fff; font-weight: 600;
+  }
+
+  .cl-tag {
+    font-size: 0.54rem; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 0.22em 0.65em; border-radius: 2px;
+    white-space: nowrap; margin-top: 0.18rem; align-self: start;
+  }
+  .t-now    { background: var(--accent); color: #fff; }
+  .t-soon   { background: var(--light); color: var(--accent); border: 1px solid var(--line); }
+  .t-build  { border: 1px solid var(--line); color: var(--faint); }
+  .t-opt    { background: var(--lighter); border: 1px solid var(--line); color: var(--mid); }
+
+  .cl-body { flex: 1; }
+  .cl-title {
+    font-size: 0.98rem; font-weight: 500; line-height: 1.35; margin-bottom: 0.18rem;
+    transition: color 0.15s;
+  }
+  .checked .cl-title { color: var(--faint); text-decoration: line-through; }
+  .cl-sub {
+    font-size: 0.82rem; color: var(--mid); font-style: italic; line-height: 1.6;
+  }
+
+  .expand-btn {
+    font-family: 'Asap', sans-serif; font-size: 0.6rem; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent);
+    background: none; border: none; cursor: pointer;
+    white-space: nowrap; padding-top: 0.2rem; flex-shrink: 0;
+  }
+  .expand-btn:hover { opacity: 0.7; }
+
+  .cl-detail {
+    display: none; padding: 0 1.2rem 1.2rem 4.2rem;
+    border-top: 1px solid var(--line);
+    animation: fadeUp 0.22s ease;
+  }
+  .cl-detail.open { display: block; }
+
+  .detail-body {
+    font-size: 0.88rem; color: var(--mid); line-height: 1.72;
+    padding-top: 1rem;
+  }
+  .detail-body p { margin-bottom: 0.8rem; }
+  .detail-body p:last-child { margin-bottom: 0; }
+
+  .steps-list { list-style: none; margin-top: 0.6rem; }
+  .steps-list li {
+    font-size: 0.86rem; color: var(--mid); padding: 0.2rem 0 0.2rem 1.1rem;
+    position: relative; line-height: 1.6;
+  }
+  .steps-list li::before {
+    content: '→'; position: absolute; left: 0;
+    color: var(--accent); font-size: 0.78rem;
+  }
+
+  .cl-note {
+    font-size: 0.8rem; color: var(--mid); font-style: italic;
+    line-height: 1.68; border-left: 2px solid var(--line);
+    padding-left: 0.9rem; margin-top: 0.9rem;
+  }
+
+  /* ── PROGRESS BAR ── */
+  .progress-wrap {
+    padding: 1.6rem 3.5rem 1.2rem;
+    border-bottom: 1px solid var(--line);
+    background: var(--lighter);
+    display: flex; align-items: center; gap: 1.4rem;
+  }
+  .progress-label {
+    font-size: 0.62rem; font-weight: 500; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--faint); white-space: nowrap;
+  }
+  .progress-track {
+    flex: 1; height: 3px; background: var(--line); border-radius: 2px;
+    max-width: 320px;
+  }
+  .progress-fill {
+    height: 100%; background: var(--accent); border-radius: 2px;
+    transition: width 0.4s ease;
+  }
+  .progress-count {
+    font-size: 0.75rem; font-weight: 500; color: var(--accent);
+    white-space: nowrap;
+  }
+
+  /* ── DARK CALLOUT ── */
+  .dark-callout {
+    background: var(--ink); color: rgba(255,255,255,0.82);
+    padding: 1.6rem 1.8rem; margin-top: 2rem; border-radius: 2px;
+    font-size: 0.88rem; line-height: 1.72; font-style: italic;
+  }
+  .dark-callout strong { color: #fff; font-style: normal; font-weight: 500; }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 1.8rem 3.5rem; border-top: 1px solid var(--line);
+    font-size: 0.62rem; font-weight: 500; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--faint);
+    display: flex; justify-content: space-between; margin-top: 2rem;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(4px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    header, .principle-banner, .wrap, .progress-wrap { padding: 2rem 1.5rem; }
+    .tabs { padding: 0 1.5rem; }
+    .tab-btn { margin-right: 1.4rem; }
+    .cl-header { grid-template-columns: 2rem 1fr; gap: 0 0.7rem; }
+    .cl-tag, .expand-btn { display: none; }
+    .cl-detail { display: block; padding-left: 2.7rem; }
+    footer { flex-direction: column; gap: 0.4rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <p class="eyebrow">Checklist — Living Document</p>
+  <h1>What I need to do, <em>at every stage,</em><br>to be ready to act.</h1>
+  <p class="header-sub">This checklist tracks readiness at each phase of the career and education path — not just credential completion, but the concrete conditions that allow me to deploy, create value, and move with purpose. Each item is a gate I need to pass, not just a box to tick.</p>
+</header>
+
+<div class="principle-banner">
+  <div class="principle-label">The principle underneath all of this</div>
+  <div class="principle-text">
+    Readiness is not a credential. It is the <strong>combination of knowledge, relationships, evidence, and positioning</strong> that allows me to act with authority in the next context. Each phase of this checklist asks the same question: not "have I completed the requirement?" but "am I genuinely prepared to contribute?" Those are different questions, and only the second one matters.
+  </div>
+</div>
+
+<div class="progress-wrap" id="progress-wrap">
+  <span class="progress-label">Overall progress</span>
+  <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+  <span class="progress-count" id="progress-count">0 / 0 complete</span>
+</div>
+
+<nav class="tabs">
+  <button class="tab-btn active" onclick="showPanel('now',this)">Phase one</button>
+  <button class="tab-btn" onclick="showPanel('leeds',this)">Leeds MSc</button>
+  <button class="tab-btn" onclick="showPanel('lshtm',this)">LSHTM MSc</button>
+  <button class="tab-btn" onclick="showPanel('ma',this)">MA Counselling</button>
+  <button class="tab-btn" onclick="showPanel('phd',this)">Doctorate</button>
+  <button class="tab-btn" onclick="showPanel('post',this)">Post-Doctoral</button>
+</nav>
+
+
+<!-- ══════════════════════════════════════
+     PANEL 1 — RIGHT NOW
+══════════════════════════════════════ -->
+<div class="panel active" id="panel-now">
+<div class="wrap">
+  <p class="panel-intro">These are the conditions I need to build before any formal credential begins. None requires institutional affiliation. All are within reach now. This phase ends when I have a publication submitted, a documented facilitation practice, a body of foundational literature absorbed, and a day job anchored in the health sector.</p>
+
+  <div class="sec-header">
+    <div class="sec-eye">Foundation — Intellectual</div>
+    <div class="sec-title">Read the Literature That <em>Frames Everything</em></div>
+    <p class="sec-desc">These texts are not background reading. They are the intellectual architecture the future research will sit inside. I need to have absorbed them before anything else proceeds.</p>
+  </div>
+
+  <div class="cl-block" id="cl-now-1">
+    <div class="cl-header" onclick="toggleDetail('cl-now-1')">
+      <input type="checkbox" class="cl-check" onclick="event.stopPropagation(); toggleCheck('cl-now-1')" />
+      <span class="cl-tag t-now">Highest priority</span>
+      <div class="cl-body">
+        <div class="cl-title">Read Vikram Patel — <em>Where There Is No Psychiatrist</em></div>
+        <div class="cl-sub">The foundational text on task-shifting and community-based depression care at scale</div>
+      </div>
+      <button class="expand-btn">Expand ↓</button>
+    </div>
+    <div class="cl-detail">
+      <div class="detail-body">
+        <p>This is the most important practical text in global mental health. It makes the argument for task-shifting — training community health workers to deliver evidence-based depression interventions — more clearly than anything else in the field. I need to be able to engage with this framework fluently before I write anything, apply anywhere, or speak to anyone in this space.</p>
+        <ul class="steps-list">
+          <li>Read the full text, not just the summary chapters</li>
+          <li>Note every argument that applies to the creative health and facilitation practice I am building</li>
+          <li>Begin integrating this language into the Substack and into the conceptual paper argument</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="cl-block" id="cl-now-2">
+    <div class="cl-header" onclick="toggleDetail('cl-now-2')">
+      <input type="checkbox" class="cl-check" onclick="event.stopPropagation(); toggleCheck('cl-now-2')" />
+      <span class="cl-tag t-now">Highest priority</span>
+      <div class="cl-body">
+        <div class="cl-title">Read the Lancet Commission on Global Mental Health 2018</div>
+        <div class="cl-sub">The foundational policy document — the framework every future application will reference</div>
+      </div>
+      <button class="expand-btn">Expand ↓</button>
+    </div>
+    <div class="cl-detail">
+      <div class="detail-body">
+        <p>This commission report establishes the scale of the global mental health treatment gap — the figure I will cite in every application, paper, and presentation. I need to know this document well enough to engage critically with it, not just cite it. The commissioners, the methodology, the contested claims, the policy recommendations.</p>
+        <ul class="steps-list">
+          <li>Read the full commission report, available open-access via The Lancet</li>
+          <li>Note the sections most relevant to depression specifically, to low-income country contexts, and to community-based intervention models</li>
+          <li>Identify at least one critical response to the commission — knowing the critique is as important as knowing the argument</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="cl-block" id="cl-now-3">
+    <div class="cl-header" onclick="toggleDetail('cl-now-3')">
+      <input type="checkbox" class="cl-check" onclick="event.stopPropagation(); toggleCheck('cl-now-3')" />
+      <span class="cl-tag t-now">Highest priority</span>
+      <div class="cl-body">
+        <div class="cl-title">Read Daisy Fancourt's 2019 Lancet paper on arts and health</div>
+        <div class="cl-sub">The most rigorous review of evidence connecting creative engagement and health outcomes — the anchor for every future argument I make about creative health</div>
+      </div>
+      <button class="expand-btn">Expand ↓</button>
+    </div>
+    <div class="cl-detail">
+      <div class="detail-body">
+        <p>Fancourt's systematic review is the paper that legitimises the creative health research agenda within the medical research community. I need to know it precisely — the methodology, the findings, the limitations, and the specific evidence base for depression and mental health outcomes. This is the foundation on which my own conceptual argument rests.</p>
+        <ul class="steps-list">
+          <li>Read the full paper, not the abstract</li>
+          <li>Understand the evidence grading and the limitations the authors themselves name</li>
+          <li>Follow citation trails into at least five papers she cites on depression specifically</li>
+          <li>Read Fancourt's subsequent work — she has continued publishing in this space</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="cl-block" id="cl-now-4">
+    <div class="cl-header" onclick="toggleDetail('cl-now-4')">
+      <input type="checkbox" class="cl-check" onclick="event.stopPropagation(); toggleCheck('cl-now-4')" />
+      <span class="cl-tag t-soon">Within months</span>
+      <div class="cl-body">
+        <div class="cl-title">Read two to three Cochrane reviews on psychological treatments for depression</div>
+        <div class="cl-sub">Understanding the gold-standard evidence base changes how I frame every argument about creative approaches</div>
+      </div>
+      <button class="expand-btn">Expand ↓</button>
+    </div>
+    <div class="cl-detail">
+      <div class="detail-body">
+        <p>Before I argue that creative and expressive approaches have a place in the treatment landscape, I need to know what the current evidence says about what already works. Cochrane reviews on CBT, behavioural activation, and interpersonal therapy for depression give me that baseline. I cannot argue for creative health without knowing what I am situating it alongside.</p>
+        <ul class="steps-list">
+          <li>Search the Cochrane Library for "depression" and review the most-cited psychological treatment reviews</li>
+          <li>Focus on: CBT for depression, behavioural activation for depression, interpersonal therapy for depression</li>
+          <li>Note the effect sizes, the populations studied, and the gaps the reviews themselves name</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-header">
+    <div class="sec-eye">Foundation — The First Publication</div>
+    <div class="sec-title">Write and Submit the <em>Conceptual Paper</em></div>
+    <p class="sec-desc">This is the single highest-leverage action available to me right now. A published paper — or even a submitted one — changes every application and conversation that follows it.</p>
+  </div>
+
+  <div class="cl-block" id="cl-now-5">
+    <div class="cl-header" onclick="toggleDetail('cl-now-5')">
+      <input type="checkbox" class="cl-check" onclick="event.stopPropagation(); toggleCheck('cl-now-5')" />
+      <span class="cl-tag t-now">Highest priority</span>
+      <div class="cl-body">
+        <div class="cl-title">Draft the conceptual argument — learning systems, depression, and accessibility</div>
+        <div class="cl-sub">Three months to draft · The argument that only my specific combination of expertise can make</div>
+      </div>
+      <button class="expand-btn">Expand ↓</button>
+    </div>
+    <div class="cl-detail">
+      <div class="detail-body">
+        <p>The argument is specific: designing the learning systems that train practitioners to deliver depression interventions is as important as designing the interventions themselves — and accessibility must be built into both from the beginning, not retrofitted at the end. This is the paper that introduces me to the field as a thinker, not just a practitioner.</p>
+        <ul class="steps-list">
+          <li>Complete the foundational reading list first — the argument needs to sit credibly within the existing literature</li>
+          <li>Draft the argument in full — not a literature review but a conceptual contribution that names a gap and proposes a framework</li>
+          <li>Target: <em>Global Mental Health</em> (Cambridge, open access) as primary submission venue; <em>Arts in Psychotherapy</em> or <em>International Journal of Mental Health Systems</em> as alternatives</li>
+          <li>Timeline: three months to draft, three months to submission — begin now</li>
+        </ul>
+        <p class="cl-note">The paper does not need to be perfect before submission. It needs to make a real argument that the field has not made. Reviewers will improve it. The act of submitting is the move.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cl-block" id="cl-now-6">
+    <div class="cl-header" onclick="toggleDetail('cl-now-6')">
+      <input type="checkbox" class="cl-check" onclick="event.stopPropagation(); toggleCheck('cl-now-6')" />
+      <span class="cl-tag t-soon">Within months</span>
+      <div class="cl-body">
+        <div class="cl-title">Submit the conceptual paper to a peer-reviewed journal</div>
+        <div class="cl-sub">Submission — not acceptance — is the milestone that changes the applications that follow</div>
+      </div>
+      <button class="expand-btn">Expand ↓</button>
+    </div>
+    <div class="cl-detail">
+      <div class="detail-body">
+        <p>Submission to a peer-reviewed journal is a credible achievement I can name in applications before I have an acceptance. Every application to a graduate program, every research supervisor approach, every grant application — all of them are stronger once I can write "under review at [journal name]" in my research statement.</p>
+        <ul class="steps-list">
+          <li>Format the paper according to the target journal's submission guidelines</li>
+          <li>Write a cover letter that names the gap the paper addresses and why this journal is the right venue</li>
+          <li>Submit and track the review timeline</li>
+          <li>If rejected, revise according to reviewer comments and resubmit to the next venue within four weeks</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-header">
+    <div class="sec-eye">Foundation — The Practice</div>
+    <div class="sec-title">Build Make Space into a <em>Documented Program</em></div>
+    <p class="sec-desc">The facilitation practice needs to become something I can describe with evidence — not just something I do. Documentation is the bridge between practice and research.</p>
+  </div>
+
+  <div class="cl-block" id="cl-now-7">
+    <div class="cl-header" onclick="toggleDetail('cl-now-7')">
+      <input type="checkbox" class="cl-check" onclick="event.stopPropagation(); toggleCheck('cl-now-7')" />
+      <span class="cl-tag t-now">Active now</span>
+      <div class="cl-body">
+        <div class="cl-title">Establish a consistent documentation practice for Make Space</div>
+        <div class="cl-sub">Session notes, participant feedback, facilitation reflections — building the evidence base for the first qualitative paper</div>
+      </div>
+      <button class="expand-btn">Expand ↓</button>
+    </div>
+    <div class="cl-detail">
+      <div class="detail-body">
+        <p>Every session I run without systematic documentation is lost data. The qualitative paper that will come from this practice — the one that builds my research credibility during Phase two — needs material. I need to begin treating Make Space as a research site, not just a facilitation practice, from this point forward.</p>
+        <ul class="steps-list">
+          <li>Establish a consistent post-session note format: what happened, what I observed, what surprised me, what participants expressed</li>
+          <li>Begin gathering participant feedback using a simple, respectful, low-burden format</li>
+          <li>Keep a facilitation reflective journal — separate from session notes — tracking my own learning and the program's evolution</li>
+          <li>Consult a research ethics resource to understand what documentation practices I need in place before I can use this material in a publication</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="cl-block" id="cl-now-8">
+    <div class="cl-header" onclick="toggleDetail('cl-now-8')">
+      <input type="checkbox" class="cl-check" onclick="event.stopPropagation(); toggleCheck('cl-now-8')" />
+      <span class="cl-tag t-soon">Within months</span>
+      <div class="cl-body">
+        <div class="cl-title">Reframe the existing professional case studies in health and implementation language</div>
+        <div class="cl-sub">The fifteen years of experience already speaks to mental health systems — it just needs to be named correctly</div>
+      </div>
+      <button class="expand-btn">Expand ↓</button>
+    </div>
+    <div class="cl-detail">
+      <div class="detail-body">
+        <p>The province-wide care transition project is an implementation project in disability case management. The national research institution learning evaluation is knowledge translation infrastructure. The equitable experiential learning project is accessible learning design at scale. These are exactly the kinds of projects that matter in global health and implementation science. I just need to describe them in the right language.</p>
+        <ul class="steps-list">
+          <li>Rewrite each major case study to use implementation science and global health framing alongside the learning design framing</li>
+          <li>Add a brief reflection on each case study connecting it to mental health access and systems change</li>
+          <li>Use this reframed portfolio in all future applications and professional introductions</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-header">
+    <div class="sec-eye">Foundation — Employment</div>
+    <div class="sec-title">Secure the <em>Right Day Job</em></div>
+    <p class="sec-desc">The sector matters more than the title. Moving the day job inside health changes the vocabulary, the relationships, and the systemic context that shape everything downstream.</p>
+  </div>
+
+  <div class="cl-block" id="cl-now-9">
+    <div class="cl-header" onclick="toggleDetail('cl-now-9')">
+      <input type="checkbox" class="cl-check" onclick="event.stopPropagation(); toggleCheck('cl-now-9')" />
+      <span class="cl-tag t-now">Active search</span>
+      <div class="cl-body">
+        <div class="cl-title">Secure a role in the health sector — health authority, research institution, or global health NGO</div>
+        <div class="cl-sub">BC Mental Health and Substance Use Services · Vancouver Coastal Health · BC Children's Hospital Research Institute · IDRC</div>
+      </div>
+      <button class="expand-btn">Expand ↓</button>
+    </div>
+    <div class="cl-detail">
+      <div class="detail-body">
+        <p>The right job is inside health — not higher education broadly. The title matters less than the sector and the culture. I need colleagues who understand depression care, mental health systems, and research. I need an employer who sees outside intellectual and creative work as an asset, not a conflict.</p>
+        <ul class="steps-list">
+          <li>Target: BC Mental Health and Substance Use Services, Vancouver Coastal Health, Fraser Health — senior learning design roles</li>
+          <li>Alternative: BC Children's Hospital Research Institute, CAMH, Centre for Addictions Research of BC — knowledge translation and learning roles in mental health research organisations</li>
+          <li>Alternative: IDRC Canada, IRC Canada — learning and knowledge management roles in global health NGOs</li>
+          <li>Ask directly in interviews how the organisation views staff who maintain active research or creative practices alongside their role</li>
+        </ul>
+        <p class="cl-note">The right employer is one who will actively support the graduate study that follows. This is worth asking about explicitly at the offer stage.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cl-block" id="cl-now-10">
+    <div class="cl-header" onclick="toggleDetail('cl-now-10')">
+      <input type="checkbox" class="cl-check" onclick="event.stopPropagation(); toggleCheck('cl-now-10')" />
+      <span class="cl-tag t-soon">Before Leeds application</span>
+      <div class="cl-body">
+        <div class="cl-title">Confirm employer support for part-time graduate study</div>
+        <div class="cl-sub">The Leeds MSc is part-time and online — but I need my employer to know this is the plan</div>
+      </div>
+      <button class="expand-btn">Expand ↓</button>
+    </div>
+    <div class="cl-detail">
+      <div class="detail-body">
+        <p>The Leeds MSc runs part-time and online, which makes it workable alongside full-time employment — but it still requires protected time and employer goodwill. I need to have this conversation explicitly before I apply, not after I am accepted.</p>
+        <ul class="steps-list">
+          <li>Have an explicit conversation with my manager about the plan to pursue part-time graduate study</li>
+          <li>Understand whether the organisation has policies supporting professional development or tuition assistance</li>
+          <li>Clarify expectations around study leave, deadlines, and workload management during intensive study periods</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="cl-block" id="cl-now-11">
+    <div class="cl-header" onclick="toggleDetail('cl-now-11')">
+      <input type="checkbox" class="cl-check" onclick="event.stopPropagation(); toggleCheck('cl-now-11')" />
+      <span class="cl-tag t-soon">Within months</span>
+      <div class="cl-body">
+        <div class="cl-title">Establish and maintain the Substack — thinking in public</div>
+        <div class="cl-sub">The public record of intellectual development that makes every future application stronger</div>
+      </div>
+      <button class="expand-btn">Expand ↓</button>
+    </div>
+    <div class="cl-detail">
+      <div class="detail-body">
+        <p>The Substack is not a distraction from the serious work. It is the public record of me becoming someone who thinks carefully and writes clearly about depression, creative health, and systems change. Graduate admissions committees, research supervisors, and potential collaborators will read it. It needs to demonstrate that the intellectual agenda is real and developing, not just declared.</p>
+        <ul class="steps-list">
+          <li>Publish at minimum once per month — more is better, but consistency matters more than frequency</li>
+          <li>Each post should connect directly to the research agenda: depression, creative health, learning systems, or global mental health access</li>
+          <li>Share each post in relevant communities and with the researchers whose work I am engaging with</li>
+          <li>Use the Substack to develop arguments that will eventually appear in peer-reviewed form</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="cl-block" id="cl-now-12">
+    <div class="cl-header" onclick="toggleDetail('cl-now-12')">
+      <input type="checkbox" class="cl-check" onclick="event.stopPropagation(); toggleCheck('cl-now-12')" />
+      <span class="cl-tag t-now">Phase one · now</span>
+      <div class="cl-body">
+        <div class="cl-title">Sit and pass the CPACC examination</div>
+        <div class="cl-sub">Certified Professional in Accessibility Core Competencies &#8212; moved forward from Phase two, because it is the one credential that raises earning power inside the current job search</div>
+      </div>
+      <button class="expand-btn">Expand &#8595;</button>
+    </div>
+    <div class="cl-detail">
+      <div class="detail-body">
+        <p>This item previously sat alongside the Leeds modules, on the reasoning that the two overlap. The overlap is real, but it argued for the wrong order. Leeds is years of part-time study; the CPACC is a self-paced exam with a published body of knowledge and an existing twelve-week study design already written for it. It is the only credential in the entire plan that can be held before the next role is signed &#8212; and the role is what funds every phase after it.</p>
+        <p>The eligibility bar is already cleared: three scoped accessibility services, a twenty-five-node accessibility knowledge cluster, and fifteen years of learning design of which the accessibility and universal design work is a continuous thread. Nothing needs to be built first.</p>
+        <ul class="steps-list">
+          <li>Confirm the current exam session date and the application deadline that precedes it &#8212; the whole schedule anchors here</li>
+          <li>Submit the application, describing the role plainly and rounding down</li>
+          <li>Run the twelve-week study design already drafted &#8212; one domain studied, one public resource published, in that order</li>
+          <li>Add the credential to the CV, the site, and every live application the moment it is granted</li>
+        </ul>
+        <div class="resource-row">
+          <a class="resource" href="https://www.accessibilityassociation.org/cpacc" target="_blank" rel="noopener">CPACC &#8212; IAAP</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dark-callout">
+    This phase is complete when I have: a paper submitted to a peer-reviewed journal, a documented Make Space practice with at least one year of systematic records, all foundational texts absorbed and integrated into my writing, a day job anchored in the health sector or accessibility, the CPACC in hand, and an active Substack with a consistent publishing record. <strong>None of these require enrolment, permission, or a change in circumstances. All of them require decision and discipline.</strong>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     PANEL 2 — LEEDS MSc
+══════════════════════════════════════ -->
+<div class="panel" id="panel-leeds">
+<div class="wrap">
+  <p class="panel-intro">The Leeds MSc in Disability Studies provides the critical theoretical and justice framework that makes the accessibility dimensions of the work intellectually rigorous. This phase ends when I can demonstrate fluency in disability studies scholarship and hold a published qualitative paper. The CPACC has moved to Phase one, where it does more work.</p>
+
+  <div class="sec-header">
+    <div class="sec-eye">Before I Apply</div>
+    <div class="sec-title">Application <em>Readiness</em></div>
+  </div>
+
+  <div class="cl-block" id="cl-leeds-1">
+    <div class="cl-header" onclick="toggleDetail('cl-leeds-1')">
+      <input type="checkbox" class="cl-check" onclick="event.stopPropagation(); toggleCheck('cl-leeds-1')" />
+      <span class="cl-tag t-soon">Pre-application</span>
+      <div class="cl-body">
+        <div class="cl-title">Complete the foundational reading in disability studies</div>
+        <div class="cl-sub">Demonstrate in the statement of intent that I already understand the field I am entering</div>
+      </div>
+      <button class="expand-btn">Expand ↓</button>
+    </div>
+    <div class="cl-detail">
+      <div class="detail-body">
+        <p>I should not apply to the Leeds MSc as someone discovering disability studies for the first time. I should apply as someone with an established practice and a clear argument for how disability studies frameworks will sharpen and extend it. That requires prior reading.</p>
+        <ul class="steps-list">
+          <li>Read at minimum: Disability Studies Reader (Lennard Davis, ed.), at least two papers from the social model tradition, and one critique of the social model</li>
+          <li>Read work specific to mental health and the mad studies tradition — this is directly relevant to depression and my research agenda</li>
+          <li>Draft a statement of intent that names the intersection I am working in: disability, creative health, and the depression treatment gap</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="cl-block" id="cl-leeds-2">
+    <div class="cl-header" onclick="toggleDetail('cl-leeds-2')">
+      <input type="checkbox" class="cl-check" onclick="event.stopPropagation(); toggleCheck('cl-leeds-2')" />
+      <span class="cl-tag t-soon">Pre-application</span>
+      <div class="cl-body">
+        <div class="cl-title">Have the conceptual paper submitted (or in revision) before applying</div>
+        <div class="cl-sub">A submission record materially strengthens the Leeds application</div>
+      </div>
+      <button class="expand-btn">Expand ↓</button>
+    </div>
+    <div class="cl-detail">
+      <div class="detail-body">
+        <p>Applying with a paper under review — even if not yet accepted — signals to the admissions committee that this is a serious intellectual project, not a career pivot in search of a credential. It demonstrates that I have already begun moving from practice into scholarship without waiting for institutional permission.</p>
+        <ul class="steps-list">
+          <li>Time the Leeds application so that the conceptual paper has been submitted before the application deadline</li>
+          <li>Name the paper in the statement of intent: title, argument, target journal, status</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-header">
+    <div class="sec-eye">During the Leeds MSc</div>
+    <div class="sec-title">What I Build <em>While I Study</em></div>
+  </div>
+
+  <div class="cl-block" id="cl-leeds-3">
+    <div class="cl-header" onclick="toggleDetail('cl-leeds-3')">
+      <input type="checkbox" class="cl-check" onclick="event.stopPropagation(); toggleCheck('cl-leeds-3')" />
+      <span class="cl-tag t-build">Phase two</span>
+      <div class="cl-body">
+        <div class="cl-title">Begin the LSHTM short courses — Epidemiology, then Statistics, then Global Mental Health</div>
+        <div class="cl-sub">Run part-time alongside Leeds · Three courses that transform the LSHTM MSc application</div>
+      </div>
+      <button class="expand-btn">Expand ↓</button>
+    </div>
+    <div class="cl-detail">
+      <div class="detail-body">
+        <p>These three LSHTM short courses run online and part-time and can be completed across Phase two without conflict. Completing them before the LSHTM MSc application materially strengthens that application and ensures I can engage with the MSc content from day one without remedial work.</p>
+        <ul class="steps-list">
+          <li>Early in Phase two: Epidemiology for Public Health (LSHTM online)</li>
+          <li>Mid Phase two: Introduction to Statistics for Public Health (LSHTM online)</li>
+          <li>Late Phase two: Global Mental Health (LSHTM online) — complete as direct preparation for the LSHTM MSc application</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="cl-block" id="cl-leeds-5">
+    <div class="cl-header" onclick="toggleDetail('cl-leeds-5')">
+      <input type="checkbox" class="cl-check" onclick="event.stopPropagation(); toggleCheck('cl-leeds-5')" />
+      <span class="cl-tag t-build">Phase two</span>
+      <div class="cl-body">
+        <div class="cl-title">Submit the qualitative paper from Make Space</div>
+        <div class="cl-sub">The first peer-reviewed paper from the facilitation practice · Accessible to submit without a doctoral affiliation</div>
+      </div>
+      <button class="expand-btn">Expand ↓</button>
+    </div>
+    <div class="cl-detail">
+      <div class="detail-body">
+        <p>By the middle of Phase two, Make Space will have two to three years of documentation behind it. That is enough for a rigorous qualitative paper — a phenomenological or thematic analysis of participant experience in the program. This paper builds the evidence base for the program, demonstrates research competence before a doctorate, and strengthens every subsequent application.</p>
+        <ul class="steps-list">
+          <li>Identify participants willing to contribute to a formal qualitative study — seek research ethics guidance on the correct process for a study without institutional affiliation</li>
+          <li>Conduct interviews or use documented session material with appropriate consent</li>
+          <li>Write up as a qualitative paper targeting a mental health or arts-and-health journal</li>
+          <li>Submit once two to three Make Space cycles are documented</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="cl-block" id="cl-leeds-6">
+    <div class="cl-header" onclick="toggleDetail('cl-leeds-6')">
+      <input type="checkbox" class="cl-check" onclick="event.stopPropagation(); toggleCheck('cl-leeds-6')" />
+      <span class="cl-tag t-build">Phase two</span>
+      <div class="cl-body">
+        <div class="cl-title">Identify and make contact with a potential LSHTM or MA doctoral supervisor</div>
+        <div class="cl-sub">The relationship precedes the application — do not apply cold</div>
+      </div>
+      <button class="expand-btn">Expand ↓</button>
+    </div>
+    <div class="cl-detail">
+      <div class="detail-body">
+        <p>Graduate programs at this level are selective, and applications that arrive without prior contact from a potential supervisor are substantially weaker. I need to have identified a specific researcher whose work aligns with mine, engaged with their work publicly and substantively, and initiated a conversation before I apply.</p>
+        <ul class="steps-list">
+          <li>Read the research profiles of faculty at LSHTM, SFU, UBC, and UVic counselling psychology programs</li>
+          <li>Identify two or three researchers whose work on depression, creative health, or community mental health aligns with mine</li>
+          <li>Engage with their work: cite it in the Substack, attend their public talks, respond to their writing</li>
+          <li>Write a substantive email introducing the research agenda and asking about supervision availability — not a generic inquiry</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="dark-callout">
+    This phase is complete when I hold the Leeds MSc, two submitted peer-reviewed papers, three LSHTM short courses completed, and an established relationship with at least one potential graduate supervisor. <strong>The Phase two are not a pause in the work — they are the period when the intellectual architecture is built.</strong>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     PANEL 3 — LSHTM MSc
+══════════════════════════════════════ -->
+<div class="panel" id="panel-lshtm">
+<div class="wrap">
+  <p class="panel-intro">The LSHTM MSc in Global Mental Health builds the epidemiological literacy, research methodology competence, and international field network that makes me a credible researcher and partner in the global mental health space. This phase ends when I can read and evaluate depression trials, hold a field network of collaborators, and have begun the MA Counselling Psychology application process.</p>
+
+  <div class="sec-header">
+    <div class="sec-eye">Before I Apply</div>
+    <div class="sec-title">Application <em>Readiness</em></div>
+  </div>
+
+  <div class="cl-block" id="cl-lshtm-1">
+    <div class="cl-header" onclick="toggleDetail('cl-lshtm-1')">
+      <input type="checkbox" class="cl-check" onclick="event.stopPropagation(); toggleCheck('cl-lshtm-1')" />
+      <span class="cl-tag t-soon">Pre-application</span>
+      <div class="cl-body">
+        <div class="cl-title">Complete all three LSHTM short courses before applying to the MSc</div>
+        <div class="cl-sub">Epidemiology · Statistics · Global Mental Health — the three courses that make the MSc application competitive</div>
+      </div>
+      <button class="expand-btn">Expand ↓</button>
+    </div>
+    <div class="cl-detail">
+      <div class="detail-body">
+        <p>The LSHTM short courses are the explicit preparation for this MSc application. Completing them before applying demonstrates both competence and commitment. They are also the evidence that the quantitative and epidemiological dimensions of the MSc content will not be a barrier.</p>
+        <ul class="steps-list">
+          <li>Confirm all three short courses are complete and graded before the MSc application deadline</li>
+          <li>Name them explicitly in the personal statement with the grades received</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="cl-block" id="cl-lshtm-2">
+    <div class="cl-header" onclick="toggleDetail('cl-lshtm-2')">
+      <input type="checkbox" class="cl-check" onclick="event.stopPropagation(); toggleCheck('cl-lshtm-2')" />
+      <span class="cl-tag t-soon">Pre-application</span>
+      <div class="cl-body">
+        <div class="cl-title">Hold at least one peer-reviewed publication or accepted submission before applying</div>
+        <div class="cl-sub">A publication record at MSc application strengthens an application without a conventional research background</div>
+      </div>
+      <button class="expand-btn">Expand ↓</button>
+    </div>
+    <div class="cl-detail">
+      <div class="detail-body">
+        <p>My application will not look conventional — a BFA, fifteen years of learning design, and no prior graduate degree in a health field. What compensates is demonstrated intellectual engagement with the field: publications, the Substack, and the short course record. A publication is the strongest signal.</p>
+        <ul class="steps-list">
+          <li>Have the conceptual paper published or accepted, and the Make Space qualitative paper submitted or under review, before applying</li>
+          <li>Name both in the personal statement with their status, argument, and relevance to the MSc research agenda</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-header">
+    <div class="sec-eye">During the LSHTM MSc</div>
+    <div class="sec-title">What I Build <em>While I Study</em></div>
+  </div>
+
+  <div class="cl-block" id="cl-lshtm-3">
+    <div class="cl-header" onclick="toggleDetail('cl-lshtm-3')">
+      <input type="checkbox" class="cl-check" onclick="event.stopPropagation(); toggleCheck('cl-lshtm-3')" />
+      <span class="cl-tag t-build">Phase two</span>
+      <div class="cl-body">
+        <div class="cl-title">Build genuine relationships with at least three international researchers in my field</div>
+        <div class="cl-sub">The LSHTM network is the primary value of this degree — the credential follows from the relationships</div>
+      </div>
+      <button class="expand-btn">Expand ↓</button>
+    </div>
+    <div class="cl-detail">
+      <div class="detail-body">
+        <p>The LSHTM MSc puts me in a cohort of public health professionals from across the world, many of them working in exactly the contexts where the depression treatment gap is most acute. These are the collaborators for the research program I am building. I need to invest in these relationships as much as I invest in the coursework.</p>
+        <ul class="steps-list">
+          <li>Identify three to five cohort members whose work or context is most relevant to my research agenda and invest in those relationships deliberately</li>
+          <li>Attend in-person intensives where possible — these are where the relationships deepen</li>
+          <li>Follow up with faculty whose research is closest to mine — the MSc is an opportunity to establish a mentorship relationship before applying for a PhD</li>
+          <li>Propose collaboration on at minimum one piece of writing with a cohort member during the MSc</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="cl-block" id="cl-lshtm-4">
+    <div class="cl-header" onclick="toggleDetail('cl-lshtm-4')">
+      <input type="checkbox" class="cl-check" onclick="event.stopPropagation(); toggleCheck('cl-lshtm-4')" />
+      <span class="cl-tag t-build">Phase two</span>
+      <div class="cl-body">
+        <div class="cl-title">Complete a dissertation that generates an original finding relevant to creative health or depression intervention</div>
+        <div class="cl-sub">The MSc dissertation is the first piece of work that belongs squarely in the research literature, not just the opinion literature</div>
+      </div>
+      <button class="expand-btn">Expand ↓</button>
+    </div>
+    <div class="cl-detail">
+      <div class="detail-body">
+        <p>The LSHTM dissertation is a significant piece of work — a systematic review, a secondary data analysis, or a policy analysis. I need to choose a question that sits directly within my research agenda: either a systematic review of creative interventions for depression, a scoping review of task-shifting models in high-income countries, or an analysis of training system design in evidence-based psychological treatment dissemination.</p>
+        <ul class="steps-list">
+          <li>Choose the dissertation question in the first semester — the best dissertations are the ones whose authors knew what they were asking from the beginning</li>
+          <li>Work with an LSHTM supervisor whose research is closest to the dissertation question, not just the most available person</li>
+          <li>Plan to submit the dissertation for publication after completion — it should be written with a journal audience in mind from the first draft</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="cl-block" id="cl-lshtm-5">
+    <div class="cl-header" onclick="toggleDetail('cl-lshtm-5')">
+      <input type="checkbox" class="cl-check" onclick="event.stopPropagation(); toggleCheck('cl-lshtm-5')" />
+      <span class="cl-tag t-build">Phase two</span>
+      <div class="cl-body">
+        <div class="cl-title">Identify the doctoral supervisor and program before the MSc ends</div>
+        <div class="cl-sub">The PhD application should be submitted before or immediately upon MSc completion — not after a gap</div>
+      </div>
+      <button class="expand-btn">Expand ↓</button>
+    </div>
+    <div class="cl-detail">
+      <div class="detail-body">
+        <p>The transition from MSc to doctoral study should be managed carefully. A gap year between the MSc and the PhD application loses momentum, network warmth, and the institutional identity that the MSc provides. I need to have identified the doctoral program and supervisor during Phase two, not after.</p>
+        <ul class="steps-list">
+          <li>Begin the doctoral program search once Phase three condition is in sight</li>
+          <li>Make contact with potential supervisors at SFU, UBC, and UVic — and internationally if the doctorate is to be abroad</li>
+          <li>Have a supervisor conversation before the MSc ends and ideally before the application is submitted</li>
+          <li>Apply for the MA Counselling Psychology while still in the final year of the LSHTM MSc</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="dark-callout">
+    This phase is complete when I hold the LSHTM MSc, have the dissertation submitted to a journal, hold at least three genuine international research relationships, and have the MA Counselling Psychology application submitted. <strong>The LSHTM network is the most valuable outcome of this degree — it needs to be tended from day one.</strong>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     PANEL 4 — MA COUNSELLING
+══════════════════════════════════════ -->
+<div class="panel" id="panel-ma">
+<div class="wrap">
+  <p class="panel-intro">The MA in Counselling Psychology builds the clinical knowledge that makes the research credible from the inside. This phase ends when I am provisionally registered, have accumulated substantial supervised hours focused on depression, and have submitted the doctoral application.</p>
+
+  <div class="sec-header">
+    <div class="sec-eye">Before I Apply</div>
+    <div class="sec-title">Application <em>Readiness</em></div>
+  </div>
+
+  <div class="cl-block" id="cl-ma-1">
+    <div class="cl-header" onclick="toggleDetail('cl-ma-1')">
+      <input type="checkbox" class="cl-check" onclick="event.stopPropagation(); toggleCheck('cl-ma-1')" />
+      <span class="cl-tag t-soon">Pre-application</span>
+      <div class="cl-body">
+        <div class="cl-title">Write an application that names depression and creative approaches as the explicit clinical focus</div>
+        <div class="cl-sub">This is not a generic application — it is the application of someone who has spent four years building toward this specific clinical interest</div>
+      </div>
+      <button class="expand-btn">Expand ↓</button>
+    </div>
+    <div class="cl-detail">
+      <div class="detail-body">
+        <p>The statement of intent should name Daisy Fancourt, the task-shifting literature, and the global mental health treatment gap. It should describe Make Space as a facilitation practice I have run for several years with documented outcomes. It should name the publications I hold. It should identify the specific faculty member I want to work with and why.</p>
+        <ul class="steps-list">
+          <li>Research faculty interests at SFU, UBC, and UVic in depth — identify the specific person whose research is closest to mine at each institution</li>
+          <li>Write a statement of intent that treats the clinical training as the practice complement to an established research agenda, not as a starting point for one</li>
+          <li>Request a conversation with potential supervisors before submitting — the conversation informs the application and signals seriousness</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-header">
+    <div class="sec-eye">During the MA</div>
+    <div class="sec-title">Building <em>Clinical Knowledge</em> from the Inside</div>
+  </div>
+
+  <div class="cl-block" id="cl-ma-2">
+    <div class="cl-header" onclick="toggleDetail('cl-ma-2')">
+      <input type="checkbox" class="cl-check" onclick="event.stopPropagation(); toggleCheck('cl-ma-2')" />
+      <span class="cl-tag t-build">Phase three</span>
+      <div class="cl-body">
+        <div class="cl-title">Request practicum placements where depression is the primary presenting concern</div>
+        <div class="cl-sub">Mood disorder clinics · Community mental health · Primary care — the clinical hours that make the research credible</div>
+      </div>
+      <button class="expand-btn">Expand ↓</button>
+    </div>
+    <div class="cl-detail">
+      <div class="detail-body">
+        <p>The practicum is not just a requirement to complete — it is the most important learning of the MA. Every clinical observation becomes material for the doctoral dissertation and for the research program. I need to be intentional about placement from day one, not accept whatever is offered.</p>
+        <ul class="steps-list">
+          <li>Explicitly request mood disorder clinic, community mental health, and primary care mental health placements when given the opportunity to indicate preferences</li>
+          <li>Keep detailed reflective notes on clinical observations throughout — what works, what the room asks for, where creative approaches feel natural</li>
+          <li>Begin integrating creative and expressive approaches into clinical work under supervision from the beginning — document carefully what this produces</li>
+          <li>Discuss the research agenda explicitly with practicum supervisors — they become part of the network</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="cl-block" id="cl-ma-3">
+    <div class="cl-header" onclick="toggleDetail('cl-ma-3')">
+      <input type="checkbox" class="cl-check" onclick="event.stopPropagation(); toggleCheck('cl-ma-3')" />
+      <span class="cl-tag t-build">Phase three</span>
+      <div class="cl-body">
+        <div class="cl-title">Apply for provisional registration with the BC College of Psychologists upon MA completion</div>
+        <div class="cl-sub">Provisional registration enables the supervised practice hours that lead to full registration</div>
+      </div>
+      <button class="expand-btn">Expand ↓</button>
+    </div>
+    <div class="cl-detail">
+      <div class="detail-body">
+        <p>Provisional registration after the MA enables me to accumulate supervised hours toward full registration as a Registered Psychologist in BC. These hours can run concurrently with the PhD — meaning full registration is achievable during or shortly after the doctorate, rather than requiring a separate post-doctoral period.</p>
+        <ul class="steps-list">
+          <li>Understand the BC College of Psychologists registration requirements from the beginning of the MA — know what I am working toward</li>
+          <li>Ensure the MA program is accredited or recognised by the BC College of Psychologists</li>
+          <li>Apply for provisional registration promptly upon MA completion</li>
+          <li>Arrange a supervised clinical caseload to continue during Phase four</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="cl-block" id="cl-ma-4">
+    <div class="cl-header" onclick="toggleDetail('cl-ma-4')">
+      <input type="checkbox" class="cl-check" onclick="event.stopPropagation(); toggleCheck('cl-ma-4')" />
+      <span class="cl-tag t-build">Phase three</span>
+      <div class="cl-body">
+        <div class="cl-title">Submit the doctoral application before the MA ends</div>
+        <div class="cl-sub">Do not allow a gap between the MA and the PhD — the application should be submitted in the final MA year</div>
+      </div>
+      <button class="expand-btn">Expand ↓</button>
+    </div>
+    <div class="cl-detail">
+      <div class="detail-body">
+        <p>The same principle applies here as between the LSHTM MSc and the MA: a gap loses momentum, network warmth, and institutional identity. The doctoral application should be underway before I finish the MA — not something I turn to once the MA is complete.</p>
+        <ul class="steps-list">
+          <li>Begin the doctoral program research once the caseload is established</li>
+          <li>Maintain and deepen relationships with the potential doctoral supervisors identified during Phase two</li>
+          <li>Apply as Phase three closes, so that the transition is seamless</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="dark-callout">
+    This phase is complete when I hold the MA, am provisionally registered with the BC College of Psychologists, have submitted the doctoral application, and have a supervised clinical caseload in place for Phase four. <strong>The MA is where the intellectual work becomes embodied knowledge — it deserves the same intentionality as the research phases.</strong>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     PANEL 5 — DOCTORATE
+══════════════════════════════════════ -->
+<div class="panel" id="panel-phd">
+<div class="wrap">
+  <p class="panel-intro">The doctorate is where everything converges. The publication record, the clinical experience, and the research agenda are all in place. This phase produces the dissertation, builds the full registration hours, and establishes me as an independent researcher with a body of work, a field network, and the authority to lead the next phase of the contribution.</p>
+
+  <div class="sec-header">
+    <div class="sec-eye">Before I Begin</div>
+    <div class="sec-title">Entering the Doctorate <em>Prepared</em></div>
+  </div>
+
+  <div class="cl-block" id="cl-phd-1">
+    <div class="cl-header" onclick="toggleDetail('cl-phd-1')">
+      <input type="checkbox" class="cl-check" onclick="event.stopPropagation(); toggleCheck('cl-phd-1')" />
+      <span class="cl-tag t-soon">Pre-doctoral</span>
+      <div class="cl-body">
+        <div class="cl-title">Hold a confirmed supervisor relationship before beginning the doctorate</div>
+        <div class="cl-sub">The supervisory relationship is the most important structural element of doctoral success — it should be confirmed before enrolment, not discovered after</div>
+      </div>
+      <button class="expand-btn">Expand ↓</button>
+    </div>
+    <div class="cl-detail">
+      <div class="detail-body">
+        <p>Doctoral students whose supervisors are genuinely invested in their research agenda complete faster, publish more during the doctorate, and enter the field with stronger networks. I need a supervisor who is not just willing to supervise me but actively interested in what I am investigating. This takes time to establish — begin identifying and cultivating this relationship during Phase two.</p>
+        <ul class="steps-list">
+          <li>Confirm the supervisory relationship in writing before accepting a doctoral offer</li>
+          <li>Have an explicit conversation about the supervisor's expectations, communication style, and timeline for completion</li>
+          <li>Understand whether the supervisor has funding that could support the research — or how I plan to fund Phase four</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="cl-block" id="cl-phd-2">
+    <div class="cl-header" onclick="toggleDetail('cl-phd-2')">
+      <input type="checkbox" class="cl-check" onclick="event.stopPropagation(); toggleCheck('cl-phd-2')" />
+      <span class="cl-tag t-soon">Pre-doctoral</span>
+      <div class="cl-body">
+        <div class="cl-title">Have a dissertation question fully formed before the first day</div>
+        <div class="cl-sub">The students who enter with a clear question — not a vague interest — are the ones who finish</div>
+      </div>
+      <button class="expand-btn">Expand ↓</button>
+    </div>
+    <div class="cl-detail">
+      <div class="detail-body">
+        <p>The most common cause of doctoral delay is a research question that remains unresolved through the first year of the program. I have the advantage of a research agenda that has been developing for years before the doctorate begins. I should enter with a specific, defensible question — not a topic, not an area of interest, but a question I can answer with data.</p>
+        <ul class="steps-list">
+          <li>Draft the dissertation question as Phase three closes</li>
+          <li>Test it with the doctoral supervisor and with two or three researchers in the field before the doctorate begins</li>
+          <li>Know the methodology before I arrive — whether this is a randomised trial, a qualitative study, a mixed methods design, or a systematic review</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-header">
+    <div class="sec-eye">During the Doctorate</div>
+    <div class="sec-title">Building <em>Research Authority</em> and Clinical Standing</div>
+  </div>
+
+  <div class="cl-block" id="cl-phd-3">
+    <div class="cl-header" onclick="toggleDetail('cl-phd-3')">
+      <input type="checkbox" class="cl-check" onclick="event.stopPropagation(); toggleCheck('cl-phd-3')" />
+      <span class="cl-tag t-build">Phase four</span>
+      <div class="cl-body">
+        <div class="cl-title">Maintain a supervised clinical caseload focused on depression throughout the doctorate</div>
+        <div class="cl-sub">Clinical hours toward full registration can run concurrently with doctoral research — do not defer them</div>
+      </div>
+      <button class="expand-btn">Expand ↓</button>
+    </div>
+    <div class="cl-detail">
+      <div class="detail-body">
+        <p>The clinical work is not a distraction from the research — it is the source of the clinical knowledge that makes the research credible. A researcher who has spent years in the room with people experiencing depression writes about depression differently than one who has not. The room and the dissertation inform each other.</p>
+        <ul class="steps-list">
+          <li>Negotiate the supervised hours arrangement with the doctoral program before enrolment — confirm that clinical work is permitted alongside the research</li>
+          <li>Accumulate hours consistently and track them carefully for the BC College registration requirements</li>
+          <li>Integrate creative and expressive approaches into the clinical work under supervision — document what this produces for potential dissertation data</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="cl-block" id="cl-phd-4">
+    <div class="cl-header" onclick="toggleDetail('cl-phd-4')">
+      <input type="checkbox" class="cl-check" onclick="event.stopPropagation(); toggleCheck('cl-phd-4')" />
+      <span class="cl-tag t-build">Phase four</span>
+      <div class="cl-body">
+        <div class="cl-title">Publish at least two peer-reviewed papers from the dissertation before completing</div>
+        <div class="cl-sub">The publication record is the primary signal of research productivity — it needs to be established before the doctorate ends, not after</div>
+      </div>
+      <button class="expand-btn">Expand ↓</button>
+    </div>
+    <div class="cl-detail">
+      <div class="detail-body">
+        <p>The competitive positions I will be pursuing after the doctorate — research fellowships, academic roles, senior clinical research positions — require a demonstrated publication record, not a promise of one. At minimum two first-author publications from the dissertation research should be submitted or accepted before I complete.</p>
+        <ul class="steps-list">
+          <li>Plan the dissertation as a publication-ready document from the first draft, not as an internal document that will later be adapted for journals</li>
+          <li>Identify target journals for each paper before the data collection is complete</li>
+          <li>Submit the first paper well before the doctorate concludes</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="cl-block" id="cl-phd-5">
+    <div class="cl-header" onclick="toggleDetail('cl-phd-5')">
+      <input type="checkbox" class="cl-check" onclick="event.stopPropagation(); toggleCheck('cl-phd-5')" />
+      <span class="cl-tag t-build">Phase four</span>
+      <div class="cl-body">
+        <div class="cl-title">Establish Make Space as a formally documented program with social prescribing eligibility</div>
+        <div class="cl-sub">By Phase four, the program has the evidence base to enter formal health referral pathways</div>
+      </div>
+      <button class="expand-btn">Expand ↓</button>
+    </div>
+    <div class="cl-detail">
+      <div class="detail-body">
+        <p>Social prescribing programs — where GPs and mental health practitioners refer patients to community-based creative and arts activities — are actively looking for evidence-based programs to refer to. By Phase four, Make Space will have a qualitative paper published, a trained facilitator running the program alongside, and several years of documentation. That is the evidence base required to enter these pathways.</p>
+        <ul class="steps-list">
+          <li>Research social prescribing programs operating in BC and identify the evidence requirements for inclusion</li>
+          <li>Prepare a program brief that presents the Make Space evidence base in the language health referrers use</li>
+          <li>Approach community health centres and GP practices with the program brief — aim for at least one formal referral partnership during Phase four</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="cl-block" id="cl-phd-6">
+    <div class="cl-header" onclick="toggleDetail('cl-phd-6')">
+      <input type="checkbox" class="cl-check" onclick="event.stopPropagation(); toggleCheck('cl-phd-6')" />
+      <span class="cl-tag t-build">Phase four</span>
+      <div class="cl-body">
+        <div class="cl-title">Apply for full registration with the BC College of Psychologists</div>
+        <div class="cl-sub">Full registration enables independent practice, supervision of others, and the full scope of contribution</div>
+      </div>
+      <button class="expand-btn">Expand ↓</button>
+    </div>
+    <div class="cl-detail">
+      <div class="detail-body">
+        <p>Full registration as a Registered Psychologist in BC is the credential that enables independent practice, the ability to supervise practicum students, and the full scope of clinical contribution. With supervised hours beginning at the MA, full registration should be achievable by the end of the doctoral program or shortly after.</p>
+        <ul class="steps-list">
+          <li>Track supervised hours carefully throughout Phase three and beyond</li>
+          <li>Confirm the BC College of Psychologists' current requirements for full registration well in advance of application</li>
+          <li>Submit the full registration application as soon as the hour requirements are met — do not defer this</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="dark-callout">
+    This phase is complete when I hold the doctorate, full registration as a Registered Psychologist in BC, at least two publications from the dissertation, a social prescribing partnership for Make Space, and the post-doctoral position secured. <strong>The doctorate is not the destination — it is the platform from which the contribution at scale becomes possible.</strong>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     PANEL 6 — POST-DOCTORAL
+══════════════════════════════════════ -->
+<div class="panel" id="panel-post">
+<div class="wrap">
+  <p class="panel-intro">The post-doctoral phase is where the contribution at scale begins. With full clinical registration, a research record, an international field network, and a documented program with evidence behind it, I am positioned to pursue the work that addresses the depression treatment gap directly — in clinical practice, in research, in training systems, and in policy.</p>
+
+  <div class="sec-header">
+    <div class="sec-eye">Entering Post-Doctoral Life</div>
+    <div class="sec-title">Positioning for <em>Maximum Contribution</em></div>
+  </div>
+
+  <div class="cl-block" id="cl-post-1">
+    <div class="cl-header" onclick="toggleDetail('cl-post-1')">
+      <input type="checkbox" class="cl-check" onclick="event.stopPropagation(); toggleCheck('cl-post-1')" />
+      <span class="cl-tag t-build">Post-doctoral</span>
+      <div class="cl-body">
+        <div class="cl-title">Secure a post-doctoral fellowship, independent clinical position, or senior research role</div>
+        <div class="cl-sub">The first post-doctoral position sets the trajectory — it should be chosen for the contribution it enables, not just the prestige it offers</div>
+      </div>
+      <button class="expand-btn">Expand ↓</button>
+    </div>
+    <div class="cl-detail">
+      <div class="detail-body">
+        <p>There are three viable post-doctoral trajectories, and the right one depends on what the research agenda most needs at this point: more clinical depth, more research infrastructure, or more international scope. I need to make this choice deliberately, not by default.</p>
+        <ul class="steps-list">
+          <li>Academic track: post-doctoral fellowship leading to a faculty position — enables large-scale research programs and training of future researchers</li>
+          <li>Clinical-research track: senior clinical position with protected research time — enables continued direct work with people experiencing depression while generating evidence</li>
+          <li>Systems track: policy or program design role in a health authority or international health organisation — enables the training system design work at scale</li>
+          <li>Choose the track that the research agenda most needs at this point — not the track that was decided years earlier before the work informed the decision</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="cl-block" id="cl-post-2">
+    <div class="cl-header" onclick="toggleDetail('cl-post-2')">
+      <input type="checkbox" class="cl-check" onclick="event.stopPropagation(); toggleCheck('cl-post-2')" />
+      <span class="cl-tag t-build">Post-doctoral</span>
+      <div class="cl-body">
+        <div class="cl-title">Consider the Advanced Diploma in Art Therapy — if it still calls</div>
+        <div class="cl-sub">Optional · Vancouver Art Therapy Institute · The BFA brought into direct clinical service</div>
+      </div>
+      <button class="expand-btn">Expand ↓</button>
+    </div>
+    <div class="cl-detail">
+      <div class="detail-body">
+        <p>After the doctorate, if the art therapy credential still feels like an important integration — not just an interesting idea — the Vancouver Art Therapy Institute distance stream is available. Two short residential intensives in Vancouver, otherwise completable from anywhere. This is not a credential required for anything else on the path. It is the credential that brings the BFA into direct clinical service for people whose healing happens through image, material, and making rather than words alone.</p>
+        <ul class="steps-list">
+          <li>Return to this question at the two-year post-doctoral review — with the benefit of clinical practice and research experience to inform the answer</li>
+          <li>If it still calls, apply to the VATI distance stream</li>
+          <li>If the research agenda and clinical work have moved in directions that make it less relevant, let it go without regret</li>
+        </ul>
+        <p class="cl-note">This item is genuinely optional. It appears on the checklist not as a requirement but as a question worth returning to — which is different from a box to tick.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cl-block" id="cl-post-3">
+    <div class="cl-header" onclick="toggleDetail('cl-post-3')">
+      <input type="checkbox" class="cl-check" onclick="event.stopPropagation(); toggleCheck('cl-post-3')" />
+      <span class="cl-tag t-build">Post-doctoral</span>
+      <div class="cl-body">
+        <div class="cl-title">Secure independent funding for the next phase of research</div>
+        <div class="cl-sub">A CIHR operating grant, a Wellcome Trust award, or equivalent — the research program needs its own resource base</div>
+      </div>
+      <button class="expand-btn">Expand ↓</button>
+    </div>
+    <div class="cl-detail">
+      <div class="detail-body">
+        <p>Independent research funding is the marker of research independence. It is also what enables the research program to grow beyond what a single researcher can do alone — to hire research assistants, support partners in low-income country contexts, and sustain the work across a career rather than a single project.</p>
+        <ul class="steps-list">
+          <li>Begin the CIHR grant application process in the first year of the post-doctoral phase — these applications take a full year to develop properly</li>
+          <li>Identify the international funding landscape: Wellcome Trust (global mental health focus), NIH Fogarty (international research), and foundation funding for creative health</li>
+          <li>Work with the institution's research office — they have expertise in grant writing that most researchers do not have alone</li>
+          <li>Frame the application around the specific research question, not around the career — funders support research, not researchers</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="cl-block" id="cl-post-4">
+    <div class="cl-header" onclick="toggleDetail('cl-post-4')">
+      <input type="checkbox" class="cl-check" onclick="event.stopPropagation(); toggleCheck('cl-post-4')" />
+      <span class="cl-tag t-opt">Phase review</span>
+      <div class="cl-body">
+        <div class="cl-title">Review the career direction and primary contribution at each phase transition</div>
+        <div class="cl-sub">The question that should be asked at every major decision point — not resolved once, but held honestly throughout</div>
+      </div>
+      <button class="expand-btn">Expand ↓</button>
+    </div>
+    <div class="cl-detail">
+      <div class="detail-body">
+        <p>Is this career path designed to maximise impact on the depression treatment gap, or is it designed to maximise personal meaning and fulfilment while also being genuinely useful? These are not the same question. The answer will change as the career develops, and that is acceptable — but the question needs to be asked explicitly and honestly, not avoided. The discipline is not to resolve it once but to hold it across the twenty years of this work.</p>
+        <ul class="steps-list">
+          <li>Set a recurring calendar commitment for this review — every two years, at minimum</li>
+          <li>Ask: what is the primary contribution I am making? Is that the contribution I most want to make? Is it the contribution the problem most needs?</li>
+          <li>Ask: what am I not doing that the path called for? Is that a problem or an evolution?</li>
+          <li>Ask: where is the freedom to act, and am I using it?</li>
+        </ul>
+        <p class="cl-note">This is the item that makes all the other items worth completing. A career that cannot ask this question is a career that has stopped paying attention.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="dark-callout">
+    This phase has no clear endpoint — it is the beginning of the contribution at scale. <strong>The checklist does not end here; it becomes a living practice of asking the right questions at every decision point and having the preparation, the relationships, and the evidence to act purposefully when the moment calls for it.</strong>
+  </div>
+</div>
+</div>
+
+<footer>
+  <span>Checklist — Living Document</span>
+  <span>Ground · Frame · The Room · The Question · Deployment</span>
+</footer>
+
+<script>
+  function showPanel(name, btn) {
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('panel-' + name).classList.add('active');
+    btn.classList.add('active');
+    updateProgress();
+  }
+
+  function toggleDetail(id) {
+    const block = document.getElementById(id);
+    const detail = block.querySelector('.cl-detail');
+    const btn = block.querySelector('.expand-btn');
+    const isOpen = detail.classList.contains('open');
+    detail.classList.toggle('open');
+    btn.textContent = isOpen ? 'Expand ↓' : 'Collapse ↑';
+  }
+
+  function toggleCheck(id) {
+    const block = document.getElementById(id);
+    const checkbox = block.querySelector('.cl-check');
+    if (checkbox.checked) {
+      block.classList.add('checked');
+    } else {
+      block.classList.remove('checked');
+    }
+    updateProgress();
+  }
+
+  function updateProgress() {
+    const all = document.querySelectorAll('.cl-check');
+    const checked = document.querySelectorAll('.cl-check:checked');
+    const pct = all.length > 0 ? Math.round((checked.length / all.length) * 100) : 0;
+    document.getElementById('progress-fill').style.width = pct + '%';
+    document.getElementById('progress-count').textContent = checked.length + ' / ' + all.length + ' complete';
+  }
+
+  // init
+  updateProgress();
+</script>
+</body>
+</html>
