@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Open Curriculum — Andrea Robin</title>
+<link href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --white:     #ffffff;
+    --ink:       #303e44;
+    --accent:    #475f6a;
+    --mid:       #6a858f;
+    --light:     #e8eef0;
+    --lighter:   #f4f7f8;
+    --line:      #d4dde1;
+    --faint:     #8fa4ad;
+  }
+
+  body {
+    background: var(--white);
+    color: var(--ink);
+    font-family: 'Asap', system-ui, sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    font-size: 16px;
+  }
+
+  /* ── HEADER ── */
+  header {
+    padding: 4rem 3.5rem 3rem;
+    border-bottom: 1px solid var(--line);
+    max-width: 900px;
+  }
+  .eyebrow {
+    font-size: 0.68rem; font-weight: 500; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--mid); margin-bottom: 1.4rem;
+  }
+  h1 {
+    font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 300;
+    line-height: 1.12; letter-spacing: -0.01em; margin-bottom: 1.2rem;
+  }
+  h1 em { font-style: italic; color: var(--accent); }
+  .header-sub {
+    font-size: 1rem; color: var(--mid); max-width: 620px; line-height: 1.75;
+  }
+
+  /* ── PAGE BODY ── */
+  .wrap { max-width: 900px; padding: 0 3.5rem 5rem; }
+
+  .note {
+    background: var(--lighter);
+    border-left: 3px solid var(--accent);
+    padding: 1.4rem 1.6rem;
+    margin: 3rem 0 0;
+    font-size: 0.92rem;
+    color: var(--accent);
+    line-height: 1.7;
+  }
+  .note strong { font-weight: 600; }
+
+  .track { margin-top: 4rem; }
+  .track-num {
+    font-size: 0.68rem; font-weight: 500; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--faint); margin-bottom: 0.7rem;
+  }
+  h2 {
+    font-size: 1.7rem; font-weight: 300; letter-spacing: -0.01em;
+    margin-bottom: 0.7rem; line-height: 1.25;
+  }
+  .track-intro {
+    font-size: 0.95rem; color: var(--mid); max-width: 640px;
+    line-height: 1.75; margin-bottom: 2rem;
+  }
+
+  /* ── COURSE ENTRY ── */
+  .item {
+    border-top: 1px solid var(--line);
+    padding: 1.7rem 0;
+  }
+  .item:last-child { border-bottom: 1px solid var(--line); }
+  .item-title {
+    font-size: 1.02rem; font-weight: 500; line-height: 1.4;
+    margin-bottom: 0.25rem;
+  }
+  .item-title a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+  .item-title a:hover, .item-title a:focus { color: var(--accent); border-bottom-color: var(--accent); }
+  .item-org {
+    font-size: 0.82rem; color: var(--faint); margin-bottom: 0.7rem;
+  }
+  .item-desc {
+    font-size: 0.93rem; color: var(--mid); line-height: 1.7; max-width: 640px;
+  }
+  .item-desc + .item-desc { margin-top: 0.6rem; }
+
+  .pills { margin-top: 0.85rem; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .pill {
+    font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 0.28rem 0.6rem;
+    background: var(--light); color: var(--accent); border-radius: 2px;
+  }
+  .pill.free   { background: var(--accent); color: var(--white); }
+  .pill.audit  { background: var(--light);  color: var(--accent); }
+  .pill.paid   { background: var(--white);  color: var(--faint); border: 1px solid var(--line); }
+  .pill.time   { background: var(--white);  color: var(--mid);   border: 1px solid var(--line); }
+  .pill.flag   { background: var(--white);  color: var(--accent); border: 1px dashed var(--accent); }
+
+  /* ── SEQUENCE ── */
+  .seq { margin-top: 4.5rem; padding-top: 3rem; border-top: 2px solid var(--ink); }
+  .seq-item { display: flex; gap: 1.6rem; padding: 1.4rem 0; border-bottom: 1px solid var(--line); }
+  .seq-when {
+    flex: 0 0 130px; font-size: 0.72rem; font-weight: 500;
+    letter-spacing: 0.14em; text-transform: uppercase; color: var(--faint);
+    padding-top: 0.2rem;
+  }
+  .seq-what { font-size: 0.95rem; color: var(--ink); line-height: 1.7; }
+  .seq-what span { display: block; color: var(--mid); font-size: 0.88rem; margin-top: 0.2rem; }
+
+  footer {
+    padding: 2.5rem 3.5rem 4rem; border-top: 1px solid var(--line);
+    font-size: 0.82rem; color: var(--faint); max-width: 900px; line-height: 1.7;
+  }
+
+  @media (max-width: 640px) {
+    header { padding: 2.5rem 1.4rem 2rem; }
+    .wrap { padding: 0 1.4rem 3rem; }
+    footer { padding: 2rem 1.4rem 3rem; }
+    .seq-item { flex-direction: column; gap: 0.4rem; }
+    .seq-when { flex: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">Training · Free and low-cost</div>
+  <h1>The <em>open</em> curriculum</h1>
+  <p class="header-sub">Everything reputable that can be studied without enrolment, permission, or tuition — sequenced against the CPACC, the Leeds MSc, and the long road to counselling psychology. Cost and availability are stated plainly, including where something is not actually free.</p>
+</header>
+
+<div class="wrap">
+
+<div class="note">
+  <strong>How to read this.</strong> Nothing here substitutes for the credentials already in the plan. What free training does is different: it closes specific knowledge gaps ahead of paid study, it produces certificates that make a CV legible to hiring managers who cannot assess fifteen years of learning design at a glance, and — in two cases below — it puts a person in a supervised room with people in distress, which no course can do. Verify enrolment windows before planning around any single item; several of these run on annual or seasonal intakes.
+</div>
+
+<!-- ══════════════ TRACK 1 ══════════════ -->
+<div class="track">
+  <div class="track-num">Track one</div>
+  <h2>Rights, disability, and the international frame</h2>
+  <p class="track-intro">This is CPACC Domain I territory and Leeds preparation at the same time. It is also the track with the strongest free offerings anywhere — the UN and WHO have invested heavily here, and the certificates carry real institutional weight.</p>
+
+  <div class="item">
+    <div class="item-title"><a href="https://www.who.int/teams/mental-health-and-substance-use/policy-law-rights/QualityRights" target="_blank" rel="noopener">WHO QualityRights e-training on mental health, recovery and community inclusion</a></div>
+    <div class="item-org">World Health Organization</div>
+    <p class="item-desc">The single best fit in this entire list. It sits precisely on the intersection the vision is built around — psychosocial disability, human rights, and mental health services — and it argues the position from inside the WHO rather than from the outside. Covers stigma, coercion, supported decision-making, and the transformation of services toward a person-centred, rights-based recovery approach, all framed against the CRPD.</p>
+    <p class="item-desc">Free, open to anyone, WHO certificate on completion. Available in eleven languages.</p>
+    <div class="pills"><span class="pill free">Free</span><span class="pill">Certificate</span><span class="pill flag">CPACC Domain I</span><span class="pill flag">Leeds prep</span></div>
+  </div>
+
+  <div class="item">
+    <div class="item-title"><a href="https://www.unssc.org/courses/united-nations-disability-inclusion-strategy-putting-words-action-0" target="_blank" rel="noopener">UN Disability Inclusion Strategy — Putting Words into Action</a></div>
+    <div class="item-org">UN System Staff College, with the Executive Office of the Secretary-General</div>
+    <p class="item-desc">Ninety minutes, self-paced, scenario-based. Written for UN personnel at all levels but useful well outside that: it is a working model of how a large institution operationalises disability inclusion across every function rather than confining it to an accommodations office. That is exactly the organisational-change argument an Accessibility Advisor has to make. The module was itself designed with accessibility in mind, which makes it worth studying twice — once for content, once for craft.</p>
+    <div class="pills"><span class="pill free">Free</span><span class="pill time">~90 min</span><span class="pill flag">Systems framing</span></div>
+  </div>
+
+  <div class="item">
+    <div class="item-title"><a href="https://www.unsdglearn.org/courses/inclusive-communication-module/" target="_blank" rel="noopener">Inclusive Communication Module</a></div>
+    <div class="item-org">UNICEF, via Agora and UN SDG:Learn</div>
+    <p class="item-desc">Three parts: CRPD background and recommended disability terminology; meaningful participation of disabled people in communications work; practical accessibility in communications and events. Aimed primarily at UNICEF staff but explicitly open to partners and the general public. Short, and directly transferable to learning-design deliverables.</p>
+    <div class="pills"><span class="pill free">Free</span><span class="pill flag">Public access</span></div>
+  </div>
+
+  <div class="item">
+    <div class="item-title"><a href="https://agora.unicef.org/" target="_blank" rel="noopener">UNICEF Agora — full catalogue</a></div>
+    <div class="item-org">UNICEF</div>
+    <p class="item-desc">Worth an hour of browsing rather than a single recommendation. Free short courses with certificates across child rights, inclusion, emergency response, communication, and project management, open to the public.</p>
+    <div class="pills"><span class="pill free">Free</span><span class="pill">Certificates</span></div>
+  </div>
+
+  <div class="item">
+    <div class="item-title"><a href="https://www.futurelearn.com/courses/global-disability" target="_blank" rel="noopener">Global Health and Disability</a></div>
+    <div class="item-org">London School of Hygiene &amp; Tropical Medicine — International Centre for Evidence in Disability</div>
+    <p class="item-desc">Three weeks at roughly four hours a week, led by Hannah Kuper. Disability measurement, barriers to health services, community-based inclusive development. It is the free preview of the LSHTM relationship already in the plan, and the material sits directly under the disability-and-depression thread.</p>
+    <p class="item-desc"><strong>Currently not running on FutureLearn.</strong> Ask to be notified when it restarts rather than building it into a schedule.</p>
+    <div class="pills"><span class="pill flag">Not currently running</span><span class="pill flag">LSHTM bridge</span></div>
+  </div>
+</div>
+
+<!-- ══════════════ TRACK 2 ══════════════ -->
+<div class="track">
+  <div class="track-num">Track two</div>
+  <h2>Accessibility standards and the built environment</h2>
+  <p class="track-intro">CPACC Domains II and III. The digital side is already a fifteen-year strength; the honest gaps are the built environment, procurement, and the legal frameworks. That is where these should be pointed.</p>
+
+  <div class="item">
+    <div class="item-title"><a href="https://www.w3.org/WAI/courses/foundations-course/" target="_blank" rel="noopener">Digital Accessibility Foundations</a></div>
+    <div class="item-org">W3C Web Accessibility Initiative with UNESCO IITE, on edX</div>
+    <p class="item-desc">The authoritative introduction, built on the W3C WAI open curricula and taught by trainers from Deque, Intopia, Knowbility, TPG, Infoaxia, and Web Key IT. Covers what web accessibility is, people and digital technology, the business case, and first steps in applying WCAG and WAI-ARIA.</p>
+    <p class="item-desc">Free to audit, with full access to the content; an optional verified certificate is US$99. Scheduled to remain on edX through at least November 2026. Given the CPACC is already funded, the $99 is the cheapest credible certificate on this page — worth taking for the CV line alone.</p>
+    <div class="pills"><span class="pill audit">Free to audit</span><span class="pill paid">$99 certificate</span><span class="pill flag">CPACC Domains II–III</span></div>
+  </div>
+
+  <div class="item">
+    <div class="item-title"><a href="https://accessible-eu-centre.ec.europa.eu/" target="_blank" rel="noopener">AccessibleEU online campus</a></div>
+    <div class="item-org">AccessibleEU Resource Centre, European Commission</div>
+    <p class="item-desc">Free, no-cost, self-paced MOOCs with no live sessions, open to anyone. The recurring catalogue has included <em>Introduction to Accessibility of the Built Environment</em> (ten modules, roughly 35 hours, covering universal design, user diversity, legal and policy frameworks, standards, procurement, and accessible housing), <em>An Introduction to Accessible Public Transport</em> (nine modules, roughly 25 hours), and <em>Accessible Technology Design</em> (six modules, roughly 25 hours).</p>
+    <p class="item-desc">The built-environment course in particular fills the biggest genuine gap between a learning designer's knowledge and the CPACC body of knowledge. The catch: these run on an annual cycle, typically opening around October with registration closing in early December. Framed to European law, so read the legal modules comparatively rather than as Canadian content.</p>
+    <div class="pills"><span class="pill free">Free</span><span class="pill time">25–35 hrs each</span><span class="pill flag">Annual autumn intake</span><span class="pill flag">Built environment gap</span></div>
+  </div>
+
+  <div class="item">
+    <div class="item-title"><a href="https://www.rickhansen.com/become-accessible/accessibility-training-and-education/rhfac-fundamentals-training" target="_blank" rel="noopener">RHFAC Fundamentals Training</a></div>
+    <div class="item-org">Rick Hansen Foundation — a BC organisation</div>
+    <p class="item-desc">Four weeks, roughly twenty hours, self-paced, with facilitated peer sessions and a certificate and badge. Universal design and meaningful access in the built environment, plus the RHFAC rating methodology. The Professional designation is a separate, longer, more expensive course.</p>
+    <p class="item-desc"><strong>Paid, and the tuition grants currently on offer are for Ontario residents.</strong> Listed here because it is the most locally credible built-environment credential in BC and because a future employer may fund it — not as something to buy now.</p>
+    <div class="pills"><span class="pill paid">Paid</span><span class="pill flag">Employer-funded candidate</span><span class="pill flag">BC-based</span></div>
+  </div>
+
+  <div class="item">
+    <div class="item-title"><a href="https://dequeuniversity.com/" target="_blank" rel="noopener">Deque University</a></div>
+    <div class="item-org">Deque Systems</div>
+    <p class="item-desc">The standard digital-accessibility curriculum, including a CPACC preparation path. Listed for completeness with a warning: it is a paid subscription for individuals. Many universities buy institutional licences and give staff free access — which makes it an argument for the university job rather than a reason to spend now.</p>
+    <div class="pills"><span class="pill paid">Paid</span><span class="pill flag">Free with a university post</span></div>
+  </div>
+</div>
+
+<!-- ══════════════ TRACK 3 ══════════════ -->
+<div class="track">
+  <div class="track-num">Track three</div>
+  <h2>Psychological first aid and the humanitarian model</h2>
+  <p class="track-intro">This is the Red Cross track, and it is the closest available approximation of the training stack that makes those practitioners so credible. It is also the honest, self-limiting answer to the counselling-psychology question: PFA is not therapy, and every one of these courses says so. What it builds is the capacity to be useful in a room where someone is in distress, which is the substrate the clinical training will later sit on.</p>
+
+  <div class="item">
+    <div class="item-title"><a href="https://www.ifrc.org/get-involved/learn-us" target="_blank" rel="noopener">IFRC Psychological First Aid e-learning</a></div>
+    <div class="item-org">International Federation of Red Cross and Red Crescent Societies, with the Danish Red Cross</div>
+    <p class="item-desc">Ninety minutes, self-paced. How to comfort someone in distress and help them feel safe and calm; common patterns of reaction to crisis; connecting people to further support; and self-care. Developed under the international <em>Psychological First Aid for All</em> pledge, which means it is the version the Red Cross network itself uses.</p>
+    <p class="item-desc">Hosted on the IFRC Learning Platform. Registration and use of that platform are completely open and free to the general public, not just Red Cross volunteers, and courses can be downloaded for offline study.</p>
+    <div class="pills"><span class="pill free">Free</span><span class="pill time">90 min</span><span class="pill flag">The Red Cross model</span></div>
+  </div>
+
+  <div class="item">
+    <div class="item-title"><a href="https://www.ifrc.org/our-work/health-and-care/health-and-care-training-platform" target="_blank" rel="noopener">IFRC Learning Platform and Health &amp; Care Training Platform</a></div>
+    <div class="item-org">IFRC</div>
+    <p class="item-desc">Hundreds of short, free, multilingual courses with communities of practice attached, plus a dedicated health hub covering migration and health, community-based health and first aid, climate and health, and MHPSS. Free and open to anyone, not only to network volunteers.</p>
+    <p class="item-desc">Treat this as the browse-and-build source. Three or four completed courses here plus the PFA module is a coherent humanitarian-health block on a CV, and it is the closest a person can get to the Red Cross training culture without joining a National Society.</p>
+    <div class="pills"><span class="pill free">Free</span><span class="pill">Open to the public</span><span class="pill flag">Communities of practice</span></div>
+  </div>
+
+  <div class="item">
+    <div class="item-title"><a href="https://openwho.org/channel/Mental+health+and+psychosocial+support+in+emergencies/" target="_blank" rel="noopener">Introducing Mental Health and Psychosocial Support (MHPSS) in Emergencies</a></div>
+    <div class="item-org">World Health Organization, on OpenWHO</div>
+    <p class="item-desc">Around seven hours, taken all at once or across sittings, with a test-based certificate and a shareable digital badge. It covers integrating mental health into general health care in humanitarian settings, the mhGAP Humanitarian Intervention Guide, and — the part that matters most here — scalable psychological interventions: how they are designed, where they fit in a stepped-care model, and what changes when you adapt them for different delivery modes.</p>
+    <p class="item-desc">That last section is the task-shifting evidence base stated in WHO's own words. It is the direct precursor to the LSHTM Global Mental Health course and, further out, to the conceptual paper about training systems as interventions.</p>
+    <div class="pills"><span class="pill free">Free</span><span class="pill time">~7 hrs</span><span class="pill">Certificate + badge</span><span class="pill flag">Task-shifting core</span></div>
+  </div>
+
+  <div class="item">
+    <div class="item-title"><a href="https://openwho.org/" target="_blank" rel="noopener">OpenWHO — full catalogue</a></div>
+    <div class="item-org">World Health Organization</div>
+    <p class="item-desc">Several hundred free courses, many with certificates. Beyond the MHPSS channel, the epidemiology and public-health-literacy material is a reasonable free warm-up before paying for the LSHTM short course in epidemiology.</p>
+    <div class="pills"><span class="pill free">Free</span><span class="pill flag">LSHTM warm-up</span></div>
+  </div>
+
+  <div class="item">
+    <div class="item-title"><a href="https://www.coursera.org/learn/psychological-first-aid" target="_blank" rel="noopener">Psychological First Aid — the RAPID model</a></div>
+    <div class="item-org">Johns Hopkins University, on Coursera</div>
+    <p class="item-desc">Five weeks. Reflective listening, assessment of needs, prioritisation, intervention, disposition, and a final week on self-care. Distinguishing non-incapacitating crisis reactions from more severe ones, and recognising when to facilitate access to further mental health support, is a genuinely clinical skill taught here in a non-clinical form.</p>
+    <p class="item-desc">Free to enrol and audit. The course states plainly that it does not prepare anyone to render PFA in a disaster setting on its own — which is the correct relationship between it and the supervised practice in Track four.</p>
+    <div class="pills"><span class="pill audit">Free to audit</span><span class="pill time">5 weeks</span><span class="pill flag">Counselling foundation</span></div>
+  </div>
+
+  <div class="item">
+    <div class="item-title"><a href="https://www.paho.org/en/mental-health-virtual-courses" target="_blank" rel="noopener">PAHO Virtual Campus for Public Health — mental health courses</a></div>
+    <div class="item-org">Pan American Health Organization / WHO Regional Office</div>
+    <p class="item-desc">Free virtual courses including mhGAP-based clinical material, humanitarian adaptations, and QualityRights content oriented to the Americas. The regional framing is closer to the Canadian policy context than the Geneva material.</p>
+    <div class="pills"><span class="pill free">Free</span><span class="pill flag">Americas context</span></div>
+  </div>
+</div>
+
+<!-- ══════════════ TRACK 4 ══════════════ -->
+<div class="track">
+  <div class="track-num">Track four</div>
+  <h2>Supervised practice — the part no course can replace</h2>
+  <p class="track-intro">This is the track that matters most and the only one with a real deadline. Counselling psychology programs, and the people who write reference letters for them, do not weigh certificates the way they weigh documented hours in a supervised helping role. Everything above is preparation for this.</p>
+
+  <div class="item">
+    <div class="item-title"><a href="https://www.crisiscentre.bc.ca/volunteer/crisis-services-volunteering/" target="_blank" rel="noopener">Crisis Services Volunteer</a></div>
+    <div class="item-org">Crisis Intervention and Suicide Prevention Centre of BC — Vancouver</div>
+    <p class="item-desc">110 hours of basic training including two to four hours a week of online modules, then 32 hours of supervised call-taking, then a commitment of 250 credited hours of direct service. The Centre describes its training and ongoing supervision as well recognised by universities and helping agencies across the province — which is the whole point of doing it.</p>
+    <p class="item-desc"><strong>Applications for the next group are not currently open.</strong> There is a notification form for the November 2026 training group; filling it in does not hold a place. Training carries a fee on a sliding scale, discussed at interview. This is the one item on this page with a clock attached.</p>
+    <div class="pills"><span class="pill flag">Notify list open now</span><span class="pill paid">Sliding-scale fee</span><span class="pill time">110 + 32 hrs</span><span class="pill flag">Reference-letter source</span></div>
+  </div>
+
+  <div class="item">
+    <div class="item-title"><a href="https://crisis-centre.ca/volunteer-upcoming-training/" target="_blank" rel="noopener">Crisis Line Volunteer — remote</a></div>
+    <div class="item-org">Crisis Centre for Northern BC</div>
+    <p class="item-desc">Roughly seventy hours over six to eight weeks, delivered remotely, with ongoing intakes rather than fixed cohorts. The training program is completely free and includes ASIST certification — the Applied Suicide Intervention Skills Training that costs several hundred dollars to take independently. On-shift supervision is provided to remote responders, and the commitment is one four-hour shift a week for a minimum of one year.</p>
+    <p class="item-desc">Candidates are accepted across the Northern BC region, so confirm eligibility from the Lower Mainland before planning on it. If it is open, it is the strongest free offer on this page: a recognised suicide-intervention certification and a year of supervised practice at no cost.</p>
+    <div class="pills"><span class="pill free">Free training</span><span class="pill">ASIST included</span><span class="pill flag">Confirm regional eligibility</span><span class="pill flag">Rolling intake</span></div>
+  </div>
+
+  <div class="item">
+    <div class="item-title"><a href="https://www.crisiscentre.bc.ca/volunteer/" target="_blank" rel="noopener">safeTALK, ASIST, and Mental Health First Aid</a></div>
+    <div class="item-org">LivingWorks and the Mental Health Commission of Canada, delivered locally</div>
+    <p class="item-desc">These are the three names that appear on the CVs of nearly everyone in BC's helping professions. safeTALK is a half-day in-person suicide-alertness training; ASIST is the two-day intervention workshop; MHFA covers responding to a mental health or substance use crisis until professional help arrives.</p>
+    <p class="item-desc">All three are paid when taken independently, but they come bundled into crisis-line volunteer training — sometimes free, sometimes discounted. That bundling is the reason to route through a crisis centre rather than buying them separately.</p>
+    <div class="pills"><span class="pill paid">Paid standalone</span><span class="pill flag">Free or discounted via volunteering</span></div>
+  </div>
+</div>
+
+<!-- ══════════════ TRACK 5 ══════════════ -->
+<div class="track">
+  <div class="track-num">Track five</div>
+  <h2>Research literacy and ethics</h2>
+  <p class="track-intro">Small track, high leverage. The qualitative paper from Make Space needs an ethics footing, and the Leeds application is stronger for arriving with one.</p>
+
+  <div class="item">
+    <div class="item-title"><a href="https://tcps2core.ca/" target="_blank" rel="noopener">TCPS 2: CORE — Course on Research Ethics</a></div>
+    <div class="item-org">Interagency Advisory Panel on Research Ethics — CIHR, NSERC, and SSHRC</div>
+    <p class="item-desc">Nine modules, about four hours, self-paced, free, with a certificate of completion. It is the Canadian standard: every graduate student conducting human-participant research submits this certificate with their ethics application, and most Canadian institutions require it.</p>
+    <p class="item-desc">Do it before the Make Space paper rather than after. It costs an afternoon and it changes how the consent, privacy, and participant-welfare sections of that paper get written — which is precisely where a paper submitted without a doctoral affiliation is most likely to be challenged.</p>
+    <div class="pills"><span class="pill free">Free</span><span class="pill time">~4 hrs</span><span class="pill">Certificate</span><span class="pill flag">Before the qualitative paper</span></div>
+  </div>
+</div>
+
+<!-- ══════════════ THE GAP ══════════════ -->
+<div class="track">
+  <div class="track-num">The gap</div>
+  <h2>What the advisor postings actually ask for</h2>
+  <p class="track-intro">Worth stating directly, because it changes what to study. UBC's Accessibility Advisor postings ask for an undergraduate degree, five to six years of related experience or an equivalent combination, and — the operative line — considerable training and experience in disability, universal design, and <em>duty to accommodate in a post-secondary setting</em>. A graduate degree in a relevant discipline is preferred. The work is described as developing organisational change initiatives, policies, and educational programs, determining and facilitating accommodations, managing complex accommodation cases, and consulting with faculty on how policy affects access.</p>
+
+  <div class="item">
+    <div class="item-desc"><strong>Read against that, the accessibility knowledge is not the bottleneck.</strong> Fifteen years of learning design plus the CPACC covers universal design and standards comfortably. Two things are missing, and neither is a course problem in the way it first appears.</p>
+    <p class="item-desc"><strong>Duty to accommodate as a legal practice.</strong> Undue hardship, the interactive process, medical documentation, and the BC Human Rights Code as it applies to educational services. This is human-rights law applied to individual cases, and it is what an Accessibility Advisor does most days. Provincial human rights commission policy guidance and tribunal decisions are free and are the actual source material; the Ontario Human Rights Commission's policy on disability and the duty to accommodate is the most cited plain-language document in the country, useful comparatively even though BC has its own Code. Free webinars from the Government of Canada accessibility hub and the CSPS video series on disability inclusion cover the federal framing.</p>
+    <p class="item-desc"><strong>The post-secondary setting itself.</strong> This one is closed by proximity, not study. CACUSS — the Canadian Association of College and University Student Services — runs the accessibility community of practice where these advisors actually gather, and NEADS is the national student-led disability organisation. Membership, conference attendance, and one or two informational conversations with a current UBC or SFU advisor will do more for a candidacy than another certificate.</p>
+    <div class="pills"><span class="pill flag">Not a course problem</span><span class="pill flag">Human rights law</span><span class="pill flag">Sector proximity</span></div>
+  </div>
+</div>
+
+<!-- ══════════════ SEQUENCE ══════════════ -->
+<div class="seq">
+  <div class="track-num">Sequence</div>
+  <h2>What to actually do, in order</h2>
+  <p class="track-intro">The list above is a menu. This is the meal. Everything here fits alongside a full-time role and the CPACC study design already written.</p>
+
+  <div class="seq-item">
+    <div class="seq-when">This week</div>
+    <div class="seq-what">Join the Crisis Centre BC notification list for the November 2026 group.
+      <span>It takes two minutes, it does not commit to anything, and it is the only item with a closing window.</span></div>
+  </div>
+
+  <div class="seq-item">
+    <div class="seq-when">This week</div>
+    <div class="seq-what">Email the Crisis Centre for Northern BC to ask whether Lower Mainland residents are eligible for remote training.
+      <span>Free ASIST certification and a year of supervised practice is worth one email to find out.</span></div>
+  </div>
+
+  <div class="seq-item">
+    <div class="seq-when">Month one</div>
+    <div class="seq-what">WHO QualityRights e-training, then the UNSSC disability inclusion module.
+      <span>Two certificates, strong CPACC Domain I overlap, and the theoretical frame Leeds will assume.</span></div>
+  </div>
+
+  <div class="seq-item">
+    <div class="seq-when">Month two</div>
+    <div class="seq-what">IFRC Psychological First Aid, then the Johns Hopkins RAPID course.
+      <span>Ninety minutes and then five weeks. The first is the humanitarian standard; the second is the depth behind it.</span></div>
+  </div>
+
+  <div class="seq-item">
+    <div class="seq-when">Month two</div>
+    <div class="seq-what">TCPS 2: CORE.
+      <span>One afternoon. Do it before drafting the Make Space paper, not after.</span></div>
+  </div>
+
+  <div class="seq-item">
+    <div class="seq-when">Month three</div>
+    <div class="seq-what">OpenWHO MHPSS in Emergencies.
+      <span>Seven hours, certificate and badge, and the scalable-interventions module that the whole task-shifting argument rests on.</span></div>
+  </div>
+
+  <div class="seq-item">
+    <div class="seq-when">Alongside CPACC</div>
+    <div class="seq-what">W3C Digital Accessibility Foundations, audited; buy the $99 certificate only if the CPACC slips.
+      <span>Overlaps heavily with CPACC study, so it costs little extra time.</span></div>
+  </div>
+
+  <div class="seq-item">
+    <div class="seq-when">By October</div>
+    <div class="seq-what">Register for the AccessibleEU built-environment course when the autumn intake opens.
+      <span>Thirty-five hours, free, and the largest genuine gap between a learning designer's knowledge and the CPACC body of knowledge.</span></div>
+  </div>
+
+  <div class="seq-item">
+    <div class="seq-when">Ongoing</div>
+    <div class="seq-what">Read BC Human Rights Tribunal decisions on educational accommodation, one a month.
+      <span>Free, and closer to the daily work of an Accessibility Advisor than any course on this page.</span></div>
+  </div>
+</div>
+
+</div>
+
+<footer>
+  Availability, fees, and intake dates change. Everything above was verified in August 2026 and should be re-checked at the source before being planned around — particularly the AccessibleEU annual cycle, the Crisis Centre intake dates, and the FutureLearn course that is not currently running.
+</footer>
+
+</body>
+</html>
