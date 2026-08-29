@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Advisory Council — Andrea Robin</title>
+<link href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --white:     #ffffff;
+    --ink:       #303e44;
+    --accent:    #475f6a;
+    --mid:       #6a858f;
+    --light:     #e8eef0;
+    --lighter:   #f4f7f8;
+    --line:      #d4dde1;
+    --faint:     #8fa4ad;
+    --warn:      #8a6a5f;
+  }
+
+  body {
+    background: var(--white);
+    color: var(--ink);
+    font-family: 'Asap', system-ui, sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    font-size: 16px;
+  }
+
+  /* ── HEADER ── */
+  header {
+    padding: 4rem 3.5rem 3rem;
+    border-bottom: 1px solid var(--line);
+    max-width: 900px;
+  }
+  .eyebrow {
+    font-size: 0.68rem; font-weight: 500; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--mid); margin-bottom: 1.4rem;
+  }
+  h1 {
+    font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 300;
+    line-height: 1.12; letter-spacing: -0.01em; margin-bottom: 1.2rem;
+  }
+  h1 em { font-style: italic; color: var(--accent); }
+  .header-sub {
+    font-size: 1rem; color: var(--mid); max-width: 620px; line-height: 1.75;
+  }
+
+  .wrap { max-width: 900px; padding: 0 3.5rem 4rem; }
+
+  .note {
+    background: var(--lighter);
+    border-left: 3px solid var(--accent);
+    padding: 1.4rem 1.6rem;
+    margin: 3rem 0 0;
+    font-size: 0.92rem;
+    color: var(--accent);
+    line-height: 1.7;
+  }
+  .note strong { font-weight: 600; }
+  .note + .note { margin-top: 1rem; }
+
+  /* ── SECTION ── */
+  .section { margin-top: 4.5rem; }
+  .section-num {
+    font-size: 0.68rem; font-weight: 500; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--faint); margin-bottom: 0.7rem;
+  }
+  h2 {
+    font-size: 1.7rem; font-weight: 300; letter-spacing: -0.01em;
+    margin-bottom: 0.7rem; line-height: 1.25;
+  }
+  .section-intro {
+    font-size: 0.95rem; color: var(--mid); max-width: 640px;
+    line-height: 1.75; margin-bottom: 2rem;
+  }
+
+  /* ── SEAT ── */
+  .seat {
+    border-top: 1px solid var(--line);
+    padding: 2rem 0 2.2rem;
+  }
+  .seat-head {
+    display: flex; align-items: baseline; gap: 1rem;
+    flex-wrap: wrap; margin-bottom: 0.3rem;
+  }
+  .seat-name {
+    font-size: 1.25rem; font-weight: 400; letter-spacing: -0.005em;
+  }
+  .seat-occupant {
+    font-size: 0.95rem; color: var(--mid); margin-bottom: 1.1rem;
+  }
+  .seat-occupant em { font-style: italic; }
+
+  .qline {
+    border-left: 2px solid var(--light);
+    padding-left: 1.1rem;
+    margin: 0 0 1.2rem;
+  }
+  .qlabel {
+    font-size: 0.64rem; font-weight: 500; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--faint); display: block;
+    margin-bottom: 0.25rem;
+  }
+  .qtext { font-size: 1rem; color: var(--accent); line-height: 1.6; }
+
+  .seat p { font-size: 0.95rem; line-height: 1.75; max-width: 660px; }
+  .seat p + p { margin-top: 0.9rem; }
+
+  .protocol {
+    margin-top: 1.2rem; padding: 0.9rem 1.1rem;
+    background: var(--lighter); font-size: 0.9rem;
+    color: var(--accent); line-height: 1.7; max-width: 660px;
+  }
+  .protocol strong {
+    font-weight: 500; display: block; font-size: 0.64rem;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--faint); margin-bottom: 0.3rem;
+  }
+
+  /* ── PILLS ── */
+  .pill {
+    display: inline-block; font-size: 0.64rem; font-weight: 500;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    padding: 0.24rem 0.6rem; border-radius: 2px; white-space: nowrap;
+  }
+  .p-seated    { background: var(--light);   color: var(--accent); }
+  .p-nominated { background: var(--white);   color: var(--mid);   border: 1px solid var(--line); }
+  .p-vacant    { background: var(--white);   color: var(--faint); border: 1px dashed var(--line); }
+  .p-fiction   { background: var(--white);   color: var(--faint); border: 1px solid var(--line); }
+
+  /* ── VACANT ── */
+  .vacant .seat-name { color: var(--faint); font-weight: 300; }
+  .vacant .qtext { color: var(--mid); }
+
+  /* ── OUTSIDE THE ROOM ── */
+  .boundary {
+    margin: 5rem 0 0; border-top: 2px solid var(--ink);
+    padding-top: 0.6rem;
+    font-size: 0.64rem; font-weight: 500; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--faint);
+  }
+  .outside {
+    margin-top: 2rem; padding: 2rem 2.2rem;
+    border: 1px dashed var(--warn);
+    max-width: 720px;
+  }
+  .outside .seat-name { color: var(--warn); }
+  .outside .qtext { color: var(--warn); }
+  .outside .qline { border-left-color: rgba(138,106,95,0.25); }
+  .outside .protocol { background: rgba(138,106,95,0.05); color: var(--warn); }
+  .outside .protocol strong { color: rgba(138,106,95,0.7); }
+
+  /* ── USE PROTOCOL ── */
+  .rules { margin-top: 1.5rem; }
+  .rule {
+    display: flex; gap: 1.4rem; padding: 1.1rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .rule:first-child { border-top: 1px solid var(--line); }
+  .rule-n {
+    flex: 0 0 34px; font-size: 0.7rem; font-weight: 500;
+    letter-spacing: 0.1em; color: var(--faint); padding-top: 0.25rem;
+  }
+  .rule-t { font-size: 0.95rem; line-height: 1.75; }
+  .rule-t strong { font-weight: 500; }
+
+  footer {
+    padding: 3rem 3.5rem 4rem; border-top: 1px solid var(--line);
+    font-size: 0.82rem; color: var(--faint); max-width: 900px; line-height: 1.7;
+    margin-top: 4rem;
+  }
+  footer strong { font-weight: 600; color: var(--mid); }
+  footer p + p { margin-top: 0.8rem; }
+
+  @media (max-width: 640px) {
+    header { padding: 2.5rem 1.4rem 2rem; }
+    .wrap { padding: 0 1.4rem 3rem; }
+    footer { padding: 2.5rem 1.4rem 3rem; }
+    .outside { padding: 1.4rem 1.2rem; }
+    .rule { flex-direction: column; gap: 0.3rem; }
+    .rule-n { flex: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">Advisory Council · Assembled 29 August 2026</div>
+  <h1>The <em>advisory</em> council</h1>
+  <p class="header-sub">A standing circle of figures, real and fictional, who have been where this work is going and contributed in something like the way it wants to contribute — with depth of character, courage, insight, care, and altruism. Each holds a seat. Each seat is a question that will keep returning.</p>
+</header>
+
+<div class="wrap">
+
+<div class="note">
+  <strong>How to read this.</strong> A seat is not a virtue and not a biography. It is a question this career will face repeatedly, assigned to someone who has already faced its equivalent. The point of consulting a member is not to ask what they would do — they were solving a different problem — but to recall how they held the question when it was hardest.
+</div>
+
+<div class="note">
+  <strong>On admission.</strong> The standard requires both contribution and character, and the second is harder to establish than the first. <span class="pill p-seated">Seated</span> means the character claim holds on what is known. <span class="pill p-nominated">Nominated</span> means the contribution fits and the character record is real but incomplete or contested. <span class="pill p-vacant">Vacant</span> means the question is live and the right occupant has not been found. Seats outlast members: if a member fails the standard, the chair empties and the question stays.
+</div>
+
+<div class="section">
+  <div class="section-num">Part one</div>
+  <h2>The seated</h2>
+  <p class="section-intro">Three fictional members seat immediately, because fiction hands over the interior life directly — the standard can be assessed against the whole person rather than against the record they left behind.</p>
+
+  <div class="seat">
+    <div class="seat-head">
+      <span class="seat-name">The Translator</span>
+      <span class="pill p-seated">Seated</span>
+      <span class="pill p-fiction">Fiction</span>
+    </div>
+    <div class="seat-occupant">Louise Banks · <em>Arrival</em> (2016), from Ted Chiang's <em>Story of Your Life</em></div>
+
+    <div class="qline">
+      <span class="qlabel">The question</span>
+      <span class="qtext">What do you do when the knowledge is sound and it cannot cross?</span>
+    </div>
+
+    <p>Her work is translation between frameworks that do not map onto each other, under time pressure, with consequences. The near-catastrophe in the film is a translation failure: one site renders the term as <em>weapon</em> rather than <em>tool</em>, the twelve teams have stopped sharing, and the world nearly goes to war over a rendering error. That is the evidence-to-practice gap with the stakes made visible.</p>
+    <p>Her method is the part worth keeping. She refuses to ask the large question until the shared vocabulary exists to hold the answer, and she is mocked for the delay. And the alien she moves toward turns out to be her own life — the outward journey and the inward one are the same journey, which is the reading that made this council possible.</p>
+
+    <div class="protocol">
+      <strong>Consult when</strong>
+      The room cannot hear a finding that is true. When a deadline is pushing toward asking the big question before the groundwork holds it. When the temptation is to blame the audience.
+    </div>
+  </div>
+
+  <div class="seat">
+    <div class="seat-head">
+      <span class="seat-name">The Long Walk</span>
+      <span class="pill p-seated">Seated</span>
+      <span class="pill p-fiction">Fiction</span>
+    </div>
+    <div class="seat-occupant">Aragorn · <em>The Lord of the Rings</em>, J.R.R. Tolkien</div>
+
+    <div class="qline">
+      <span class="qlabel">The question</span>
+      <span class="qtext">How do you keep working through the years before the work is legible?</span>
+    </div>
+
+    <p>Eighty-seven at his crowning. The decades before it are spent under assumed names guarding a country whose people mock him at the inn, and the poem written for him is entirely about a person whose worth cannot be read from the outside. <em>The Open Curriculum</em> states the same problem administratively: hiring managers cannot assess fifteen years of learning design at a glance.</p>
+    <p>Two further things make him specific rather than generic. He is authenticated by healing rather than by conquest, and the recognition scene is a sickroom. And he refuses the Ring when it is offered — he knows precisely what he cannot hold, which is a recurring question for a plan this large.</p>
+
+    <div class="protocol">
+      <strong>Consult when</strong>
+      The work is real and the CV is not. Before accepting any credential, to test whether it is wanted for the capability or for the authority it confers. When something offered would give leverage that should not be held.
+    </div>
+  </div>
+
+  <div class="seat">
+    <div class="seat-head">
+      <span class="seat-name">The Giver-Away</span>
+      <span class="pill p-seated">Seated</span>
+      <span class="pill p-fiction">Fiction</span>
+    </div>
+    <div class="seat-occupant">Shevek · <em>The Dispossessed</em> (1974), Ursula K. Le Guin</div>
+
+    <div class="qline">
+      <span class="qlabel">The question</span>
+      <span class="qtext">What travels free, and what is fenced?</span>
+    </div>
+
+    <p>He builds the theory of his life and then refuses to let any state own it, transmitting it openly instead, at cost to himself and to his standing in both societies. He also crosses to the world he was raised to regard as the enemy, which places him inside the council's membership criterion rather than merely adjacent to it.</p>
+    <p>He sits for a decision the portfolio documents leave deliberately open: open the framework and fence the implementation, or something else. The seat exists so that decision gets made rather than drifted into.</p>
+
+    <div class="protocol">
+      <strong>Consult when</strong>
+      Pricing, licensing, or publication decisions arise. When something built for reach starts being held back for revenue, or something that should fund the work is being given away out of discomfort with charging.
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-num">Part two</div>
+  <h2>The nominated</h2>
+  <p class="section-intro">Real people, verified on contribution. They are held at nomination rather than seated because the character standard is yours to apply, and because a member you can see clearly is more instructive than one you can only admire.</p>
+
+  <div class="seat">
+    <div class="seat-head">
+      <span class="seat-name">The Multiplier</span>
+      <span class="pill p-nominated">Nominated</span>
+    </div>
+    <div class="seat-occupant">Dixon Chibanda · founder of the Friendship Bench, Zimbabwe</div>
+
+    <div class="qline">
+      <span class="qlabel">The question</span>
+      <span class="qtext">Can you give away the part of the work you most love doing?</span>
+    </div>
+
+    <p>He lost a patient to suicide in 2005; she had not come to her review because her family could not afford the bus fare. Rather than continue waiting in a tertiary facility for people to reach him, he built the intervention outward. The Friendship Bench began in Mbare, Harare, in 2006, with fourteen grandmothers trained in a problem-solving therapy developed in Shona and grounded in local concepts, working from wooden benches outside clinics.</p>
+    <p>Three things make him the strongest candidate on the board. The model originates in the setting it serves rather than being exported into it, which is the position the field-entry section of the vision documents argues for. The evidence base was built deliberately, with doctoral researchers nested inside the programme. And he holds a chair at the London School of Hygiene &amp; Tropical Medicine alongside the University of Zimbabwe, which places this seat on the same institutional path already in the plan.</p>
+
+    <div class="protocol">
+      <strong>Consult when</strong>
+      Facilitation work is going well and scaling would mean handing it to people who will do it differently. When "only I can hold this room properly" starts to sound like a fact rather than a preference.
+    </div>
+  </div>
+
+  <div class="seat">
+    <div class="seat-head">
+      <span class="seat-name">The Long Defeat</span>
+      <span class="pill p-nominated">Nominated</span>
+    </div>
+    <div class="seat-occupant">Paul Farmer · co-founder, Partners In Health</div>
+
+    <div class="qline">
+      <span class="qlabel">The question</span>
+      <span class="qtext">How do you continue when the evidence is good and the system does not move?</span>
+    </div>
+
+    <p>He took the phrase from Galadriel — Tolkien's own conviction, stated plainly in his letters, that history is a long defeat containing glimpses of something else — and applied it to fighting for the health of the poor. His account to Tracy Kidder was that he had fought that defeat, brought others into it, and would not stop on the grounds of losing. This makes him the bridge between the Aragorn seat and the actual work.</p>
+    <p>The reason he is nominated rather than seated is a documented tension rather than a scandal. He spent large sums on individual patients who could not be saved, most famously a boy flown to Boston at enormous cost who died of disease already too far advanced, and colleagues raised the obvious objection about what the same resources could have done at scale. That argument is not settled, and the seat is more useful with it visible than without.</p>
+
+    <div class="protocol">
+      <strong>Consult when</strong>
+      A finding is published and nothing changes. When cost-effectiveness arguments are being used to justify not doing something for a particular person in front of you — and equally, when they are being ignored because the person in front of you is easier to see than the hundred you will not meet.
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-num">Part three</div>
+  <h2>The vacant seats</h2>
+  <p class="section-intro">Left empty on purpose. Each corresponds to a question the vision documents raise and decline to resolve, which makes the vacancies a reasonably accurate map of where the real uncertainty sits. An empty chair is information, not a gap to be filled quickly.</p>
+
+  <div class="seat vacant">
+    <div class="seat-head">
+      <span class="seat-name">The Ordinary Room</span>
+      <span class="pill p-vacant">Vacant</span>
+    </div>
+    <div class="seat-occupant">Care as daily practice, sustained for decades, with nothing scaled and nothing published</div>
+    <div class="qline">
+      <span class="qlabel">The question</span>
+      <span class="qtext">What holds the work on a Tuesday, when nothing about it announces itself as significant?</span>
+    </div>
+    <p>Every current and nominated member was summoned to something spectacular. This seat is the counterweight, and it exists so the council's criterion does not quietly become <em>wait for an unknown dramatic enough to be worthy of you</em>.</p>
+  </div>
+
+  <div class="seat vacant">
+    <div class="seat-head">
+      <span class="seat-name">The Unjustified Making</span>
+      <span class="pill p-vacant">Vacant</span>
+    </div>
+    <div class="seat-occupant">Art that never had to earn its place through the career</div>
+    <div class="qline">
+      <span class="qlabel">The question</span>
+      <span class="qtext">Does Dear Ordinary need to be epistemologically necessary in order to be allowed?</span>
+    </div>
+    <p>The vision documents pose this directly and leave both answers standing as legitimate. The seat stays empty until that is settled, because the right occupant depends entirely on which answer holds.</p>
+  </div>
+
+  <div class="seat vacant">
+    <div class="seat-head">
+      <span class="seat-name">What You Put Down</span>
+      <span class="pill p-vacant">Vacant</span>
+    </div>
+    <div class="seat-occupant">Someone who gave something real up permanently, and was right to</div>
+    <div class="qline">
+      <span class="qlabel">The question</span>
+      <span class="qtext">Which item gives, and under what conditions, named in advance?</span>
+    </div>
+    <p>The open curriculum already predicts that something in stage one will give, and observes that the plan is stronger for naming which in advance than for discovering it in month seven. This is the only seat that requires its occupant to have subtracted rather than accumulated, which is why it is the hardest to fill.</p>
+  </div>
+</div>
+
+<div class="boundary">Outside the council</div>
+
+<div class="outside">
+  <div class="seat-head">
+    <span class="seat-name">Saruman</span>
+    <span class="pill p-fiction">No seat · No vote</span>
+  </div>
+  <div class="seat-occupant">Present in the minutes of every meeting</div>
+
+  <div class="qline">
+    <span class="qlabel">The reason he is known</span>
+    <span class="qtext">He held the highest chair on a council like this one, and it did not notice him going.</span>
+  </div>
+
+  <p>Head of his order, greatest loremaster of the age, the one who studied the enemy most closely because someone had to understand the problem properly. His position, once stated, is that the wise should join the rising power — deploring the evils along the way, approving the ultimate purpose of knowledge, rule, and order. That is not the reasoning of a monster. It is the reasoning of someone who looked at the scale of the problem, concluded that good intentions without leverage are useless, and went to acquire leverage.</p>
+
+  <p>His instrument is speech: persuasion so skilled that people find themselves agreeing and cannot afterwards reconstruct where the reasoning turned. Nothing in that description distinguishes it from good facilitation. The tell is never the words — it is what the room is like afterwards. He builds a training and production system, and it consumes the living thing it was built beside. He ends by taking over one village and ruining it out of spite, which is how this failure usually terminates.</p>
+
+  <div class="protocol">
+    <strong>The standing check</strong>
+    Not <em>what would he do</em> — the question is whether this decision would feel any different from the inside if you were already halfway there. And after any session, course, or piece of public writing: does the person leave more capable of their own judgment, or more reliant on mine? He also sits as a check on the council itself. If advice from any chair starts to sound like his, that is the signal, and it will sound reasonable when it happens.
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-num">Part four</div>
+  <h2>How to use it</h2>
+
+  <div class="rules">
+    <div class="rule">
+      <div class="rule-n">One</div>
+      <div class="rule-t"><strong>Name the seat before naming the options.</strong> When a decision is hard, identify which question it belongs to first. Most of the difficulty in a hard decision is not knowing which problem you are actually having.</div>
+    </div>
+    <div class="rule">
+      <div class="rule-n">Two</div>
+      <div class="rule-t"><strong>Seats outlast members.</strong> If a member fails the character standard on closer reading, the chair empties and the question remains. This keeps the council from becoming a defence of people you have grown attached to.</div>
+    </div>
+    <div class="rule">
+      <div class="rule-n">Three</div>
+      <div class="rule-t"><strong>Vacancies are findings.</strong> Three empty seats map onto three unresolved questions in the vision documents. Filling a seat should follow resolving the question, not substitute for it.</div>
+    </div>
+    <div class="rule">
+      <div class="rule-n">Four</div>
+      <div class="rule-t"><strong>Admission requires both tests.</strong> Contribution of the right shape, and character under pressure. The second excludes people whose careers map onto this one precisely, and that exclusion is the point.</div>
+    </div>
+    <div class="rule">
+      <div class="rule-n">Five</div>
+      <div class="rule-t"><strong>Symbol and method stay separate.</strong> Moving toward what is not your own is sound as an inner orientation and hazardous as a fieldwork principle. Louise is flown to an empty site; you would be arriving where people already live and already know things.</div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<footer>
+  <p><strong>Verification note.</strong> Per <em>factchecking-accuracy-vision-documents.md</em>. Checked 29 August 2026.</p>
+  <p><strong>Verified — Chibanda.</strong> Patient death 2005 and the bus-fare detail, founding of the Friendship Bench in Mbare in 2006, the initial fourteen grandmothers, problem-solving therapy developed in Shona, and concurrent chairs at the University of Zimbabwe and LSHTM all confirmed against the WHO <em>Bulletin</em> interview (2018), the Friendship Bench organisational site, and Ashoka. Figures for psychiatrist-to-population ratio vary by source and year and are therefore stated qualitatively here rather than numerically.</p>
+  <p><strong>Verified — Farmer.</strong> The origin of "the long defeat" in Galadriel's speech and in Tolkien's Letter 195, its transfer to Farmer via Tracy Kidder's <em>Mountains Beyond Mountains</em>, and the medevac episode and the cost-effectiveness objection it raised are all confirmed. <em>Not yet checked:</em> the broader critique of heroic-individual framing in global health as it applies specifically to PIH. Sources consulted were largely sympathetic; a proper character assessment needs at least one critical source read directly. Farmer therefore remains nominated.</p>
+  <p><strong>Unverified by design.</strong> Louise Banks, Aragorn, Shevek, and Saruman are fictional and are assessed on the text alone.</p>
+</footer>
+
+</body>
+</html>
