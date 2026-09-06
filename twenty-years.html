@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Twenty Years — Andrea Robin</title>
+<meta name="description" content="The next twenty years of career and education, stage by stage: the most strategic choice at each step, the contribution available without additional resources, and how the three properties are used." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#ffffff;
+    --wash:#f7f6f5;
+    --hair:#e4e2e1;
+    --quiet:#a29f9f;
+    --label:#65625f;
+    --body:#5d5a5b;
+    --ink:#3f3d3e;
+    --measure:36rem;
+    --serif:'Asap',system-ui,sans-serif;
+    --sans:'Asap',system-ui,sans-serif;
+  }
+
+  *,*::before,*::after{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--body);
+    font-family:var(--sans);
+    font-size:16.5px;
+    line-height:1.72;
+    font-weight:400;
+    -webkit-font-smoothing:antialiased;
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation:none !important;transition:none !important;}
+  }
+
+  a{color:inherit;}
+  a:focus-visible,summary:focus-visible{outline:2px solid var(--ink);outline-offset:3px;}
+
+  .skip{
+    position:absolute;left:-9999px;top:0;background:var(--ink);color:#fff;
+    padding:.6rem 1rem;z-index:100;font-size:.8rem;
+  }
+  .skip:focus{left:0;}
+
+  /* ── Navigation ───────────────────────────── */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,255,255,.94);
+    backdrop-filter:saturate(180%) blur(8px);
+    border-bottom:1px solid var(--hair);
+  }
+  .nav-inner{
+    max-width:56rem;margin:0 auto;padding:.8rem 1.6rem;
+    display:flex;flex-wrap:wrap;align-items:baseline;gap:.35rem 1.15rem;
+  }
+  .nav-mark{
+    font-family:var(--serif);font-size:1.02rem;font-weight:300;
+    color:var(--ink);margin-right:auto;letter-spacing:.005em;
+  }
+  .nav-inner a{
+    font-size:.63rem;font-weight:500;letter-spacing:.11em;
+    text-transform:uppercase;color:var(--label);text-decoration:none;white-space:nowrap;
+    padding:.15rem 0;border-bottom:1px solid transparent;
+  }
+  .nav-inner a:hover{color:var(--ink);border-bottom-color:var(--quiet);}
+
+  /* ── Shell ────────────────────────────────── */
+  .wrap{max-width:46rem;margin:0 auto;padding:0 1.6rem;}
+  .col{max-width:var(--measure);}
+  section{padding:4.6rem 0;border-bottom:1px solid var(--hair);scroll-margin-top:4rem;}
+  section:last-of-type{border-bottom:none;}
+
+  .eyebrow{
+    font-size:.64rem;font-weight:600;letter-spacing:.19em;
+    text-transform:uppercase;color:var(--label);margin:0 0 1.6rem;
+  }
+
+  h1{
+    font-family:var(--serif);font-weight:200;
+    font-size:clamp(2.2rem,5.6vw,3.15rem);line-height:1.1;
+    letter-spacing:-.012em;color:var(--ink);margin:0 0 1.5rem;
+  }
+  h1 em{font-style:italic;font-weight:300;}
+  h2{
+    font-family:var(--serif);font-weight:200;
+    font-size:clamp(1.6rem,3.4vw,2.1rem);line-height:1.18;
+    letter-spacing:-.008em;color:var(--ink);margin:0 0 1.4rem;
+  }
+  h2 em{font-style:italic;font-weight:300;}
+  h3{
+    font-family:var(--serif);font-weight:300;font-size:1.3rem;
+    line-height:1.3;color:var(--ink);margin:0 0 .5rem;letter-spacing:-.004em;
+  }
+  h4{
+    font-size:.63rem;font-weight:600;letter-spacing:.17em;
+    text-transform:uppercase;color:var(--label);margin:0 0 .55rem;
+  }
+  p{margin:0 0 1.15rem;max-width:var(--measure);}
+  p:last-child{margin-bottom:0;}
+  strong{font-weight:600;color:var(--ink);}
+  em{font-style:italic;}
+
+  .lede{
+    font-family:var(--serif);font-weight:300;
+    font-size:clamp(1.12rem,2.2vw,1.36rem);line-height:1.58;
+    color:var(--ink);max-width:none;
+  }
+
+  ul{margin:0 0 1.15rem;padding:0;list-style:none;max-width:var(--measure);}
+  li{position:relative;padding:.28rem 0 .28rem 1.15rem;line-height:1.62;}
+  li::before{
+    content:'';position:absolute;left:0;top:1.02em;
+    width:.42rem;height:1px;background:var(--quiet);
+  }
+  li:last-child{padding-bottom:0;}
+
+  /* ── Hero ─────────────────────────────────── */
+  header.hero{padding:6.5rem 0 4.8rem;border-bottom:1px solid var(--hair);}
+  .hero .col{max-width:none;}
+  .hero-note{
+    margin-top:2.6rem;padding-top:1.5rem;border-top:1px solid var(--hair);
+    font-size:.92rem;color:var(--label);max-width:33rem;
+  }
+
+  /* ── Collapse figure ──────────────────────── */
+  .collapse{
+    margin:2.4rem 0 0;padding:1.9rem 0 0;border-top:1px solid var(--hair);
+    display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:1.9rem 2.4rem;
+  }
+  .collapse div{padding-left:1.1rem;border-left:1px solid var(--hair);}
+  .collapse p{margin:0;font-size:.93rem;}
+
+  /* ── The path ─────────────────────────────── */
+  .path{margin-top:1rem;}
+  .stage{
+    position:relative;padding:0 0 3.4rem 3.6rem;
+  }
+  .stage::before{
+    content:'';position:absolute;left:.72rem;top:.55rem;bottom:0;
+    width:1px;background:var(--hair);
+  }
+  .stage:last-child::before{bottom:auto;height:2.2rem;}
+  .stage::after{
+    content:'';position:absolute;left:.35rem;top:.5rem;
+    width:.78rem;height:.78rem;border-radius:50%;
+    background:var(--paper);border:1px solid var(--quiet);
+  }
+  .stage-num{
+    font-size:.63rem;font-weight:600;letter-spacing:.17em;
+    text-transform:uppercase;color:var(--label);display:block;margin-bottom:.35rem;
+  }
+  .stage-gloss{
+    font-family:var(--serif);font-style:italic;font-weight:300;
+    font-size:1.02rem;color:var(--label);margin:0 0 1.25rem;line-height:1.5;
+  }
+  .triad{
+    margin-top:1.5rem;padding-top:1.4rem;border-top:1px solid var(--hair);
+    display:grid;gap:1.6rem;
+  }
+  .triad > div{max-width:var(--measure);}
+  .triad p,.triad ul{font-size:.93rem;}
+  .triad ul{margin-bottom:0;}
+  .done{
+    background:var(--wash);padding:1.05rem 1.2rem;
+  }
+  .done h4{margin-bottom:.35rem;}
+  .done p{margin:0;font-size:.93rem;color:var(--ink);}
+
+  /* ── Two-column blocks ────────────────────── */
+  .grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(13.5rem,1fr));
+    gap:2.1rem 2.4rem;margin-top:.6rem;
+  }
+  .grid p{font-size:.93rem;margin:0;}
+  .grid h3{font-size:1.12rem;margin-bottom:.4rem;}
+
+  /* ── Confirm list ─────────────────────────── */
+  .rows{margin-top:.4rem;}
+  .row{
+    display:grid;grid-template-columns:7.5rem 1fr;gap:.4rem 1.4rem;
+    padding:1.15rem 0;border-top:1px solid var(--hair);
+  }
+  .row:last-child{border-bottom:1px solid var(--hair);}
+  .row-key{
+    font-size:.63rem;font-weight:600;letter-spacing:.15em;
+    text-transform:uppercase;color:var(--label);padding-top:.32em;
+  }
+  .row p{margin:0;font-size:.93rem;}
+
+  /* ── Closing ──────────────────────────────── */
+  .closing{padding:5rem 0 4rem;}
+  .closing p{
+    font-family:var(--serif);font-weight:300;
+    font-size:clamp(1.1rem,2.1vw,1.3rem);line-height:1.6;
+    color:var(--ink);max-width:33rem;
+  }
+
+  footer{
+    border-top:1px solid var(--hair);padding:1.8rem 0 3.2rem;
+    font-size:.66rem;letter-spacing:.13em;text-transform:uppercase;
+    color:var(--label);
+  }
+  footer .wrap{display:flex;flex-wrap:wrap;gap:.5rem 2rem;justify-content:space-between;}
+
+  @media (max-width:640px){
+    body{font-size:16px;}
+    section{padding:3.4rem 0;}
+    header.hero{padding:4rem 0 3.4rem;}
+    .collapse{grid-template-columns:1fr;gap:1.4rem;}
+    .stage{padding-left:2.6rem;}
+    .stage::before{left:.47rem;}
+    .stage::after{left:.1rem;}
+    .row{grid-template-columns:1fr;}
+    .row-key{padding-top:0;}
+    .nav-inner{flex-wrap:nowrap;overflow-x:auto;gap:1.25rem;padding:.7rem 1.1rem;
+      scrollbar-width:none;}
+    .nav-inner::-webkit-scrollbar{display:none;}
+    .nav-mark{display:none;}
+    section{scroll-margin-top:3rem;}
+  }
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<nav aria-label="Sections">
+  <a href="#frame">The frame</a>
+  <a href="#properties">The properties</a>
+  <a href="#s1">Ground</a>
+  <a href="#s2">Leeds</a>
+  <a href="#s3">Counselling</a>
+  <a href="#s4">Art therapy</a>
+  <a href="#s5">Doctorate</a>
+  <a href="#s6">Portfolio</a>
+</nav>
+
+<main id="main">
+
+<header class="hero">
+  <div class="wrap">
+    <div class="col">
+      <p class="eyebrow">Living document · September 2026</p>
+      <h1>Twenty years, <em>one question at each step.</em></h1>
+      <p class="lede">The most strategic choice at every stage, the contribution available now without additional resources or standing, and how the three properties — andrearobin.com with Accessible Learning Labs as its specialism, Therapeutic Studio, and Andrea Robin Studio — are used to their full extent as the path proceeds.</p>
+      <p class="hero-note">This document follows career.html for the stages and the-hidden-ladder.html for the opportunities. It adds one thing: at each stage it asks, in the words of the person it is written for, <em>without any more resources or power, what can I do now to have a positive impact?</em> — and answers with specifics.</p>
+    </div>
+  </div>
+</header>
+
+<section id="frame">
+  <div class="wrap">
+    <p class="eyebrow">The frame</p>
+    <div class="col">
+      <h2>Three things this document <em>takes as given.</em></h2>
+      <p><strong>A long path is the design, not a cost.</strong> Ten credentials across six stages, studied every day by choice, is a plan for a person who learns for its own sake and intends to keep learning into her fifties and beyond, as the women in her family have. Nothing below treats duration as a problem to be minimised. What is optimised is sequence: which thing comes first so that the next is easier, and which contribution is available in each year rather than deferred to the end.</p>
+      <p><strong>Contribution does not wait for standing.</strong> <a href="https://80000hours.org/career-guide/" target="_blank" rel="noopener">80,000 Hours</a> frames a career's impact as the product of the problem's importance, the person's fit, and the leverage of the role — and it is explicit that early-career years spent building capital still count when the capital is deliberately aimed. Every stage below names what can be done in that stage, with the standing already held, before the next credential arrives.</p>
+      <p><strong>The three properties are the instruments.</strong> A personal site with a named specialism, a clinical practice, and an art practice are not three brands to maintain. They are the three places a contribution becomes visible and usable by others — and each has a job at every stage, at a volume the stage can carry.</p>
+    </div>
+  </div>
+</section>
+
+<section id="properties">
+  <div class="wrap">
+    <p class="eyebrow">The properties</p>
+    <div class="col">
+      <h2>Three properties, <em>one circuit.</em></h2>
+      <p>Each property has one job. The rule from the August architecture still holds — a property that tries to be two things is two half-things — and the September revision settles what each one is.</p>
+    </div>
+    <div class="collapse">
+      <div><h4>andrearobin.com · Accessible Learning Labs</h4><p>The professional site, with Accessible Learning Labs as its named specialism: the consulting practice, the Groundwork workbooks, the public writing on accessibility and learning design, the essential-requirements work, and the CV and publication list. This is the property that hiring panels, standards committees, editors, and doctoral supervisors read. Its job is to make fifteen years of applied work legible, and to keep the record current at every stage.</p></div>
+      <div><h4>therapeuticstudio.ca · Therapeutic Studio</h4><p>The clinical property. It opens as a practice in Stage four at RCC scope and adds art therapy on RCAT registration; before that, it holds a single page stating what will open and when. Make Space, as a peer creative-health programme, is not offered under a clinical registration in the same breath — the two are kept visibly distinct, whichever property Make Space lives on. Its job is to be the room, sized by desire rather than need, and to be findable by the people the specialism serves.</p></div>
+      <div><h4>Andrea Robin Studio · the art practice</h4><p>Dear Ordinary, the studies, the catalogue, the quarterly showings, and — from 2028 — the Foundations teaching module. This is the property that a practice-based doctorate is admitted on, that the disability arts network and the arts councils fund, and that an art department appoints from. Its job is to be a practice in public: made on the standing order, catalogued sheet by sheet, and shown.</p></div>
+      <div><h4>The circuit</h4><p>The writing on andrearobin.com introduces the practice; the practice supplies the clinical observation the writing needs; the studio supplies the embodied knowledge both draw on and the portfolio the doctorate reads. None of the three is load-bearing alone. Each has a defined minimum state for the stages with the least capacity, and none is allowed to collapse into another.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="s1">
+  <div class="wrap">
+    <p class="eyebrow">Stage one · Ground · underway</p>
+    <div class="col">
+      <h2>The most is available <em>right now.</em></h2>
+      <p>This is the stage with the highest ratio of contribution to credential on the whole path, because almost everything in it needs no permission. The strategic choice is which employer — and it is made for what the next two stages need, not for the title.</p>
+    </div>
+    <div class="rows">
+      <div class="row">
+        <div class="row-key">The strategic choice</div>
+        <p><strong>UBC or SFU, specifically, and chosen for the study provisions.</strong> Accessibility services, student services, or learning design at one of the two institutions the counselling master's and the doctorate are meant to be taken from. Before accepting, confirm the staff tuition benefit, the flexible-hours provisions, and whether a practicum can be placed inside the institution. This one fact shapes Stages three, four and five, and it is the reason the choice of employer is a strategic decision rather than a job search.</p>
+      </div>
+      <div class="row">
+        <div class="row-key">Contribution now</div>
+        <p><strong>Apply to an Accessibility Standards Canada technical committee.</strong> <a href="https://accessible.canada.ca/creating-accessibility-standards" target="_blank" rel="noopener">Committees</a> of twelve to eighteen members write national accessibility standards under the Accessible Canada Act; members are practitioners and people with lived experience, appointed on a written application, and applications open when a new committee is struck. A seat on an education, employment, or communication committee is the essential-requirements work at national scale, held with the standing already in hand. Watch the application page and apply to the first relevant committee that opens.</p>
+      </div>
+      <div class="row">
+        <div class="row-key">Contribution now</div>
+        <p><strong>Publish the essential-requirements corpus study.</strong> The <a href="https://www.ahead.org/professional-resources/publications/jped" target="_blank" rel="noopener">Journal of Postsecondary Education and Disability</a> is the venue where post-secondary accessibility practice is read; a paper there is cited by the offices that write technical standards. No affiliation is required. Revise the scarcity claim against the AFMC reform first.</p>
+      </div>
+      <div class="row">
+        <div class="row-key">Contribution now</div>
+        <p><strong>Ship the Groundwork foundation workbook, with the design certificate behind it.</strong> A resource an accessibility office can adopt is a contribution that runs without you. The Visual Communication Design certificate makes it a professionally designed one, and the certificate's portfolio doubles as the record one doctoral door reads.</p>
+      </div>
+      <div class="row">
+        <div class="row-key">Contribution now</div>
+        <p><strong>Put Make Space on a measured footing.</strong> A validated depression screen at the start and end of each cycle turns a practice into a programme with a claim. It is the single change with the largest downstream effect on the training-system work, and it costs an hour of set-up.</p>
+      </div>
+      <div class="row">
+        <div class="row-key">Contribution now</div>
+        <p><strong>Teach one studio course on practice alone.</strong> Continuing studies at <a href="https://www.ecuad.ca/academics/continuing-studies" target="_blank" rel="noopener">Emily Carr</a> or a community art school appoints on a BFA and a practice. One course — accessible drawing, or the ordinary body — is a contribution to who gets to make art, and it starts the teaching dossier six years before the doctorate needs one.</p>
+      </div>
+      <div class="row">
+        <div class="row-key">The properties</div>
+        <p>andrearobin.com carries the four resources, the paper, the workbook, and a current CV; Accessible Learning Labs is named as the specialism and priced as one. therapeuticstudio.ca holds one page: what will open, and when. Andrea Robin Studio carries the catalogue and the first quarterly showing, inside the disability arts network — <a href="https://kickstartdisability.ca" target="_blank" rel="noopener">Kickstart</a> in Vancouver first.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="s2">
+  <div class="wrap">
+    <p class="eyebrow">Stage two · Leeds</p>
+    <div class="col">
+      <h2>Standing in two countries, <em>and the first partnership.</em></h2>
+      <p>The strategic choice here is what the applied project is for. Done as a commissioned review for the employer, it is a credited study, a contribution to the institution, and the first formal research partnership — three things for the price of one supervised project.</p>
+    </div>
+    <div class="rows">
+      <div class="row">
+        <div class="row-key">The strategic choice</div>
+        <p><strong>The applied project as a commissioned essential-requirements review.</strong> Leeds permits the project to be done in partnership with an organisation, and an employer counts. Propose to the accessibility office a review of the institution's own technical standards, supervised and credited. The institution gets a defensible document; the record gets a partnered study; the counselling and doctoral applications get a partner letter.</p>
+      </div>
+      <div class="row">
+        <div class="row-key">Contribution now</div>
+        <p><strong>Present the corpus study once, internationally, as a Leeds student.</strong> The <a href="https://nndr.org" target="_blank" rel="noopener">Nordic Network on Disability Research</a> and the <a href="https://disstudies.org" target="_blank" rel="noopener">Society for Disability Studies</a> both run student streams. One online presentation is the cheapest international standing on the path, and it is where the Leeds specialism meets its scholarly community.</p>
+      </div>
+      <div class="row">
+        <div class="row-key">Contribution now</div>
+        <p><strong>Scope the Global Mental Health certificate to one deliverable.</strong> Taken inside a module break, its output is a written evidence brief on task-shifting and the treatment gap that becomes the introduction to the Make Space training manual. If the certificate produces that document, it earned its place; the document is the contribution, not the certificate.</p>
+      </div>
+      <div class="row">
+        <div class="row-key">Contribution now</div>
+        <p><strong>Keep the crisis line hours and let them count twice.</strong> 250 hours of supervised distress work is a contribution in itself. It is also the direct answer to the question every clinical stage rests on, obtained years before the counselling master's would otherwise ask it.</p>
+      </div>
+      <div class="row">
+        <div class="row-key">The properties</div>
+        <p>andrearobin.com carries the Leeds writing, the conference presentation, and the branch workbooks on a cadence; one retainer is secured before Stage three. Therapeutic Studio's page is unchanged. The studio keeps its Sundays where module weeks allow and the catalogue always; a second showing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="s3">
+  <div class="wrap">
+    <p class="eyebrow">Stage three · The counselling master's</p>
+    <div class="col">
+      <h2>Clinical formation, <em>with the research put where it is used.</em></h2>
+      <p>The strategic choice is where the thesis goes: a Mitacs partnership with a disability organisation makes the thesis a funded piece of work the partner needs, and it is the second formal partnership on the record.</p>
+    </div>
+    <div class="rows">
+      <div class="row">
+        <div class="row-key">The strategic choice</div>
+        <p><strong>A <a href="https://www.mitacs.ca/our-programs/accelerate/" target="_blank" rel="noopener">Mitacs Accelerate</a> partnership for the thesis or the practicum research.</strong> A paid internship inside the degree, with a disability organisation, a health authority, or a regulator as partner, on a question the partner wants answered — an outcome study for a community mental health programme, or an access review for a professional college. The research is used the day it is finished, which is the whole point of doing it.</p>
+      </div>
+      <div class="row">
+        <div class="row-key">Contribution now</div>
+        <p><strong>If the master's is at SFU: the <a href="https://www.sfu.ca/ceri/ceri-programs-/graduate-research-fellowships.html" target="_blank" rel="noopener">CERi Graduate Fellowship</a>.</strong> An eight-month, cohort-based fellowship in community-engaged research, open to all SFU graduate students including master's students, with a stipend and a community partner. It is designed for exactly the shape of the Make Space work, and it is available two stages earlier than the doctoral equivalents.</p>
+      </div>
+      <div class="row">
+        <div class="row-key">Contribution now</div>
+        <p><strong>Practicum in the institution's own counselling centre or accessibility office.</strong> Every clinical hour served there is a contribution to the students the specialism is for, and every reflective note is a data point on the gap between the two offices. Request the placement in the first term.</p>
+      </div>
+      <div class="row">
+        <div class="row-key">Contribution now</div>
+        <p><strong>Apply for registration the week the degree is conferred.</strong> Registration with <a href="https://bc-counsellors.org" target="_blank" rel="noopener">BCACC</a> is what turns clinical formation into clinical contribution. The requirements are read in the first month of the programme so that the hours and the coursework line up with them.</p>
+      </div>
+      <div class="row">
+        <div class="row-key">The properties</div>
+        <p>andrearobin.com holds the record current and carries the Mitacs report; Accessible Learning Labs becomes the flexible income and does not grow. Therapeutic Studio's page announces the opening date. The studio keeps its Sundays and shows quarterly; the design portfolio is kept alongside, because the doctoral door is decided at the end of the next stage.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="s4">
+  <div class="wrap">
+    <p class="eyebrow">Stage four · Art therapy</p>
+    <div class="col">
+      <h2>The practice opens, <em>and the creative project does double work.</em></h2>
+      <p>The strategic choice is to design the diploma's creative project as the first piece of the doctoral portfolio, so that the shortest stage on the path also opens the longest.</p>
+    </div>
+    <div class="rows">
+      <div class="row">
+        <div class="row-key">The strategic choice</div>
+        <p><strong>The creative project as the portfolio's opening piece.</strong> Written into the proposal from the start: a body of work with the doctoral question behind it — the ordinary body, grief, and the sacred, held inside disability and creative health — catalogued as it is made and shown once before the <a href="https://www.sfu.ca/sca/programs/phd.html" target="_blank" rel="noopener">SFU</a> or <a href="https://www.sfu.ca/siat/programs/graduate/admissions.html" target="_blank" rel="noopener">SIAT</a> application opens on 1 October.</p>
+      </div>
+      <div class="row">
+        <div class="row-key">Contribution now</div>
+        <p><strong>Open Therapeutic Studio with a sliding scale from the first client.</strong> The population the specialism serves cannot pay full rate. A practice sized by desire can afford to be priced by need, and that pricing is itself the contribution the registration makes possible.</p>
+      </div>
+      <div class="row">
+        <div class="row-key">Contribution now</div>
+        <p><strong>Take the placement where the referrals will come from.</strong> A 600-hour placement in post-secondary or community mental health with a disability population is the practice's first referral relationship. The site that trains you is the site that refers to you.</p>
+      </div>
+      <div class="row">
+        <div class="row-key">Contribution now</div>
+        <p><strong>Present the Make Space method once to the <a href="https://www.canadianarttherapy.org" target="_blank" rel="noopener">Canadian Art Therapy Association</a>.</strong> A small professional community in which a strong file is visible quickly. This is the beginning of the standing the later supervision of art therapy students rests on.</p>
+      </div>
+      <div class="row">
+        <div class="row-key">The properties</div>
+        <p>therapeuticstudio.ca becomes live: the practice, its scope, its pricing, and — kept visibly distinct — the Make Space programme. andrearobin.com carries the practice's clinical writing and the retainer. The studio's creative project is shown and catalogued; the design portfolio is closed or continued depending on which doctoral door the record has chosen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="s5">
+  <div class="wrap">
+    <p class="eyebrow">Stage five · The doctorate</p>
+    <div class="col">
+      <h2>The thesis is the work, <em>and the work is public.</em></h2>
+      <p>The strategic choice is to enter as a public scholar: partnered, funded for the partnership, and examined on work that an institution or a community can use. Both universities have a programme built for this.</p>
+    </div>
+    <div class="rows">
+      <div class="row">
+        <div class="row-key">The strategic choice</div>
+        <p><strong>Apply to the <a href="https://www.grad.ubc.ca/psi" target="_blank" rel="noopener">UBC Public Scholars Initiative</a> or the <a href="https://www.sfu.ca/ceri/ceri-programs-/community-engaged-research-funding-program.html" target="_blank" rel="noopener">SFU CERi funding programme</a> in the first year.</strong> PSI funds UBC doctoral students in years one to five whose dissertation work has a partner outside the academy, with up to $10,000 renewable once; CERi funds partnered graduate research at SFU with a community partner letter. A practice-based thesis with Make Space, a disability organisation, or an accessibility office as partner is what these programmes exist to fund.</p>
+      </div>
+      <div class="row">
+        <div class="row-key">Contribution now</div>
+        <p><strong>Studio teaching assistantships from the first term, and the graduate teaching certificate.</strong> Three years of assisting, with a certificate on the dossier, is the record an adjunct appointment reads — and every accessible-studio practice used in those courses is a contribution to the students in them.</p>
+      </div>
+      <div class="row">
+        <div class="row-key">Contribution now</div>
+        <p><strong>Hand Make Space to a trained facilitator.</strong> The first test of whether the method transfers, and the point at which one person's programme becomes something other people deliver. Record what transfers and what does not; that record is the training manual's second edition.</p>
+      </div>
+      <div class="row">
+        <div class="row-key">Contribution now</div>
+        <p><strong>Fund the culminating work from outside the university as well as inside.</strong> <a href="https://canadacouncil.ca" target="_blank" rel="noopener">Canada Council</a> and <a href="https://www.bcartscouncil.ca" target="_blank" rel="noopener">BC Arts Council</a> project grants are open to a practising artist whether or not she is enrolled. The exhibition is public by definition; funding it publicly makes it a contribution to the disability arts field rather than only to a degree.</p>
+      </div>
+      <div class="row">
+        <div class="row-key">The properties</div>
+        <p>andrearobin.com carries the publications and the teaching dossier; Accessible Learning Labs is capped at a named monthly ceiling and the products earn without hours. Therapeutic Studio runs at a handful of hours a week, both registrations current. Andrea Robin Studio is the thesis: the catalogue, the shown work, and the culminating exhibition.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="s6">
+  <div class="wrap">
+    <p class="eyebrow">Stage six · The portfolio</p>
+    <div class="col">
+      <h2>Four seats, and <em>the leverage they were chosen for.</em></h2>
+      <p>This is where the 80,000 Hours arithmetic comes out in favour of the long path. The four seats are not four jobs; they are four kinds of leverage, held by one person who is the obvious candidate for each because of what the earlier stages put on the record.</p>
+    </div>
+    <div class="rows">
+      <div class="row">
+        <div class="row-key">The strategic choice</div>
+        <p><strong>The senior access and equity seat inside the university.</strong> The primary career Grace Wong Sneddon held alongside her clinical and academic work was in the university's equity and academic-leadership offices. A director-level access seat decides institutional policy on essential requirements for every programme at once. It is the highest-leverage seat on the path, and the accessibility role has been leading to it since Stage one.</p>
+      </div>
+      <div class="row">
+        <div class="row-key">Contribution now</div>
+        <p><strong>The adjunct appointment, used for who gets taught.</strong> Studio and seminar teaching at SFU or UBC, supervision of graduate students whose work sits where yours does, and a course the department does not yet have — accessible studio pedagogy, or making and the disabled body. Art schools admit and assess on essential requirements too; the appointment is where those get rewritten.</p>
+      </div>
+      <div class="row">
+        <div class="row-key">Contribution now</div>
+        <p><strong>Regulator and standards seats, one at a time.</strong> The <a href="https://chcpbc.ca" target="_blank" rel="noopener">College</a>'s registrant committees, CATA and BCACC boards, and the accessibility standards committees begun in Stage one. These write scope, registration standards, and accessibility requirements. A registrant with a disability specialism is asked; the answer is yes to one at a time.</p>
+      </div>
+      <div class="row">
+        <div class="row-key">Contribution now</div>
+        <p><strong>Clinical supervision of counselling and art therapy students.</strong> Both registrations permit it; both programmes need supervisors with this specialism. It is paid, it is teaching in the clinical world, and it multiplies the practice through the people it trains.</p>
+      </div>
+      <div class="row">
+        <div class="row-key">The properties</div>
+        <p>andrearobin.com is the record of a fractional career: publications, the method, the standards work, the teaching. Therapeutic Studio is the practice at both registrations, sized by desire, priced by need. Andrea Robin Studio is a practice in its own right — shown, collected, funded, and taught from, with the Foundations module as its own income line. The circuit runs as designed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="closing">
+  <div class="wrap">
+    <p>Twenty years is not a long time to wait for a life. It is the length of a life lived on purpose, one stage at a time, with something to contribute in every year of it. The record that carries it is being written now.</p>
+  </div>
+</div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Twenty Years — Living Document</span>
+    <span>Ground · Leeds · Counselling · Art Therapy · Doctorate · Portfolio</span>
+  </div>
+</footer>
+
+</body>
+</html>
