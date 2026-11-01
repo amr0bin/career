@@ -19,7 +19,7 @@ Phases close on conditions, not dates. The years are targets.
 
 | Folder | What it holds | Start with |
 |---|---|---|
-| [`arc/`](arc/) | The one arc: the ceiling, the floor, each stage, the threads that run through all three | [`the-arc.md`](arc/the-arc.md) |
+| [`arc/`](arc/) | The one arc: the ceiling, the floor, each stage, the thesis line, the threads that run through all three | [`the-arc.md`](arc/the-arc.md), then [`the-thesis-line.md`](arc/the-thesis-line.md) |
 | [`philosophy/`](philosophy/) | How I plan and work: the Ceiling and Floor Protocol, the advisory council, house rules, ledgers, excellence, living as my future self | [`ceiling-and-floor-protocol.md`](philosophy/ceiling-and-floor-protocol.md) |
 | [`options/`](options/) | Routes compared, routes set aside, bottlenecks with their exits, forks still open | [`open-forks.md`](options/open-forks.md) |
 | [`knowledge/`](knowledge/) | The bodies of knowledge, the research line, the open curriculum, global mental health | [`research-designs.md`](knowledge/research-designs.md) |

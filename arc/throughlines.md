@@ -11,7 +11,7 @@ Each piece of research is designed to be the next one's foundation:
 | Stage | Output | What it hands on |
 |---|---|---|
 | 1 · Ground | Four accessibility resources; **four-literature framework paper** (CJDS); corpus-study design; Make Space documentation under a decided ethics route | The frame the corpus codes trace to; a public record; first DOIs and an ORCID |
-| 1 · Frame | **Leeds applied project = the essential-requirements corpus study**, preregistered on OSF, with a paid disabled practitioner as second coder; the corpus paper (JPED first choice); RA work in a UBC or SFU lab | A supervised, credited study; the sampling logic and coding skill the thesis needs; a research referee |
+| 1 · Frame | **Leeds Applied Project = the empirical pilot of the MA thesis** (survey + interviews, recruited by experience of the process, Leeds ethics); the corpus study finished alongside and credited within; the corpus paper (JPED first choice); RA work in a UBC or SFU lab | A supervised, credited study; the sampling logic and coding skill the thesis needs; a research referee |
 | 2 · The Room | **MA thesis**: the accommodation process against depressive symptoms and help-seeking; CGRS M / Mitacs funded | The first empirical answer on the levers; a supervisor who has seen the research |
 | 2 · Practice | Clinical observation in the campus service; a second publication | The dissertation's setting and its data access |
 | 3 · The Question | **Dissertation**: from levers to an intervention (a joined intake, or accessible low-intensity care including Creative Health) | The evidence base for the centre and the documentation standard |
