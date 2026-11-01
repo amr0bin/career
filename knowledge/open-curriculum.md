@@ -1,0 +1,60 @@
+# The open curriculum
+
+> **Purpose:** The reference for free and low-cost training: what each track is for, how it maps to credentials, the gap that study does not close, the decisions that cost more the later they are made, and the rooms worth being in. · **Governs:** which non-degree training is taken, and why. The course rows themselves (provider, cost, hours, URL) live in Notion. · **Carried out in Notion:** {{notion:Training}}
+
+## The ceiling
+
+The aim is to arrive at every gate (the advisor role, Leeds, the counselling MA, the practicum) with the field's own certificates, the field's own language, and the supervised experience no course can give. All of it should be bought cheaply and timed so it never competes with the degrees. Done well, the open curriculum makes learning-design work done over the past decade legible to a hiring panel at a glance. It also closes specific knowledge gaps before paid study begins, and it puts her in supervised rooms with people in distress, which is what admissions committees and referees actually weigh.
+
+**How to read it.** Nothing here replaces a credential in the arc. Free training does three different jobs: it closes knowledge gaps ahead of paid study, it produces CV lines a hiring manager can read, and in two tracks it puts her in a supervised room. Verify enrolment windows before planning around any single item. Several run on annual or seasonal intakes.
+
+## The tracks
+
+| Track | What it is for | Credential mapping | Stage / phase |
+|---|---|---|---|
+| **1 · Rights, disability and the international frame** | The strongest free offerings anywhere. UN and WHO certificates on the CRPD, psychosocial disability and rights-based services. The WHO QualityRights e-training is the single best fit, because it sits exactly where human rights, psychosocial disability and mental-health services meet | CPACC Domain I; Leeds preparation (CRPD module) | 1 · Ground |
+| **2 · Accessibility standards and the built environment** | Digital accessibility is already a strength. The real gaps are the built environment, procurement and legal frameworks, and that is where this track points | CPACC Domains II–III; RHFAC is the BC-credible built-environment line (employer-funded candidate) | 1 · Ground |
+| **3 · Psychological first aid and the humanitarian model** | The Red Cross training culture, free. It builds the capacity to be useful in a room where someone is in distress. PFA is not therapy, and every course here says so. OpenWHO's MHPSS course states the task-shifting evidence base in WHO's own words | Rung 1 of the GMH ladder; foundation under crisis-line training | 1 · Ground |
+| **4 · Supervised practice** | **The part no course can replace, and the only track with a real deadline.** Counselling programmes and referees weigh documented hours in a supervised helping role, not certificates. Crisis-line training bundles safeTALK, ASIST and MHFA, which is why routing through a crisis centre beats buying them separately | UBC/SFU MA helping experience; a professional referee | 1 · Ground → Frame |
+| **5 · Research literacy and ethics** | Small track, high leverage. TCPS 2 CORE is the Canadian standard and takes about four hours. Do it before the Make Space paper is designed, because it changes how the consent, privacy and welfare sections are written | Leeds application; any REB submission; k7 | 1 · Ground |
+| **6 · The counselling prerequisites, timed** | The undergraduate prerequisites placed against the MA application. Statistics comes first because it has the most downstream use, as trial-reading literacy and as the basis of the corpus study's quantitative section. Interviewing and helping skills come last, so they are recent at application | UBC MA (UBC list is the reference); SFU's list checked alongside so one set serves both | 1 · Frame |
+| **7 · Studio days** | The standing weekly practice: making, a catalogue entry for every sheet, a quarterly showing, an artist statement revised each quarter. It is now the portfolio and practice record for the **VATI Advanced Diploma** and the Creative Health programme, not a doctoral application | VATI admission (portfolio); Therapeutic Studio | All stages |
+| **8 · MHPSS coordination and the humanitarian system** | The layer above PFA: IASC Guidelines, the MHPSS Minimum Service Package database, Kaya, IFRC PS Centre manuals, ICS-100. **Optional and posting-triggered.** The only item that carries real weight is Canadian Red Cross emergency-management volunteering, not a course | Humanitarian MHPSS roles; GMH ceiling | Option, any phase |
+| **9 · Workplace psychological health and safety** | The National Standard (CAN/CSA-Z1003-13) and the tools around it (CCOHS, Guarding Minds at Work, CMHA, SafeCare BC, trauma-informed modules, LEADS, Indigenous cultural safety). **Optional and posting-triggered.** The interview artefact (a Guarding Minds assessment written up as a leadership briefing) outweighs any certificate | Health-authority PH&S roles; Indigenous cultural safety line for any BC public-sector post | Option, any phase |
+
+**The prerequisite inventory comes first, before any enrolment.** Check earlier coursework against UBC's published equivalency table. Anything already satisfied comes off the schedule and frees a term. Keep every course outline from the day of enrolment, because where equivalency is uncertain the department reads the outline with the application. Exact codes and dates live in Notion (Requisites).
+
+**Track 8 and Track 9 rule.** These are options, not commitments. The arc's credential rule still holds: one paid credential at a time, and certificates that cost real money are employer-funded or not taken. If Red Cross volunteering and the crisis line cannot both be held, the crisis line serves the counselling application and the Red Cross role serves the humanitarian one. That is a choice between threads and should be made deliberately.
+
+## The gap: what the advisor postings actually ask for
+
+UBC's Accessibility Advisor postings ask for an undergraduate degree, five to six years of related experience or an equivalent combination, and the operative line: *considerable training and experience in disability, universal design, and duty to accommodate in a post-secondary setting.* A relevant graduate degree is preferred. (Per the 2026-10-31 decisions, the minimums are already met.)
+
+Read against that, accessibility knowledge is not the bottleneck. Learning-design work over the past decade plus the CPACC covers universal design and standards. Two things are missing, and neither is really a course problem:
+
+1. **Duty to accommodate as a legal practice.** Undue hardship, the interactive process, medical documentation, and the BC Human Rights Code applied to educational services. The source material is free: tribunal decisions and human-rights commission guidance (the OHRC policy is useful comparatively). Read one BC Human Rights Tribunal accommodation-in-education decision regularly, as an advisor would. See k2 in `bodies-of-knowledge.md`.
+2. **The post-secondary setting itself.** This is closed by proximity, not by study. CACUSS runs the accessibility community of practice where these advisors gather, NEADS is the national student-led disability organisation, and AHEAD is the field's flagship. Membership, a conference, and one or two informational conversations with current UBC or SFU advisors will do more than another certificate.
+
+## Decide early: two things that cost more the later they are settled
+
+1. **The Make Space paper's affiliation route.** Decide before a word is drafted. The three exits are carrying it into Leeds, reframing the genre, or paying an independent REB. The full reasoning is in `research-designs.md`. The method can already travel in public through the Fieldwork series up to the point where it needs a setting and an ethics board.
+2. **The referee set.** The MA application (1 Dec 2030) wants academic referees. The Leeds supervisor is one, and the crisis-line supervisor is a strong professional second. Both arrive late, and neither is a Canadian academic who has watched the research work. Build the third deliberately, starting now: an RA or lab supervisor, or a research team reached through the BC SUPPORT Unit. The PhD needs the same set again, deeper.
+
+## Beyond the catalogue: rooms to be in, not certificates to hold
+
+Each of these is free or close to it, local, and produces something a course cannot: a named role, a reference, a relationship, or a seat where decisions are made.
+
+- **Patient partner with the BC SUPPORT Unit** (Health Research BC). A named role on a real research team, alongside researchers who can later write an academic reference. It is currently the only route in the plan to that.
+- **A seat on an accessibility committee.** The *Accessible British Columbia Act* (2021) requires prescribed public bodies to have one. So far as possible, at least half the members are disabled people or from supporting organisations, and they recruit publicly. It is governance experience inside the institutions the advisor role sits in, before being hired. It is the cheapest high-leverage move on this page.
+- **A working relationship with a disabled people's organisation** (Disability Alliance BC; BCANDS for the Indigenous disability file). In the Leeds tradition, disability research answers to organisations controlled by disabled people. A DPO is the strongest partner for the Leeds Applied Project, and the relationship takes time to become real.
+- **Sessional and continuing-studies teaching, now.** Continuing-studies departments (JIBC, Douglas, KPU, VCC, Emily Carr, Langara) hire on subject expertise. One course in accessibility, UDL or learning design starts the teaching record that the adjunct appointment in Stage 3 is assessed on. It also pays.
+- **American Sign Language, as a deliberate decision.** Very few BC clinicians can hold a session in ASL, so it is the strongest available differentiator on both the advisor and the clinical side. It takes years, not a certificate, and competes directly with Leeds, the prerequisites and the crisis line. It is named here so it is decided deliberately rather than by default.
+- **The CPACC recertification log, from the day the credential is granted.** The renewal cycle falls across Leeds and the prerequisites. Talks, committee service, publications and teaching all count, but only if they are logged as they happen.
+
+## Sequencing principle
+
+Stage 1 already holds a full-time role, the CPACC, four public resources, a submitted paper, Make Space outcome measurement, crisis training and shifts, the design certificate, and the studio. The plan is stronger for fixing the order in advance than for deciding it under pressure. **The studio days and the crisis line are fixed. The prerequisites are dated. Certificates and the committee seat take the terms held clear of Leeds modules.** Where streams collide, prerequisites outrank modules, because they carry a fixed external date.
+
+**Fallback, once:** if a term overflows, the optional tracks (8 and 9) and the browse-and-build catalogues stop first. Tracks 4 and 6 never stop.
+
+**Resolved.** (1) Track 7 was "studio days for an art doctorate (SCA/SIAT/AHVA)". It is superseded by the 2026-10-31 decision: the doctorate is UBC PhD Counselling Psychology, and the studio days now feed the VATI portfolio and Creative Health. The art doctorate is recorded in options/. (2) Track 6 dates are moved one cycle later: application 1 Dec 2030, prerequisites graded by 31 Dec 2030, entry Sept 2031. The page's 2029/2030 dates are superseded. (3) The Glasgow PgCert GMH has closed and LSHTM replaces it (see `global-mental-health.md`). (4) The crisis-line start is per career.html and data.js. Specific dates belong in Notion. (5) "Fifteen years" becomes "over the past decade". Source page: career/the-open-curriculum.html, revised September 2026; availability was last verified August–September 2026 and should be re-checked at source.

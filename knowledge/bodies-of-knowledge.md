@@ -121,7 +121,7 @@ So the PDF list folds into seven of the ten. The three it lacks are the three th
 
 ## k8 · Learning design: instructional systems design, the learning sciences, UDL
 
-**Why it matters to the arc.** It lets over the past decade of learning design count as programme-development expertise on a counselling-centre posting. It also keeps the Groundwork workbooks and the facilitator manual honest about what transfers. *Added from the PDF list:* **instructional systems design** (needs analysis, measurable objectives, sequenced practice and evaluation; ADDIE and its successors). The core-foundations list calls it the foundation "that makes everything else deployable and scalable".
+**Why it matters to the arc.** It lets the learning-design work of over the past decade count as programme-development expertise on a counselling-centre posting. It also keeps the Groundwork workbooks and the facilitator manual honest about what transfers. *Added from the PDF list:* **instructional systems design** (needs analysis, measurable objectives, sequenced practice and evaluation; ADDIE and its successors). The core-foundations list calls it the foundation "that makes everything else deployable and scalable".
 
 **Stage fed.** Held at practitioner level now, with its scholarly basis named now. It feeds the advisor application (programme development), the learning or cognitive psychology prerequisite, the workbooks, and the facilitator curriculum.
 
