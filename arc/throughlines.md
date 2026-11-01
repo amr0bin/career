@@ -36,6 +36,7 @@ Four properties, one job each. A property that tries to be two things becomes tw
 
 - **Now:** the BFA as method, Dear Ordinary on its standing order, and Make Space as a weekly peer creative-health programme with its own conceptual tools (Other Bodies). It is documented now, and measured only once an ethics route exists.
 - **Stage 2:** the VATI Advanced Diploma after the MA brings the BFA into clinical service. Its placement is requested with a disability population, and its creative project is studio work. RCAT is a second registration, and image-based work becomes part of the clinical offer.
+- **Peer support line:** Peer Support Canada certification in Phase 2 makes Make Space a programme run by a certified practitioner; mentor certification in Stage 2 prepares the hand-over to trained facilitators (see `decisions/2026-11-01-peer-support-line.md`).
 - **Stage 3:** Creative Health is one of the candidate interventions the dissertation tests for students the thesis found left out. Make Space is manualised and handed to trained facilitators; the training system (Accessible Learning Labs' method applied to Creative Health's programme) becomes the licensed asset.
 - **Optionality:** a Creative Health peer programme inside Therapeutic Studio, and possibly a charity partner for Vancouver Foundation participatory research.
 

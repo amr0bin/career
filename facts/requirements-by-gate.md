@@ -13,6 +13,7 @@ Contradictions between sources are **not** resolved here. They are flagged ⚑ a
 | Advisor role (UBC / SFU) | Now → 2027 | Minimums met per postings (**verify** degree equivalence) |
 | Leeds MSc | Apply by 31 Mar 2027 for Sept 2027 | target |
 | UBC MA and SFU MA (thesis) | Apply 1 Dec 2030; prerequisites graded by 31 Dec 2030; entry Sept 2031 | target |
+| Peer Support Canada certification (provisional → full) | Training autumn 2028; provisional early 2029; full mid-2030 | target |
 | RCC / CCC | At MA conferral, ~2034 | target |
 | VATI Advanced Diploma | Apply by 30 Mar after conferral; ~2034–35 | target |
 | UBC PhD Counselling Psychology | ~2035 entry | target |
@@ -71,7 +72,7 @@ All graded by **31 Dec 2030**. Course terms come from education-path (planned fo
 | Requirement | UBC | SFU | Evidence |
 |---|---|---|---|
 | Senior-course average | B+ (76%) in 3rd/4th-year courses, or 12+ senior credits in the A range (**verify** Calendar wording) | 3.0 cumulative or 3.33 over the last 60 units | Prerequisites taken at senior level count toward it |
-| Helping experience | ⚑ **2 years or 450 h** (department page / FAQ) **vs minimum 3 years** (Academic Calendar). Plan to 3 years | ~2 years or 400 h | Crisis-line hours from Jan 2027; advisor role logged; a reference letter |
+| Helping experience | ⚑ **No required minimum, but weighed in adjudication** (department page, read 1 Nov 2026) vs 2 years / 450 h (earlier FAQ) vs minimum 3 years (Calendar; possibly the off-campus MEd rule). Plan to 3+ years | ~2 years or 400 h | Crisis-line hours from Jan 2027, then certified peer support hours from autumn 2028; advisor role logged; a reference letter |
 | Research experience | RA work, presentations, publications | Research Statement naming supervisors and methods | 2–3 years in a lab; the conceptual paper and corpus study submitted |
 | Supervisor fit | Declared area with available supervisory expertise | Named supervisors; MA by faculty approval after entry | Letters from 2027; question shaped to one lab by 2029 |
 | References | 3: at least 1 professional + 1 academic | 3: at least 2 academic | Lab PI, Leeds supervisor, crisis-line or advisor supervisor |
@@ -81,6 +82,18 @@ All graded by **31 Dec 2030**. Course terms come from education-path (planned fo
 | Criminal record check | Before supervised placement | Before practicum | Obtain at offer |
 
 Sources: ecps.educ.ubc.ca/?p=831 (prerequisites); ecps.educ.ubc.ca/?p=973 (equivalency); grad.ubc.ca MA page; vancouver.calendar.ubc.ca (Counselling Psychology; master's admission); sfu.ca application-tuition page.
+
+## Peer Support Canada certification (Peer Supporter; later Peer Support Mentor)
+
+| Requirement | Evidence |
+|---|---|
+| Lived experience and alignment with the national Standards of Practice and Code of Conduct | PSC application; Make Space practice documented against the standards |
+| Peer support training (recommended before applying; certification is an assessment, not training) | PeerWorks Core Essentials certificate with practicum, autumn 2028 → early 2029 |
+| 200 hours of formalized peer support experience (provisional certification available without them) | Peer hours logged in Notion's Hours Log with supervision; **verify** whether self-run Make Space hours count |
+| The assessment (3–4 months; typically $1,200) | Completed assessment |
+| Mentor certification (a separate PSC credential) | After full certification and supervised experience; **verify** requirements |
+
+Not a regulated title in BC. Health authority postings ask for "a recognized peer support training program" plus experience (VCH, 2026). Sources: peersupportcanada.ca/faq; peersupportcanada.ca/certification-logged-out; PSC RBC info package (Feb 2026); peerworks.ca.opdi.org/training-education (all read 1 Nov 2026).
 
 ## RCC (BCACC) and CCC (CCPA): built inside the MA
 

@@ -12,7 +12,7 @@
 
 | # | Item | Why it matters | Source to check | Contradiction |
 |---|---|---|---|---|
-| 1 | **UBC helping experience: 2 years / 450 h, or 3 years** | Sets the start-by date for the crisis-line clock; 3 years from Jan 2027 is tight against Dec 2030 | ecps.educ.ubc.ca application info + CNPS FAQ PDF; vancouver.calendar.ubc.ca | ⚑ Dept page/FAQ (2 y / 450 h) vs Calendar (3 y). Plan to 3 |
+| 1 | **UBC helping experience: 2 years / 450 h, or 3 years** | Sets the start-by date for the crisis-line clock; 3 years from Jan 2027 is tight against Dec 2030 | ecps.educ.ubc.ca application info + CNPS FAQ PDF; vancouver.calendar.ubc.ca | ⚑ Dept page/FAQ (2 y / 450 h) vs Calendar (3 y). Plan to 3. **1 Nov 2026:** ecps.educ.ubc.ca/?p=831 now says no required minimum, weighed in adjudication; a 3-year minimum appears on the off-campus MEd page (opl.educ.ubc.ca), which may be the Calendar's source. Still confirm the Calendar wording |
 | 2 | **Is the GRE still required for the UBC MA?** | Money and months in 2030, on the one route committed to | ecps.educ.ubc.ca; grad.ubc.ca MA page | ⚑ Central pages say required; department page unread; many programmes dropped it after 2020 |
 | 3 | **Prerequisite equivalency tables (UBC "Approved MA & MEd Prerequisites"; SFU)**: do UBC's CNPS 362/365 and SFU's skills/theories collapse into one course each? | 6 vs 9 courses is three terms | ecps.educ.ubc.ca/?p=973; email to SFU Counselling Psychology | ⚑ Count 5 (career.html), 6 (data.js), 6–9 (prerequisites.md) |
 | 4 | UBC senior-average wording: B+ in senior courses, **or** 12+ A-range senior credits; and any CNPS minimum above 76% | Decides how many senior prerequisites must reach the A range | vancouver.calendar.ubc.ca master's admission; grad.ubc.ca/node/10001 | — |
@@ -45,6 +45,9 @@
 | 26 | UK competence standards (Equality Act 2010): does the four-literature framework already exist there? | Origination vs translation for the conceptual paper | UK guidance and case law | — |
 | 27 | Psychologist registration exams (EPPP + oral) in their current form | Stage 3 | chcpbc.org/applicants/psychology | — |
 | 28 | Advertising standards for a property named *Therapeutic* Studio once the title is protected | Needed before 29 Nov 2027 | CHCPBC bylaws | — |
+| 41 | Do hours in a self-run peer programme (Make Space) count toward Peer Support Canada's 200 formalized hours, and what supervision must they show? | Decides whether certification needs a second peer role | certification@peersupportcanada.ca; PSC Certification Handbook | — |
+| 42 | PeerWorks Core Essentials cohorts and fees for autumn 2028 (morning Pacific option still offered?) | The training slot in the swap with crisis hours | peerworks.ca.opdi.org/training-education | — |
+| 43 | Peer Support Canada mentor certification requirements | Stage 2 hand-over | peersupportcanada.ca Certification Handbook | — |
 
 ## Low: wrong here costs a line or a small fee
 
