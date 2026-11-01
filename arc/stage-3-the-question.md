@@ -41,7 +41,13 @@ It's also the leadership tier of the campus service. At UBC Counselling Services
 
 ---
 
-## Phase 6 · Optionality (~2041 →)
+## Phase 5b · Global (postdoc, ~2040 → 2042)
+
+A funded postdoc in global mental health. The redesign the dissertation tested is adapted, with a disabled people's organisation, for a lower-resource or community setting. Registration finishes alongside it: the EPPP and jurisprudence exams are sat during the internship year, and BC requires no postdoctoral hours. The level, the rungs before it and the candidate hosts are in `the-global-line.md`.
+
+**Complete when** the partnered study is done and submitted with local co-authors, and registration is complete. **Feeds forward:** international collaborators, a fellowship record, and the global seat in Optionality.
+
+## Phase 6 · Optionality (~2042 →)
 
 **The work.** The fractional shape: several seats at once, none of them full-time, some applied for and the most important ones built. A fractional career already held by a BC scholar-practitioner (counselling master's and clinical registration, an interdisciplinary PhD, an adjunct appointment, and a primary career in university equity and academic leadership) is the proof that the pieces can be held together. It's the starting shape, not the ceiling.
 

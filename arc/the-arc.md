@@ -32,7 +32,8 @@ Years are **targets**. Each phase closes when its conditions are met, not when a
 | **2 · The Room** | 3 *The Room* | Sept 2031 → ~2034 | Thesis defended; MA conferred; practicum complete (UBC Counselling Services seat applied for ~Jan 2033); RCC applied for, built to the CCC bar as well | Registration, a first empirical thesis on the question, and people inside the service who have watched her work |
 | | 4 *Practice* | ~2034 → 2035 | Counsellor role at UBC or SFU held; Therapeutic Studio open at RCC scope; VATI Advanced Diploma under way or held; PhD application funded and accepted | Clinical data and standing, a second registration, and a supervisor who wants the question |
 | **3 · The Question** | 5 *The Question* | ~2035 → 2040 | UBC PhD Counselling Psychology dissertation defended; 1,600-hour CPA-accredited internship complete; psychologist registration applied for (~2041) | The protected title, diagnostic authority, research independence |
-| | 6 *Optionality* | ~2041 → | Doesn't close. Reviewed twice a year: are the seats held, and is any one becoming full-time at the others' expense? | — |
+| | 5b *Global* (postdoc) | ~2040 → 2042 | Funded global mental health postdoc complete: one partnered study adapting the redesign; registration completed alongside (see `the-global-line.md`) | An international network and the work proven beyond one campus |
+| | 6 *Optionality* | ~2042 → | Doesn't close. Reviewed twice a year: are the seats held, and is any one becoming full-time at the others' expense? | — |
 
 ## How each stage compounds into the next
 
