@@ -1,6 +1,6 @@
 # Programmes compared
 
-> **Purpose:** the reasoning for each programme choice on the path: UBC vs SFU counselling MA, thesis MA vs MEd, the Leeds MSc's structure, and VATI vs the art therapy alternatives. · **Governs:** which programme is applied to and why; requirements themselves live in `facts/requirements-by-gate.md`. · **Carried out in Notion:** {{notion:Gates}}
+> **Purpose:** the reasoning for each programme choice on the path: UBC vs SFU counselling MA, thesis MA vs MEd, the Leeds MSc's structure, and VATI vs the art therapy alternatives. · **Governs:** which programme is applied to and why; requirements themselves live in `facts/requirements-by-gate.md`. · **Carried out in Notion:** [Gates](https://app.notion.com/p/d4969021f8da4529a41eafec0c323ca4)
 
 ---
 

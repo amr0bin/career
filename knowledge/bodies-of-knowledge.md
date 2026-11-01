@@ -1,6 +1,6 @@
 # The bodies of knowledge
 
-> **Purpose:** The ten foundations the whole arc draws on: why each matters, which stage it feeds, the test that says it is held, the anchor texts, and the gap still open. · **Governs:** what is read and cited, and how the overview PDFs are used (as maps, never as citations). · **Carried out in Notion:** {{notion:Reading}}
+> **Purpose:** The ten foundations the whole arc draws on: why each matters, which stage it feeds, the test that says it is held, the anchor texts, and the gap still open. · **Governs:** what is read and cited, and how the overview PDFs are used (as maps, never as citations). · **Carried out in Notion:** [Learning](https://app.notion.com/p/ffc3561528954f98ad4562b1c5e48b93)
 
 ## The ceiling this list serves
 
@@ -141,7 +141,7 @@ So the PDF list folds into seven of the ten. The three it lacks are the three th
 
 **Anchors.** Lipson, Lattie & Eisenberg (2019). Healthy Minds Study data reports. ACHA NCHA III Canadian Reference Group. CSA Z2003:20. The Okanagan Charter (2015). Cornish et al., Stepped Care 2.0 (2017). AHEAD program standards.
 
-**The gap.** The disability-specific depression prevalence claim still needs its own citation before it appears anywhere. The NCHA Canadian data by disability status is where to look. (A scale figure is already sourced: in the 2025 CUCS survey, 33% of first-year students reported a disability. See `10-stability-and-the-ceiling.md`.)
+**The gap.** The disability-specific depression prevalence claim still needs its own citation before it appears anywhere. The NCHA Canadian data by disability status is where to look. (A scale figure is already sourced: in the 2025 CUCS survey, 33% of first-year students reported a disability. See `facts/stability-and-figures.md`.)
 
 ## k10 · Arts, creative health and research-creation
 

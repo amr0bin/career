@@ -1,6 +1,6 @@
 # Excellence and Working Rules
 
-> **Purpose:** what excellence means on this path, and the rules that run the plan week to week · **Governs:** what gets taken on, what gets finished, and how the week is shaped · **Carried out in Notion:** {{notion:Weekly Review}}
+> **Purpose:** what excellence means on this path, and the rules that run the plan week to week · **Governs:** what gets taken on, what gets finished, and how the week is shaped · **Carried out in Notion:** [Weekly Log](https://app.notion.com/p/37d529eede154f419bc813a96fa88430)
 
 ---
 
@@ -30,7 +30,7 @@ How the plan is run (from `career.html`, which governs plan over older pages):
 - **Nothing on this path is a hoop.** Abnormal psychology, learning theory and statistics are the interesting part arriving early. Statistics is what makes it possible to read a depression trial and judge it, and eventually to run one.
 - **Every stage produces something citable and something visible.** A published resource, a submitted paper, a thesis, a dataset; a catalogued body of studio work, shown.
 - **Every stage names who helps.** Supervisors, sponsors, funders, collaborators. The nominators file is kept current and sent the record twice a year.
-- **Keep a decision log.** One line per decision, dated: what was chosen, what was rejected, and why. ({{notion:Decision Log}})
+- **Keep a decision log.** One line per decision, dated: what was chosen, what was rejected, and why. ([Decisions](https://app.notion.com/p/3cdae687f6934e57a7e1d3510e2cf898))
 - **Anything with a fixed external date outranks anything without one, every time.**
 - **No stage that reduces income is entered before it has been sized and funded.**
 

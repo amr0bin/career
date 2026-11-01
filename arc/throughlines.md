@@ -1,6 +1,6 @@
 # Throughlines
 
-> **Purpose:** the threads that run through all three stages and make them one arc: the research line, the four properties, art into clinical work, the streams at each phase, and what pays · **Governs:** how stages hand work to each other (figures are as given in `10-stability-and-the-ceiling.md`, which governs them) · **Carried out in Notion:** {{notion:Gates}} · {{notion:Tasks}}
+> **Purpose:** the threads that run through all three stages and make them one arc: the research line, the four properties, art into clinical work, the streams at each phase, and what pays · **Governs:** how stages hand work to each other (figures are as given in `facts/stability-and-figures.md`, which governs them) · **Carried out in Notion:** [Gates](https://app.notion.com/p/d4969021f8da4529a41eafec0c323ca4) · [Tasks](https://app.notion.com/p/1dca49d1884242e28a2f2d21f1216be9)
 
 ## 1 · The question and the research line
 
@@ -58,7 +58,7 @@ Levels: **Peak** (the phase is built around it) · **Full** · **Reduced** · **
 
 ## 5 · What pays: the stability architecture
 
-Every figure here is from `10-stability-and-the-ceiling.md` (checked 6 Oct 2026; sources in its §11) and keeps that note's status. **Security arrives in Stage 1**: the first role is a six-figure, pensioned career, and every later stage has named funding.
+Every figure here is from `facts/stability-and-figures.md` (checked 6 Oct 2026; sources in its §11) and keeps that note's status. **Security arrives in Stage 1**: the first role is a six-figure, pensioned career, and every later stage has named funding.
 
 | Phase | Main income | Figures as given in `10-stability` | Source |
 |---|---|---|---|

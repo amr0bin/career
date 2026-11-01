@@ -1,6 +1,6 @@
 # The Advisory Council
 
-> **Purpose:** a standing circle of figures, real and fictional, each holding a question this career will keep facing · **Governs:** how hard decisions are framed before options are weighed · **Carried out in Notion:** {{notion:Decision Log}}
+> **Purpose:** a standing circle of figures, real and fictional, each holding a question this career will keep facing · **Governs:** how hard decisions are framed before options are weighed · **Carried out in Notion:** [Decisions](https://app.notion.com/p/3cdae687f6934e57a7e1d3510e2cf898)
 
 Assembled 29 August 2026. A seat is not a virtue and not a biography. It is **a question this career will face repeatedly**, assigned to someone who has already faced its equivalent. Consulting a member does not mean asking what they would do — they were solving a different problem. It means recalling how they held the question when it was hardest.
 

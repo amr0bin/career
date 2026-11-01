@@ -1,6 +1,6 @@
 # Stage 2 · The Room
 
-> **Purpose:** the detail of Phase 3 *The Room* (the thesis MA, practicum and registration) and Phase 4 *Practice* (the counsellor role, Therapeutic Studio and the VATI diploma) · **Governs:** Stage 2 work, closing conditions and carried/set-down rules (target years: Sept 2031 → ~2035) · **Carried out in Notion:** {{notion:Gates}} · {{notion:Calendar}}
+> **Purpose:** the detail of Phase 3 *The Room* (the thesis MA, practicum and registration) and Phase 4 *Practice* (the counsellor role, Therapeutic Studio and the VATI diploma) · **Governs:** Stage 2 work, closing conditions and carried/set-down rules (target years: Sept 2031 → ~2035) · **Carried out in Notion:** [Gates](https://app.notion.com/p/d4969021f8da4529a41eafec0c323ca4) · [Calendar & Deadlines](https://app.notion.com/p/1206e45a346348b3a851aaed548b1cc5)
 
 ## What this stage makes possible
 

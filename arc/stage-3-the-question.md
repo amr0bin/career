@@ -1,6 +1,6 @@
 # Stage 3 · The Question
 
-> **Purpose:** the detail of Phase 5 *The Question* (UBC PhD Counselling Psychology, internship, psychologist registration) and Phase 6 *Optionality* (the seats held together, some of them built) · **Governs:** Stage 3 work, closing conditions and carried/set-down rules (target years: ~2035 →) · **Carried out in Notion:** {{notion:Gates}}
+> **Purpose:** the detail of Phase 5 *The Question* (UBC PhD Counselling Psychology, internship, psychologist registration) and Phase 6 *Optionality* (the seats held together, some of them built) · **Governs:** Stage 3 work, closing conditions and carried/set-down rules (target years: ~2035 →) · **Carried out in Notion:** [Gates](https://app.notion.com/p/d4969021f8da4529a41eafec0c323ca4)
 
 ## What this stage makes possible
 
@@ -43,7 +43,7 @@ It's also the leadership tier of the campus service. At UBC Counselling Services
 
 ## Phase 6 · Optionality (~2041 →)
 
-**The work.** The fractional shape: several seats at once, none of them full-time, some applied for and the most important ones built. Grace Wong Sneddon's career (counselling master's and clinical registration, an interdisciplinary PhD, an adjunct appointment, and a primary career in university equity and academic leadership) is the proof that the pieces can be held together. It's the starting shape, not the ceiling.
+**The work.** The fractional shape: several seats at once, none of them full-time, some applied for and the most important ones built. A fractional career already held by a BC scholar-practitioner (counselling master's and clinical registration, an interdisciplinary PhD, an adjunct appointment, and a primary career in university equity and academic leadership) is the proof that the pieces can be held together. It's the starting shape, not the ceiling.
 
 - **Build:** a joined access-and-mental-health centre at UBC or SFU, proposed with a sponsor who carries it to a dean, funded and led. The master's thesis and the dissertation are its evidence base.
 - **Redesign the gate:** an accessible, lower-cost assessment service (private psychoeducational assessments in the Lower Mainland run about $3,300–$3,900 each) and a published documentation standard.

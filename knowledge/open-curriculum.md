@@ -1,6 +1,6 @@
 # The open curriculum
 
-> **Purpose:** The reference for free and low-cost training: what each track is for, how it maps to credentials, the gap that study does not close, the decisions that cost more the later they are made, and the rooms worth being in. · **Governs:** which non-degree training is taken, and why. The course rows themselves (provider, cost, hours, URL) live in Notion. · **Carried out in Notion:** {{notion:Training}}
+> **Purpose:** The reference for free and low-cost training: what each track is for, how it maps to credentials, the gap that study does not close, the decisions that cost more the later they are made, and the rooms worth being in. · **Governs:** which non-degree training is taken, and why. The course rows themselves (provider, cost, hours, URL) live in Notion. · **Carried out in Notion:** [Learning](https://app.notion.com/p/ffc3561528954f98ad4562b1c5e48b93)
 
 ## The ceiling
 

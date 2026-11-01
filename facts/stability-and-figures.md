@@ -1,6 +1,6 @@
 # Stability and figures
 
-> **Purpose:** the verified salaries, funding, pensions and benefits along the path, and the stability architecture they form. · **Governs:** every figure in this repo. Taken from `10-stability-and-the-ceiling.md` (6 Oct 2026), which governs figures over every older file. · **Carried out in Notion:** {{notion:Verify}}
+> **Purpose:** the verified salaries, funding, pensions and benefits along the path, and the stability architecture they form. · **Governs:** every figure in this repo. Taken from `archive/2026-09-pages/10-stability-and-the-ceiling.md` (6 Oct 2026), which governs figures over every older file. · **Carried out in Notion:** [Verify Queue](https://app.notion.com/p/243eb88582cf4222a2bb7ffc4abda33a)
 
 ---
 

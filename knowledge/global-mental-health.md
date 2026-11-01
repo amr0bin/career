@@ -1,6 +1,6 @@
 # Global mental health
 
-> **Purpose:** Why global mental health belongs in this arc, what task-shifting teaches the work, and the five-rung credential ladder with its decision rules. · **Governs:** whether and when each GMH credential is taken. · **Carried out in Notion:** {{notion:Gates}}
+> **Purpose:** Why global mental health belongs in this arc, what task-shifting teaches the work, and the five-rung credential ladder with its decision rules. · **Governs:** whether and when each GMH credential is taken. · **Carried out in Notion:** [Gates](https://app.notion.com/p/d4969021f8da4529a41eafec0c323ca4)
 
 ## The ceiling
 

@@ -1,6 +1,6 @@
 # The Five Ledgers and the November Review
 
-> **Purpose:** the measure that replaces feeling — five ledgers, one annual question, one review · **Governs:** how progress is judged across every stage and stream · **Carried out in Notion:** {{notion:Weekly Review}}
+> **Purpose:** the measure that replaces feeling — five ledgers, one annual question, one review · **Governs:** how progress is judged across every stage and stream · **Carried out in Notion:** [Weekly Log](https://app.notion.com/p/37d529eede154f419bc813a96fa88430)
 
 This file is the **design**. The entries themselves live in Notion; private records (service hours, supervision, references) live in private stores and never in this repo.
 
@@ -79,7 +79,7 @@ One paragraph a year, under two hundred words, dated, **appended below last year
 3. **Did the floor hold in the worst month?** If not, was the floor wrong, or the month?
 4. **Is the file closer to the next gate than a year ago?** Which row of the target posting or admission requirement moved?
 5. **Reread the ceiling** (`ceiling-and-floor-in-practice.md`) and ask whether the ceilings and the hinge are still the right targets. They will change; the file is revised, not obeyed.
-6. **Strike verified items, add new ones** in {{notion:Verify}}.
+6. **Strike verified items, add new ones** in [Verify Queue](https://app.notion.com/p/243eb88582cf4222a2bb7ffc4abda33a).
 7. **Write the yearly question** paragraph.
 8. **Read the floor against next year's shape.** If a hard stretch is coming, say so now and drop to the floor deliberately. *Expect it and it is a season; discover it and it feels like failure.*
 

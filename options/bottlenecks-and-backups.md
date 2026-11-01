@@ -1,6 +1,6 @@
 # Bottlenecks and backups
 
-> **Purpose:** every known narrow point on the path, written as bottleneck → task → exit, in the order they are met. · **Governs:** what to do when a gate does not open on the first try. · **Carried out in Notion:** {{notion:Gates}}
+> **Purpose:** every known narrow point on the path, written as bottleneck → task → exit, in the order they are met. · **Governs:** what to do when a gate does not open on the first try. · **Carried out in Notion:** [Gates](https://app.notion.com/p/d4969021f8da4529a41eafec0c323ca4)
 
 ---
 

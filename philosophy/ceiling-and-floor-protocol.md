@@ -1,6 +1,6 @@
 # The Ceiling and Floor Protocol
 
-> **Purpose:** the rules for how any plan, review or conversation about this path is held · **Governs:** every file in this repo that discusses the future, and every review run in Notion · **Carried out in Notion:** {{notion:Weekly Review}}
+> **Purpose:** the rules for how any plan, review or conversation about this path is held · **Governs:** every file in this repo that discusses the future, and every review run in Notion · **Carried out in Notion:** [Weekly Log](https://app.notion.com/p/37d529eede154f419bc813a96fa88430)
 
 This protocol exists because how a plan is discussed shapes what the plan becomes. A path that is always described from its risks drifts smaller every year without anyone deciding it should. These eleven rules keep the ambition at full size and keep the honesty intact. They apply to people, documents and tools alike.
 
@@ -62,7 +62,7 @@ Each major file states its fallback in a single line near the end of the ceiling
 
 ### Support as part of the design
 
-Every stage names who helps: supervisors, mentors, sponsors, nominators, funders, collaborators, co-authors. Support is planned as deliberately as coursework, because the ceiling is reached with support rather than in spite of its absence. The people slots for each stage are tracked by role in {{notion:People}}.
+Every stage names who helps: supervisors, mentors, sponsors, nominators, funders, collaborators, co-authors. Support is planned as deliberately as coursework, because the ceiling is reached with support rather than in spite of its absence. The people slots for each stage are tracked by role in [People](https://app.notion.com/p/25338760610441a8b59216af286b9070).
 
 ---
 

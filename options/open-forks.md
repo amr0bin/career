@@ -1,6 +1,6 @@
 # Open forks
 
-> **Purpose:** the decisions that are still genuinely open, each with the question, the options, what would decide it, and by when. · **Governs:** nothing yet. Each fork is **pending** and is tracked as "Decisions pending" in Notion; when one closes, its outcome moves into the file it affects and this entry is struck through with the date. · **Carried out in Notion:** {{notion:Decisions}}
+> **Purpose:** the decisions that are still genuinely open, each with the question, the options, what would decide it, and by when. · **Governs:** nothing yet. Each fork is **pending** and is tracked as "Decisions pending" in Notion; when one closes, its outcome moves into the file it affects and this entry is struck through with the date. · **Carried out in Notion:** [Decisions](https://app.notion.com/p/3cdae687f6934e57a7e1d3510e2cf898)
 
 ---
 

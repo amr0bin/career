@@ -1,6 +1,6 @@
 # House Rules
 
-> **Purpose:** the boundaries that let the public side of the work stay public and the clinical side stay trustworthy · **Governs:** everything published, recorded or applied for, across all three stages · **Carried out in Notion:** {{notion:Tasks}}
+> **Purpose:** the boundaries that let the public side of the work stay public and the clinical side stay trustworthy · **Governs:** everything published, recorded or applied for, across all three stages · **Carried out in Notion:** [Tasks](https://app.notion.com/p/1dca49d1884242e28a2f2d21f1216be9)
 
 These are stricter than the law currently requires, on purpose. If a draft blurs one of these lines, that is said before anything else — before the writing is discussed, before the idea is assessed. The line is the condition of the work, not a feature of it.
 
@@ -70,7 +70,7 @@ Experience is described as **over the past decade**, everywhere: CVs, sites, sta
 
 ## Open item
 
-BC has not yet prescribed the reserved title. **Verify** whether a property named *Therapeutic* Studio attracts advertising-standards attention once the title is protected — not a reason to reopen the name, a reason to have the answer before November 2027. Tracked in {{notion:Verify}}.
+BC has not yet prescribed the reserved title. **Verify** whether a property named *Therapeutic* Studio attracts advertising-standards attention once the title is protected — not a reason to reopen the name, a reason to have the answer before November 2027. Tracked in [Verify Queue](https://app.notion.com/p/243eb88582cf4222a2bb7ffc4abda33a).
 
 ---
 

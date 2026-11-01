@@ -1,6 +1,6 @@
 # The Arc
 
-> **Purpose:** the whole path on one page: three stages, six phases, one question, each stage built to feed the next · **Governs:** the order of the plan, phase names, target years and closing conditions (stage files hold the detail; `10-stability-and-the-ceiling.md` governs figures) · **Carried out in Notion:** {{notion:Gates}}
+> **Purpose:** the whole path on one page: three stages, six phases, one question, each stage built to feed the next · **Governs:** the order of the plan, phase names, target years and closing conditions (stage files hold the detail; `facts/stability-and-figures.md` governs figures) · **Carried out in Notion:** [Gates](https://app.notion.com/p/d4969021f8da4529a41eafec0c323ca4)
 
 ## The ceiling
 
@@ -55,7 +55,7 @@ Years are **targets**. Each phase closes when its conditions are met, not when a
 | Autumn 2034 | UBC PhD application and doctoral award applications | target, **verify** dates |
 | Within 36 months of PhD entry | Candidacy: the one hard clock inside the doctorate | verified (data.js, UBC handbook) |
 
-The full dated list lives in Notion: {{notion:Calendar}}.
+The full dated list lives in Notion: [Calendar & Deadlines](https://app.notion.com/p/1206e45a346348b3a851aaed548b1cc5).
 
 ## Operating principles
 
@@ -70,4 +70,4 @@ The full dated list lives in Notion: {{notion:Calendar}}.
 
 ---
 
-*Resolved:* (1) The doctorate is UBC PhD Counselling Psychology. The art doctorate (SFU Contemporary Arts, UBC Art History, SIAT) is set aside and recorded in options/; this supersedes the art-route versions of the-sequence, timeline, twenty-years, checklist and deployment. (2) MA entry moves from Sept 2030 (education-path data.js) to **Sept 2031**: apply 1 Dec 2030, prerequisites graded by 31 Dec 2030. (3) VATI moves from "if the art route is chosen" (career.html) to a planned step after the MA and before the PhD, at about 15 months, not the 18 in older pages. (4) The six "stages" of career.html become six *phases* inside three stages. (5) Psychologist registration moves from ~2039–40 to ~2041, following the one-year shift.
+*Resolved:* (1) The doctorate is UBC PhD Counselling Psychology; the art doctorate is set aside to options/, superseding the art-route pages. (2) MA entry moves from Sept 2030 (data.js) to **Sept 2031**. (3) VATI is a planned post-MA step of ~15 months, not "if the art route" or 18 months. (4) career.html's six "stages" become six phases in three stages. (5) Psychologist registration moves to ~2041.

@@ -1,6 +1,6 @@
 # Verification register
 
-> **Purpose:** every unverified fact across career, education-path, therapeutic-practice and access-lab, deduplicated and ranked by what it costs if wrong, with the source to check. · **Governs:** what must not be planned around until checked. This file is the reasoning; live status (asked, answered, date) lives in Notion. · **Carried out in Notion:** {{notion:Verify}}
+> **Purpose:** every unverified fact across career, education-path, therapeutic-practice and access-lab, deduplicated and ranked by what it costs if wrong, with the source to check. · **Governs:** what must not be planned around until checked. This file is the reasoning; live status (asked, answered, date) lives in Notion. · **Carried out in Notion:** [Verify Queue](https://app.notion.com/p/243eb88582cf4222a2bb7ffc4abda33a)
 
 ---
 

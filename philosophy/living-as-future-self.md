@@ -1,6 +1,6 @@
 # Living as Your Future Self
 
-> **Purpose:** the method of living now as the person who already holds the next role, and the requirements map that keeps it honest · **Governs:** rooms, reading, rhythms and markers at every stage · **Carried out in Notion:** {{notion:Requisites}}
+> **Purpose:** the method of living now as the person who already holds the next role, and the requirements map that keeps it honest · **Governs:** rooms, reading, rhythms and markers at every stage · **Carried out in Notion:** [Requisites](https://app.notion.com/p/6a72a737c13246e6931dd8fd3aa1519b)
 
 The stage plans say what to get onto the record. This method says how to live in the meantime: **as if the change has already happened**. It adds rooms, reading and rhythms to existing moves; it never adds a commitment (see the rule of two in `excellence-and-working-rules.md`).
 
@@ -71,7 +71,7 @@ Living as the future self is only honest if it is anchored to what the role actu
 |---|---|---|---|---|
 | *one line per requirement* | | | | |
 
-The map itself lives in {{notion:Requisites}} and is redone each time a new posting or programme page appears. The reasoning stays here.
+The map itself lives in [Requisites](https://app.notion.com/p/6a72a737c13246e6931dd8fd3aa1519b) and is redone each time a new posting or programme page appears. The reasoning stays here.
 
 ---
 

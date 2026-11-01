@@ -1,6 +1,6 @@
 # Requirements by gate
 
-> **Purpose:** the requisites map: what each gate asks for and what kind of evidence closes each requirement. · **Governs:** what is earned for which gate. Programme minimums are public facts; no personal academic record appears here. · **Carried out in Notion:** {{notion:Requisites}}
+> **Purpose:** the requisites map: what each gate asks for and what kind of evidence closes each requirement. · **Governs:** what is earned for which gate. Programme minimums are public facts; no personal academic record appears here. · **Carried out in Notion:** [Requisites](https://app.notion.com/p/6a72a737c13246e6931dd8fd3aa1519b)
 
 ---
 

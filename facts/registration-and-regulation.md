@@ -1,6 +1,6 @@
 # Registration and regulation
 
-> **Purpose:** what has to be true to practise in BC as a counsellor and later as a psychologist, and what must be chosen inside the MA for that to be true. · **Governs:** registration choices (RCC, CCC, CHCPBC, psychologist). · **Carried out in Notion:** {{notion:Calendar}}
+> **Purpose:** what has to be true to practise in BC as a counsellor and later as a psychologist, and what must be chosen inside the MA for that to be true. · **Governs:** registration choices (RCC, CCC, CHCPBC, psychologist). · **Carried out in Notion:** [Calendar & Deadlines](https://app.notion.com/p/1206e45a346348b3a851aaed548b1cc5)
 
 ---
 

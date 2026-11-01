@@ -1,6 +1,6 @@
 # 2026-10-31 · Three decisions that set the arc
 
-> **Purpose:** the reasoning behind the three choices that turned six-stage plans into one arc. · **Governs:** any older page that disagrees on the doctorate, the MA year, or art therapy. · **Carried out in Notion:** {{notion:Decisions}}
+> **Purpose:** the reasoning behind the three choices that turned six-stage plans into one arc. · **Governs:** any older page that disagrees on the doctorate, the MA year, or art therapy. · **Carried out in Notion:** [Decisions](https://app.notion.com/p/3cdae687f6934e57a7e1d3510e2cf898)
 
 ## Context
 

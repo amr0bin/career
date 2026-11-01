@@ -1,6 +1,6 @@
 # Ceiling and Floor in Practice
 
-> **Purpose:** what the ceilings actually are, what the floor is, and why stability belongs inside the ambition · **Governs:** how each stage sets its targets and its minimums · **Carried out in Notion:** {{notion:Gates}}
+> **Purpose:** what the ceilings actually are, what the floor is, and why stability belongs inside the ambition · **Governs:** how each stage sets its targets and its minimums · **Carried out in Notion:** [Gates](https://app.notion.com/p/d4969021f8da4529a41eafec0c323ca4)
 
 The protocol (`ceiling-and-floor-protocol.md`) says how to talk about the future. This file says what the ceiling and the floor *are*, concretely, on this path.
 
@@ -75,7 +75,7 @@ They are not what the plan can spare. They are the raw material every later stag
 
 ## Stability is not the opposite of ambition
 
-It is the precondition for the largest version of the work. Three verified findings (10-stability-and-the-ceiling.md, 6 October 2026) change the picture:
+It is the precondition for the largest version of the work. Three verified findings (`facts/stability-and-figures.md`, 6 October 2026) change the picture:
 
 1. **Security arrives at Stage 1, not Stage 6.** The first role on the path, an Accessibility Advisor post at UBC or SFU, is already a pensioned, six-figure career at the published ranges.
 2. **Every later stage has funding that can be named**: staff tuition waivers, master's and doctoral scholarships, and a UBC doctoral funding minimum.
@@ -95,4 +95,4 @@ Work is chosen by asking how much good it does, using the strengths already held
 
 ---
 
-*Resolved:* Dates follow the 2026-10-31 decisions (MA entry Sept 2031, practicum ~Jan 2033), superseding the therapeutic-practice notes where they differ. Salary and funding figures are referred to, not repeated; `10-stability-and-the-ceiling.md` governs them. The impact lens is described by method rather than by organisation name, following her stated preference for public-facing pages. Personal admission thresholds (grade averages) are omitted from this public file.
+*Resolved:* Dates follow the 2026-10-31 decisions (MA entry Sept 2031, practicum ~Jan 2033), superseding the therapeutic-practice notes where they differ. Salary and funding figures are referred to, not repeated; `facts/stability-and-figures.md` governs them. The impact lens is described by method rather than by organisation name, following her stated preference for public-facing pages. Personal admission thresholds (grade averages) are omitted from this public file.

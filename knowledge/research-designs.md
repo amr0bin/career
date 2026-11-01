@@ -1,6 +1,6 @@
 # Research designs
 
-> **Purpose:** The research line: four pieces of work, what each one is, how each is designed, and how they sequence into one doctoral question. · **Governs:** research design choices, the order of the papers, and which container (independent, Leeds, MA, PhD) holds each study. · **Carried out in Notion:** {{notion:Gates}}
+> **Purpose:** The research line: four pieces of work, what each one is, how each is designed, and how they sequence into one doctoral question. · **Governs:** research design choices, the order of the papers, and which container (independent, Leeds, MA, PhD) holds each study. · **Carried out in Notion:** [Gates](https://app.notion.com/p/d4969021f8da4529a41eafec0c323ca4)
 
 ## The ceiling
 

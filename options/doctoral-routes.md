@@ -1,6 +1,6 @@
 # Doctoral routes
 
-> **Purpose:** records which doctorate is planned, why, and the route considered and set aside. · **Governs:** the Stage 3 doctoral choice; supersedes the "held open" position of 13 September 2026 and the art-route pages (the-sequence, timeline, checklist, deployment, twenty-years) on this point only. · **Carried out in Notion:** {{notion:Gates}}
+> **Purpose:** records which doctorate is planned, why, and the route considered and set aside. · **Governs:** the Stage 3 doctoral choice; supersedes the "held open" position of 13 September 2026 and the art-route pages (the-sequence, timeline, checklist, deployment, twenty-years) on this point only. · **Carried out in Notion:** [Gates](https://app.notion.com/p/d4969021f8da4529a41eafec0c323ca4)
 
 ---
 

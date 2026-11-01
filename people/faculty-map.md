@@ -1,6 +1,6 @@
 # Faculty map
 
-> **Purpose:** the public research interests of faculty whose work sits near the question, by the stage where each matters, and the roles of the support people the plan needs. · **Governs:** who to read, cite and eventually write to; who fills which support role. Public research interests only. Private contacts, replies and relationships are kept outside this repo. · **Carried out in Notion:** {{notion:People}}
+> **Purpose:** the public research interests of faculty whose work sits near the question, by the stage where each matters, and the roles of the support people the plan needs. · **Governs:** who to read, cite and eventually write to; who fills which support role. Public research interests only. Private contacts, replies and relationships are kept outside this repo. · **Carried out in Notion:** [People](https://app.notion.com/p/25338760610441a8b59216af286b9070)
 
 ---
 
