@@ -2,6 +2,8 @@
 
 > **Purpose:** how one research question is built across the Leeds MSc, tested in the MA thesis and carried into the doctorate, module by module. · **Governs:** the research sequence from 2027 to 2040; where this disagrees with `throughlines.md` or `knowledge/research-designs.md`, this file wins. · **Carried out in Notion:** [Gates](https://app.notion.com/p/d4969021f8da4529a41eafec0c323ca4) (view: *Thesis line*), [Tasks](https://app.notion.com/p/1dca49d1884242e28a2f2d21f1216be9)
 
+**How to write it:** the eight competencies, step by step and applied to this question, are in [`knowledge/how-to-write-a-thesis.md`](../knowledge/how-to-write-a-thesis.md).
+
 ## The question
 
 **Does the university accommodation process act as a disabling barrier in its own right, and through which of its design features does it shape disabled students' wellbeing and help-seeking?**

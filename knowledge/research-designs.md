@@ -4,7 +4,7 @@
 
 ## The ceiling
 
-**The question:** *does the accommodation process itself drive depression in disabled students, and which parts of it are the levers?* The parts in view are documentation burden, wait times, denials, interim measures and unmet need.
+**The question** (as fixed on 2026-11-01; `arc/the-thesis-line.md` governs): *does the university accommodation process act as a disabling barrier in its own right, and through which of its design features does it shape disabled students' wellbeing and help-seeking?* The features in view include documentation burden, wait times, re-proving, denials, interim measures and fit with fluctuation. How to write each piece: `how-to-write-a-thesis.md`.
 
 It is the highest-leverage question available. Universities control the levers, and changing them reaches every disabled student at once. No local researcher holds the question. Very few people hold the accommodation expertise and the clinical training together. At full height, the line runs from an independent framework paper to a preregistered corpus study, then a supervised Leeds study, an empirical MA thesis, a PhD testing the intervention the thesis points to, and then tri-council grants, doctoral students, and the evidence base for a joined access-and-mental-health service.
 

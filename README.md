@@ -22,7 +22,7 @@ Phases close on conditions, not dates. The years are targets.
 | [`arc/`](arc/) | The one arc: the ceiling, the floor, each stage, the thesis line, the threads that run through all three | [`the-arc.md`](arc/the-arc.md), [`the-thesis-line.md`](arc/the-thesis-line.md), [`the-global-line.md`](arc/the-global-line.md) |
 | [`philosophy/`](philosophy/) | How I plan and work: my method (requirements to impact), the impact lens, the Second Brain, the Ceiling and Floor Protocol, the advisory council, house rules, ledgers, excellence, living as my future self | [`my-method.md`](philosophy/my-method.md) |
 | [`options/`](options/) | Routes compared, routes set aside, bottlenecks with their exits, forks still open | [`open-forks.md`](options/open-forks.md) |
-| [`knowledge/`](knowledge/) | The bodies of knowledge, the research line, the open curriculum, global mental health | [`research-designs.md`](knowledge/research-designs.md) |
+| [`knowledge/`](knowledge/) | The bodies of knowledge, the research line, how to write a thesis, the open curriculum, global mental health | [`how-to-write-a-thesis.md`](knowledge/how-to-write-a-thesis.md), [`research-designs.md`](knowledge/research-designs.md) |
 | [`facts/`](facts/) | Verified figures and requirements, with sources and as-of dates; what still needs verifying | [`requirements-by-gate.md`](facts/requirements-by-gate.md) |
 | [`people/`](people/) | Public research interests of relevant faculty; the roles of support people (names live in Notion) | [`faculty-map.md`](people/faculty-map.md) |
 | [`decisions/`](decisions/) | Dated records of decisions made and why | [`2026-10-31-arc-decisions.md`](decisions/2026-10-31-arc-decisions.md) |
