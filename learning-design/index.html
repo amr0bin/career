@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learning Design Repository</title>
+  <link href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #faf9f7;
+      --surface: #ffffff;
+      --surface-alt: #f5f4f0;
+      --blue: #2563a8;
+      --blue-light: #dbeafe;
+      --blue-mid: #93c5fd;
+      --yellow: #fef9c3;
+      --yellow-mid: #fde047;
+      --pink: #fce7f3;
+      --pink-mid: #f9a8d4;
+      --pink-dark: #db2777;
+      --text: #1c1917;
+      --text-muted: #57534e;
+      --border: #e5e3de;
+      --radius: 12px;
+      --radius-sm: 8px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Asap', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+    }
+
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 0 1.75rem;
+      display: flex;
+      align-items: flex-end;
+      gap: 1.5rem;
+    }
+
+    .logo-pill {
+      background: var(--blue);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      white-space: nowrap;
+      margin-bottom: 0.15rem;
+    }
+
+    .header-text h1 {
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.2;
+    }
+
+    .header-text p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-top: 0.4rem;
+      max-width: 560px;
+    }
+
+    /* ── BANNER STRIP ── */
+    .banner {
+      background: linear-gradient(135deg, var(--blue-light) 0%, var(--pink) 50%, var(--yellow) 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 0.65rem 2rem;
+    }
+    .banner-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .banner-stat {
+      font-size: 0.82rem;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .banner-stat strong { font-weight: 700; }
+
+    /* ── MAIN ── */
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2.5rem 2rem 4rem;
+    }
+
+    /* ── INTRO CARD ── */
+    .intro-card {
+      background: var(--yellow);
+      border: 1px solid var(--yellow-mid);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 2.5rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .intro-card .icon { font-size: 1.5rem; flex-shrink: 0; }
+    .intro-card p {
+      font-size: 0.9rem;
+      line-height: 1.65;
+      color: var(--text);
+    }
+    .intro-card p strong { font-weight: 700; }
+
+    /* ── SECTION HEADING ── */
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    /* ── GRID ── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    /* ── FILE CARD ── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.4rem 1.1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      transition: box-shadow 0.18s ease, transform 0.18s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      border-radius: var(--radius) var(--radius) 0 0;
+    }
+    .card:hover {
+      box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+      transform: translateY(-2px);
+    }
+
+    /* Colour accent by category */
+    .card.cat-foundation::before  { background: var(--blue); }
+    .card.cat-process::before     { background: var(--blue-mid); }
+    .card.cat-design::before      { background: var(--pink-dark); }
+    .card.cat-delivery::before    { background: #22c55e; }
+    .card.cat-evaluation::before  { background: #f59e0b; }
+    .card.cat-reference::before   { background: #a855f7; }
+
+    .card-number {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .card-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.3;
+    }
+
+    .card-desc {
+      font-size: 0.845rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 0.4rem;
+      padding-top: 0.65rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+    }
+    .tag.foundation { background: var(--blue-light); color: var(--blue); }
+    .tag.process    { background: #e0f2fe; color: #0369a1; }
+    .tag.design     { background: var(--pink); color: var(--pink-dark); }
+    .tag.delivery   { background: #dcfce7; color: #15803d; }
+    .tag.evaluation { background: #fef3c7; color: #b45309; }
+    .tag.reference  { background: #f3e8ff; color: #7e22ce; }
+
+    .card-link {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--blue);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .card-link:hover { text-decoration: underline; }
+
+    /* ── WORKFLOW STRIP ── */
+    .workflow-section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    .workflow-section h2 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .workflow-stages {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .stage-pill {
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 0.35rem 0.75rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .stage-pill .num {
+      background: var(--blue);
+      color: #fff;
+      font-size: 0.65rem;
+      font-weight: 700;
+      border-radius: 999px;
+      width: 1.3rem;
+      height: 1.3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* ── QUICK LINKS ── */
+    .quick-links {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+    .quick-link {
+      background: var(--blue-light);
+      color: var(--blue);
+      border: 1px solid var(--blue-mid);
+      border-radius: var(--radius-sm);
+      padding: 0.5rem 1rem;
+      font-size: 0.83rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+    .quick-link:hover { background: var(--blue-mid); }
+    .quick-link.pink {
+      background: var(--pink);
+      color: var(--pink-dark);
+      border-color: var(--pink-mid);
+    }
+    .quick-link.pink:hover { background: var(--pink-mid); }
+    .quick-link.yellow {
+      background: var(--yellow);
+      color: #92400e;
+      border-color: var(--yellow-mid);
+    }
+    .quick-link.yellow:hover { background: var(--yellow-mid); }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+      padding: 1.25rem 2rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 600px) {
+      .header-inner { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+      main { padding: 1.5rem 1rem 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo-pill">LXD Reference Repo</div>
+    <div class="header-text">
+      <h1>Learning Design Repository</h1>
+      <p>A personal reference hub for learning experience design practice — covering workflow, models, tools, templates, and collaboration skills.</p>
+    </div>
+  </div>
+</header>
+
+<div class="banner">
+  <div class="banner-inner">
+    <div class="banner-stat">📁 <strong>16 reference files</strong> + core templates</div>
+    <div class="banner-stat">🔄 <strong>20-stage workflow</strong> mapped end-to-end</div>
+    <div class="banner-stat">⚡ <strong>Agile-first</strong> · iterative design</div>
+    <div class="banner-stat">♿ <strong>Accessibility</strong> · UDL 3.0 · WCAG 2.2</div>
+  </div>
+</div>
+
+<main>
+
+  <!-- INTRO -->
+  <div class="intro-card">
+    <div class="icon">💡</div>
+    <p>
+      <strong>How to use this repository:</strong> Start with <code>00_role_overview.md</code> for orientation, then use <code>01_workflow_reference.md</code> to navigate the full project lifecycle. Each file links to related files — follow the <em>See also</em> prompts at the bottom of each page. The <code>12_templates_index.md</code> lists every reusable template and which workflow stage it supports.
+    </p>
+  </div>
+
+  <!-- QUICK LINKS -->
+  <div class="section-label">Jump to</div>
+  <div class="quick-links">
+    <a class="quick-link" href="00_role_overview.md">Role Overview</a>
+    <a class="quick-link" href="01_workflow_reference.md">Full Workflow</a>
+    <a class="quick-link" href="03_agile_sprint_process.md">Agile Sprints</a>
+    <a class="quick-link pink" href="05_assessment_design.md">Assessment Design</a>
+    <a class="quick-link pink" href="08_accessibility_and_inclusivity.md">Accessibility</a>
+    <a class="quick-link yellow" href="09_tools_and_technology.md">Tools</a>
+    <a class="quick-link yellow" href="12_templates_index.md">All Templates</a>
+  </div>
+
+  <!-- FILE GRID -->
+  <div class="section-label">All Files</div>
+  <div class="grid">
+
+    <div class="card cat-foundation">
+      <div class="card-number">00</div>
+      <div class="card-title">Role Overview</div>
+      <div class="card-desc">What the LXD role is, core competencies, how it fits in a team, the consultant mindset, and measures of success.</div>
+      <div class="card-footer">
+        <span class="tag foundation">Foundation</span>
+        <a class="card-link" href="00_role_overview.md">Open →</a>
+      </div>
+    </div>
+
+    <div class="card cat-foundation">
+      <div class="card-number">01</div>
+      <div class="card-title">Workflow Reference</div>
+      <div class="card-desc">The full 20-stage learning design project lifecycle — from intake to case study — with inputs, outputs, and owners at each stage.</div>
+      <div class="card-footer">
+        <span class="tag foundation">Foundation</span>
+        <a class="card-link" href="01_workflow_reference.md">Open →</a>
+      </div>
+    </div>
+
+    <div class="card cat-process">
+      <div class="card-number">02</div>
+      <div class="card-title">Project Intake and Scoping</div>
+      <div class="card-desc">How to run intake conversations, what to capture on the intake form, how to scope a project, and how to set expectations with SMEs from the start.</div>
+      <div class="card-footer">
+        <span class="tag process">Process</span>
+        <a class="card-link" href="02_project_intake_and_scoping.md">Open →</a>
+      </div>
+    </div>
+
+    <div class="card cat-process">
+      <div class="card-number">03</div>
+      <div class="card-title">Agile Sprint Process</div>
+      <div class="card-desc">Scrum, Kanban, and SAM applied to learning design. Sprint structure, backlog management, retrospectives, and common Agile pitfalls in ID practice.</div>
+      <div class="card-footer">
+        <span class="tag process">Process</span>
+        <a class="card-link" href="03_agile_sprint_process.md">Open →</a>
+      </div>
+    </div>
+
+    <div class="card cat-design">
+      <div class="card-number">04</div>
+      <div class="card-title">Instructional Design Models</div>
+      <div class="card-desc">ADDIE, SAM1 and SAM2, Agile, Backward Design (UbD), and Gagné's 9 Events — when to use each, how to combine them, and a comparison at a glance.</div>
+      <div class="card-footer">
+        <span class="tag design">Design</span>
+        <a class="card-link" href="04_instructional_design_models.md">Open →</a>
+      </div>
+    </div>
+
+    <div class="card cat-design">
+      <div class="card-number">05</div>
+      <div class="card-title">Assessment Design</div>
+      <div class="card-desc">Formative vs. summative, authentic assessments, Bloom's alignment, academic integrity by design, AI-aware assessment, rubric types, and feedback strategies.</div>
+      <div class="card-footer">
+        <span class="tag design">Design</span>
+        <a class="card-link" href="05_assessment_design.md">Open →</a>
+      </div>
+    </div>
+
+    <div class="card cat-design">
+      <div class="card-number">06</div>
+      <div class="card-title">Learning Outcomes and Alignment</div>
+      <div class="card-desc">How to write measurable outcomes using the ABCD formula and Bloom's Taxonomy, constructive alignment, and how to draw outcomes out of SMEs in conversation.</div>
+      <div class="card-footer">
+        <span class="tag design">Design</span>
+        <a class="card-link" href="06_learning_outcomes_and_alignment.md">Open →</a>
+      </div>
+    </div>
+
+    <div class="card cat-delivery">
+      <div class="card-number">07</div>
+      <div class="card-title">Content and Media Development</div>
+      <div class="card-desc">Storyboarding, content chunking, writing for learning, media selection, video production, LMS course design, and the content development checklist.</div>
+      <div class="card-footer">
+        <span class="tag delivery">Delivery</span>
+        <a class="card-link" href="07_content_and_media_development.md">Open →</a>
+      </div>
+    </div>
+
+    <div class="card cat-design">
+      <div class="card-number">08</div>
+      <div class="card-title">Accessibility and Inclusivity</div>
+      <div class="card-desc">WCAG 2.1 principles, UDL framework, accessibility by content type (text, images, video, PDFs), inclusive course design, and a full accessibility checklist.</div>
+      <div class="card-footer">
+        <span class="tag design">Design</span>
+        <a class="card-link" href="08_accessibility_and_inclusivity.md">Open →</a>
+      </div>
+    </div>
+
+    <div class="card cat-reference">
+      <div class="card-number">09</div>
+      <div class="card-title">Tools and Technology</div>
+      <div class="card-desc">LMS platforms, authoring tools, video production, project management, collaboration, assessment tools, and a framework for selecting the right tool for any situation.</div>
+      <div class="card-footer">
+        <span class="tag reference">Reference</span>
+        <a class="card-link" href="09_tools_and_technology.md">Open →</a>
+      </div>
+    </div>
+
+    <div class="card cat-process">
+      <div class="card-number">10</div>
+      <div class="card-title">Stakeholder and SME Collaboration</div>
+      <div class="card-desc">Stakeholder mapping, SME onboarding, managing common collaboration challenges, scope creep prevention, structured feedback, and communication best practices.</div>
+      <div class="card-footer">
+        <span class="tag process">Process</span>
+        <a class="card-link" href="10_stakeholder_and_sme_collaboration.md">Open →</a>
+      </div>
+    </div>
+
+    <div class="card cat-evaluation">
+      <div class="card-number">11</div>
+      <div class="card-title">Evaluation and Quality Assurance</div>
+      <div class="card-desc">QA frameworks (QM, OSCQR), beta testing process, Kirkpatrick's four levels, learning analytics, and pre/post-launch checklists.</div>
+      <div class="card-footer">
+        <span class="tag evaluation">Evaluation</span>
+        <a class="card-link" href="11_evaluation_and_quality_assurance.md">Open →</a>
+      </div>
+    </div>
+
+    <div class="card cat-reference">
+      <div class="card-number">12</div>
+      <div class="card-title">Templates Index</div>
+      <div class="card-desc">Master index of every reusable template in the repository, organised by workflow stage — from intake forms to impact report templates.</div>
+      <div class="card-footer">
+        <span class="tag reference">Reference</span>
+        <a class="card-link" href="12_templates_index.md">Open →</a>
+      </div>
+    </div>
+
+    <div class="card cat-reference"><div class="card-number">13</div><div class="card-title">Freelance Practice — Accessible Learning Labs</div><div class="card-desc">Offers, discovery, statements of work, pricing the method, IP and open licensing, employer conflict checks, collaborators and closing.</div><div class="card-footer"><span class="tag reference">Practice</span><a class="card-link" href="13_freelance_practice_accessible_learning_labs.md">Open →</a></div></div>
+    <div class="card cat-reference"><div class="card-number">14</div><div class="card-title">The Next Role and the Portfolio</div><div class="card-desc">Role families in BC post-secondary, three case studies that carry an application, the interview task, and the first 90 days.</div><div class="card-footer"><span class="tag reference">Career</span><a class="card-link" href="14_next_role_and_portfolio.md">Open →</a></div></div>
+    <div class="card cat-foundation"><div class="card-number">15</div><div class="card-title">Across the Arc</div><div class="card-desc">Where this practice pays off elsewhere: research, the thesis, the advisor role, Make Space, counselling groups, teaching and the PhD.</div><div class="card-footer"><span class="tag foundation">Crosswalk</span><a class="card-link" href="15_across_the_arc.md">Open →</a></div></div>
+
+  </div>
+
+  <!-- WORKFLOW REFERENCE STRIP -->
+  <div class="workflow-section">
+    <h2>📋 The 20-Stage Workflow at a Glance</h2>
+    <div class="workflow-stages">
+      <div class="stage-pill"><div class="num">1</div> FAQs</div>
+      <div class="stage-pill"><div class="num">2</div> Backlog</div>
+      <div class="stage-pill"><div class="num">3</div> Intake Form</div>
+      <div class="stage-pill"><div class="num">4</div> Overhead Plan</div>
+      <div class="stage-pill"><div class="num">5</div> SME Onboarding</div>
+      <div class="stage-pill"><div class="num">6</div> Needs Assessment</div>
+      <div class="stage-pill"><div class="num">7</div> Assessment Report</div>
+      <div class="stage-pill"><div class="num">8</div> Research Report</div>
+      <div class="stage-pill"><div class="num">9</div> Project Plan</div>
+      <div class="stage-pill"><div class="num">10</div> Storyboard</div>
+      <div class="stage-pill"><div class="num">11</div> Learning Path</div>
+      <div class="stage-pill"><div class="num">12</div> Content Development</div>
+      <div class="stage-pill"><div class="num">13</div> Beta Testing Session</div>
+      <div class="stage-pill"><div class="num">14</div> Beta Testing Report</div>
+      <div class="stage-pill"><div class="num">15</div> QA Report</div>
+      <div class="stage-pill"><div class="num">16</div> Delivery Prep Plan</div>
+      <div class="stage-pill"><div class="num">17</div> Evaluation</div>
+      <div class="stage-pill"><div class="num">18</div> Impact Report</div>
+      <div class="stage-pill"><div class="num">19</div> Sustainment Plan</div>
+      <div class="stage-pill"><div class="num">20</div> Case Study</div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  Learning Design Practice · part of the career repo · <a href="README.md">README</a> · <a href="templates/">templates</a>
+</footer>
+
+</body>
+</html>
