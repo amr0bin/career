@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parallel Practice — My Output Reference</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,400;0,500;0,600;1,400&family=Asap+Condensed:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blue:        #475f6a;
+    --blue-light:  #eef2f4;
+    --blue-dark:   #303e44;
+    --pink:        #475f6a;
+    --pink-light:  #eef2f4;
+    --pink-dark:   #303e44;
+    --yellow:      #475f6a;
+    --yellow-light:#f5f7f8;
+    --yellow-dark: #303e44;
+    --yellow-mid:  #475f6a;
+    --ink:         #303e44;
+    --ink-mid:     #475f6a;
+    --ink-soft:    #6d7d86;
+    --surface:     #FFFFFF;
+    --surface-2:   #f5f7f8;
+    --surface-3:   #ecf0f1;
+    --border:      #dde4e7;
+    --warm:        #f5f7f8;
+    --warm-2:      #ecf0f1;
+    --warm-ink:    #475f6a;
+    --warm-border: #dde4e7;
+    --font: 'Asap', system-ui, sans-serif;
+    --font-cond: 'Asap Condensed', system-ui, sans-serif;
+    --trans: 220ms cubic-bezier(.4,0,.2,1);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font);
+    background: var(--warm);
+    color: var(--ink);
+    line-height: 1.65;
+  }
+
+  /* ── Layout ── */
+  .shell { display: flex; flex-direction: column; min-height: 100vh; }
+  .shell-body { display: flex; flex: 1; align-items: flex-start; min-height: 0; }
+
+  /* ── Sidebar ── */
+  aside {
+    width: 240px;
+    flex-shrink: 0;
+    background: var(--ink);
+    min-height: 100vh;
+    padding: 28px 0 60px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+  }
+
+  .aside-title {
+    font-family: var(--font-cond);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.35);
+    padding: 0 20px;
+    margin-bottom: 20px;
+  }
+
+  .aside-section { margin-bottom: 4px; }
+
+  .aside-label {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.25);
+    padding: 14px 20px 6px;
+    display: block;
+  }
+
+  .aside-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 20px;
+    font-size: 13px;
+    font-weight: 400;
+    color: rgba(255,255,255,.55);
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    transition: color var(--trans), background var(--trans);
+    font-family: var(--font);
+  }
+
+  .aside-link:hover { color: rgba(255,255,255,.9); background: rgba(255,255,255,.06); }
+
+  .aside-link.active {
+    color: #fff;
+    background: rgba(255,255,255,.1);
+    font-weight: 500;
+  }
+
+  .aside-link.active .al-dot { opacity: 1; }
+
+  .al-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    opacity: .4;
+    transition: opacity var(--trans);
+  }
+
+  /* Elson quote in sidebar */
+  .aside-quote {
+    margin: 28px 16px 0;
+    padding: 14px 16px;
+    border-left: 2px solid rgba(71,95,106,.5);
+    font-size: 12px;
+    font-style: italic;
+    color: rgba(255,255,255,.4);
+    line-height: 1.6;
+  }
+
+  .aside-quote cite {
+    display: block;
+    font-style: normal;
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: .06em;
+    color: rgba(71,95,106,.7);
+    margin-top: 8px;
+  }
+
+  /* ── Main ── */
+  main {
+    flex: 1;
+    min-width: 0;
+    padding: 48px 52px 100px;
+    max-width: 860px;
+    width: 100%;
+  }
+
+  /* ── Hero ── */
+  .hero {
+    margin-bottom: 56px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--warm-border);
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--pink);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .hero-eyebrow::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--warm-border);
+    max-width: 80px;
+  }
+
+  .hero h1 {
+    font-family: var(--font-cond);
+    font-size: 46px;
+    font-weight: 600;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 16px;
+    letter-spacing: -.01em;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--pink-dark);
+  }
+
+  .hero-desc {
+    font-size: 15px;
+    color: var(--ink-mid);
+    max-width: 620px;
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+
+  .hero-elson {
+    background: var(--ink);
+    border-radius: 12px;
+    padding: 22px 28px;
+    max-width: 600px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-elson::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 300px 200px at 110% 120%, rgba(71,95,106,.2) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .hero-elson-quote {
+    font-size: 14.5px;
+    font-style: italic;
+    color: rgba(255,255,255,.8);
+    line-height: 1.65;
+    margin-bottom: 10px;
+    position: relative;
+  }
+
+  .hero-elson-attr {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--pink);
+    position: relative;
+  }
+
+  /* ── Section headings ── */
+  .section-group { scroll-margin-top: 32px; margin-bottom: 56px; }
+
+  .section-heading {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 6px;
+  }
+
+  .section-num {
+    font-family: var(--font-cond);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--pink);
+    letter-spacing: .08em;
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+
+  .section-heading h2 {
+    font-family: var(--font-cond);
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.2;
+    letter-spacing: -.01em;
+  }
+
+  .section-desc {
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    line-height: 1.65;
+    margin-bottom: 24px;
+    padding-left: 32px;
+    max-width: 660px;
+  }
+
+  /* ── Facing pages layout (the core metaphor) ── */
+  .facing {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1px solid var(--warm-border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 12px rgba(92,74,50,.08);
+  }
+
+  .facing-left {
+    background: var(--surface);
+    padding: 24px 26px;
+    border-right: 1px solid var(--warm-border);
+  }
+
+  .facing-right {
+    background: var(--warm);
+    padding: 24px 26px;
+  }
+
+  .facing-label {
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .fl-academic { color: var(--blue-dark); }
+  .fl-creative { color: var(--warm-ink); }
+
+  .facing-label::before {
+    content: '';
+    width: 16px;
+    height: 2px;
+    border-radius: 1px;
+    flex-shrink: 0;
+  }
+
+  .fl-academic::before { background: var(--blue); }
+  .fl-creative::before { background: var(--pink); }
+
+  .facing-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+
+  .facing-body {
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.65;
+    margin-bottom: 14px;
+  }
+
+  /* Steps inside facing pages */
+  .facing-steps { list-style: none; }
+
+  .facing-steps li {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    padding: 7px 0;
+    border-bottom: 1px solid var(--surface-3);
+    font-size: 12.5px;
+    color: var(--ink-mid);
+  }
+
+  .facing-steps li:last-child { border-bottom: none; }
+
+  .fs-num {
+    font-size: 10px;
+    font-weight: 600;
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+    flex-shrink: 0;
+  }
+
+  .fsn-blue   { background: var(--blue-light);   color: var(--blue-dark); }
+  .fsn-warm   { background: var(--warm-2);        color: var(--warm-ink); }
+  .fsn-pink   { background: var(--pink-light);    color: var(--pink-dark); }
+  .fsn-yellow { background: var(--yellow-light);  color: var(--yellow-dark); }
+
+  .fs-text { flex: 1; min-width: 0; word-wrap: break-word; }
+  .fs-title { font-weight: 600; color: var(--ink); display: block; }
+  .fs-note  { font-size: 11.5px; color: var(--ink-soft); margin-top: 2px; display: block; line-height: 1.5; }
+
+  /* Warm (creative) facing steps */
+  .facing-right .facing-steps li {
+    border-bottom-color: var(--warm-border);
+  }
+
+  /* ── Standalone cards ── */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--warm-border);
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-bottom: 16px;
+    box-shadow: 0 1px 6px rgba(92,74,50,.05);
+  }
+
+  .card-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .card-body {
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    line-height: 1.65;
+    margin-bottom: 14px;
+  }
+
+  /* ── Notebook prompt boxes ── */
+  .prompt-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .prompt {
+    background: var(--warm);
+    border: 1px solid var(--warm-border);
+    border-radius: 10px;
+    padding: 16px 18px;
+  }
+
+  .prompt-q {
+    font-size: 12.5px;
+    font-style: italic;
+    color: var(--ink-mid);
+    line-height: 1.6;
+    margin-bottom: 4px;
+  }
+
+  .prompt-type {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  /* ── Pull quote / callout ── */
+  .pullquote {
+    border-left: 3px solid var(--pink);
+    padding: 14px 20px;
+    margin: 20px 0;
+    background: var(--pink-light);
+    border-radius: 0 8px 8px 0;
+    font-size: 13.5px;
+    font-style: italic;
+    color: var(--pink-dark);
+    line-height: 1.65;
+  }
+
+  .note {
+    border-left: 3px solid var(--yellow-mid);
+    padding: 12px 18px;
+    margin: 16px 0;
+    background: var(--yellow-light);
+    border-radius: 0 8px 8px 0;
+    font-size: 12.5px;
+    color: var(--yellow-dark);
+    line-height: 1.6;
+  }
+
+  /* ── The spine / divider ── */
+  .spine {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 36px 0 28px;
+  }
+
+  .spine-line { flex: 1; height: 1px; background: var(--warm-border); }
+  .spine-text {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    white-space: nowrap;
+  }
+
+  /* ── Framework table ── */
+  .framework-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-bottom: 16px;
+  }
+
+  .framework-table th {
+    background: var(--ink);
+    color: rgba(255,255,255,.8);
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+
+  .framework-table th:first-child { border-radius: 8px 0 0 0; }
+  .framework-table th:last-child  { border-radius: 0 8px 0 0; }
+
+  .framework-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--warm-border);
+    color: var(--ink-mid);
+    vertical-align: top;
+    line-height: 1.55;
+  }
+
+  .framework-table tr:last-child td { border-bottom: none; }
+  .framework-table tr:nth-child(even) td { background: var(--warm); }
+
+  .ft-concept { font-weight: 600; color: var(--ink); }
+  .ft-I { color: var(--pink-dark); font-style: italic; }
+
+  /* ── Degree pathway strip ── */
+  .pathway-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .pathway-card {
+    border: 1px solid var(--warm-border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    background: var(--surface);
+  }
+
+  .pc-degree {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .pc-blue   { color: var(--blue-dark); }
+  .pc-pink   { color: var(--pink-dark); }
+  .pc-yellow { color: var(--yellow-dark); }
+  .pc-purple { color: #6030A0; }
+
+  .pc-title {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+
+  .pc-media {
+    font-size: 11.5px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+
+  /* ── Scrollbar ── */
+  aside::-webkit-scrollbar { width: 3px; }
+  aside::-webkit-scrollbar-track { background: transparent; }
+  aside::-webkit-scrollbar-thumb { background: rgba(255,255,255,.15); border-radius: 3px; }
+
+  @media (max-width: 820px) {
+    aside { display: none; }
+    main  { padding: 28px 22px 60px; }
+    .facing { grid-template-columns: 1fr; }
+    .facing-left { border-right: none; border-bottom: 1px solid var(--warm-border); }
+    .prompt-grid { grid-template-columns: 1fr; }
+    .pathway-strip { grid-template-columns: 1fr 1fr; }
+    .hero h1 { font-size: 34px; }
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+
+<!-- ══ SIDEBAR ══ -->
+<div class="shell-body">
+<aside>
+  <div class="aside-title">My Output Reference</div>
+
+  <div class="aside-section">
+    <span class="aside-label">On this page</span>
+    <button class="aside-link active" onclick="navTo('foundation')">
+      <span class="al-dot" style="background:var(--pink)"></span> The foundation
+    </button>
+    <button class="aside-link" onclick="navTo('frameworks')">
+      <span class="al-dot" style="background:var(--blue)"></span> Scholarly frameworks
+    </button>
+    <button class="aside-link" onclick="navTo('facing')">
+      <span class="al-dot" style="background:var(--yellow-mid)"></span> The facing page model
+    </button>
+    <button class="aside-link" onclick="navTo('byassignment')">
+      <span class="al-dot" style="background:var(--pink)"></span> By assignment type
+    </button>
+    <button class="aside-link" onclick="navTo('bydegree')">
+      <span class="al-dot" style="background:var(--blue)"></span> By degree
+    </button>
+    <button class="aside-link" onclick="navTo('studio')">
+      <span class="al-dot" style="background:var(--yellow-mid)"></span> Studio practice
+    </button>
+    <button class="aside-link" onclick="navTo('documentation')">
+      <span class="al-dot" style="background:var(--pink)"></span> Documentation
+    </button>
+    <button class="aside-link" onclick="navTo('prompts')">
+      <span class="al-dot" style="background:var(--blue)"></span> Prompt library
+    </button>
+  </div>
+
+  <div class="aside-section">
+    <span class="aside-label">Other files</span>
+    <button class="aside-link" onclick="window.location='INDEX.html'">
+      <span class="al-dot" style="background:rgba(255,255,255,.3)"></span> Index
+    </button>
+    <button class="aside-link" onclick="window.location='ALTERNATIVE_FORMATS.html'">
+      <span class="al-dot" style="background:rgba(255,255,255,.3)"></span> Alternative formats
+    </button>
+    <button class="aside-link" onclick="window.location='THESIS_STRUCTURE.md'">
+      <span class="al-dot" style="background:rgba(255,255,255,.3)"></span> Thesis structure
+    </button>
+  </div>
+
+  <div class="aside-quote">
+    "Facts are only as interesting as the possibilities they open up to the imagination."
+    <cite>— Rebecca Elson</cite>
+  </div>
+</aside>
+
+<!-- ══ MAIN ══ -->
+<main>
+
+  <!-- ══ HERO ══ -->
+  <div class="hero" id="foundation">
+    <div class="hero-eyebrow">Personal practice · Scholar-practitioner</div>
+    <h1>Parallel<br><em>Practice</em></h1>
+    <p class="hero-desc">A framework for sustaining creative work — painting, drawing, making — as a necessary companion to academic study. Not extracurricular. Not therapeutic. Research, conducted in a different register.</p>
+
+    <div class="hero-elson">
+      <div class="hero-elson-quote">"A Responsibility to Awe" holds astrophysics calculations and poems on facing pages, neither subordinate to the other. Elson didn't write poetry to rest from astronomy. She wrote poetry because some things astronomy couldn't say — and the two practices together produced knowledge that neither could alone.</div>
+      <div class="hero-elson-attr">Rebecca Elson · astronomer · poet · 1960–1999</div>
+    </div>
+  </div>
+
+  <!-- ══ WHAT THIS IS ══ -->
+  <div class="section-group">
+    <p style="font-size:14.5px;color:var(--ink-mid);line-height:1.75;max-width:680px;margin-bottom:20px;">
+      I spent the first eleven years of my adult life with art — as student, as maker, as the person in the room who knew how learning and making intersect. That is not background. It is method. This file exists to make that method explicit, sustainable, and legible — to me, and if I ever need it to be, to supervisors and examiners.
+    </p>
+
+    <div class="pullquote">
+      The creative work is not a reward for completing the academic work. It runs alongside, in parallel, as a second form of inquiry into the same questions. Sometimes it goes first. Sometimes it reveals what the essay was actually about.
+    </div>
+
+    <div class="card">
+      <div class="card-title">Three principles this practice rests on</div>
+      <ul class="facing-steps">
+        <li>
+          <div class="fs-num fsn-pink">1</div>
+          <div class="fs-text">
+            <span class="fs-title">The creative work is epistemically serious</span>
+            <span class="fs-note">It generates knowledge — about my topic, my positionality, my theoretical assumptions — that the essay cannot. It is not illustration of the academic work. It is inquiry conducted by other means.</span>
+          </div>
+        </li>
+        <li>
+          <div class="fs-num fsn-pink">2</div>
+          <div class="fs-text">
+            <span class="fs-title">Neither practice subordinates the other</span>
+            <span class="fs-note">Elson did not write "poetry about astronomy." She was an astronomer and a poet simultaneously, and the practices were in genuine dialogue. My paintings are not about my thesis. They are alongside it — sometimes in tension, sometimes in resonance, always in relation.</span>
+          </div>
+        </li>
+        <li>
+          <div class="fs-num fsn-pink">3</div>
+          <div class="fs-text">
+            <span class="fs-title">The documentation is what makes it scholarship</span>
+            <span class="fs-note">Keeping a parallel practice notebook — brief, honest, undone — turns studio experience into research data. I don't need to analyse it as I go. I need to record it so the analysis is possible later.</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ══ SCHOLARLY FRAMEWORKS ══ -->
+  <div class="section-group" id="frameworks">
+    <div class="section-heading">
+      <span class="section-num">01</span>
+      <h2>Where this sits in scholarship</h2>
+    </div>
+    <p class="section-desc">My practice has legitimate methodological homes in the research literature. Knowing their names means I can claim them — in proposals, in methodology chapters, in conversations with supervisors who may not immediately understand what I'm doing.</p>
+
+    <table class="framework-table">
+      <thead>
+        <tr>
+          <th>Framework</th>
+          <th>What it says</th>
+          <th>How it maps to my practice</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="ft-concept">A/r/tography</td>
+          <td>Artmaking, researching, and teaching exist in continuous, living inquiry — not as separate activities. Knowledge lives in the space between them.</td>
+          <td class="ft-you">My BFA + facilitator years + postgraduate study are not phases. They are simultaneous roles informing each other continuously.</td>
+        </tr>
+        <tr>
+          <td class="ft-concept">Practice-based research</td>
+          <td>The creative act is an experiment. It generates new knowledge that could not be produced by other methods. The exegesis (written commentary) makes that knowledge explicit.</td>
+          <td class="ft-you">Each painting or drawing alongside an assignment is an experiment. My parallel practice notebook is the beginning of the exegesis.</td>
+        </tr>
+        <tr>
+          <td class="ft-concept">Arts-informed inquiry</td>
+          <td>Artistic processes — including the tacit, embodied knowledge of making — are valid and rigorous modes of qualitative research in social science and health fields.</td>
+          <td class="ft-you">Directly applicable in Disability Studies, Counselling Psych, Art Therapy, and Clinical Psych — my entire pathway.</td>
+        </tr>
+        <tr>
+          <td class="ft-concept">Poetic / visual inquiry</td>
+          <td>Specific arts-based research methodologies using poetry or visual art as data, analysis, and representation — not just communication of findings.</td>
+          <td class="ft-you">At PhD level, this could become my methodology. At MSc and MA level, it grounds my reflexivity sections.</td>
+        </tr>
+        <tr>
+          <td class="ft-concept">Scholar-practitioner model</td>
+          <td>Professional expertise and academic inquiry are not in tension — each sharpens the other. Knowledge moves in both directions between theory and practice.</td>
+          <td class="ft-you">This is my identity across all four degrees. I am always both a maker and a researcher. Neither is primary.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="note">Graeme Sullivan's <em>Art Practice as Research</em> (2005) and Patricia Leavy's <em>Handbook of Arts-Based Research</em> (2018) are the two foundational texts for this territory. Both are worth having on my shelf before the MSc begins — even a brief familiarity with them gives me language for what I'm already doing.</div>
+  </div>
+
+
+  <!-- ══ THE FACING PAGE MODEL ══ -->
+  <div class="section-group" id="facing">
+    <div class="section-heading">
+      <span class="section-num">02</span>
+      <h2>The facing page model</h2>
+    </div>
+    <p class="section-desc">Elson's notebooks held calculations and poems on facing pages. This is the structural metaphor for my practice — every piece of academic work has a facing page. Not a response to it. A parallel exploration of the same territory by different means.</p>
+
+    <div class="facing">
+      <div class="facing-left">
+        <div class="facing-label fl-academic">The academic page</div>
+        <div class="facing-title">The written assignment</div>
+        <div class="facing-body">Structured argument. Citations. A position defended with evidence. The register of the institution.</div>
+        <ul class="facing-steps">
+          <li><div class="fs-num fsn-blue">→</div><div class="fs-text"><span class="fs-title">Works with precision</span><span class="fs-note">Claims, evidence, logic — everything accountable and checkable</span></div></li>
+          <li><div class="fs-num fsn-blue">→</div><div class="fs-text"><span class="fs-title">Works with language</span><span class="fs-note">Propositions, arguments, definitions — the tools of academic discourse</span></div></li>
+          <li><div class="fs-num fsn-blue">→</div><div class="fs-text"><span class="fs-title">Works with the conscious mind</span><span class="fs-note">Deliberate, structured, directed thinking toward a predetermined form</span></div></li>
+        </ul>
+      </div>
+      <div class="facing-right">
+        <div class="facing-label fl-creative">The facing page</div>
+        <div class="facing-title">The creative work</div>
+        <div class="facing-body">Painting, drawing, making. The register of the studio. No argument required, no citations — but not undisciplined.</div>
+        <ul class="facing-steps">
+          <li><div class="fs-num fsn-warm">→</div><div class="fs-text"><span class="fs-title">Works with ambiguity</span><span class="fs-note">Holds contradictions, tensions, and unresolved questions that the essay must resolve prematurely</span></div></li>
+          <li><div class="fs-num fsn-warm">→</div><div class="fs-text"><span class="fs-title">Works with material</span><span class="fs-note">Paint, line, surface, texture — knowledge that lives in the hand and the eye</span></div></li>
+          <li><div class="fs-num fsn-warm">→</div><div class="fs-text"><span class="fs-title">Works with the embodied self</span><span class="fs-note">Somatic, intuitive, affective — the parts of knowing that academic writing must bracket</span></div></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pullquote">
+      The facing page is not easier. It is differently demanding. It asks me to stay with not-knowing for longer than academic writing permits — and to trust that the image is doing work even before I can say what the work is.
+    </div>
+  </div>
+
+
+  <!-- ══ BY ASSIGNMENT TYPE ══ -->
+  <div class="section-group" id="byassignment">
+    <div class="section-heading">
+      <span class="section-num">03</span>
+      <h2>By assignment type</h2>
+    </div>
+    <p class="section-desc">For each standard assignment type, here is what a parallel creative practice might look like — and what questions it is usefully positioned to explore.</p>
+
+    <!-- Essay -->
+    <div class="facing" style="margin-bottom:14px;">
+      <div class="facing-left">
+        <div class="facing-label fl-academic">Academic: Critical essay</div>
+        <div class="facing-title">A defended argument about a contested question</div>
+        <div class="facing-body">The essay requires I to arrive at a position. It closes down ambiguity in service of a claim.</div>
+      </div>
+      <div class="facing-right">
+        <div class="facing-label fl-creative">Parallel: Response painting or drawing series</div>
+        <div class="facing-title">Stay with the question, not the answer</div>
+        <div class="facing-body">Before writing the essay: make work in response to the question, not the position. What images, tensions, or forms does the question evoke before I've decided what I think?</div>
+        <ul class="facing-steps">
+          <li><div class="fs-num fsn-warm">·</div><div class="fs-text"><span class="fs-note">What does "power" look like as a mark? What does "structural barrier" feel like as texture?</span></div></li>
+          <li><div class="fs-num fsn-warm">·</div><div class="fs-text"><span class="fs-note">After writing: does the essay answer the question the paintings were asking? What do the paintings know that the essay doesn't?</span></div></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Reflective essay -->
+    <div class="facing" style="margin-bottom:14px;">
+      <div class="facing-left">
+        <div class="facing-label fl-academic">Academic: Reflective essay</div>
+        <div class="facing-title">Structured critical reflection through a theoretical framework</div>
+        <div class="facing-body">Gibbs, Kolb, or Johns cycle — moving from experience through analysis to action plan.</div>
+      </div>
+      <div class="facing-right">
+        <div class="facing-label fl-creative">Parallel: Studio response to the experience</div>
+        <div class="facing-title">Make before I analyse</div>
+        <div class="facing-body">Immediately after the experience I am reflecting on — before any analytical writing — make something in response to it. Let the studio work carry the emotional and somatic residue of the experience so the essay can think more clearly.</div>
+        <ul class="facing-steps">
+          <li><div class="fs-num fsn-warm">·</div><div class="fs-text"><span class="fs-note">This is especially important in placement contexts — the studio becomes a decompression and processing space that protects both my wellbeing and the quality of my reflection</span></div></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Case formulation -->
+    <div class="facing" style="margin-bottom:14px;">
+      <div class="facing-left">
+        <div class="facing-label fl-academic">Academic: Case formulation</div>
+        <div class="facing-title">Clinical analysis: presenting problem → theory → intervention</div>
+        <div class="facing-body">A structured clinical document that maps a client presentation onto theoretical frameworks.</div>
+      </div>
+      <div class="facing-right">
+        <div class="facing-label fl-creative">Parallel: Relational mark-making</div>
+        <div class="facing-title">What does the therapeutic relationship feel like as form?</div>
+        <div class="facing-body">After a session or placement day — not depicting the client, never identifying — make marks in response to the relational quality of the work. What did the therapeutic space feel like? Where was the tension? The warmth? The absence?</div>
+        <ul class="facing-steps">
+          <li><div class="fs-num fsn-warm">·</div><div class="fs-text"><span class="fs-note">This is parallel to what Art Therapy training already formalises — but extended into my counselling and clinical placements too</span></div></li>
+          <li><div class="fs-num fsn-warm">·</div><div class="fs-text"><span class="fs-note">Ethically: no identifying information, no case details. The work responds to affect and atmosphere, not narrative</span></div></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Thesis -->
+    <div class="facing" style="margin-bottom:14px;">
+      <div class="facing-left">
+        <div class="facing-label fl-academic">Academic: Thesis / dissertation</div>
+        <div class="facing-title">A sustained scholarly argument across 15,000–100,000 words</div>
+        <div class="facing-body">The largest and longest piece of academic work — months or years of sustained engagement with a single question.</div>
+      </div>
+      <div class="facing-right">
+        <div class="facing-label fl-creative">Parallel: The research body of work</div>
+        <div class="facing-title">A visual inquiry running the full length of the thesis</div>
+        <div class="facing-body">For each major phase of the thesis — literature review, fieldwork, analysis, writing — a corresponding studio period. The body of visual work that emerges becomes the parallel inquiry. At PhD level, this could constitute arts-based research data or a publishable creative component.</div>
+        <ul class="facing-steps">
+          <li><div class="fs-num fsn-warm">·</div><div class="fs-text"><span class="fs-note">Document with dates so the creative work and the thesis can be read in relation to each other — what was I making while I was writing Chapter 3?</span></div></li>
+          <li><div class="fs-num fsn-warm">·</div><div class="fs-text"><span class="fs-note">At PhD level: discuss with my supervisor early about whether the visual work could form a formal component of a practice-based thesis</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══ BY DEGREE ══ -->
+  <div class="section-group" id="bydegree">
+    <div class="section-heading">
+      <span class="section-num">04</span>
+      <h2>By degree — how the practice evolves</h2>
+    </div>
+    <p class="section-desc">The parallel practice doesn't start fresh with each degree. It deepens. What I make in the MSc year will still be in conversation with what I make in the PhD.</p>
+
+    <div class="pathway-strip">
+      <div class="pathway-card">
+        <div class="pc-degree pc-blue">MSc · Disability Studies</div>
+        <div class="pc-title">Establishing the practice</div>
+        <div class="pc-media">Focus on: what does disability as social construct look and feel like as image? What does the medical model versus the social model produce in paint?<br><br>Consider: working in a consistent medium or format so the body of work is legible as a series.</div>
+      </div>
+      <div class="pathway-card">
+        <div class="pc-degree pc-pink">MA · Counselling Psychology</div>
+        <div class="pc-title">The practice as reflexivity</div>
+        <div class="pc-media">The studio becomes my supervision space for my own internal process. What is evoked in I by therapeutic encounter? How does my positionality as a maker shape how I sit with clients?<br><br>The creative work feeds my reflexivity sections directly.</div>
+      </div>
+      <div class="pathway-card">
+        <div class="pc-degree pc-yellow">Diploma · Art Therapy</div>
+        <div class="pc-title">The practice becomes formal</div>
+        <div class="pc-media">Here the personal art-making journal is assessed. The parallel practice I've been sustaining informally now has an institutional form. My years of practice mean I arrive here with genuine depth rather than starting from nothing.</div>
+      </div>
+      <div class="pathway-card">
+        <div class="pc-degree pc-purple">PhD · Clinical / Public Health</div>
+        <div class="pc-title">The practice becomes methodology</div>
+        <div class="pc-media">At PhD level, the accumulated body of parallel work becomes arguable as arts-based research data. The practice that began as personal ritual can be theorised as a legitimate methodological choice. This is where Elson fully arrives.</div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══ STUDIO PRACTICE STRUCTURES ══ -->
+  <div class="section-group" id="studio">
+    <div class="section-heading">
+      <span class="section-num">05</span>
+      <h2>Studio practice structures</h2>
+    </div>
+    <p class="section-desc">The hardest part of a parallel practice is protecting it from the urgency of deadlines. These are structures that make it sustainable without being prescriptive.</p>
+
+    <div class="card">
+      <div class="card-title">
+        <span style="color:var(--pink)">▪</span> The assignment response session
+      </div>
+      <div class="card-body">Every time I begin a new assignment, spend one unstructured studio session before I do any reading or writing. The session's only rule: respond to the question or topic through making, without any analytical intent. Work freely. Date it. Keep it.</div>
+      <ul class="facing-steps">
+        <li><div class="fs-num fsn-pink">→</div><div class="fs-text"><span class="fs-note">Duration: 45 minutes to 2 hours. Not less — I need time to get past the first obvious response. Not more — this is a beginning, not a resolution.</span></div></li>
+        <li><div class="fs-num fsn-pink">→</div><div class="fs-text"><span class="fs-note">No critique during the session. The work doesn't need to be good. It needs to be honest.</span></div></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        <span style="color:var(--blue)">▪</span> The weekly studio hour
+      </div>
+      <div class="card-body">One protected hour per week — in the calendar, immovable — that isn't tied to any specific assignment. This is the ambient studio space, the background hum of making that means I never fully stop. It accumulates across years.</div>
+      <ul class="facing-steps">
+        <li><div class="fs-num fsn-blue">→</div><div class="fs-text"><span class="fs-note">It can be as small as keeping a visual notebook in which I make marks, paste things, draw responses to readings. It doesn't require a studio.</span></div></li>
+        <li><div class="fs-num fsn-blue">→</div><div class="fs-text"><span class="fs-note">The commitment is to the time, not the outcome. Even if nothing emerges — especially if nothing emerges — document it.</span></div></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        <span style="color:var(--yellow-mid)">▪</span> The submission ritual
+      </div>
+      <div class="card-body">After submitting each assignment — not before, not instead of — make a piece of work in direct response to it. Not a summary or illustration. A response. What do I now know that I couldn't know before writing it? What question did the assignment open that it couldn't close?</div>
+      <ul class="facing-steps">
+        <li><div class="fs-num fsn-yellow">→</div><div class="fs-text"><span class="fs-note">This ritualises the transition between academic work and the next phase. It prevents the flattening of everything into deadlines.</span></div></li>
+        <li><div class="fs-num fsn-yellow">→</div><div class="fs-text"><span class="fs-note">Over four degrees, this produces a body of work that traces my intellectual and personal development in a register that the academic work alone cannot.</span></div></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        <span style="color:var(--pink)">▪</span> The placement decompression practice
+      </div>
+      <div class="card-body">For periods of clinical placement — MA, Diploma, PhD — the studio becomes a space for processing the emotional and relational residue of the work that cannot be carried into the next session. This is not art therapy for myself. It is a professional practice of working through affect via material rather than allowing it to accumulate.</div>
+      <ul class="facing-steps">
+        <li><div class="fs-num fsn-pink">→</div><div class="fs-note">Keep this separate from my formal placement portfolio. It is personal, private, and not assessed — though it will inform my reflexivity writing.</div></li>
+        <li><div class="fs-num fsn-pink">→</div><div class="fs-note">Discuss with my supervisor the boundary between personal art-making as self-care and the formally assessed personal art journal. They are related but distinct.</div></li>
+      </ul>
+    </div>
+  </div>
+
+
+  <!-- ══ DOCUMENTATION ══ -->
+  <div class="section-group" id="documentation">
+    <div class="section-heading">
+      <span class="section-num">06</span>
+      <h2>Documentation — the parallel practice notebook</h2>
+    </div>
+    <p class="section-desc">The notebook is what makes the practice scholarship rather than hobby. It doesn't need to be analytical as I go. It needs to be faithful — honest records that make later analysis possible.</p>
+
+    <div class="facing">
+      <div class="facing-left">
+        <div class="facing-label fl-academic">What to record</div>
+        <ul class="facing-steps">
+          <li><div class="fs-num fsn-blue">1</div><div class="fs-text"><span class="fs-title">Date, assignment context, duration</span><span class="fs-note">What was I studying when I made this? How long did I work?</span></div></li>
+          <li><div class="fs-num fsn-blue">2</div><div class="fs-text"><span class="fs-title">Materials used</span><span class="fs-note">Medium matters — the choice of paint over pencil is a decision that can be theorised</span></div></li>
+          <li><div class="fs-num fsn-blue">3</div><div class="fs-text"><span class="fs-title">What I was thinking about when I began</span><span class="fs-note">The prompt, the question, the anxiety, the concept — whatever brought I to the studio</span></div></li>
+          <li><div class="fs-num fsn-blue">4</div><div class="fs-text"><span class="fs-title">What surprised I in the making</span><span class="fs-note">The most important line in any entry — this is where the inquiry happens</span></div></li>
+          <li><div class="fs-num fsn-blue">5</div><div class="fs-text"><span class="fs-title">Any connection to the academic work</span><span class="fs-note">Brief and un-forced. Sometimes there's none yet. That's a valid entry too.</span></div></li>
+        </ul>
+      </div>
+      <div class="facing-right">
+        <div class="facing-label fl-creative">What not to force</div>
+        <ul class="facing-steps">
+          <li><div class="fs-num fsn-warm">×</div><div class="fs-text"><span class="fs-title">Don't analyse the work as I go</span><span class="fs-note">Record what happened. Analysis comes later, when I can read across entries.</span></div></li>
+          <li><div class="fs-num fsn-warm">×</div><div class="fs-text"><span class="fs-title">Don't judge whether it was good</span><span class="fs-note">The quality of the making is not the point. The faithfulness of the documentation is.</span></div></li>
+          <li><div class="fs-num fsn-warm">×</div><div class="fs-text"><span class="fs-title">Don't force a connection to the assignment</span><span class="fs-note">Sometimes the creative work is asking a different question. Follow that — and note that the departure happened.</span></div></li>
+          <li><div class="fs-num fsn-warm">×</div><div class="fs-text"><span class="fs-title">Don't skip documenting because the session felt unproductive</span><span class="fs-note">"Nothing came. I sat with the materials for an hour. I kept thinking about X" is valuable data.</span></div></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="note" style="margin-top:20px;">
+      <strong>Photograph everything.</strong> Every piece, in good light, before it changes or disappears. Include a date in the filename. A decade from now, this archive is evidence of a sustained, rigorous, parallel intellectual practice — and at PhD level, it may become research data.
+    </div>
+  </div>
+
+
+  <!-- ══ PROMPT LIBRARY ══ -->
+  <div class="section-group" id="prompts">
+    <div class="section-heading">
+      <span class="section-num">07</span>
+      <h2>Prompt library</h2>
+    </div>
+    <p class="section-desc">Starting prompts for studio sessions, organised by the type of academic work running alongside. Use these when the blank canvas is the hardest part. Ignore them when the work already knows where it's going.</p>
+
+    <div class="spine"><div class="spine-line"></div><div class="spine-text">For essays and critical writing</div><div class="spine-line"></div></div>
+    <div class="prompt-grid">
+      <div class="prompt"><div class="prompt-q">What does the concept I'm arguing about look like if it were a landscape?</div><div class="prompt-type">Opening session</div></div>
+      <div class="prompt"><div class="prompt-q">Make a mark for every time I felt uncertain while reading for this essay.</div><div class="prompt-type">Research phase</div></div>
+      <div class="prompt"><div class="prompt-q">What is the counter-argument to my thesis — painted, not written?</div><div class="prompt-type">Mid-essay</div></div>
+      <div class="prompt"><div class="prompt-q">What question does my conclusion refuse to ask?</div><div class="prompt-type">Post-submission</div></div>
+    </div>
+
+    <div class="spine"><div class="spine-line"></div><div class="spine-text">For reflective writing</div><div class="spine-line"></div></div>
+    <div class="prompt-grid">
+      <div class="prompt"><div class="prompt-q">Make something in the first ten minutes after the experience I'm reflecting on. Before words.</div><div class="prompt-type">Immediately after</div></div>
+      <div class="prompt"><div class="prompt-q">What colour is the feeling I'm most reluctant to name in this reflection?</div><div class="prompt-type">Emotional access</div></div>
+      <div class="prompt"><div class="prompt-q">Where in my body did I feel the moment I'm writing about? Work from there.</div><div class="prompt-type">Somatic</div></div>
+      <div class="prompt"><div class="prompt-q">What does "next time I would do differently" look like as form rather than plan?</div><div class="prompt-type">Action phase</div></div>
+    </div>
+
+    <div class="spine"><div class="spine-line"></div><div class="spine-text">For placement and clinical work</div><div class="spine-line"></div></div>
+    <div class="prompt-grid">
+      <div class="prompt"><div class="prompt-q">Make marks for the quality of attention in the room today — not the content.</div><div class="prompt-type">After placement</div></div>
+      <div class="prompt"><div class="prompt-q">What remains when I strip away everything I was supposed to feel?</div><div class="prompt-type">Countertransference</div></div>
+      <div class="prompt"><div class="prompt-q">Where was the silence in the session? What does it weigh?</div><div class="prompt-type">Therapeutic space</div></div>
+      <div class="prompt"><div class="prompt-q">Make something for what I couldn't carry into the next session.</div><div class="prompt-type">Decompression</div></div>
+    </div>
+
+    <div class="spine"><div class="spine-line"></div><div class="spine-text">For thesis phases</div><div class="spine-line"></div></div>
+    <div class="prompt-grid">
+      <div class="prompt"><div class="prompt-q">What drew I to this research question before I knew how to articulate it?</div><div class="prompt-type">Beginning</div></div>
+      <div class="prompt"><div class="prompt-q">Make a piece for the gap in the literature I'm trying to fill.</div><div class="prompt-type">Literature review</div></div>
+      <div class="prompt"><div class="prompt-q">What am I most afraid my data will show?</div><div class="prompt-type">Analysis phase</div></div>
+      <div class="prompt"><div class="prompt-q">What does this thesis contribute — not to the field, but to me?</div><div class="prompt-type">Completion</div></div>
+    </div>
+
+    <div class="pullquote" style="margin-top:28px;">
+      Over four degrees and perhaps a decade, these sessions accumulate into something that has no equivalent in any academic format — a visual record of what it felt like to think these thoughts, learn these things, and become whoever I become in the process of it. That is not nothing. That is, in fact, exactly what Rebecca Elson left behind.
+    </div>
+  </div>
+
+</main>
+</div><!-- /shell-body -->
+</div><!-- /shell -->
+
+<script>
+  function navTo(id) {
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    document.querySelectorAll('.aside-link').forEach(l => l.classList.remove('active'));
+    event.currentTarget.classList.add('active');
+  }
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const id = e.target.id;
+        document.querySelectorAll('.aside-link').forEach(l => l.classList.remove('active'));
+        const link = document.querySelector(`.aside-link[onclick="navTo('${id}')"]`);
+        if (link) link.classList.add('active');
+      }
+    });
+  }, { threshold: 0.2 });
+
+  document.querySelectorAll('.section-group[id], .hero[id]').forEach(el => obs.observe(el));
+</script>
+
+</body>
+</html>

@@ -49,7 +49,7 @@ Every note is filed against at least one of these. A capture that touches none p
 
 | Packet | First used in | Reused in |
 |---|---|---|
-| Social model, psycho-emotional disablism, accommodation | Leeds: Understanding Disability | MA proposal, thesis chapter 2, CGS-M |
+| Social model, psycho-emotional disablism, accommodation | Leeds: Understanding Disability | MA proposal, thesis chapter 2, CGRS M |
 | Wellbeing of disabled students: the evidence and the gap | Leeds: Disability and Inequality | MA proposal, four-literature paper |
 | The duty to accommodate as a requirement on *process* | Leeds: Human Rights | Thesis chapter 2, documentation standard |
 | UBC LR7 and SFU GP 26 read as designed processes | Leeds: Policy | Pilot instrument, thesis methods |

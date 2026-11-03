@@ -6,6 +6,8 @@
 
 A thesis written this way is not one document produced once. It is a method practised nine times as Leeds essays, once as a supervised pilot, once as an MA thesis and once as a dissertation, so that by 2031 the MA is the fourth time I have done each step, not the first. At full height the MA thesis is defended on schedule, splits into two journal papers (the Leeds framing and the UBC framing named in the thesis line), and hands the PhD a tested design. The eight competencies below are what make that repeatable.
 
+**Guides for every other kind of document** (papers, proposals, ethics, clinical, advisor and teaching writing): [`../structures/README.md`](../structures/README.md).
+
 ## The short version
 
 Do these in order. Each one depends on the one before it.

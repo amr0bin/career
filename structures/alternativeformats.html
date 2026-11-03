@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alternative Assessment Formats — My Output Reference</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blue:        #475f6a;
+    --blue-light:  #eef2f4;
+    --blue-mid:    #475f6a;
+    --blue-dark:   #303e44;
+    --pink:        #475f6a;
+    --pink-light:  #eef2f4;
+    --pink-mid:    #475f6a;
+    --pink-dark:   #303e44;
+    --yellow:      #475f6a;
+    --yellow-light:#f5f7f8;
+    --yellow-mid:  #475f6a;
+    --yellow-dark: #303e44;
+    --ink:         #303e44;
+    --ink-mid:     #475f6a;
+    --ink-soft:    #6d7d86;
+    --surface:     #FFFFFF;
+    --surface-2:   #f5f7f8;
+    --surface-3:   #ecf0f1;
+    --border:      #dde4e7;
+    --radius:      10px;
+    --radius-lg:   16px;
+    --shadow-sm:   0 1px 3px rgba(48,62,68,.07), 0 1px 2px rgba(48,62,68,.04);
+    --shadow-md:   0 4px 16px rgba(48,62,68,.09), 0 2px 4px rgba(48,62,68,.05);
+    --font: 'Asap', system-ui, sans-serif;
+    --trans: 200ms cubic-bezier(.4,0,.2,1);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font);
+    background: var(--surface-2);
+    color: var(--ink);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* ── Shell ── */
+  .shell {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  .shell-body {
+    display: flex;
+    flex: 1;
+    align-items: flex-start;
+    min-height: 0;
+  }
+
+  /* ── Header ── */
+  header {
+    background: var(--ink);
+    color: #fff;
+    padding: 28px 40px 26px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 700px 320px at 90% 140%, rgba(71,95,106,.16) 0%, transparent 65%),
+      radial-gradient(ellipse 500px 250px at 5% -30%,  rgba(71,95,106,.15)  0%, transparent 60%),
+      radial-gradient(ellipse 400px 220px at 55% 150%, rgba(71,95,106,.10)  0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .header-inner { position: relative; display: flex; align-items: flex-start; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+
+  .header-eyebrow {
+    font-size: 11px; font-weight: 600; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--pink); margin-bottom: 7px;
+  }
+
+  header h1 { font-size: 26px; font-weight: 600; line-height: 1.2; color: #fff; margin-bottom: 8px; }
+  header p  { font-size: 14px; color: rgba(255,255,255,.58); max-width: 560px; line-height: 1.6; }
+
+  .header-right { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; padding-top: 4px; }
+
+  .back-link {
+    font-size: 12.5px; font-weight: 600; color: rgba(255,255,255,.55);
+    text-decoration: none; display: flex; align-items: center; gap: 6px;
+    transition: color var(--trans);
+  }
+  .back-link:hover { color: rgba(255,255,255,.9); }
+
+  .header-concept {
+    background: rgba(71,95,106,.18); border: 1px solid rgba(71,95,106,.3);
+    border-radius: 8px; padding: 10px 16px;
+    font-size: 12.5px; color: rgba(255,255,255,.75);
+    max-width: 280px; text-align: right; line-height: 1.5;
+  }
+
+  .header-concept strong { color: var(--pink); font-weight: 600; }
+
+  /* ── Sidebar ── */
+  aside {
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    padding: 24px 0 40px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    width: 268px;
+    flex-shrink: 0;
+  }
+
+  .sidebar-label {
+    font-size: 10px; font-weight: 600; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--ink-soft);
+    padding: 0 20px; margin: 18px 0 6px;
+  }
+
+  .sidebar-link {
+    display: flex; align-items: center; gap: 10px;
+    padding: 9px 20px; font-size: 13.5px; font-weight: 500;
+    color: var(--ink-mid); text-decoration: none;
+    transition: background var(--trans), color var(--trans);
+    cursor: pointer; border: none; background: none;
+    width: 100%; text-align: left;
+  }
+
+  .sidebar-link:hover { background: var(--surface-3); color: var(--ink); }
+
+  .sidebar-link.active {
+    background: var(--pink-light); color: var(--pink-dark); font-weight: 600;
+    border-left: 3px solid var(--pink);
+    padding-left: 17px;
+  }
+
+  .sidebar-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .d-blue   { background: var(--blue); }
+  .d-pink   { background: var(--pink); }
+  .d-yellow { background: var(--yellow-mid); }
+  .d-teal   { background: #475f6a; }
+  .d-purple { background: #475f6a; }
+  .d-coral  { background: #475f6a; }
+  .d-green  { background: #5A9E7A; }
+
+  .sidebar-badge {
+    margin-left: auto; font-size: 10px; font-weight: 600;
+    padding: 2px 7px; border-radius: 10px;
+    background: var(--surface-3); color: var(--ink-soft);
+  }
+
+  /* Criteria key in sidebar */
+  .criteria-key {
+    margin: 16px 14px 0;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px;
+  }
+
+  .criteria-key-title {
+    font-size: 10px; font-weight: 600; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--ink-soft); margin-bottom: 10px;
+  }
+
+  .criteria-pill {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 11px; font-weight: 500;
+    padding: 4px 9px; border-radius: 12px; margin: 3px 3px 3px 0;
+    cursor: default;
+  }
+
+  .cp-analysis     { background: var(--blue-light);   color: var(--blue-dark); }
+  .cp-argument     { background: var(--pink-light);   color: var(--pink-dark); }
+  .cp-knowledge    { background: var(--yellow-light); color: var(--yellow-dark); }
+  .cp-reflection   { background: #F0EBF9; color: #6030A0; }
+  .cp-communication{ background: #E3F5EF; color: #1C6048; }
+  .cp-research     { background: #FEF1E8; color: #8C4010; }
+
+  /* ── Main ── */
+  main { padding: 36px 44px 80px; max-width: 920px; width: 100%; min-width: 0; flex: 1; overflow-x: hidden; }
+
+  /* ── Intro explainer ── */
+  .explainer {
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 22px 26px;
+    margin-bottom: 36px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .explainer h3 { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+  .explainer p  { font-size: 13px; color: var(--ink-soft); line-height: 1.6; }
+
+  .explainer-rule {
+    border: none; border-left: 2px solid var(--border);
+    margin: 0;
+  }
+
+  .explainer-note {
+    grid-column: 1 / -1;
+    background: var(--yellow-light);
+    border: 1px solid rgba(200,168,40,.3);
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 12.5px; color: var(--yellow-dark); line-height: 1.55;
+  }
+
+  /* ── Section heading ── */
+  .section-heading {
+    display: flex; align-items: center; gap: 12px;
+    margin: 44px 0 6px; scroll-margin-top: 24px;
+  }
+
+  .section-heading:first-of-type { margin-top: 0; }
+
+  .section-icon {
+    width: 34px; height: 34px; border-radius: 9px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; flex-shrink: 0;
+  }
+
+  .si-blue   { background: var(--blue-light); }
+  .si-pink   { background: var(--pink-light); }
+  .si-yellow { background: var(--yellow-light); }
+  .si-teal   { background: #E3F5EF; }
+  .si-purple { background: #F0EBF9; }
+  .si-coral  { background: #FEF1E8; }
+  .si-green  { background: #EAF5EE; }
+
+  .section-heading h2 { font-size: 18px; font-weight: 600; color: var(--ink); flex: 1; }
+  .section-desc { font-size: 13.5px; color: var(--ink-soft); margin-bottom: 18px; padding-left: 46px; line-height: 1.6; }
+
+  /* ── Format cards ── */
+  .cards-grid { display: grid; gap: 16px; margin-bottom: 8px; min-width: 0; width: 100%; }
+
+  .fcard {
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--trans), border-color var(--trans), transform var(--trans);
+    min-width: 0;
+    width: 100%;
+  }
+
+  .fcard:hover { box-shadow: var(--shadow-md); transform: translateY(-1px); border-color: rgba(71,95,106,.4); }
+
+  .fcard-top {
+    padding: 20px 24px 16px;
+    border-bottom: 1px solid var(--surface-3);
+  }
+
+  .fcard-label {
+    font-size: 10px; font-weight: 600; letter-spacing: .1em;
+    text-transform: uppercase; margin-bottom: 6px;
+  }
+
+  .fcard-title { font-size: 16px; font-weight: 600; color: var(--ink); margin-bottom: 8px; line-height: 1.3; }
+  .fcard-desc  { font-size: 13.5px; color: var(--ink-soft); line-height: 1.6; margin-bottom: 12px; }
+
+  .fcard-criteria {
+    display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 2px;
+  }
+
+  /* ── Tabs inside card ── */
+  .fcard-tabs {
+    display: flex;
+    border-bottom: 1px solid var(--surface-3);
+    background: var(--surface-2);
+  }
+
+  .ftab {
+    font-family: var(--font);
+    font-size: 12px; font-weight: 600;
+    padding: 9px 18px;
+    border: none; background: none;
+    color: var(--ink-soft); cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: color var(--trans), border-color var(--trans);
+    margin-bottom: -1px;
+  }
+
+  .ftab:hover { color: var(--ink); }
+  .ftab.active { color: var(--pink-dark); border-bottom-color: var(--pink); background: var(--surface); }
+
+  .ftab-panel { display: none; padding: 18px 24px; min-width: 0; width: 100%; box-sizing: border-box; }
+  .ftab-panel.active { display: block; }
+
+  /* Structure steps */
+  .steps { list-style: none; counter-reset: s; }
+
+  .steps li {
+    counter-increment: s;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--surface-3);
+    font-size: 13px;
+    align-items: flex-start;
+  }
+
+  .steps li > div {
+    flex: 1;
+    min-width: 0;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .steps li:last-child { border-bottom: none; }
+
+  .steps li::before {
+    content: counter(s);
+    font-size: 11px; font-weight: 600;
+    width: 24px; height: 24px;
+    min-width: 24px;
+    border-radius: 50%; background: var(--surface-3);
+    color: var(--ink-soft); display: flex;
+    align-items: center; justify-content: center;
+    margin-top: 2px; flex-shrink: 0;
+  }
+
+  .step-title { font-weight: 600; color: var(--ink); display: block; word-wrap: break-word; }
+  .step-note  { font-size: 12px; color: var(--ink-soft); margin-top: 2px; display: block; word-wrap: break-word; line-height: 1.55; }
+
+  /* Tips */
+  .tip { font-size: 12.5px; line-height: 1.55; padding: 10px 14px; border-radius: 8px; border-left: 3px solid; margin-top: 14px; }
+  .tip-blue   { background: var(--blue-light);   color: var(--blue-dark);   border-color: var(--blue); }
+  .tip-pink   { background: var(--pink-light);   color: var(--pink-dark);   border-color: var(--pink); }
+  .tip-yellow { background: var(--yellow-light); color: var(--yellow-dark); border-color: var(--yellow-mid); }
+  .tip-teal   { background: #E3F5EF; color: #1C6048; border-color: #475f6a; }
+
+  /* Pitfall */
+  .pitfall { font-size: 12.5px; line-height: 1.55; padding: 10px 14px; border-radius: 8px; background: #FEF1E8; border-left: 3px solid #475f6a; color: #7A3010; margin-top: 10px; }
+
+  /* Comparison table (maps to essay criteria) */
+  .compare-table { width: 100%; border-collapse: collapse; font-size: 12.5px; margin-top: 4px; }
+  .compare-table th {
+    background: var(--surface-2); font-weight: 600;
+    padding: 8px 12px; text-align: left;
+    border-bottom: 2px solid var(--border); color: var(--ink-mid);
+    font-size: 11px; letter-spacing: .05em; text-transform: uppercase;
+  }
+  .compare-table td { padding: 8px 12px; border-bottom: 1px solid var(--surface-3); color: var(--ink-mid); vertical-align: top; }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table tr:nth-child(even) td { background: var(--surface-2); }
+  .ct-crit { font-weight: 600; color: var(--ink); }
+
+  /* ── Degree tags ── */
+  .tag { font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 6px; }
+  .tag-msc { background: var(--blue-light);   color: var(--blue-dark); }
+  .tag-ma  { background: var(--pink-light);   color: var(--pink-dark); }
+  .tag-dip { background: var(--yellow-light); color: var(--yellow-dark); }
+  .tag-phd { background: #F0EBF9; color: #6030A0; }
+  .tag-all { background: var(--surface-3);    color: var(--ink-mid); }
+
+  /* Label colours by format type */
+  .label-oral    { color: var(--blue-mid); }
+  .label-visual  { color: var(--pink-mid); }
+  .label-digital { color: #8C4010; }
+  .label-creative{ color: var(--yellow-dark); }
+  .label-collab  { color: #1C6048; }
+
+  /* ── Filter bar ── */
+  .filter-bar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 32px; align-items: center; }
+  .filter-label { font-size: 12px; font-weight: 600; color: var(--ink-soft); letter-spacing: .06em; text-transform: uppercase; margin-right: 4px; }
+
+  .filter-btn {
+    font-family: var(--font); font-size: 12.5px; font-weight: 500;
+    padding: 6px 14px; border-radius: 20px;
+    border: 1.5px solid var(--border); background: var(--surface);
+    color: var(--ink-mid); cursor: pointer; transition: all var(--trans);
+  }
+  .filter-btn:hover { border-color: var(--pink); color: var(--pink-dark); }
+  .filter-btn.active { background: var(--pink); border-color: var(--pink); color: #fff; }
+
+  .fcard.hidden { display: none; }
+  .section-group.hidden { display: none; }
+
+  /* Scrollbar */
+  aside::-webkit-scrollbar { width: 4px; }
+  aside::-webkit-scrollbar-track { background: transparent; }
+  aside::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+  @media (max-width: 760px) {
+    aside  { display: none; }
+    main   { padding: 20px 18px 60px; }
+    header { padding: 20px; }
+    .explainer { grid-template-columns: 1fr; }
+    .header-right { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+
+<!-- ══ HEADER ══ -->
+<header>
+  <div class="header-inner">
+    <div>
+      <div class="header-eyebrow">My output reference — companion page</div>
+      <h1>Alternative Assessment Formats</h1>
+      <p>The same learning outcomes, marking criteria, and intellectual demands — delivered through a different structural container. Every format here can replace a written essay or report where permitted by my programme.</p>
+    </div>
+    <div class="header-right">
+      <a class="back-link" href="INDEX.html">← Back to Index</a>
+      <div class="header-concept">
+        <strong>The core principle:</strong> the format changes; the standard does not. Markers apply identical criteria — only the mode of demonstration differs.
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="shell-body">
+
+<!-- ══ SIDEBAR ══ -->
+<aside>
+
+  <div class="criteria-key">
+    <div class="criteria-key-title">Core criteria assessed</div>
+    <span class="criteria-pill cp-analysis">Critical analysis</span>
+    <span class="criteria-pill cp-argument">Argument</span>
+    <span class="criteria-pill cp-knowledge">Knowledge</span>
+    <span class="criteria-pill cp-reflection">Reflection</span>
+    <span class="criteria-pill cp-communication">Communication</span>
+    <span class="criteria-pill cp-research">Research</span>
+    <p style="font-size:11px;color:var(--ink-soft);margin-top:10px;line-height:1.5;">These same six criteria apply to every format on this page — only how I demonstrate them changes.</p>
+  </div>
+
+  <div class="sidebar-label">Oral formats</div>
+  <button class="sidebar-link active" onclick="navTo('oral')">
+    <span class="sidebar-dot d-blue"></span> Oral & spoken
+    <span class="sidebar-badge">3</span>
+  </button>
+
+  <div class="sidebar-label">Visual formats</div>
+  <button class="sidebar-link" onclick="navTo('visual')">
+    <span class="sidebar-dot d-pink"></span> Visual & poster
+    <span class="sidebar-badge">3</span>
+  </button>
+
+  <div class="sidebar-label">Digital formats</div>
+  <button class="sidebar-link" onclick="navTo('digital')">
+    <span class="sidebar-dot d-coral"></span> Digital & multimedia
+    <span class="sidebar-badge">3</span>
+  </button>
+
+  <div class="sidebar-label">Creative formats</div>
+  <button class="sidebar-link" onclick="navTo('creative')">
+    <span class="sidebar-dot d-yellow"></span> Creative & narrative
+    <span class="sidebar-badge">3</span>
+  </button>
+
+  <div class="sidebar-label">Collaborative formats</div>
+  <button class="sidebar-link" onclick="navTo('collab')">
+    <span class="sidebar-dot d-teal"></span> Group & collaborative
+    <span class="sidebar-badge">2</span>
+  </button>
+
+</aside>
+
+<!-- ══ MAIN ══ -->
+<main>
+
+  <!-- Explainer -->
+  <div class="explainer">
+    <div>
+      <h3>What this file is</h3>
+      <p>Every format here assesses the same intellectual content as its written equivalent. A presentation is not easier than an essay — it is differently shaped. The argument must still be present. The evidence must still be cited. The critical analysis must still happen. Only the structural container changes.</p>
+    </div>
+    <hr class="explainer-rule">
+    <div>
+      <h3>When to use alternative formats</h3>
+      <p>Some programmes offer format choice as standard. Others require I to request an alternative as a reasonable adjustment. In either case, knowing the structure of each format in advance means I can make an informed choice — and prepare properly rather than improvising.</p>
+    </div>
+    <div class="explainer-note">
+      ⚠️ <strong>Always confirm with my programme coordinator</strong> before submitting in an alternative format. Some modules have fixed formats; others offer structured choice. The structures here reflect standard academic conventions — my institution may specify variations.
+    </div>
+  </div>
+
+  <!-- Filter bar -->
+  <div class="filter-bar">
+    <span class="filter-label">Filter by degree</span>
+    <button class="filter-btn active" onclick="filterDeg('all', this)">All</button>
+    <button class="filter-btn" onclick="filterDeg('msc', this)">MSc</button>
+    <button class="filter-btn" onclick="filterDeg('ma',  this)">MA</button>
+    <button class="filter-btn" onclick="filterDeg('dip', this)">Diploma</button>
+    <button class="filter-btn" onclick="filterDeg('phd', this)">PhD</button>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════════
+       ORAL FORMATS
+  ══════════════════════════════════════════════════ -->
+  <div id="oral" class="section-group">
+    <div class="section-heading">
+      <div class="section-icon si-blue">🎤</div>
+      <h2>Oral & spoken formats</h2>
+    </div>
+    <p class="section-desc">Spoken formats assess the same analytical and argumentative competencies as written work. The challenge shifts from prose construction to verbal precision, pacing, and the ability to respond to questions in real time.</p>
+
+    <div class="cards-grid">
+
+      <!-- ORAL PRESENTATION -->
+      <div class="fcard" data-degrees="msc ma dip phd">
+        <div class="fcard-top">
+          <div class="fcard-label label-oral">Oral format</div>
+          <div class="fcard-title">Oral Presentation with Q&amp;A</div>
+          <div class="fcard-desc">The most common alternative to an essay. I present my argument, evidence, and analysis verbally — typically with supporting slides — and then defend my position in a question-and-answer session. The Q&amp;A is where the same depth of understanding required in an essay is tested live.</div>
+          <div class="fcard-criteria">
+            <span class="criteria-pill cp-argument">Argument</span>
+            <span class="criteria-pill cp-analysis">Critical analysis</span>
+            <span class="criteria-pill cp-knowledge">Knowledge</span>
+            <span class="criteria-pill cp-communication">Communication</span>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;">
+            <span class="tag tag-all">All degrees</span>
+            <span style="font-size:11.5px;color:var(--ink-soft);margin-left:auto;align-self:center;">Typically 10–20 min + 5–10 min Q&amp;A</span>
+          </div>
+        </div>
+        <div class="fcard-tabs">
+          <button class="ftab active" onclick="switchTab(this, 'pres-struct')">Structure</button>
+          <button class="ftab"        onclick="switchTab(this, 'pres-slides')">Slide logic</button>
+          <button class="ftab"        onclick="switchTab(this, 'pres-crit')">Criteria map</button>
+        </div>
+
+        <div id="pres-struct" class="ftab-panel active">
+          <ol class="steps">
+            <li><div><span class="step-title">Opening hook (30–60 sec)</span><span class="step-note">A question, statistic, or brief scenario — orients the audience and signals why this matters</span></div></li>
+            <li><div><span class="step-title">Signpost my argument (1 min)</span><span class="step-note">State my thesis — the claim I will make — and how the presentation will build toward it</span></div></li>
+            <li><div><span class="step-title">Literature context (2–4 min)</span><span class="step-note">Summarise the field, not my full review — hit the key frameworks and the gap I'm addressing</span></div></li>
+            <li><div><span class="step-title">Main argument sections (5–10 min)</span><span class="step-note">Each slide = one claim + evidence + analysis. Follow the same paragraph logic as a written essay.</span></div></li>
+            <li><div><span class="step-title">Counter-argument and rebuttal (1–2 min)</span><span class="step-note">Acknowledge the strongest opposing view and explain why my argument holds regardless</span></div></li>
+            <li><div><span class="step-title">Conclusion (1–2 min)</span><span class="step-note">Restate my thesis, synthesise my evidence, and state the wider implication clearly</span></div></li>
+            <li><div><span class="step-title">Q&amp;A (5–10 min)</span><span class="step-note">Prepared answers for likely challenges; "that's an interesting point, let me address that by…" buys thinking time</span></div></li>
+          </ol>
+          <div class="tip tip-blue">Rehearse out loud, not just in my head. The gap between reading notes silently and speaking them fluently is much larger than it feels during preparation.</div>
+        </div>
+
+        <div id="pres-slides" class="ftab-panel">
+          <ol class="steps">
+            <li><div><span class="step-title">One claim per slide</span><span class="step-note">The slide title should be my argument, not a topic label. "Deficit models fail to account for structural barriers" is a title. "Disability models" is a heading.</span></div></li>
+            <li><div><span class="step-title">Maximum 5 lines of text per slide</span><span class="step-note">Slides are cues for my spoken argument — not a transcript. If I am reading my slides, I have too much text.</span></div></li>
+            <li><div><span class="step-title">Every image or figure needs a purpose</span><span class="step-note">Visuals should carry evidence or clarify a concept — not decorate. Label all figures and cite their source.</span></div></li>
+            <li><div><span class="step-title">References slide at the end</span><span class="step-note">Full APA references for every source cited. This is assessed even in oral formats.</span></div></li>
+            <li><div><span class="step-title">Speaker notes carry my depth</span><span class="step-note">Write fuller notes in the speaker notes pane — these show my analytical depth if asked to submit slides as evidence of learning.</span></div></li>
+          </ol>
+          <div class="pitfall">Never put everything I want to say on the slide — then read from it. Examiners mark my spoken argument. Slides that do all the work signal that I am not comfortable speaking to the material.</div>
+        </div>
+
+        <div id="pres-crit" class="ftab-panel">
+          <table class="compare-table">
+            <thead><tr><th>Essay criterion</th><th>How it maps to a presentation</th></tr></thead>
+            <tbody>
+              <tr><td class="ct-crit">Clarity of argument</td><td>My stated thesis at the start + how each slide builds toward it</td></tr>
+              <tr><td class="ct-crit">Critical analysis</td><td>Depth of spoken explanation beyond what the slide shows; my Q&amp;A responses</td></tr>
+              <tr><td class="ct-crit">Use of evidence</td><td>Citations spoken aloud; referenced literature in speaker notes and reference slide</td></tr>
+              <tr><td class="ct-crit">Engagement with counter-arguments</td><td>Explicit counter-argument slide + my rebuttal; depth in Q&amp;A</td></tr>
+              <tr><td class="ct-crit">Structure and coherence</td><td>Logical flow of slides; signposting transitions between sections</td></tr>
+              <tr><td class="ct-crit">Academic communication</td><td>Precise spoken vocabulary; appropriate register; clarity without jargon overload</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- RECORDED VIDEO PRESENTATION -->
+      <div class="fcard" data-degrees="msc ma dip phd">
+        <div class="fcard-top">
+          <div class="fcard-label label-oral">Oral format — asynchronous</div>
+          <div class="fcard-title">Recorded Video Presentation</div>
+          <div class="fcard-desc">Structurally identical to a live presentation but recorded and submitted as a video file. The absence of real-time Q&amp;A shifts weight toward the depth of my scripted argument. Many programmes now use this as a standard alternative — especially where accessibility or scheduling is a factor.</div>
+          <div class="fcard-criteria">
+            <span class="criteria-pill cp-argument">Argument</span>
+            <span class="criteria-pill cp-analysis">Critical analysis</span>
+            <span class="criteria-pill cp-knowledge">Knowledge</span>
+            <span class="criteria-pill cp-communication">Communication</span>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;">
+            <span class="tag tag-all">All degrees</span>
+            <span style="font-size:11.5px;color:var(--ink-soft);margin-left:auto;align-self:center;">Typically 10–20 min + written reference list</span>
+          </div>
+        </div>
+        <div class="fcard-tabs">
+          <button class="ftab active" onclick="switchTab(this, 'vid-struct')">Structure</button>
+          <button class="ftab"        onclick="switchTab(this, 'vid-tips')">Production tips</button>
+        </div>
+
+        <div id="vid-struct" class="ftab-panel active">
+          <ol class="steps">
+            <li><div><span class="step-title">Follow the live presentation structure exactly</span><span class="step-note">Hook → thesis → literature context → argument sections → counter-argument → conclusion</span></div></li>
+            <li><div><span class="step-title">Write a full script or detailed outline</span><span class="step-note">Without the pressure of live delivery, there is no excuse for imprecision. Every claim should be deliberate.</span></div></li>
+            <li><div><span class="step-title">Include a written reference list as a submitted document</span><span class="step-note">APA 7th · submitted alongside the video file · assessed equally</span></div></li>
+            <li><div><span class="step-title">State my name, student number, and module at the start</span><span class="step-note">Academic integrity — examiners need to verify authorship</span></div></li>
+            <li><div><span class="step-title">Closed captions if required by my institution</span><span class="step-note">Auto-captions from my recording software + manual correction is the minimum standard</span></div></li>
+          </ol>
+          <div class="tip tip-blue">Record in multiple short takes by section rather than attempting one long take. Edit together — most institutions accept light editing. Practice each section until I can deliver it without reading verbatim.</div>
+        </div>
+
+        <div id="vid-tips" class="ftab-panel">
+          <ol class="steps">
+            <li><div><span class="step-title">Audio quality matters more than video quality</span><span class="step-note">A clear voice on a laptop camera is better than a blurry face with a USB microphone. Invert that: clear voice + decent lighting is the goal.</span></div></li>
+            <li><div><span class="step-title">Look at the camera, not my slides</span><span class="step-note">Eye contact with the lens signals command of my material. Glancing at slides constantly signals I am reading.</span></div></li>
+            <li><div><span class="step-title">Speak slower than feels natural</span><span class="step-note">Video playback makes fast speech harder to follow. My natural pace on screen will feel slow to me — that is the target.</span></div></li>
+            <li><div><span class="step-title">Use screen-recording for slide-heavy content</span><span class="step-note">Tools: Loom, OBS, PowerPoint's built-in recorder, Zoom. Record slides + voiceover simultaneously.</span></div></li>
+            <li><div><span class="step-title">File format and size</span><span class="step-note">MP4 is universally accepted. Most institutions cap file size — compress using Handbrake if needed before submission.</span></div></li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- STRUCTURED ORAL EXAMINATION -->
+      <div class="fcard" data-degrees="msc ma phd">
+        <div class="fcard-top">
+          <div class="fcard-label label-oral">Oral format — examined</div>
+          <div class="fcard-title">Structured Oral Examination (Mini-Viva)</div>
+          <div class="fcard-desc">A formal oral examination in place of a written assignment — common in modules where depth of understanding matters as much as written fluency. I am given questions in advance (seen) or on the day (unseen) and examined in real time. The marker is directly probing the depth, accuracy, and critical quality of my knowledge.</div>
+          <div class="fcard-criteria">
+            <span class="criteria-pill cp-knowledge">Knowledge</span>
+            <span class="criteria-pill cp-analysis">Critical analysis</span>
+            <span class="criteria-pill cp-argument">Argument</span>
+            <span class="criteria-pill cp-reflection">Reflection</span>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;">
+            <span class="tag tag-msc">MSc</span>
+            <span class="tag tag-ma">MA</span>
+            <span class="tag tag-phd">PhD</span>
+            <span style="font-size:11.5px;color:var(--ink-soft);margin-left:auto;align-self:center;">20–45 min · 1–2 examiners</span>
+          </div>
+        </div>
+        <div class="fcard-tabs">
+          <button class="ftab active" onclick="switchTab(this, 'oral-struct')">Preparation structure</button>
+          <button class="ftab"        onclick="switchTab(this, 'oral-qs')">Common question types</button>
+        </div>
+
+        <div id="oral-struct" class="ftab-panel active">
+          <ol class="steps">
+            <li><div><span class="step-title">Prepare as if writing the essay first</span><span class="step-note">My argument, evidence, and analysis should be completely worked out before the oral. The oral is the delivery mechanism — not the place to think through the content for the first time.</span></div></li>
+            <li><div><span class="step-title">Prepare a 2-minute summary of my core argument</span><span class="step-note">Opening questions almost always invite I to state my position. Have this practiced and polished.</span></div></li>
+            <li><div><span class="step-title">Anticipate challenges to every claim</span><span class="step-note">For each key point I want to make, ask: what is the strongest objection? Prepare a response.</span></div></li>
+            <li><div><span class="step-title">Know my sources deeply</span><span class="step-note">I may be asked to expand on any citation. "I'd have to check the paper" is not a sufficient answer for a cited source.</span></div></li>
+            <li><div><span class="step-title">Practise thinking aloud</span><span class="step-note">Record myself answering practice questions. The gap between thinking an answer and articulating it clearly is large — bridge it in preparation, not in the exam.</span></div></li>
+          </ol>
+          <div class="tip tip-pink">It is entirely acceptable to say "that's a nuanced point — I think the answer has two parts…" and then take a breath before answering. Composure under pressure is itself being assessed.</div>
+        </div>
+
+        <div id="oral-qs" class="ftab-panel">
+          <ol class="steps">
+            <li><div><span class="step-title">"Can you summarise your main argument?"</span><span class="step-note">The opening — have a concise 90-second answer prepared. State thesis, key evidence, conclusion.</span></div></li>
+            <li><div><span class="step-title">"What is the strongest counter-argument to your position?"</span><span class="step-note">Tests depth and intellectual honesty. Name it precisely, then explain why my argument holds nonetheless.</span></div></li>
+            <li><div><span class="step-title">"Why did you choose [author/framework] rather than [alternative]?"</span><span class="step-note">Tests whether I have read critically or just cited what appeared first.</span></div></li>
+            <li><div><span class="step-title">"What are the limitations of your argument?"</span><span class="step-note">Every strong argument has acknowledged limits. Name them — then explain why the argument remains valid within those limits.</span></div></li>
+            <li><div><span class="step-title">"What would you read or do differently if you had more time?"</span><span class="step-note">Tests metacognition and genuine intellectual engagement with the topic.</span></div></li>
+          </ol>
+          <div class="pitfall">Do not try to deflect a question I find difficult by pivoting to something I know better. Examiners notice this and it signals the gap in my knowledge more loudly than a careful partial answer would.</div>
+        </div>
+      </div>
+
+    </div><!-- /oral cards -->
+  </div><!-- /oral section -->
+
+
+  <!-- ══════════════════════════════════════════════════
+       VISUAL FORMATS
+  ══════════════════════════════════════════════════ -->
+  <div id="visual" class="section-group">
+    <div class="section-heading">
+      <div class="section-icon si-pink">🖼️</div>
+      <h2>Visual & poster formats</h2>
+    </div>
+    <p class="section-desc">Visual formats do not simplify content — they require I to distil complex argument into precise, economical form. The constraint of space forces clarity of thinking that extended prose can obscure.</p>
+
+    <div class="cards-grid">
+
+      <!-- ACADEMIC POSTER -->
+      <div class="fcard" data-degrees="msc ma phd">
+        <div class="fcard-top">
+          <div class="fcard-label label-visual">Visual format</div>
+          <div class="fcard-title">Academic Conference Poster</div>
+          <div class="fcard-desc">A single-page visual document presenting a research question, methodology, findings, and conclusion — structured for rapid comprehension. Common at research conferences and increasingly used as a module assessment. Often accompanied by a 2–3 minute verbal explanation (the "elevator pitch").</div>
+          <div class="fcard-criteria">
+            <span class="criteria-pill cp-knowledge">Knowledge</span>
+            <span class="criteria-pill cp-research">Research</span>
+            <span class="criteria-pill cp-argument">Argument</span>
+            <span class="criteria-pill cp-communication">Communication</span>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;">
+            <span class="tag tag-msc">MSc</span>
+            <span class="tag tag-ma">MA</span>
+            <span class="tag tag-phd">PhD</span>
+            <span style="font-size:11.5px;color:var(--ink-soft);margin-left:auto;align-self:center;">A0 or A1 · ~800 words total</span>
+          </div>
+        </div>
+        <div class="fcard-tabs">
+          <button class="ftab active" onclick="switchTab(this, 'post-struct')">Structure</button>
+          <button class="ftab"        onclick="switchTab(this, 'post-design')">Design principles</button>
+        </div>
+
+        <div id="post-struct" class="ftab-panel active">
+          <ol class="steps">
+            <li><div><span class="step-title">Title (visible from 3 metres)</span><span class="step-note">My research question or a declarative claim — not a topic label. Large font. My name and institution below.</span></div></li>
+            <li><div><span class="step-title">Introduction / Background (150 words max)</span><span class="step-note">Why does this question matter? What is the gap? State my research question explicitly.</span></div></li>
+            <li><div><span class="step-title">Methods (100–150 words + a visual)</span><span class="step-note">Design, participants/data, analysis approach. A simple diagram or table often communicates this faster than prose.</span></div></li>
+            <li><div><span class="step-title">Results / Findings (150–200 words + figures)</span><span class="step-note">1–3 key findings. Prioritise — do not try to present everything. Each finding should have a visual representation where possible.</span></div></li>
+            <li><div><span class="step-title">Discussion / Implications (150 words)</span><span class="step-note">What do the findings mean? How do they connect to existing literature? What is the contribution?</span></div></li>
+            <li><div><span class="step-title">Conclusion (50–80 words)</span><span class="step-note">One clear takeaway sentence + future directions. Should be readable as a standalone statement.</span></div></li>
+            <li><div><span class="step-title">References (10–15 key citations)</span><span class="step-note">Select only the most essential — APA 7th format · smaller font but fully legible</span></div></li>
+          </ol>
+          <div class="tip tip-pink">The poster should be readable in 3 minutes by someone who has never heard of my topic. If a colleague cannot summarise my argument after reading it in 3 minutes, it needs editing.</div>
+        </div>
+
+        <div id="post-design" class="ftab-panel">
+          <ol class="steps">
+            <li><div><span class="step-title">Use a grid layout</span><span class="step-note">Two or three columns with consistent margins. Sections should align visually — misaligned blocks read as disorganised thinking.</span></div></li>
+            <li><div><span class="step-title">Hierarchy through size, not decoration</span><span class="step-note">Title largest → section headings → body text → captions. Colour and bold should emphasise — not decorate.</span></div></li>
+            <li><div><span class="step-title">Every visual needs a caption and a source</span><span class="step-note">Graphs, photos, diagrams — all labelled. Unlabelled visuals fail on academic rigour criteria.</span></div></li>
+            <li><div><span class="step-title">White space is not wasted space</span><span class="step-note">Dense posters are harder to read, not more impressive. Generous margins signal clarity of thought.</span></div></li>
+            <li><div><span class="step-title">Accessible colour choices</span><span class="step-note">Avoid red/green combinations. Ensure sufficient contrast. Check readability in greyscale before printing.</span></div></li>
+          </ol>
+          <div class="tip tip-blue">Tools: Canva (free templates for A0/A1), PowerPoint (set custom slide size to A1 in cm), Adobe InDesign. Export as PDF at 300dpi for print.</div>
+        </div>
+      </div>
+
+      <!-- INFOGRAPHIC -->
+      <div class="fcard" data-degrees="msc ma dip">
+        <div class="fcard-top">
+          <div class="fcard-label label-visual">Visual format</div>
+          <div class="fcard-title">Scholarly Infographic</div>
+          <div class="fcard-desc">A visual argument combining text, data, and illustration to communicate a complex topic accessibly. Used most often in public health, social policy, and education modules. The challenge is maintaining academic rigour — full citations, evidenced claims — within a visual format designed for broad audiences.</div>
+          <div class="fcard-criteria">
+            <span class="criteria-pill cp-knowledge">Knowledge</span>
+            <span class="criteria-pill cp-argument">Argument</span>
+            <span class="criteria-pill cp-communication">Communication</span>
+            <span class="criteria-pill cp-analysis">Critical analysis</span>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;">
+            <span class="tag tag-msc">MSc</span>
+            <span class="tag tag-ma">MA</span>
+            <span class="tag tag-dip">Diploma</span>
+            <span style="font-size:11.5px;color:var(--ink-soft);margin-left:auto;align-self:center;">Often submitted with a 500-word rationale</span>
+          </div>
+        </div>
+        <div class="fcard-tabs">
+          <button class="ftab active" onclick="switchTab(this, 'info-struct')">Structure</button>
+          <button class="ftab"        onclick="switchTab(this, 'info-rigor')">Academic rigour</button>
+        </div>
+
+        <div id="info-struct" class="ftab-panel active">
+          <ol class="steps">
+            <li><div><span class="step-title">Headline claim (the title)</span><span class="step-note">A declarative statement of my argument — not a topic. "Social model of disability predicts better mental health outcomes" not "Disability and mental health".</span></div></li>
+            <li><div><span class="step-title">Context block</span><span class="step-note">2–3 sentences situating the issue. Who is affected, why it matters, what the current evidence shows.</span></div></li>
+            <li><div><span class="step-title">Visual evidence sections (3–5)</span><span class="step-note">Each section = one claim + a visual representation of its evidence (graph, icon set, quote, statistic). Arranged to flow logically — readers scan top-to-bottom or in a Z-pattern.</span></div></li>
+            <li><div><span class="step-title">Implication / call to action</span><span class="step-note">What does this evidence mean? What should happen? Connects back to my headline claim.</span></div></li>
+            <li><div><span class="step-title">Sources section</span><span class="step-note">Small-font APA references for every statistic, quote, and figure used. Non-negotiable for academic submission.</span></div></li>
+          </ol>
+        </div>
+
+        <div id="info-rigor" class="ftab-panel">
+          <ol class="steps">
+            <li><div><span class="step-title">Every statistic needs a citation</span><span class="step-note">If I cannot cite the source in the infographic, do not use the statistic. This is where infographics most commonly fail academically.</span></div></li>
+            <li><div><span class="step-title">Submit a written rationale alongside</span><span class="step-note">Most academic infographic assessments require a 300–800 word rationale explaining: my argument, my design choices, my audience, and my evidence selection.</span></div></li>
+            <li><div><span class="step-title">Acknowledge limitations</span><span class="step-note">The infographic simplifies — my rationale document is the place to acknowledge what complexity was omitted and why.</span></div></li>
+            <li><div><span class="step-title">Do not misrepresent data visually</span><span class="step-note">Truncated axes, disproportionate icon sets, and cherry-picked time periods are academic integrity violations — not just design errors.</span></div></li>
+          </ol>
+          <div class="tip tip-yellow">The rationale document is often where the critical analysis criteria are most fully demonstrated. Treat it as seriously as the visual itself.</div>
+        </div>
+      </div>
+
+      <!-- CONCEPT MAP / MIND MAP -->
+      <div class="fcard" data-degrees="msc ma dip phd">
+        <div class="fcard-top">
+          <div class="fcard-label label-visual">Visual format</div>
+          <div class="fcard-title">Annotated Concept Map</div>
+          <div class="fcard-desc">A visual representation of the relationships between ideas, theories, or concepts — with annotations explaining each connection. More rigorous than a mind map; closer to a visual literature review or theoretical framework. Highly effective for demonstrating understanding of complex, interconnected fields.</div>
+          <div class="fcard-criteria">
+            <span class="criteria-pill cp-knowledge">Knowledge</span>
+            <span class="criteria-pill cp-analysis">Critical analysis</span>
+            <span class="criteria-pill cp-argument">Argument</span>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;">
+            <span class="tag tag-all">All degrees</span>
+            <span style="font-size:11.5px;color:var(--ink-soft);margin-left:auto;align-self:center;">Submitted with a written commentary (500–1,000 words)</span>
+          </div>
+        </div>
+        <div class="fcard-tabs">
+          <button class="ftab active" onclick="switchTab(this, 'map-struct')">Structure</button>
+          <button class="ftab"        onclick="switchTab(this, 'map-depth')">Adding depth</button>
+        </div>
+
+        <div id="map-struct" class="ftab-panel active">
+          <ol class="steps">
+            <li><div><span class="step-title">Central concept</span><span class="step-note">My core research question or the main theoretical concept — placed at the centre or top of the map.</span></div></li>
+            <li><div><span class="step-title">First-order nodes</span><span class="step-note">The 3–5 major themes, theories, or frameworks that directly relate to the central concept. Each node = a labelled box or circle.</span></div></li>
+            <li><div><span class="step-title">Second-order nodes</span><span class="step-note">Subconcepts, specific authors, empirical findings, or examples that branch from each major theme.</span></div></li>
+            <li><div><span class="step-title">Labelled connections</span><span class="step-note">The lines between nodes carry the intellectual weight — each line should be labelled with the nature of the relationship (e.g. "challenges", "extends", "is mediated by", "contradicts").</span></div></li>
+            <li><div><span class="step-title">Written commentary</span><span class="step-note">Explains 3–5 of the most significant or non-obvious connections in the map — this is where my critical analysis lives.</span></div></li>
+          </ol>
+          <div class="pitfall">An unlabelled concept map is just a picture. The labels on connections are what demonstrate critical understanding — they are what separates this from a brainstorm.</div>
+        </div>
+
+        <div id="map-depth" class="ftab-panel">
+          <ol class="steps">
+            <li><div><span class="step-title">Use different connection types visually</span><span class="step-note">Solid line = direct relationship · dashed = contested or provisional · arrow direction = causal relationship · double-headed = bidirectional influence</span></div></li>
+            <li><div><span class="step-title">Include author citations at nodes</span><span class="step-note">Name the theorist or study my node represents — "(Bronfenbrenner, 1979)" next to the ecological model node — this shows my map is grounded in literature, not intuition.</span></div></li>
+            <li><div><span class="step-title">Show tension as well as connection</span><span class="step-note">A truly sophisticated concept map shows where frameworks contradict or compete — not just where they agree. Mark these connections clearly.</span></div></li>
+          </ol>
+          <div class="tip tip-teal">Tools: Miro (free tier), Lucidchart, Obsidian (with Canvas plugin), or drawn by hand and photographed. The medium is less important than the intellectual content.</div>
+        </div>
+      </div>
+
+    </div><!-- /visual cards -->
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════════
+       DIGITAL FORMATS
+  ══════════════════════════════════════════════════ -->
+  <div id="digital" class="section-group">
+    <div class="section-heading">
+      <div class="section-icon si-coral">💻</div>
+      <h2>Digital & multimedia formats</h2>
+    </div>
+    <p class="section-desc">Digital formats increasingly appear in programmes that emphasise professional communication skills alongside academic rigour. Each format has its own structural conventions — and its own distinctive failure modes.</p>
+
+    <div class="cards-grid">
+
+      <!-- PODCAST / AUDIO ESSAY -->
+      <div class="fcard" data-degrees="msc ma dip">
+        <div class="fcard-top">
+          <div class="fcard-label label-digital">Digital format — audio</div>
+          <div class="fcard-title">Podcast / Audio Essay</div>
+          <div class="fcard-desc">A scripted, recorded audio piece presenting an academic argument for a non-specialist audience. Used in public health, social science, and education programmes to assess communication of complex ideas accessibly. The structure mirrors an essay — but the register shifts, and my citational practice adapts to the medium.</div>
+          <div class="fcard-criteria">
+            <span class="criteria-pill cp-argument">Argument</span>
+            <span class="criteria-pill cp-knowledge">Knowledge</span>
+            <span class="criteria-pill cp-communication">Communication</span>
+            <span class="criteria-pill cp-analysis">Critical analysis</span>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;">
+            <span class="tag tag-msc">MSc</span>
+            <span class="tag tag-ma">MA</span>
+            <span class="tag tag-dip">Diploma</span>
+            <span style="font-size:11.5px;color:var(--ink-soft);margin-left:auto;align-self:center;">10–20 min · submitted with full script + references</span>
+          </div>
+        </div>
+        <div class="fcard-tabs">
+          <button class="ftab active" onclick="switchTab(this, 'pod-struct')">Structure</button>
+          <button class="ftab"        onclick="switchTab(this, 'pod-write')">Writing for audio</button>
+        </div>
+
+        <div id="pod-struct" class="ftab-panel active">
+          <ol class="steps">
+            <li><div><span class="step-title">Cold open (30 sec)</span><span class="step-note">Start mid-thought — a striking question, a brief scenario, a counterintuitive statistic. Do not open with "Hello and welcome to…"</span></div></li>
+            <li><div><span class="step-title">Introduce the question and my argument (1–2 min)</span><span class="step-note">State what I am going to argue — clearly and in plain language. Listeners cannot re-read.</span></div></li>
+            <li><div><span class="step-title">Contextual section (2–4 min)</span><span class="step-note">What does the audience need to know to follow my argument? Keep to what is essential — this is not a literature review, it is orientation.</span></div></li>
+            <li><div><span class="step-title">Main argument sections (6–10 min)</span><span class="step-note">3–4 clearly signposted claims, each with evidence and analysis. Verbal signposting ("my second point is…") is essential because listeners cannot see my structure.</span></div></li>
+            <li><div><span class="step-title">Conclusion (1–2 min)</span><span class="step-note">Restate my argument and its significance. End memorably — return to my opening image, answer my opening question, or leave the listener with a thought to sit with.</span></div></li>
+            <li><div><span class="step-title">Submit full script + reference list</span><span class="step-note">Every claim that would require a citation in an essay must be cited in my submitted script. The audio itself adapts ("researchers at UCL found…") but the script must carry full APA citations.</span></div></li>
+          </ol>
+        </div>
+
+        <div id="pod-write" class="ftab-panel">
+          <ol class="steps">
+            <li><div><span class="step-title">Write for the ear, not the eye</span><span class="step-note">Short sentences. Active voice. Concrete language. Complex subordinate clauses that read well are often impossible to follow aurally.</span></div></li>
+            <li><div><span class="step-title">Signpost constantly</span><span class="step-note">In writing, structure is visible. In audio, it must be stated. "That brings me to my main argument…" / "To summarise what I've argued so far…" are not redundant — they are essential.</span></div></li>
+            <li><div><span class="step-title">Cite without disrupting flow</span><span class="step-note">"Research by Hannah Frith and colleagues" rather than "(Frith et al., 2021)". Full APA citation goes in my script — spoken attribution suffices in the recording.</span></div></li>
+            <li><div><span class="step-title">Read my script aloud before recording</span><span class="step-note">Sentences that look fine on the page often stumble in speech. Every sentence should feel natural to say — rewrite anything that makes me hesitate.</span></div></li>
+          </ol>
+          <div class="tip tip-yellow">Record audio in a small, soft-furnished room (a wardrobe full of clothes is a surprisingly effective recording booth). Avoid rooms with hard floors and bare walls — the echo will dominate.</div>
+        </div>
+      </div>
+
+      <!-- DIGITAL PORTFOLIO / WEBSITE -->
+      <div class="fcard" data-degrees="ma dip phd">
+        <div class="fcard-top">
+          <div class="fcard-label label-digital">Digital format — web</div>
+          <div class="fcard-title">Digital Portfolio or Scholarly Website</div>
+          <div class="fcard-desc">A curated collection of work, reflection, and evidence presented through a digital platform. Common in art therapy, counselling, and education programmes — it allows me to demonstrate development over time rather than a single snapshot. The academic challenge is that curation itself is an intellectual act requiring a clear argument about what the evidence shows.</div>
+          <div class="fcard-criteria">
+            <span class="criteria-pill cp-reflection">Reflection</span>
+            <span class="criteria-pill cp-argument">Argument</span>
+            <span class="criteria-pill cp-knowledge">Knowledge</span>
+            <span class="criteria-pill cp-communication">Communication</span>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;">
+            <span class="tag tag-ma">MA</span>
+            <span class="tag tag-dip">Diploma</span>
+            <span class="tag tag-phd">PhD</span>
+            <span style="font-size:11.5px;color:var(--ink-soft);margin-left:auto;align-self:center;">Ongoing curation + written introductory statement</span>
+          </div>
+        </div>
+        <div class="fcard-tabs">
+          <button class="ftab active" onclick="switchTab(this, 'web-struct')">Structure</button>
+          <button class="ftab"        onclick="switchTab(this, 'web-currate')">Curation principles</button>
+        </div>
+
+        <div id="web-struct" class="ftab-panel active">
+          <ol class="steps">
+            <li><div><span class="step-title">Introductory statement (500–800 words)</span><span class="step-note">My argument about what this portfolio demonstrates. Not "here is my work" — but "this portfolio shows the development of my thinking about X, as evidenced by Y."</span></div></li>
+            <li><div><span class="step-title">Thematic or chronological sections</span><span class="step-note">Organise by theme (clinical practice / reflective development / theoretical engagement) or chronologically (Year 1 / placement / Year 2). Choose one structure and apply it consistently.</span></div></li>
+            <li><div><span class="step-title">Each artefact has a brief reflective commentary (100–200 words)</span><span class="step-note">Why is this piece included? What does it demonstrate? What does it show about my learning at that point?</span></div></li>
+            <li><div><span class="step-title">Evidence of development</span><span class="step-note">The most compelling portfolios show change — include early work alongside later work and name the difference explicitly.</span></div></li>
+            <li><div><span class="step-title">Concluding reflection</span><span class="step-note">What does the portfolio as a whole demonstrate about my learning? Where am I now, and where am I going?</span></div></li>
+          </ol>
+        </div>
+
+        <div id="web-currate" class="ftab-panel">
+          <ol class="steps">
+            <li><div><span class="step-title">More is not better</span><span class="step-note">A curated portfolio of 8 carefully chosen and well-annotated pieces is stronger than 30 pieces with no commentary. Selection is itself an intellectual act.</span></div></li>
+            <li><div><span class="step-title">Include work that challenged I, not just my best work</span><span class="step-note">Portfolios that only show success are unconvincing. Examiners understand that learning involves difficulty — including a piece that went wrong, with honest reflection, shows maturity.</span></div></li>
+            <li><div><span class="step-title">Ethical permissions for any client material</span><span class="step-note">If any piece involves client work, case material, or placement documentation — verify my institution's permissions requirements before including it, even anonymised.</span></div></li>
+          </ol>
+          <div class="tip tip-pink">Platforms: WordPress, Notion, GitHub Pages, Wix. Check whether my institution requires a private (password-protected) submission or permits a public portfolio — this affects both platform choice and what I can include.</div>
+        </div>
+      </div>
+
+      <!-- ANNOTATED DOCUMENT / CRITICAL COMMENTARY -->
+      <div class="fcard" data-degrees="msc ma phd">
+        <div class="fcard-top">
+          <div class="fcard-label label-digital">Digital format — textual</div>
+          <div class="fcard-title">Annotated Document with Critical Commentary</div>
+          <div class="fcard-desc">A source document (a policy, a clinical guideline, a research paper, a legal text) annotated throughout with critical analysis — then accompanied by a structured commentary that synthesises my critique. Effectively externalises the analytical process that normally happens invisibly inside an essay.</div>
+          <div class="fcard-criteria">
+            <span class="criteria-pill cp-analysis">Critical analysis</span>
+            <span class="criteria-pill cp-knowledge">Knowledge</span>
+            <span class="criteria-pill cp-argument">Argument</span>
+            <span class="criteria-pill cp-research">Research</span>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;">
+            <span class="tag tag-msc">MSc</span>
+            <span class="tag tag-ma">MA</span>
+            <span class="tag tag-phd">PhD</span>
+            <span style="font-size:11.5px;color:var(--ink-soft);margin-left:auto;align-self:center;">Annotated document + 1,000–2,000 word commentary</span>
+          </div>
+        </div>
+        <div class="fcard-tabs">
+          <button class="ftab active" onclick="switchTab(this, 'ann-struct')">Structure</button>
+        </div>
+        <div id="ann-struct" class="ftab-panel active">
+          <ol class="steps">
+            <li><div><span class="step-title">Source selection and rationale (200 words)</span><span class="step-note">Why this document? What makes it significant, contested, or representative of a key debate in my field?</span></div></li>
+            <li><div><span class="step-title">Annotations throughout the document</span><span class="step-note">Margin comments or footnotes at key passages: identifying assumptions, noting what is absent, linking claims to supporting or contradicting literature, questioning the evidence base.</span></div></li>
+            <li><div><span class="step-title">Synthesis commentary (1,000–1,500 words)</span><span class="step-note">What does my annotation reveal about the document as a whole? What are its central limitations? What does it assume? Where does it succeed?</span></div></li>
+            <li><div><span class="step-title">Implications section</span><span class="step-note">What should a practitioner, policymaker, or researcher take from my critique? What would a better version of this document look like?</span></div></li>
+            <li><div><span class="step-title">Reference list</span><span class="step-note">Every source cited in my annotations and commentary — APA 7th</span></div></li>
+          </ol>
+          <div class="tip tip-blue">This format is particularly well-suited to Disability Studies (critiquing policy documents) and Counselling Psychology (critiquing clinical guidelines). It makes my analytical process visible in a way that an essay cannot.</div>
+        </div>
+      </div>
+
+    </div><!-- /digital cards -->
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════════
+       CREATIVE FORMATS
+  ══════════════════════════════════════════════════ -->
+  <div id="creative" class="section-group">
+    <div class="section-heading">
+      <div class="section-icon si-yellow">✨</div>
+      <h2>Creative & narrative formats</h2>
+    </div>
+    <p class="section-desc">These formats are most common in fields where narrative and lived experience are treated as valid epistemological sources — Disability Studies, Counselling Psychology, Art Therapy. The critical error is treating them as easier than conventional academic formats. They are not. They require the same intellectual rigour with an additional layer of craft.</p>
+
+    <div class="cards-grid">
+
+      <!-- CREATIVE-CRITICAL PIECE -->
+      <div class="fcard" data-degrees="msc ma dip">
+        <div class="fcard-top">
+          <div class="fcard-label label-creative">Creative format — hybrid</div>
+          <div class="fcard-title">Creative-Critical Piece with Exegesis</div>
+          <div class="fcard-desc">A piece of creative writing (narrative, poetry, autoethnography, fictional case vignette) that embodies my argument — followed by a critical exegesis that explains how the creative piece works and what theoretical claims it makes. The two parts are assessed together. The creative element is not decorative; it carries part of the intellectual argument.</div>
+          <div class="fcard-criteria">
+            <span class="criteria-pill cp-argument">Argument</span>
+            <span class="criteria-pill cp-reflection">Reflection</span>
+            <span class="criteria-pill cp-knowledge">Knowledge</span>
+            <span class="criteria-pill cp-analysis">Critical analysis</span>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;">
+            <span class="tag tag-msc">MSc</span>
+            <span class="tag tag-ma">MA</span>
+            <span class="tag tag-dip">Diploma</span>
+            <span style="font-size:11.5px;color:var(--ink-soft);margin-left:auto;align-self:center;">Creative piece (500–1,500 words) + exegesis (1,000–2,000 words)</span>
+          </div>
+        </div>
+        <div class="fcard-tabs">
+          <button class="ftab active" onclick="switchTab(this, 'creat-struct')">Structure</button>
+          <button class="ftab"        onclick="switchTab(this, 'creat-exeg')">Exegesis structure</button>
+        </div>
+
+        <div id="creat-struct" class="ftab-panel active">
+          <ol class="steps">
+            <li><div><span class="step-title">Creative piece</span><span class="step-note">Written as its own self-contained work. Should be able to stand alone — but is deepened by the exegesis. The form (poetry, narrative, dialogue, vignette) should be chosen because it uniquely serves the argument.</span></div></li>
+            <li><div><span class="step-title">Exegesis — theoretical framing</span><span class="step-note">What theoretical framework or literature does the creative piece draw on? How does the form itself enact or embody a theoretical claim?</span></div></li>
+            <li><div><span class="step-title">Exegesis — craft decisions</span><span class="step-note">Explain my formal choices: why this voice, this structure, this imagery? Each choice should have a reasoned justification grounded in my argument.</span></div></li>
+            <li><div><span class="step-title">Exegesis — limitations and reflexivity</span><span class="step-note">What does this creative approach allow that conventional academic writing cannot? What does it foreclose or risk? How does my own positionality shape the work?</span></div></li>
+            <li><div><span class="step-title">Reference list</span><span class="step-note">Cite both my theoretical sources and any creative influences I drew on consciously.</span></div></li>
+          </ol>
+          <div class="tip tip-yellow">The exegesis is not a translation of the creative piece into academic language. It is an analytical account of how and why the creative piece was made — and what claims it makes that the creative form allows uniquely.</div>
+        </div>
+
+        <div id="creat-exeg" class="ftab-panel">
+          <ol class="steps">
+            <li><div><span class="step-title">Frame the creative piece theoretically (300–400 words)</span><span class="step-note">What body of literature does this piece sit within? Autoethnography? Narrative inquiry? Poetic inquiry? Name the tradition and situate myself within it.</span></div></li>
+            <li><div><span class="step-title">Account for my formal choices (400–600 words)</span><span class="step-note">Why this form? Why first person or third? Why fragmented or continuous? Each choice should be defensible in relation to my argument.</span></div></li>
+            <li><div><span class="step-title">Connect to my academic argument explicitly (400–600 words)</span><span class="step-note">What claim does the creative piece make? How does it make that claim in ways that conventional academic writing cannot? Be precise.</span></div></li>
+            <li><div><span class="step-title">Reflexive positioning (200–300 words)</span><span class="step-note">How does my own experience, identity, or positionality relate to the material? This is not optional — it is part of what makes creative-critical work academically honest.</span></div></li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- CASE VIGNETTE ANALYSIS -->
+      <div class="fcard" data-degrees="ma dip phd">
+        <div class="fcard-top">
+          <div class="fcard-label label-creative">Creative-clinical format</div>
+          <div class="fcard-title">Fictional Case Vignette with Clinical Analysis</div>
+          <div class="fcard-desc">A constructed client scenario written to illustrate a clinical concept or dilemma — followed by a structured clinical analysis applying my theoretical framework. Used in Counselling and Clinical Psychology to assess clinical reasoning without requiring real client data. The "fictional" element must be clinically realistic and theoretically purposeful, not imaginative.</div>
+          <div class="fcard-criteria">
+            <span class="criteria-pill cp-knowledge">Knowledge</span>
+            <span class="criteria-pill cp-analysis">Critical analysis</span>
+            <span class="criteria-pill cp-reflection">Reflection</span>
+            <span class="criteria-pill cp-argument">Argument</span>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;">
+            <span class="tag tag-ma">MA</span>
+            <span class="tag tag-dip">Diploma</span>
+            <span class="tag tag-phd">PhD</span>
+            <span style="font-size:11.5px;color:var(--ink-soft);margin-left:auto;align-self:center;">Vignette (300–500 words) + analysis (1,500–3,000 words)</span>
+          </div>
+        </div>
+        <div class="fcard-tabs">
+          <button class="ftab active" onclick="switchTab(this, 'vig-struct')">Structure</button>
+        </div>
+        <div id="vig-struct" class="ftab-panel active">
+          <ol class="steps">
+            <li><div><span class="step-title">The vignette — construct the client scenario</span><span class="step-note">Presenting concern · brief developmental and social history · what brings the client now · relevant cultural and contextual factors. Written in narrative form — should feel clinically plausible.</span></div></li>
+            <li><div><span class="step-title">Theoretical formulation</span><span class="step-note">Apply my chosen framework to the case. How does this theory explain the presentation? What does it highlight and what does it miss?</span></div></li>
+            <li><div><span class="step-title">Treatment approach and rationale</span><span class="step-note">What intervention would I propose? Why this approach for this client? What does the evidence say?</span></div></li>
+            <li><div><span class="step-title">Ethical and relational considerations</span><span class="step-note">What ethical issues does this case raise? Power dynamics, cultural considerations, boundaries, risk.</span></div></li>
+            <li><div><span class="step-title">Reflexive account</span><span class="step-note">What does this case evoke in I? How might my own background affect the therapeutic relationship? What would I bring to supervision?</span></div></li>
+          </ol>
+          <div class="pitfall">The vignette must be clinically realistic — not a vehicle to showcase theory. Write the client first, then apply the framework. A vignette that exists only to illustrate a concept reads as unconvincing and is marked as such.</div>
+        </div>
+      </div>
+
+      <!-- AUTOETHNOGRAPHIC ESSAY -->
+      <div class="fcard" data-degrees="msc ma dip phd">
+        <div class="fcard-top">
+          <div class="fcard-label label-creative">Creative format — autoethnographic</div>
+          <div class="fcard-title">Autoethnographic Essay</div>
+          <div class="fcard-desc">A rigorous form of qualitative inquiry that uses personal experience as data to illuminate cultural, social, or theoretical phenomena. Not memoir — it is systematic, theoretically grounded, and reflexive. Particularly relevant in Disability Studies and Counselling Psychology where researcher positionality is central to the methodology.</div>
+          <div class="fcard-criteria">
+            <span class="criteria-pill cp-reflection">Reflection</span>
+            <span class="criteria-pill cp-analysis">Critical analysis</span>
+            <span class="criteria-pill cp-knowledge">Knowledge</span>
+            <span class="criteria-pill cp-argument">Argument</span>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;">
+            <span class="tag tag-msc">MSc</span>
+            <span class="tag tag-ma">MA</span>
+            <span class="tag tag-dip">Diploma</span>
+            <span class="tag tag-phd">PhD</span>
+            <span style="font-size:11.5px;color:var(--ink-soft);margin-left:auto;align-self:center;">2,000–5,000 words</span>
+          </div>
+        </div>
+        <div class="fcard-tabs">
+          <button class="ftab active" onclick="switchTab(this, 'auto-struct')">Structure</button>
+          <button class="ftab"        onclick="switchTab(this, 'auto-rigor')">Academic rigour</button>
+        </div>
+
+        <div id="auto-struct" class="ftab-panel active">
+          <ol class="steps">
+            <li><div><span class="step-title">Theoretical positioning</span><span class="step-note">Name the autoethnographic tradition I am working within (evocative, analytical, critical). Justify why this methodology serves my question.</span></div></li>
+            <li><div><span class="step-title">Personal narrative</span><span class="step-note">Written in first person, past or present tense. Specific, sensory, scene-based — not abstract summary. This is the empirical material.</span></div></li>
+            <li><div><span class="step-title">Analytical moves</span><span class="step-note">Interrupt the narrative with analytical passages that connect my experience to theoretical concepts, broader social patterns, or existing research.</span></div></li>
+            <li><div><span class="step-title">Reflexive examination</span><span class="step-note">What are the limits of using my own experience as data? Who might read this differently? What do I risk in writing it?</span></div></li>
+            <li><div><span class="step-title">Contribution statement</span><span class="step-note">What does this autoethnographic account illuminate about the social phenomenon I am examining — beyond my individual story?</span></div></li>
+          </ol>
+        </div>
+
+        <div id="auto-rigor" class="ftab-panel">
+          <ol class="steps">
+            <li><div><span class="step-title">Substantive contribution, not personal expression</span><span class="step-note">Every narrative passage must be serving an analytical purpose. "This happened to me" is not sufficient — "this happened to me and it illuminates X social phenomenon in the following way" is the standard.</span></div></li>
+            <li><div><span class="step-title">Literature throughout, not only in theory sections</span><span class="step-note">Cite relevant research and theory within the narrative passages where they illuminate what I am describing — not only in separate analytical sections.</span></div></li>
+            <li><div><span class="step-title">Name my methodology</span><span class="step-note">Which scholars theorise the form of autoethnography I am using? (Ellis, Adams, Bochner; Holman Jones; Chang) — my methodology section should be as rigorous as in a conventional qualitative study.</span></div></li>
+          </ol>
+          <div class="tip tip-teal">The key question an examiner asks of any autoethnographic piece: "Does this illuminate something beyond the individual?" If the answer is yes and the connection is made explicit — the piece is academically sound.</div>
+        </div>
+      </div>
+
+    </div><!-- /creative cards -->
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════════
+       COLLABORATIVE FORMATS
+  ══════════════════════════════════════════════════ -->
+  <div id="collab" class="section-group">
+    <div class="section-heading">
+      <div class="section-icon si-teal">🤝</div>
+      <h2>Group & collaborative formats</h2>
+    </div>
+    <p class="section-desc">Group assessments are less common at postgraduate level but appear in some programmes — particularly where professional collaboration is a core competency. Individual contribution is usually assessed alongside the group product.</p>
+
+    <div class="cards-grid">
+
+      <!-- GROUP PRESENTATION -->
+      <div class="fcard" data-degrees="msc ma dip">
+        <div class="fcard-top">
+          <div class="fcard-label label-collab">Collaborative format</div>
+          <div class="fcard-title">Group Presentation with Individual Contribution Statement</div>
+          <div class="fcard-desc">A collaborative oral presentation on a shared topic, where each member delivers a distinct section — assessed both on the group product and individual contribution. The intellectual challenge is coherence: each individual section must be analytically sound and connect to the others to form a unified argument, not just adjacent independent talks.</div>
+          <div class="fcard-criteria">
+            <span class="criteria-pill cp-argument">Argument</span>
+            <span class="criteria-pill cp-knowledge">Knowledge</span>
+            <span class="criteria-pill cp-analysis">Critical analysis</span>
+            <span class="criteria-pill cp-communication">Communication</span>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;">
+            <span class="tag tag-msc">MSc</span>
+            <span class="tag tag-ma">MA</span>
+            <span class="tag tag-dip">Diploma</span>
+            <span style="font-size:11.5px;color:var(--ink-soft);margin-left:auto;align-self:center;">20–40 min group + individual 400–600 word statement</span>
+          </div>
+        </div>
+        <div class="fcard-tabs">
+          <button class="ftab active" onclick="switchTab(this, 'grp-struct')">Structure</button>
+          <button class="ftab"        onclick="switchTab(this, 'grp-indiv')">Individual statement</button>
+        </div>
+
+        <div id="grp-struct" class="ftab-panel active">
+          <ol class="steps">
+            <li><div><span class="step-title">Shared opening — one person introduces the group's thesis</span><span class="step-note">Establish the overall argument the group will make. Not just a topic — a claim. Each individual section should build toward this.</span></div></li>
+            <li><div><span class="step-title">Individual sections (5–10 min each)</span><span class="step-note">Each section = one coherent analytical argument. Open with my section's claim, build with evidence and analysis, conclude by connecting back to the group's thesis.</span></div></li>
+            <li><div><span class="step-title">Explicit transitions between speakers</span><span class="step-note">"Aiko has shown that X — my section builds on that by examining Y." Transitions demonstrate integration, not just handoff.</span></div></li>
+            <li><div><span class="step-title">Shared conclusion — one person synthesises</span><span class="step-note">Draw together the threads from each section. Restate the group's thesis and what I have collectively demonstrated.</span></div></li>
+            <li><div><span class="step-title">Q&amp;A — all members respond</span><span class="step-note">Any member may be asked any question — I am all responsible for understanding the whole presentation, not just my section.</span></div></li>
+          </ol>
+          <div class="pitfall">The most common failure is five disconnected talks sharing a title slide. If each section could be delivered in isolation without any connection to the others, the group has not done the intellectual work of integration.</div>
+        </div>
+
+        <div id="grp-indiv" class="ftab-panel">
+          <ol class="steps">
+            <li><div><span class="step-title">What I contributed (specific)</span><span class="step-note">Not "I researched my section" — but specifically: the argument I developed, the literature I brought in, the editorial decisions I made about the group's framing.</span></div></li>
+            <li><div><span class="step-title">How my contribution connected to the group's thesis</span><span class="step-note">Demonstrate that I understand how my section serves the larger argument — not just that I completed my part.</span></div></li>
+            <li><div><span class="step-title">Critical reflection on the collaborative process</span><span class="step-note">What was intellectually productive about working with others on this? What would I do differently? This is not a complaint section — it is a reflective one.</span></div></li>
+          </ol>
+          <div class="tip tip-teal">Keep a brief log during the preparation process — dates of meetings, what was decided, what I drafted. This protects I if the group's contribution is uneven and I need to evidence my own work.</div>
+        </div>
+      </div>
+
+      <!-- SYMPOSIUM / STRUCTURED DEBATE -->
+      <div class="fcard" data-degrees="msc ma phd">
+        <div class="fcard-top">
+          <div class="fcard-label label-collab">Collaborative format — debate</div>
+          <div class="fcard-title">Academic Symposium / Structured Debate</div>
+          <div class="fcard-desc">A moderated academic discussion in which participants present and defend positions on a contested question. I may argue a position I do not personally hold — the assessment is on the quality of my argumentation, use of evidence, and ability to engage with opposing positions, not on my conclusion.</div>
+          <div class="fcard-criteria">
+            <span class="criteria-pill cp-argument">Argument</span>
+            <span class="criteria-pill cp-analysis">Critical analysis</span>
+            <span class="criteria-pill cp-knowledge">Knowledge</span>
+            <span class="criteria-pill cp-communication">Communication</span>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;">
+            <span class="tag tag-msc">MSc</span>
+            <span class="tag tag-ma">MA</span>
+            <span class="tag tag-phd">PhD</span>
+            <span style="font-size:11.5px;color:var(--ink-soft);margin-left:auto;align-self:center;">Usually 60–90 min · followed by individual reflection (500 words)</span>
+          </div>
+        </div>
+        <div class="fcard-tabs">
+          <button class="ftab active" onclick="switchTab(this, 'deb-struct')">Preparation structure</button>
+        </div>
+        <div id="deb-struct" class="ftab-panel active">
+          <ol class="steps">
+            <li><div><span class="step-title">Know my position deeply</span><span class="step-note">Research the strongest arguments for my assigned position — including sources I might personally disagree with. The quality of my argument depends on the quality of my preparation, not my prior views.</span></div></li>
+            <li><div><span class="step-title">Anticipate and prepare for counter-arguments</span><span class="step-note">Identify the 3 strongest objections to my position and prepare responses to each. In debate, I will face these in real time.</span></div></li>
+            <li><div><span class="step-title">Opening statement (3–5 min)</span><span class="step-note">State my position · my key argument · the evidence base I will draw on · why opposing positions are insufficient</span></div></li>
+            <li><div><span class="step-title">Rebuttal (live)</span><span class="step-note">Listen carefully to opposing arguments. Identify the specific claim I am rebutting — "you argued X, but Y evidence suggests otherwise" is stronger than a general counter-point.</span></div></li>
+            <li><div><span class="step-title">Individual reflection (post-debate)</span><span class="step-note">What did I learn from defending a position, regardless of my personal views? What arguments surprised I? What does this reveal about the complexity of the question?</span></div></li>
+          </ol>
+          <div class="tip tip-blue">Being assigned a position I disagree with is academically valuable — it forces I to understand an opposing view at depth. The best debaters can argue both sides convincingly because they understand both sides genuinely.</div>
+        </div>
+      </div>
+
+    </div><!-- /collab cards -->
+  </div>
+
+</main>
+</div><!-- /shell-body -->
+</div><!-- /shell -->
+
+<script>
+  function switchTab(btn, panelId) {
+    const card = btn.closest('.fcard');
+    card.querySelectorAll('.ftab').forEach(t => t.classList.remove('active'));
+    card.querySelectorAll('.ftab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(panelId).classList.add('active');
+  }
+
+  function navTo(id) {
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+    event.currentTarget.classList.add('active');
+  }
+
+  function filterDeg(degree, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.fcard').forEach(card => {
+      if (degree === 'all') { card.classList.remove('hidden'); return; }
+      const d = card.dataset.degrees || '';
+      card.classList.toggle('hidden', !d.includes(degree));
+    });
+    document.querySelectorAll('.section-group').forEach(sec => {
+      const any = [...sec.querySelectorAll('.fcard')].some(c => !c.classList.contains('hidden'));
+      sec.classList.toggle('hidden', !any);
+    });
+  }
+
+  // Sidebar active on scroll
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const id = e.target.id;
+        document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+        const link = document.querySelector(`.sidebar-link[onclick="navTo('${id}')"]`);
+        if (link) link.classList.add('active');
+      }
+    });
+  }, { threshold: 0.25 });
+
+  document.querySelectorAll('.section-group[id]').forEach(el => obs.observe(el));
+</script>
+
+</body>
+</html>

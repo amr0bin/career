@@ -22,11 +22,17 @@ Phases close on conditions, not dates. The years are targets.
 | [`arc/`](arc/) | The one arc: the ceiling, the floor, each stage, the thesis line, the threads that run through all three | [`the-arc.md`](arc/the-arc.md), [`the-thesis-line.md`](arc/the-thesis-line.md), [`the-global-line.md`](arc/the-global-line.md) |
 | [`philosophy/`](philosophy/) | How I plan and work: my method (requirements to impact), the impact lens, the Second Brain, the Ceiling and Floor Protocol, the advisory council, house rules, ledgers, excellence, living as my future self | [`my-method.md`](philosophy/my-method.md) |
 | [`options/`](options/) | Routes compared, routes set aside, bottlenecks with their exits, forks still open | [`open-forks.md`](options/open-forks.md) |
+| [`panel/`](panel/) | **Where I stand today**: the instrument panel (stages and gates, requisites, courses, quarterly parcels, calendar, backups, hours). Open `panel/index.html` | [`panel/README.md`](panel/README.md) |
+| [`structures/`](structures/) | **How to do the work**: 40 writing guides (thesis, papers, proposals, ethics, clinical, advisor, teaching, registration) with credible examples, plus the scholar-practitioner experiences page | [`structures/README.md`](structures/README.md) |
 | [`knowledge/`](knowledge/) | The bodies of knowledge, the research line, how to write a thesis, the open curriculum, global mental health | [`how-to-write-a-thesis.md`](knowledge/how-to-write-a-thesis.md), [`research-designs.md`](knowledge/research-designs.md) |
 | [`facts/`](facts/) | Verified figures and requirements, with sources and as-of dates; what still needs verifying | [`requirements-by-gate.md`](facts/requirements-by-gate.md) |
 | [`people/`](people/) | Public research interests of relevant faculty; the roles of support people (names live in Notion) | [`faculty-map.md`](people/faculty-map.md) |
 | [`decisions/`](decisions/) | Dated records of decisions made and why | [`2026-10-31-arc-decisions.md`](decisions/2026-10-31-arc-decisions.md) |
 | [`archive/`](archive/) | The pages this repo held before consolidation, kept as history | [`README.md`](archive/README.md) |
+
+## Where this sits in my life
+
+Three systems run side by side, on purpose kept separate: this repo with the Notion OS (career and education); Studio Day (`amr0bin/studio-day`, the art practice); and my private personal systems, which never appear here. Planning across them happens in each one's weekly rhythm, not by merging them.
 
 ## Which file governs
 
@@ -44,4 +50,4 @@ Phases close on conditions, not dates. The years are targets.
 
 ## Folded in
 
-Consolidated on 31 Oct 2026 from `career`, `access-lab`, `education-path` and `therapeutic-practice`. Still to fold in once readable: `accessibility-advisor-eligibility`, `disability-studies`, `study-structures`, `lxd-systems`, `scholar-practitioner-systems`, `focus`.
+Consolidated on 31 Oct 2026 from `career`, `access-lab`, `education-path` and `therapeutic-practice`; the panel (`education-path`) and `study-structures` were folded in on 2 Nov 2026. This is the one active repo. The older repos stay unchanged as reference for a few months, to pull from deliberately, then get archived. Still to fold in once readable: `accessibility-advisor-eligibility`, `disability-studies`, `study-structures`, `lxd-systems`, `scholar-practitioner-systems`, `focus`.

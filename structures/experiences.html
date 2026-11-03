@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scholar-Practitioner Experiences</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#303e44;--slate:#475f6a;--paper:#fff;--mist:#f5f7f8;--line:#dde4e7;--soft:#5f6f78;--wash:rgba(71,95,106,.08);--font:'Asap',system-ui,-apple-system,sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#e6ecee;--slate:#9fb8c3;--paper:#171c1f;--mist:#20272b;--line:#34404a;--soft:#a9b6bd;--wash:rgba(159,184,195,.1)}}
+:root[data-theme="dark"]{--ink:#e6ecee;--slate:#9fb8c3;--paper:#171c1f;--mist:#20272b;--line:#34404a;--soft:#a9b6bd;--wash:rgba(159,184,195,.1)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font);background:var(--paper);color:var(--ink);line-height:1.6}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+header{border-bottom:1px solid var(--line);padding:48px 0 32px}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--slate);margin-bottom:12px}
+h1{font-size:clamp(28px,5vw,42px);font-weight:500;line-height:1.15;margin-bottom:12px}
+.lede{color:var(--soft);max-width:680px}
+.path{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;margin:24px 0 0}
+.step{border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:var(--mist)}
+.step b{display:block;font-size:14px}.step span{font-size:13px;color:var(--soft)}
+.filters{display:flex;flex-wrap:wrap;gap:6px;padding:20px 0;position:static;background:var(--paper);z-index:2;border-bottom:1px solid var(--line)}
+.filters button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:999px;padding:6px 12px;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--slate);color:var(--paper);border-color:var(--slate)}
+.filters button:focus-visible,summary:focus-visible{outline:2px solid var(--slate);outline-offset:2px}
+section{padding:28px 0 8px}
+h2{font-size:20px;font-weight:600;margin-bottom:4px}
+.sub{color:var(--soft);font-size:14px;margin-bottom:16px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+details{border:1px solid var(--line);border-radius:12px;background:var(--paper)}
+details[open]{background:var(--mist)}
+summary{list-style:none;cursor:pointer;padding:14px 16px}
+summary::-webkit-details-marker{display:none}
+.t{font-weight:600;font-size:16px}
+.tags{display:flex;flex-wrap:wrap;gap:4px;margin:6px 0}
+.tag{font-size:11px;font-weight:600;letter-spacing:.04em;padding:2px 8px;border-radius:999px;background:var(--wash);color:var(--slate)}
+.tag.new{background:var(--slate);color:var(--paper)}
+.d{font-size:14px;color:var(--soft)}
+.body{padding:0 16px 16px;font-size:14px}
+.body h3{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);margin:14px 0 6px}
+.body ol,.body ul{padding-left:20px}.body li{margin:3px 0}
+.arc{border-left:3px solid var(--slate);padding:8px 12px;background:var(--wash);border-radius:0 8px 8px 0;margin-top:12px}
+.tip{font-style:italic;margin-top:10px;color:var(--ink)}
+footer{border-top:1px solid var(--line);margin-top:40px;padding:24px 0 48px;color:var(--soft);font-size:13px}
+a{color:var(--slate)}
+@media (min-width:720px){.filters{position:sticky;top:0}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <div class="eyebrow">Career repo · structures</div>
+  <h1>Scholar-practitioner experiences</h1>
+  <p class="lede">The experiences that build a scholar-practitioner beyond coursework, tailored to my arc. Each card gives the steps, what to know, where it sits in my plan, and one practitioner tip. What to <em>write</em> for each lives in the structure guides beside this page; dates and statuses live in Notion.</p>
+  <div class="path" aria-label="My pathway">
+    <div class="step"><b>Now → 2027 · Ground</b><span>CPACC, crisis line, advisor role, first paper, corpus study</span></div>
+    <div class="step"><b>2027 → 2029 · Leeds MSc</b><span>Disability Studies, Rights and Inclusion (online); Applied Project = MA pilot</span></div>
+    <div class="step"><b>2031 → ~2034 · MA</b><span>Counselling Psychology, thesis route (UBC or SFU); practicum; RCC</span></div>
+    <div class="step"><b>~2034 → 35 · VATI</b><span>Advanced Diploma in Art Therapy, after the MA</span></div>
+    <div class="step"><b>~2035 → 2040 · PhD</b><span>UBC Counselling Psychology; internship; psychologist registration</span></div>
+  </div>
+</div></header>
+<div class="wrap">
+  <div class="filters" role="group" aria-label="Filter experiences" id="filters"></div>
+  <div id="list"></div>
+  <footer>Facts checked 2 November 2026. Award values: CGRS M $27,000 for 12 months and CGRS D $40,000 a year for three years, both from 2025 (University of Alberta FGSR pages). Anything marked <b>verify</b> is in the Notion Verify Queue. Governing order: <code>decisions/</code> &gt; <code>facts/</code> &gt; <code>arc/</code> &gt; this page.</footer>
+</div>
+<script>
+const STAGES={msc:"MSc",ma:"MA",dip:"Diploma",phd:"PhD",now:"Now"};
+const CATS=[
+ ["funding","💰 Funding","Scholarships, grants and awards"],
+ ["research","🔬 Research","RA roles, ethics, review, community methods"],
+ ["publication","📄 Publication","Co-authorship, review, translation, policy"],
+ ["community","🤝 Community & profession","Associations, conferences, mentorship, public work"],
+ ["practice","🩺 Practice & clinical","Helping experience, placement, reflection"]];
+const X=[
+{c:"funding",t:"Scholarship and bursary applications",s:["msc","ma","dip","phd"],d:"Smaller, field-specific awards go undersubscribed, including awards for mature and returning students.",
+ steps:["Write an eligibility profile: field, province, institution, career stage, any identity-based eligibility you choose to use.","Search beyond the institution: provincial programmes, CCPA, CATA, CDSA, foundations, disability organisations.","Keep the tracker in the Notion Opportunities database: amount, deadline, requirements, word limit.","Keep a 500-word core statement and adapt the framing, not the narrative.","Give referees six weeks, your CV and a draft."],
+ know:["Leeds School scholarships and Snowdon Trust grants for disabled students apply to the MSc (verify each year).","BC Graduate Scholarship: allocated through the university.","Association awards often weigh contribution to the field over grades.","House rule 4: statements for applications are written without AI."],
+ arc:"Leeds 2027 (Leeds and Snowdon); MA 2031 (BCGS, departmental awards); PhD 2035 (UBC flagship nominations).",
+ tip:"Apply in the first term even when you feel underqualified: writing about your scholarly identity is a skill you will use for the rest of your career."},
+{c:"funding",t:"Tri-agency awards and grant writing",s:["ma","phd"],d:"Graduate awards are the training ground for the grants that fund an independent research programme.",
+ steps:["Read the full programme guide and its published selection criteria, not a summary.","Read two or three funded applications; graduate offices often hold examples.","Write the research proposal first, then fit it to the funder's sections in their order.","Get the supervisor's review three weeks before the internal deadline (earlier than the agency's).","Ask for feedback whatever the outcome and revise for the next cycle."],
+ know:["CGRS M (replaced CGS-M in 2025): $27,000 for 12 months, not renewable.","CGRS D (replaced CGS D and SSHRC Doctoral Fellowships in 2025): $40,000 a year for three years.","Mitacs internships pair research with a partner organisation.","Small internal research grants and association grants exist; check each year."],
+ arc:"CGRS M goes in with the 1 Dec 2030 application: the draft MA thesis proposal is the CGRS M proposal. CGRS D with the PhD application (~Dec 2034). Guide: GRANT_APPLICATION.md.",
+ tip:"Reviewers most often mark down feasibility. Make the timeline and the pilot evidence more specific than feels necessary."},
+{c:"funding",t:"Student association leadership",s:["msc","ma","phd"],d:"Governance experience, policy literacy and relationships with administrators, plus a voice on policies that affect disabled and returning students.",
+ steps:["Attend your graduate student association in the first term (at Leeds, the course-rep and distance-learner reps; at UBC, the Graduate Student Society).","Join a working group (equity, accessibility, wellbeing) before running for a role.","Sit where policy is made: faculty council, curriculum or accessibility committees.","Record it under Service on the CV."],
+ know:["Representation on admissions or ethics committees shows how applications are read.","Accessible BC Act committees are a parallel seat outside the university."],
+ arc:"MA and PhD at UBC mostly; at Leeds, a course-rep role fits the online format.",
+ tip:"Read the documents: the calendar, the policy manual, the collective agreement. The person who has read them becomes indispensable."},
+{c:"research",t:"Research assistant positions",s:["now","ma","phd"],d:"The behind-the-scenes infrastructure of research, and a referee who has watched you work.",
+ steps:["Pick three to five faculty whose work touches disability, accommodation or depression; read their recent papers.","Email a targeted letter: one specific paper, the connection to your question, CV attached.","Ask graduate coordinators about internal postings.","Bound any unpaid role in scope and time, in writing.","Log contributions for the CV, and ask about authorship norms at the start."],
+ know:["The plan is two-plus years in a UBC or SFU lab before the 2030 application.","Patient-partner roles (BC SUPPORT Unit) are a named route onto research teams."],
+ arc:"Bridge years 2029–30 especially; the lab PI is one of the three referees.",
+ tip:"A good RA relationship often becomes co-authorship. Raise authorship at the start, not at submission."},
+{c:"research",t:"Research ethics: complete, observe, then apply",s:["now","msc","ma","phd"],d:"Knowing how a research ethics board reads an application before you submit your own.",
+ steps:["Complete the free TCPS 2 CORE-2022 course now.","Ask the REB coordinator whether students can observe a meeting; attend two or three.","Read approved applications in your field (supervisors often share).","Write your own application as a scholarly document; reuse it as the methods chapter."],
+ know:["TCPS 2 Chapter 9 covers research involving First Nations, Inuit and Métis peoples; disability-related protections run through Chapters 3–5 (consent, fairness and equity, privacy). Read them in full rather than relying on summaries.","Counselling research needs explicit handling of dual relationships: never recruit from your own workplace (house rule 3).","Leeds ethics hosts the Applied Project; UBC BREB hosts the MA."],
+ arc:"Leeds Year 2 pilot; MA thesis. Guide: RESEARCH_ETHICS_APPLICATION.md.",
+ tip:"Reading ten approved applications is worth more than any textbook chapter on research ethics."},
+{c:"research",t:"Systematic or scoping review",s:["now","ma","phd"],d:"Database searching, screening, extraction and synthesis: a high-value, citable publication.",
+ steps:["Register your protocol on OSF (PROSPERO does not accept scoping reviews).","Book a subject librarian before running the search.","Screen in Rayyan or Covidence, with a second screener on 10–20% of records.","Keep the extraction sheet meticulously; report to PRISMA-ScR."],
+ know:["Your own scoping review runs independently: protocol now, preprint before 1 Dec 2030.","Joining someone else's review as second screener is the fastest way to learn the method."],
+ arc:"Phase 1 protocol; one to two stages a year; preprint 2030. Guide: SYSTEMATIC_REVIEW.md.",
+ tip:"A registered protocol puts the work in the scholarly record before the review is finished."},
+{c:"research",t:"Being a research participant",s:["msc","ma","dip","phd"],d:"Seeing research from the other side, which improves your own consent forms and information sheets.",
+ steps:["Watch for calls in newsletters, participant pools and disability organisations.","Afterwards, note in the private journal what you would change as the researcher."],
+ know:["Personal art-making is part of art therapy training.","Your lived experience is legitimate knowledge in disability studies; how and where you disclose is always your choice."],
+ arc:"Any time; most useful just before writing the Leeds ethics application.",
+ tip:"Keep notes on how the consent process felt. They become the best section of your own information sheet."},
+{c:"research",t:"Community-based and emancipatory research",s:["msc","ma","dip","phd"],d:"Research with a community partner as collaborator, not as a site for data collection.",
+ steps:["Approach organisations asking which questions matter to them.","Offer something concrete early: a synthesis, a workshop, practical help.","Co-design questions; pay and credit disabled co-researchers.","Budget two to three times longer than campus research."],
+ know:["Recruitment for the pilot runs through a disabled people's organisation or NEADS, not your workplace.","BC partners to approach: Disability Alliance BC, Inclusion BC, Neil Squire Society; CMHA BC for mental health."],
+ arc:"The DPO partner becomes a standing advisory group from the Leeds pilot through the PhD (arc/the-thesis-line.md).",
+ tip:"The relationship with the community partner is the research. Document relationship-building as carefully as data collection."},
+{c:"research",t:"Independent preregistered research",s:["now"],n:1,d:"Doing real, credible research before any institution hosts you.",
+ steps:["Choose designs that need no ethics review: conceptual papers, document analysis, reviews (TCPS 2 Article 2.2 for public information).","Preregister on OSF and keep a deviations log.","Pay a second coder and offer co-authorship.","Post preprints; deposit data with licences and DOIs."],
+ know:["The moment interviews are added, the study needs an institution."],
+ arc:"Now: four-literature paper (CJDS), corpus study stages 1–4. Guides: PREREGISTRATION_AND_OPEN_SCIENCE.md, DOCUMENT_ANALYSIS_AND_CODEBOOK.md.",
+ tip:"Preregistration is the deadline and the credibility an institution would otherwise supply."},
+{c:"research",t:"Teaching assistantships and guest lectures",s:["ma","phd"],d:"Teaching training, a faculty relationship, and the first entries in a teaching dossier.",
+ steps:["Apply through the department's TA allocation before term.","Meet the instructor first and ask what they want beyond marking.","Ask to run one tutorial or a 20-minute guest segment.","Collect a peer observation and a short student survey."],
+ know:["UBC CTLT offers graduate teaching programmes.","Your learning-design record over the past decade is already dossier evidence."],
+ arc:"MA and PhD; sessional then adjunct teaching in Optionality. Guide: COURSE_DESIGN_AND_TEACHING_DOSSIER.md.",
+ tip:"Five minutes introducing your own research to undergraduates is how you practise explaining it and how you find future RAs."},
+{c:"publication",t:"Co-authorship",s:["now","msc","ma","phd"],d:"Publications with clear contribution and credit.",
+ steps:["Join projects where you make an intellectual contribution, not only data entry.","Agree authorship early using the ICMJE criteria; confirm it in an email.","Agree deliverables and timeline in writing."],
+ know:["Journals in your lane: CJDS, JPED, Disability & Society, Disability Studies Quarterly; Canadian Journal of Counselling and Psychotherapy; Canadian Journal of Art Therapy."],
+ arc:"Second coder and co-researcher as co-authors; the Leeds supervisor on the corpus paper; the MA literature chapter as a standalone review.",
+ tip:"Ask about turning the thesis literature review into a paper before you graduate; the momentum goes quickly afterwards."},
+{c:"publication",t:"Peer reviewing",s:["now","ma","phd"],d:"Sharper critical reading and relationships with editors.",
+ steps:["After your first publication, write to an editor offering to review in your area.","Use a fixed structure: contribution, methods, clarity, literature.","Return reviews on time (two to four weeks)."],
+ know:["Web of Science (formerly Publons) records review activity.","Declare conflicts and decline when needed (COPE guidelines)."],
+ arc:"Offer to review for CJDS once the framework paper is published. Guide: JOURNAL_SUBMISSION_PEER_REVIEW.md.",
+ tip:"Read the manuscript as its author would: ask what would strengthen it."},
+{c:"publication",t:"Plain-language and knowledge translation writing",s:["msc","ma","phd"],d:"Translating research for students, advisors and policy owners.",
+ steps:["Name the audience first.","Lead with the implication for the reader's world.","Aim for 300–500 words at a Grade 8 reading level; publish in an accessible format."],
+ know:["The Conversation Canada requires an academic affiliation, so it opens with Leeds.","SSHRC asks for a plain-language summary; CIHR scores KT plans."],
+ arc:"Every Leeds essay becomes a public piece within a month. Guides: KNOWLEDGE_TRANSLATION_PLAN.md, PUBLIC_SCHOLARSHIP.md.",
+ tip:"Write a 400-word plain version of a paper you admire and send it to its author. It is how you introduce yourself."},
+{c:"publication",t:"Policy submissions and consultation responses",s:["now","msc","ma","phd"],d:"Research-informed responses to calls for public input.",
+ steps:["Watch for consultations from the CHCPBC, BC ministries, Accessibility Standards Canada and universities reviewing accommodation policy.","Write a short, cited submission; co-author where possible.","Keep a copy and list it under Policy Contributions."],
+ know:["CHCPBC is regulating psychotherapy from 29 Nov 2027; its standards consultations are directly relevant.","Accessible BC Act organisations must consult on their accessibility plans."],
+ arc:"Now and through Leeds (Realising Disability Equality Through Policy). Guide: POLICY_BRIEF.md.",
+ tip:"A submission that cites your own work, even preprinted, shows impact before publication."},
+{c:"community",t:"Conference presentations",s:["now","msc","ma","dip","phd"],d:"Entering the conversation in person; a poster counts.",
+ steps:["Pick two or three conferences with emerging-scholar tracks.","Submit an abstract from a paper or a practice insight.","Rehearse answers to three to five hard questions; follow up with the people you meet."],
+ know:["CACUSS 2027 at UBC (6–9 June) and AHEAD 2027 (12–16 July) are in the Phase 1 plan.","Also CDSA, CCPA and the CATA conference; ask about student travel grants."],
+ arc:"Corpus study abstract (CDSA or AHEAD); pilot patterns; MA findings to CCPA. Guide: CONFERENCE_ABSTRACT_PRESENTATION.md.",
+ tip:"A poster gives you the networking, the Q&A practice and the CV line at lower stakes than a talk."},
+{c:"community",t:"Professional associations and committees",s:["now","msc","ma","dip","phd"],d:"The infrastructure of a field; student committees build a national network fast.",
+ steps:["Join the student or early-career section of your main association.","Volunteer for visible work: newsletter, events, a working group.","After a year or two, stand for a representative role."],
+ know:["CACUSS and AHEAD (accessibility work, now); CDSA (Leeds years); BCACC and CCPA (MA); CATA (VATI); CPA (PhD).","Check current student rates on each site; they change."],
+ arc:"Stage 1: CACUSS and AHEAD; Stage 2: BCACC and CCPA; Stage 3: CPA.",
+ tip:"The people on student committees become the people on hiring panels, editorial boards and grant committees."},
+{c:"community",t:"Mentorship, given and received",s:["now","msc","ma","dip","phd"],d:"Mentors outside the supervisory relationship, and mentoring others in turn.",
+ steps:["Name two or three people whose path you admire.","Ask for a bounded 30-minute conversation on one topic.","Prepare specific questions and record what you learn.","Mentor newer students once established."],
+ know:["Phase 1 plan: one mentor inside a BC accessibility unit, with quarterly check-ins.","A certified peer support mentor supervises your peer hours (Phase 2)."],
+ arc:"The nominators file starts with five named people who get the record twice a year.",
+ tip:"Ask every mentor who else you should talk to. Two or three layers of that question reach most of the people who matter."},
+{c:"community",t:"Public writing and media",s:["now","msc","ma","dip","phd"],d:"Thinking in public and building an audience before formal publication.",
+ steps:["Choose the format that suits you: writing first (Substack, andrearobin.com).","Guest on existing outlets before starting your own.","Work with the university media office once affiliated.","Log every piece under Knowledge Mobilization."],
+ know:["Pre-licensure words only: facilitator, not counsellor or therapist (house rule 1).","Plans stay private; products go public (house rule 6)."],
+ arc:"One substantial piece a month (Stage 1 floor). Guide: PUBLIC_SCHOLARSHIP.md.",
+ tip:"Write the thesis abstract three ways: 280 characters, 600 words and a five-minute talk. That covers almost every public format."},
+{c:"practice",t:"Accessibility certification (CPACC)",s:["now"],n:1,d:"A dated, external marker of accessibility knowledge.",
+ steps:["Apply to IAAP by about 10 Nov 2026.","Study twelve weeks; sit by mid-December (early January as fallback).","Hold it by 31 Mar 2027, then stop: no stacking."],
+ know:["It is legible to advisor-role panels and costs little."],
+ arc:"Phase 1 gate. Guide: WRITTEN_EXAMINATION.md.",
+ tip:"Treat the CPACC body of knowledge as the reading list for the casebook, so study time counts twice."},
+{c:"practice",t:"Crisis-line training and service",s:["now","msc"],n:1,d:"Supervised one-to-one helping experience, and an answer to whether this is work you want.",
+ steps:["Crisis Centre BC Responder cohort, January 2027: about 110 hours of training plus 32 supervised.","250 service hours at four a week (target Aug 2028); request the reference letter.","Log every shift with a line of reflection."],
+ know:["Parallel routes: Crisis Centre for Northern BC, Crisis Text Line."],
+ arc:"Starts the helping-experience clock for the counselling application.",
+ tip:"Line up three professional references before the form opens; it can't be saved."},
+{c:"practice",t:"Peer Support Canada certification",s:["msc"],n:1,d:"A national certification against published standards, which gives Make Space standing.",
+ steps:["Now: self-study of the BC Peer Support Worker Training Curriculum; adopt the PSC Standards of Practice and Code of Conduct.","Autumn 2028: peer-led core training as crisis hours close (swap, don't stack).","Provisional certification (target early 2029), 200 hours, full certification (target mid-2030).","Stage 2: mentor certification for the hand-over."],
+ know:["Peer support is not counselling; the two never share a page."],
+ arc:"decisions/2026-11-01-peer-support-line.md.",
+ tip:"Ask PSC whether supervised Make Space hours count toward the 200."},
+{c:"practice",t:"Living as the advisor: the casebook",s:["now"],n:1,d:"Practising adjudication before you hold the role.",
+ steps:["One invented determination a week, half a page, labelled as invented.","Read the instruments in full: UBC LR7, SFU GP 26, the Accessible BC Act, Meiorin, Moore.","One BC Human Rights Tribunal accommodation decision a month."],
+ know:["House rule 5: never a real case, even de-identified."],
+ arc:"Phase 1 and into the advisor role. Guide: ACCOMMODATION_RATIONALE_MEMO.md.",
+ tip:"Change one variable per case (documentation, timing, fluctuation). That is the thesis question in miniature."},
+{c:"practice",t:"Placement reflection portfolio",s:["ma","dip"],d:"Turning placement learning into evidence of competence.",
+ steps:["Each session: what happened · my reaction · what I understand about it · what I will do differently · what I bring to supervision.","Start on day one; log supervision hours as they happen.","Art therapy: include process images under the consent policy."],
+ know:["RCC needs 100 hours of clinical supervision with 25 direct; CCC needs 150 direct client hours.","All client material anonymised at the point of writing."],
+ arc:"MA practicum (from 2033), VATI placement. Guides: CLINICAL_PORTFOLIO.md, CLINICAL_DOCUMENTATION.md.",
+ tip:"The entries that feel uncomfortable to write are the ones the portfolio needs most; bring them to supervision."},
+{c:"practice",t:"Personal therapy as professional development",s:["ma","dip","phd"],d:"Experiencing the receiving position, intentionally.",
+ steps:["Check each programme's requirements for personal therapy hours (UBC, SFU, VATI: verify).","Begin before placement if you choose to.","Keep reflections separate from any assessed portfolio."],
+ know:["Ask programmes about subsidised options for students."],
+ arc:"Stage 2; a private matter, recorded only where you choose.",
+ tip:"How it feels to be a client is one of the most important questions in clinical training, and textbooks can't answer it."},
+{c:"practice",t:"Research and practice journal",s:["now","msc","ma","dip","phd"],d:"A private, dated journal across all four programmes.",
+ steps:["Record research ideas, reading responses, supervision notes, encounters and positionality notes.","Date every entry; review at the end of each term."],
+ know:["Private ledger only: Notion Private, never a repository."],
+ arc:"Feeds statements, reflexivity sections and the Second Brain. Guide: PERSONAL_DEVELOPMENT_LOG.md.",
+ tip:"Dates matter: you will want to know you had an idea before you found it in the literature."},
+];
+const filt=document.getElementById('filters'),list=document.getElementById('list');
+const F=[["all","All"],["now","Now"],["msc","MSc"],["ma","MA"],["dip","Diploma"],["phd","PhD"],...CATS.map(c=>[c[0],c[1].replace(/^\S+\s/,'')])];
+let cur="all";try{cur=localStorage.getItem('exp-filter')||"all"}catch(e){}
+function esc(s){return s.replace(/[&<>]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[m]))}
+function render(){
+ filt.innerHTML="";F.forEach(([k,l])=>{const b=document.createElement('button');b.textContent=l;b.setAttribute('aria-pressed',k===cur);b.onclick=()=>{cur=k;try{localStorage.setItem('exp-filter',k)}catch(e){};render()};filt.append(b)});
+ list.innerHTML="";
+ CATS.forEach(([ck,cl,cs])=>{
+  const items=X.filter(x=>x.c===ck&&(cur==="all"||cur===ck||x.s.includes(cur)));
+  if(!items.length)return;
+  const sec=document.createElement('section');
+  sec.innerHTML=`<h2>${cl}</h2><p class="sub">${cs} · ${items.length}</p>`;
+  const g=document.createElement('div');g.className='cards';
+  items.forEach(x=>{const el=document.createElement('details');
+   el.innerHTML=`<summary><div class="t">${esc(x.t)}</div><div class="tags">${x.n?'<span class="tag new">Added for my path</span>':''}${x.s.map(s=>`<span class="tag">${STAGES[s]}</span>`).join('')}</div><div class="d">${esc(x.d)}</div></summary>
+   <div class="body"><h3>Step by step</h3><ol>${x.steps.map(s=>`<li>${esc(s)}</li>`).join('')}</ol>
+   <h3>What to know</h3><ul>${x.know.map(s=>`<li>${esc(s)}</li>`).join('')}</ul>
+   <div class="arc"><b>In my arc:</b> ${esc(x.arc)}</div><p class="tip">${esc(x.tip)}</p></div>`;g.append(el)});
+  sec.append(g);list.append(sec)});
+}
+render();
+</script>
+</body>
+</html>

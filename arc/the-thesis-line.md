@@ -21,7 +21,7 @@ The outcome measures (wellbeing, depressive symptoms, help-seeking) are read as 
 | Ground (now → 2027) | Four-literature paper; corpus study stages 1–4 | The frame: a defensible requirement must survive validity, the duty to accommodate, disability studies and design. A coding frame for process features, code 5 being temporal assumptions. | The vocabulary and the coding frame |
 | Frame, Leeds Year 1 (2027–28) | Six modules | The thesis proposal's chapters, each written as an assessed essay (map below) | A literature review, a policy analysis and a legal frame, already marked |
 | Frame, Leeds Year 2 (2028–29) | **Applied Project = the empirical pilot of the MA thesis** (45 credits, 24 weeks, Leeds ethics and supervision) | Feasibility, refined instruments and first patterns | A tested design and pilot data for the MA application |
-| Frame, bridge (2029–31) | Corpus paper; supervisor conversation; RA work | The design rewritten for a UBC lab; CGS-M proposal | A supervisor who has seen the pilot; a funded application on 1 Dec 2030 |
+| Frame, bridge (2029–31) | Corpus paper; supervisor conversation; RA work | The design rewritten for a UBC lab; CGRS M proposal | A supervisor who has seen the pilot; a funded application on 1 Dec 2030 |
 | The Room (2031–34) | **MA thesis** (thesis-based) | The question at scale: which design features are the levers | The first empirical answer; the PhD's starting point |
 | The Question (2035–40) | **PhD dissertation** | From levers to a redesign: a joined access-and-mental-health intake, tested | The evidence base for the centre and the documentation standard |
 
@@ -64,14 +64,14 @@ All nine taught modules are taken (three compulsory, six development), each runn
 
 1. **2029:** Applied Project report, plus a one-page note fitting the question to one UBC lab's programme.
 2. **2030:** a conversation about the full design, with the pilot's instruments and patterns in hand.
-3. **Autumn 2030:** a draft MA thesis proposal, which doubles as the CGS-M research proposal. One document serves the application, the scholarship and the thesis.
+3. **Autumn 2030:** a draft MA thesis proposal, which doubles as the CGRS M research proposal (CGRS M replaced CGS-M in 2025). One document serves the application, the scholarship and the thesis.
 
 ## Support that multiplies
 
 - The Leeds supervisor becomes a research referee.
 - The DPO partner becomes a standing advisory group that continues through the MA and the PhD.
 - The co-researcher can become a co-author.
-- The pilot data makes CGS-M, BC Graduate Scholarship and Mitacs applications concrete.
+- The pilot data makes CGRS M, BC Graduate Scholarship and Mitacs applications concrete.
 
 **Fallback, once:** if recruitment for the pilot is thin, the Applied Project reports on the instrument's development and a smaller interview set. That is still a tested design for the MA.
 
