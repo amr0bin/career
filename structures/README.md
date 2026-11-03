@@ -1,6 +1,6 @@
 # Structures
 
-> **Purpose:** how to write every kind of document the arc asks for, and which experiences to build alongside them, each with credible examples, a fast path and where it sits in the arc now. · **Governs:** the form of the work, not its dates. `decisions/` > `facts/` > `arc/` > this folder. · **Carried out in Notion:** [Study Structures](https://app.notion.com/p/40bd55c9671b8189b117fce261ed1479) (home page link), [Learning](https://app.notion.com/p/ffc3561528954f98ad4562b1c5e48b93), [Opportunities](https://app.notion.com/p/44cece5e2b7c43bdb07ca4a0dab93637)
+> **Purpose:** how to write every kind of document the arc asks for, and which experiences to build alongside them, each with credible examples, a fast path and where it sits in the arc now. · **Governs:** the form of the work, not its dates. `decisions/` > `facts/` > `arc/` > this folder. · **Carried out in Notion:** [Structures & Experiences](https://app.notion.com/p/40dd55c9671b811280bac4f600a0d69c), [Learning](https://app.notion.com/p/ffc3561528954f98ad4562b1c5e48b93), [Opportunities](https://app.notion.com/p/44cece5e2b7c43bdb07ca4a0dab93637)
 
 Start with [`../knowledge/how-to-write-a-thesis.md`](../knowledge/how-to-write-a-thesis.md) (the eight steps), then open the guide for whatever is next. Every guide ends with **🧭 Credible examples, fast path and where this sits now**, which governs the older pathway notes above it.
 
