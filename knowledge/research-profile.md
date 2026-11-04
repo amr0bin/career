@@ -20,8 +20,8 @@ Every output below is a piece of that sentence. A reader who meets any one of th
 | 6 | Leeds module essays | Leeds Year 1–2 | Public pieces within a month of marking, and the MA proposal's chapters | 2027–29 | target |
 | 7 | **Applied Project pilot** | Leeds, with a partner organisation and a paid co-researcher | Report + partner presentation, then a co-authored pilot paper | Report 2029; paper submitted 2029–30 | target |
 | 8 | Conference presence | CDSA (Congress), AHEAD, CACUSS | Attend 2027; present design 2028; present pilot findings 2029–30 | 2027–30 | target |
-| 9 | MA thesis | UBC or SFU | Thesis + 1–2 articles | 2033–34 | target |
-| 10 | PhD dissertation | UBC | Articles; the redesign tested | 2035–40 | target |
+| 9 | MA thesis (`arc/ma-thesis-design.md`) | UBC or SFU | Manuscript 1: the process-burden instrument, developed and validated. Manuscript 2: the mechanism tested (burden → psycho-emotional disablism → depressive symptoms and help-seeking) | Defended ~spring 2034; both submitted 2034 | proposed |
+| 10 | PhD dissertation | UBC | Articles that use the MA's instrument: over time, and the redesign tested | 2035–40 | target |
 
 **Rule:** before any piece of work starts, its row names what it becomes. Work without a row is either rest, studio, or a decision recorded in Notion.
 

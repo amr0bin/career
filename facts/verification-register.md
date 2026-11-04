@@ -51,6 +51,7 @@
 | 44 | Applied Project (OSSP5300M) in the 2028/29 catalogue: periods (Mar–Aug / Sept–Feb), assessment (report 70%, partner presentation 30%), prerequisites | The runway's timing | catalogue.leeds.ac.uk/Module/TP/OSSP/5300M | Read for 2025/26 on 4 Nov 2026 |
 | 45 | How Leeds wants independent prior work (a published scoping review, a draft instrument) declared and built on in assessed work | Whether runway work can be used | Leeds academic integrity guidance; programme team | — |
 | 46 | Whether the nine taught modules can be completed by Aug 2028, so the Applied Project runs Sept 2028–Feb 2029 | The stretch: a year earlier for the pilot paper | Programme team | — |
+| 48 | Whether UBC (G+PS and CNPS) accepts a manuscript-based master's thesis, and any length or committee rules for the 6-credit thesis | The MA thesis format | grad.ubc.ca thesis requirements; CNPS Masters Handbook | — |
 | 47 | Whether a Canadian partner organisation or recruitment channel triggers a second ethics review in Canada | Recruitment timing | Leeds ethics; partner organisation | — |
 
 ## Low: wrong here costs a line or a small fee

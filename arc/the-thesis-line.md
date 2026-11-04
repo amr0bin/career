@@ -4,7 +4,7 @@
 
 **How to write it:** the eight competencies, step by step and applied to this question, are in [`knowledge/how-to-write-a-thesis.md`](../knowledge/how-to-write-a-thesis.md).
 
-**Getting ahead of it:** what the Applied Project needs that can be built before its module opens, quarter by quarter from Nov 2026, is in [`applied-project-runway.md`](applied-project-runway.md). The outputs each stage becomes are in [`knowledge/research-profile.md`](../knowledge/research-profile.md).
+**Getting ahead of it:** what the Applied Project needs that can be built before its module opens, quarter by quarter from Nov 2026, is in [`applied-project-runway.md`](applied-project-runway.md). The outputs each stage becomes are in [`knowledge/research-profile.md`](../knowledge/research-profile.md). How the MA thesis is designed so the PhD extends it (the MA builds and validates the instrument and tests the mechanism; the PhD uses the instrument to test change) is in [`ma-thesis-design.md`](ma-thesis-design.md).
 
 ## The question
 

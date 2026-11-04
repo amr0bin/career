@@ -19,7 +19,7 @@ Phases close on conditions, not dates. The years are targets.
 
 | Folder | What it holds | Start with |
 |---|---|---|
-| [`arc/`](arc/) | The one arc: the ceiling, the floor, each stage, the thesis line, the threads that run through all three | [`the-arc.md`](arc/the-arc.md), [`the-thesis-line.md`](arc/the-thesis-line.md), [`the-global-line.md`](arc/the-global-line.md), [`applied-project-runway.md`](arc/applied-project-runway.md) |
+| [`arc/`](arc/) | The one arc: the ceiling, the floor, each stage, the thesis line, the threads that run through all three | [`the-arc.md`](arc/the-arc.md), [`the-thesis-line.md`](arc/the-thesis-line.md), [`the-global-line.md`](arc/the-global-line.md), [`applied-project-runway.md`](arc/applied-project-runway.md), [`ma-thesis-design.md`](arc/ma-thesis-design.md) |
 | [`philosophy/`](philosophy/) | How I plan and work: my method (requirements to impact), the impact lens, the Second Brain, the Ceiling and Floor Protocol, the advisory council, house rules, ledgers, excellence, living as my future self, and the two tracks (the craft, and how each gate actually decides) | [`my-method.md`](philosophy/my-method.md), [`the-two-tracks.md`](philosophy/the-two-tracks.md) |
 | [`options/`](options/) | Routes compared, routes set aside, bottlenecks with their exits, forks still open | [`open-forks.md`](options/open-forks.md) |
 | [`panel/`](panel/) | **Where I stand today**: the instrument panel (stages and gates, requisites, courses, quarterly parcels, calendar, backups, hours). Open `panel/index.html` | [`panel/README.md`](panel/README.md) |
