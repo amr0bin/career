@@ -48,6 +48,10 @@
 | 41 | Do hours in a self-run peer programme (Make Space) count toward Peer Support Canada's 200 formalized hours, and what supervision must they show? | Decides whether certification needs a second peer role | certification@peersupportcanada.ca; PSC Certification Handbook | — |
 | 42 | PeerWorks Core Essentials cohorts and fees for autumn 2028 (morning Pacific option still offered?) | The training slot in the swap with crisis hours | peerworks.ca.opdi.org/training-education | — |
 | 43 | Peer Support Canada mentor certification requirements | Stage 2 hand-over | peersupportcanada.ca Certification Handbook | — |
+| 44 | Applied Project (OSSP5300M) in the 2028/29 catalogue: periods (Mar–Aug / Sept–Feb), assessment (report 70%, partner presentation 30%), prerequisites | The runway's timing | catalogue.leeds.ac.uk/Module/TP/OSSP/5300M | Read for 2025/26 on 4 Nov 2026 |
+| 45 | How Leeds wants independent prior work (a published scoping review, a draft instrument) declared and built on in assessed work | Whether runway work can be used | Leeds academic integrity guidance; programme team | — |
+| 46 | Whether the nine taught modules can be completed by Aug 2028, so the Applied Project runs Sept 2028–Feb 2029 | The stretch: a year earlier for the pilot paper | Programme team | — |
+| 47 | Whether a Canadian partner organisation or recruitment channel triggers a second ethics review in Canada | Recruitment timing | Leeds ethics; partner organisation | — |
 
 ## Low: wrong here costs a line or a small fee
 

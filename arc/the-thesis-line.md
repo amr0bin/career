@@ -4,6 +4,8 @@
 
 **How to write it:** the eight competencies, step by step and applied to this question, are in [`knowledge/how-to-write-a-thesis.md`](../knowledge/how-to-write-a-thesis.md).
 
+**Getting ahead of it:** what the Applied Project needs that can be built before its module opens, quarter by quarter from Nov 2026, is in [`applied-project-runway.md`](applied-project-runway.md). The outputs each stage becomes are in [`knowledge/research-profile.md`](../knowledge/research-profile.md).
+
 ## The question
 
 **Does the university accommodation process act as a disabling barrier in its own right, and through which of its design features does it shape disabled students' wellbeing and help-seeking?**
