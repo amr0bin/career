@@ -1,6 +1,6 @@
 # The Applied Project runway
 
-> **Purpose:** how the Leeds Applied Project is set up, and as much of it completed as the rules allow, before the project module opens. · **Governs:** the research tasks from Nov 2026 until the project's first week. The project itself (question, design, conditions) is governed by `the-thesis-line.md`. · **Carried out in Notion:** [Tasks](https://app.notion.com/p/1dca49d1884242e28a2f2d21f1216be9) (Area: Research; gate links below), [Gates](https://app.notion.com/p/d4969021f8da4529a41eafec0c323ca4) (view: *Thesis line*), [Meeting Log](https://app.notion.com/p/40bd55c9671b8129a750d199bcd79454)
+> **Purpose:** how the Leeds Applied Project is set up, and as much of it completed as the rules allow, before the project module opens. · **Governs:** the research tasks from Nov 2026 until the project's first week. The project itself (question, design, conditions) is governed by `the-thesis-line.md`. · **Carried out in Notion:** [Tasks](https://app.notion.com/p/1dca49d1884242e28a2f2d21f1216be9) (Area: Research; gate links below), [Gates](https://app.notion.com/p/d4969021f8da4529a41eafec0c323ca4) (view: *Thesis line*), [Meeting Log](https://app.notion.com/p/7483ce88980d41c2856eea1eb15a1c7b)
 
 ## The ceiling
 

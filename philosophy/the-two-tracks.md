@@ -1,6 +1,6 @@
 # The two tracks: the craft and the game
 
-> **Purpose:** the second skill this arc needs alongside excellent work — knowing how each gate actually decides — and the six practices that build it. · **Governs:** how every gate is read, how meetings are recorded, how outputs are planned and how the plan is accelerated. · **Carried out in Notion:** [Gates](https://app.notion.com/p/d4969021f8da4529a41eafec0c323ca4) (columns *Unwritten criteria*, *Who to ask*, *Earliest credible date*), [Meeting Log](https://app.notion.com/p/40bd55c9671b8129a750d199bcd79454), [People](https://app.notion.com/p/25338760610441a8b59216af286b9070), [Tasks](https://app.notion.com/p/1dca49d1884242e28a2f2d21f1216be9)
+> **Purpose:** the second skill this arc needs alongside excellent work — knowing how each gate actually decides — and the six practices that build it. · **Governs:** how every gate is read, how meetings are recorded, how outputs are planned and how the plan is accelerated. · **Carried out in Notion:** [Gates](https://app.notion.com/p/d4969021f8da4529a41eafec0c323ca4) (columns *Unwritten criteria*, *Who to ask*, *Earliest credible date*), [Meeting Log](https://app.notion.com/p/7483ce88980d41c2856eea1eb15a1c7b), [People](https://app.notion.com/p/25338760610441a8b59216af286b9070), [Tasks](https://app.notion.com/p/1dca49d1884242e28a2f2d21f1216be9)
 
 ## The idea
 
