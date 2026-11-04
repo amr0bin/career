@@ -45,6 +45,15 @@ The outcome measures stay framed as **costs of the barrier, not properties of th
 - **Qualitative strand (optional, small):** follow-up interviews with a purposive subset, if the supervisor wants mixed methods. The Leeds pilot already carries the main qualitative work, so this can stay light.
 - **Candidate measures** (confirm in the measures shortlist, with licences and accessible formats): PHQ-9 (depressive symptoms), WEMWBS (wellbeing), General Help-Seeking Questionnaire, Self-Stigma of Seeking Help, and the short form of Attitudes Toward Seeking Professional Psychological Help.
 
+### Built to be acted on, and followed over time
+
+Four additions in the MA make the doctoral "over time" route and its action layer possible (`over-time-into-action.md`):
+
+- **Consent to recontact**, so the MA sample becomes wave one of a longitudinal cohort.
+- **A short form** of the instrument (about eight items), validated alongside the full form, for weekly use.
+- **Process events coded as dated steps** (submitted, waiting, re-proving requested, approved, denied), not only overall burden.
+- **The lever map** kept current: each feature, who owns it, how it could change. Access and counselling services at two or three institutions invited onto the advisory group.
+
 ### Thesis format
 
 Two manuscripts framed by an introduction and a general discussion, if UBC allows a manuscript-based master's thesis (**verify**). Otherwise a conventional thesis with the two studies as chapters, written so each chapter converts directly into a paper.
@@ -63,7 +72,7 @@ The dissertation picks one of three routes, chosen with the doctoral supervisor.
 | **B · Over time** | A longitudinal or intensive longitudinal study of how burden and fluctuation interact across a term, and whether burden predicts later depressive symptoms, help-seeking or withdrawal | The instrument and a cross-sectional model to test causally |
 | **C · Beyond one country** | Cross-cultural adaptation and invariance testing of the instrument, leading into the global mental health postdoc | A validated original version and a partner network |
 
-A strong dissertation can combine B and A: a longitudinal study first, then the redesign trial. The specialty comprehensive exam's review manuscript (Notion gate *Comprehensive exam*) can update the scoping review into a systematic review of process-level interventions.
+A strong dissertation can combine B and A: a longitudinal study first, then the redesign trial. Route B is her leading interest (4 Nov 2026), designed so findings are acted on during the study, every term, after it and beyond one institution: see [`over-time-into-action.md`](over-time-into-action.md). The specialty comprehensive exam's review manuscript (Notion gate *Comprehensive exam*) can update the scoping review into a systematic review of process-level interventions.
 
 ## The runway
 
