@@ -53,6 +53,12 @@
 | 46 | Whether the nine taught modules can be completed by Aug 2028, so the Applied Project runs Sept 2028–Feb 2029 | The stretch: a year earlier for the pilot paper | Programme team | — |
 | 48 | Whether UBC (G+PS and CNPS) accepts a manuscript-based master's thesis, and any length or committee rules for the 6-credit thesis | The MA thesis format | grad.ubc.ca thesis requirements; CNPS Masters Handbook | — |
 | 47 | Whether a Canadian partner organisation or recruitment channel triggers a second ethics review in Canada | Recruitment timing | Leeds ethics; partner organisation | — |
+| 49 | UBC AAPS Counsellors/Psychologists level structure: is there a Level A, and what does it require on conferral? | Which campus post is open in ~2034 versus the Level B embedded posts (~2039) | UBC Workday postings; hr.ubc.ca AAPS job profiles | — |
+| 50 | Whether panels count part-time clinical years (counsellor fraction plus practice during the PhD) toward "five years of clinical counselling" | When the Level B embedded posts become reachable | Informational conversation with Counselling Services; HR | — |
+| 51 | UBC CNPS PhD: supervision coursework and supervised supervision of master's practicum students | The route to "experience supervising master's practicum students" | CNPS Doctoral Handbook; ecps.educ.ubc.ca | — |
+| 52 | CCPA Canadian Certified Counsellor-Supervisor (CCC-S): requirements and earliest eligibility | Second supervision route | ccpa-accp.ca certification | — |
+| 53 | Stepped Care 2.0 and single-session thinking trainings: open to non-clinicians, cost, format | Pre-MA learning on the posting's preferred qualifications | steppedcaresolutions.com; single-session training providers | — |
+| 54 | Staff access to UBC SVPRO disclosure training, Mental Health First Aid, and BCCSU online addiction care training | Pre-MA learning across the posting's treatment range | svpro.ubc.ca; mhfa.ca; bccsu.ca | — |
 
 ## Low: wrong here costs a line or a small fee
 
