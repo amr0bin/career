@@ -51,6 +51,8 @@ Only Part 0 is described as university teaching. Nothing in Parts 1–3 is worde
 
 **Learning for Success**, University Canada West: the one course she has **initiated, designed and taught**, to classes of **400 onboarding students** taking it **for credit**.
 
+**Context:** 2020, as a UCW employee in learning design, during the rapid move of institutions (UCW among them) to high-quality online learning. She initiated, designed and taught the course online at that scale while the whole sector was changing at once.
+
 This is the posting's "experience developing and delivering high-quality university courses", already held, at a scale most new PhDs have never taught. It anchors the dossier and the teaching philosophy.
 
 | To gather | Where it lives |
