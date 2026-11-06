@@ -59,6 +59,12 @@
 | 52 | CCPA Canadian Certified Counsellor-Supervisor (CCC-S): requirements and earliest eligibility | Second supervision route | ccpa-accp.ca certification | — |
 | 53 | Stepped Care 2.0 and single-session thinking trainings: open to non-clinicians, cost, format | Pre-MA learning on the posting's preferred qualifications | steppedcaresolutions.com; single-session training providers | — |
 | 54 | Staff access to UBC SVPRO disclosure training, Mental Health First Aid, and BCCSU online addiction care training | Pre-MA learning across the posting's treatment range | svpro.ubc.ca; mhfa.ca; bccsu.ca | — |
+| 55 | UBC teaching-stream ranks and promotion: Lecturer → Assistant/Associate Professor of Teaching → Professor of Teaching; which carry review and tenure | The ceiling of the teaching line | UBC Faculty Association collective agreement; UBC HR faculty titles | — |
+| 56 | Whether UBC Psychology treats a counselling psychology PhD as a "related discipline" for Lecturer hiring | Whether the benchmark is a clean match | Recent UBC Psychology lecturer hires' profiles; department contact | — |
+| 57 | Which subdisciplines UBC Psychology currently holds (health, clinical, social, developmental, quantitative) | Framing the dissertation toward one | psych.ubc.ca research areas | — |
+| 58 | UBC CTLT programmes and Psychology TA training open to graduate students from ECPS | Teaching record in the PhD | ctlt.ubc.ca; psych.ubc.ca TA pages | — |
+| 59 | Full citation for the WHO Europe scoping review on arts and health (Fancourt and Finn, 2019, HEN synthesis report 67) | Anchor source for anticipatory course 2 | WHO IRIS repository | — |
+| 60 | Whether Leeds and UBC ethics approvals and consent wording allow findings to be used in teaching | Course 3 versions v2–v4 | Leeds research ethics; UBC BREB | — |
 
 ## Low: wrong here costs a line or a small fee
 

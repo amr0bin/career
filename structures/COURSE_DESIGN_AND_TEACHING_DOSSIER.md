@@ -44,7 +44,7 @@
 
 ### 📍 In my arc now
 
-Now: Accessible Learning Labs work as dossier evidence. MA/PhD: TA and guest lectures. Stage 3: sessional, then adjunct teaching (Optionality).
+Now: past workshops (SOGI, psychological health and safety), Accessible Learning Labs work and four anticipatory course exemplars as dossier evidence — the plan is in [`../roles/3-adjunct-professor/teaching-dossier.md`](../roles/3-adjunct-professor/teaching-dossier.md). MA/PhD: TA and guest lectures. Stage 3: sessional, adjunct or teaching-stream lecturer (benchmark: UBC Psychology Lecturer).
 
 ### ✅ Checklist
 

@@ -69,6 +69,15 @@ The 31 Oct 2026 decisions (UBC PhD, Sept 2031 MA entry, VATI after the MA) are c
 - **Prerequisite split:** which courses are taken at UBC vs SFU vs online, decided once the equivalency tables arrive.
 - **Research funder framing:** SSHRC (accommodation policy and educational experience) or CIHR (depression treatment), decided with the MA supervisor before the 1 Dec 2030 CGRS application.
 
+## 8 · The end-state anchor: teaching or clinical · *pending*
+
+**Question.** In the end state, is the anchor role a full-time teaching-stream faculty post or a counsellor/psychologist role?
+**Options.**
+- **Teaching anchor:** UBC Psychology Lecturer (24 credits, about $90,000–$96,000 to start, renewable; then the Professor of Teaching ranks), with Therapeutic Studio as a smaller practice using summer structure and any teaching reductions.
+- **Clinical anchor:** campus counsellor then psychologist (Level B about $97,000–$145,400), with adjunct or sessional teaching as already planned.
+**What decides it.** Where the record is strongest by the PhD (teaching evaluations and pedagogy scholarship vs clinical years and supervision); which work she wants most after holding both; which posts are open in the final PhD year. The teaching dossier keeps both open at no extra cost.
+**By when.** Final PhD year (~2039–40). Reasoning: `decisions/2026-11-05-ubc-psychology-lecturer-benchmark.md`.
+
 ---
 
 *Resolved: none. Each item here was raised in one or more source repos and none has a dated decision.*

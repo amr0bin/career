@@ -9,7 +9,7 @@
 | 0 | **Inclusive learning designer**, with freelance work via Accessible Learning Labs | Now → the advisor role (ALL continues at the level each stage allows) | [`../learning-design/`](../learning-design/README.md) |
 | 1 | **Accessibility Advisor** at UBC or SFU | Stage 1, from 2027 → MA practicum | [`1-accessibility-advisor/`](1-accessibility-advisor/README.md) |
 | 2 | **Counsellor** in campus counselling services at UBC, SFU or UVic (RCC), then **registered psychologist** | Stage 2 (~2034) → Stage 3 and beyond | [`2-campus-counsellor/`](2-campus-counsellor/README.md) |
-| 3 | **Adjunct professor** (and sessional lecturer) in counselling psychology or art therapy | After the PhD (~2040 →) | [`3-adjunct-professor/`](3-adjunct-professor/README.md) |
+| 3 | **Adjunct professor**, sessional or **teaching-stream lecturer** (benchmark: UBC Psychology Lecturer) in psychology, counselling psychology or art therapy | Dossier from now; appointment after the PhD (~2040 →) | [`3-adjunct-professor/`](3-adjunct-professor/README.md) |
 | 4 | **Owner-practitioner of Therapeutic Studio**: private practice, the Creative Health peer programme (with Make Space inside it), and art therapy integrated after VATI | Opens at RCC scope (~2034); psychologist scope after registration | [`4-therapeutic-studio/`](4-therapeutic-studio/README.md) |
 
 Roles 2, 3 and 4 run together in the end state: counsellor or psychologist inside a university, adjunct teaching and supervision, and a private practice.
