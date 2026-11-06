@@ -37,6 +37,36 @@ Private dossier store (Notion)
 
 ---
 
+## Three kinds of evidence, never blurred
+
+| Kind | What it is | How it is described |
+|---|---|---|
+| **University course taught** | Learning for Success, University Canada West (Part 0) | As taught: initiated, designed and taught, for credit |
+| **Workshops delivered** | Pronouns 101 / SOGI; Intro to Psychological Health and Safety (Part 1) | As delivered: designed and delivered, to organisations |
+| **Proposed courses and sample lectures** | The four anticipatory courses (Part 3) and lectures recorded from them | As proposed: "proposed course", "sample lecture from a course I'm designing" |
+
+Only Part 0 is described as university teaching. Nothing in Parts 1–3 is worded to sound like a course taught.
+
+## Part 0 · University teaching already done
+
+**Learning for Success**, University Canada West: the one course she has **initiated, designed and taught**, to classes of **400 onboarding students** taking it **for credit**.
+
+This is the posting's "experience developing and delivering high-quality university courses", already held, at a scale most new PhDs have never taught. It anchors the dossier and the teaching philosophy.
+
+| To gather | Where it lives |
+|---|---|
+| Course description, outcomes, structure, her design rationale (rewritten in her own words) | Here, as a summary; private store for detail |
+| Dates, number of offerings, enrolment per class | Private store (fixes the record; check against the CV) |
+| Student evaluations and any peer review or observation, if she holds copies | Private store |
+| Confirmation from a UCW supervisor or academic lead: who initiated, designed and taught it | Private store; this person is a strong **teaching referee** for the tracker |
+| Reflection: what worked at 400, what she'd change, what it taught her about onboarding and student success | Here, as a draft, dated as written in Nov 2026 |
+
+**Boundary:** this was employed work, so the materials belong to the employment context (house rule 3). It is described on the CV, in the dossier and in the teaching philosophy. Its syllabus, slides and materials go public only with UCW's permission. No student data or evaluations go public.
+
+**What it connects to:** student development theory and onboarding (Role 2's benchmark asks for student development theory); inclusive design at scale (UDL); the methods for teaching a large intro psychology course.
+
+---
+
 ## Part 1 · Workshops already delivered
 
 | Workshop | What it shows | Roles it supports |
@@ -157,6 +187,10 @@ The private dossier is the full evidence file, sent on request. The public secti
 | **Guest lectures & talks** | Invitations as they come (TA years, conferences, CTLT) | Host, audience, slides, a summary | Added only when one has happened |
 
 **Why sample lectures:** they turn each course exemplar into teaching anyone can watch, show delivery as well as design, and give committees and future hosts something concrete. Each one is delivered for real (published), so the label is accurate. Course 3's lecture is revised at each version (v1–v4), and each revision is dated.
+
+**University teaching** appears on the CV page and in the teaching philosophy as what it is (Learning for Success, University Canada West: initiated, designed and taught to classes of 400 for credit). It is not listed under Workshops or Lectures, and its materials stay off the site unless UCW agrees.
+
+**Honest framing, every page:** what's real is stated as done; where she's heading is stated as direction. Never "lecture from my course" for a proposed course, never "trainer for [organisation]" unless employed by it, never a title not yet held.
 
 **Framing line for Workshops:** *Original workshops I designed and deliver independently. Each one shows the design, the outcomes it aims for, and how I adapt it for different audiences and organisations.*
 
