@@ -146,6 +146,28 @@ Full syllabus with access statement · outcomes mapped to assessments (`../../le
 
 **Fallback, once:** if no lecturer post is open at the end of the PhD, sessional and adjunct contracts are the bridge and build the next application.
 
+## Part 5 · The public face: Teaching & Facilitation on andrearobin.com
+
+The private dossier is the full evidence file, sent on request. The public section shows the work itself, as original products (house rule 6). One name covers every stage of the arc, so it never needs renaming.
+
+| Part | Built from | What each page holds | Label |
+|---|---|---|---|
+| **Workshops** | Part 1: workshops already delivered (Pronouns 101 / SOGI, Intro to Psychological Health and Safety), then Designing Accessible Learning | Purpose, audience, outcomes, design approach, how it adapts across organisations (SOGI as the showcase), one or two testimonials with host permission | "Original workshop, designed and delivered independently" |
+| **Lectures** | Part 3: one sample lecture per anticipatory course, actually recorded (captioned video with slides and transcript) or written as a full lecture | The lecture itself, its place in the course, outcomes, a short reading list from the source log | "Sample lecture from a proposed course: [title]" |
+| **Guest lectures & talks** | Invitations as they come (TA years, conferences, CTLT) | Host, audience, slides, a summary | Added only when one has happened |
+
+**Why sample lectures:** they turn each course exemplar into teaching anyone can watch, show delivery as well as design, and give committees and future hosts something concrete. Each one is delivered for real (published), so the label is accurate. Course 3's lecture is revised at each version (v1–v4), and each revision is dated.
+
+**Framing line for Workshops:** *Original workshops I designed and deliver independently. Each one shows the design, the outcomes it aims for, and how I adapt it for different audiences and organisations.*
+
+**Framing line for Lectures:** *Sample lectures from courses I'm designing in creative health, ethics and inclusion. Each draws on peer-reviewed scholarship and is built to the same accessibility standard I bring to every course.*
+
+**Before anything goes up:**
+- Confirm each workshop was made on own time and equipment, outside any employer's IP clause (house rule 3). If not, it stays on the CV and off the site.
+- No evaluations, participant feedback or session disclosures on the public page.
+- Each lecture: captions, transcript, accessible slides, and its source list. Openly licensed where it suits (house rule 7).
+- First lecture: course 3, alongside the Applied Project runway.
+
 ## Yearly rhythm
 
 Each autumn: revise the teaching philosophy; add the year's deliveries and evaluations; version any anticipatory course that moved; update the referee tracker; reread the benchmark posting and any new ones against the dossier.
