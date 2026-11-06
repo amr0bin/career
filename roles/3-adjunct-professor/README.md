@@ -17,7 +17,7 @@ UBC Department of Psychology, **Lecturer**, Faculty of Arts: full-time, **24 cre
 | PhD in psychology or related | UBC Counselling Psychology PhD | Confirm it reads as related (item 56) | Stage 3 |
 | Broad psychology plus a subdiscipline the department holds | PhD-only prerequisites; dissertation | Frame the dissertation toward health or clinical (item 57); breadth reading from now | Stages 2–3 |
 | **Intro quantitative methods** | EPSE 482 (Jan–Apr 2027) | Self-study in R before Leeds; strong Applied Project methods; advanced stats in the MA; TA a methods course in the PhD | From now |
-| Course development and delivery, with evaluations | **Held:** Learning for Success, University Canada West (initiated, designed and taught to classes of 400, for credit); learning design (over the past decade) | Gather its record and a UCW teaching referee; **the teaching dossier, started now**: [`teaching-dossier.md`](teaching-dossier.md) | From now |
+| Course development and delivery, with evaluations | **Held:** Learning for Success, University Canada West (initiated, designed and taught to classes of 400, for credit); learning design (over the past decade) | Listed factually on the CV, not featured; **the teaching dossier, started now**: [`teaching-dossier.md`](teaching-dossier.md) | From now |
 | Varied tools and techniques | Learning-design kit | SOGI workshop adaptations documented side by side | Now |
 | Equity and inclusion statement | The whole arc | A dated contributions log, opened now | From now |
 | Three referees | — | Referee tracker in the private dossier store | From now |
