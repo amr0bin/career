@@ -1,6 +1,42 @@
 # Throughlines
 
-> **Purpose:** the threads that run through all three stages and make them one arc: the research line, the four properties, art into clinical work, the streams at each phase, and what pays · **Governs:** how stages hand work to each other (figures are as given in `facts/stability-and-figures.md`, which governs them) · **Carried out in Notion:** [Gates](https://app.notion.com/p/d4969021f8da4529a41eafec0c323ca4) · [Tasks](https://app.notion.com/p/1dca49d1884242e28a2f2d21f1216be9)
+> **Purpose:** the threads that run through all three stages and make them one arc: the career throughline, the research line, the four properties, art into clinical work, the streams at each phase, and what pays · **Governs:** how stages hand work to each other, and how the arc is told to each audience (figures are as given in `facts/stability-and-figures.md`, which governs them) · **Carried out in Notion:** [Gates](https://app.notion.com/p/d4969021f8da4529a41eafec0c323ca4) · [Tasks](https://app.notion.com/p/1dca49d1884242e28a2f2d21f1216be9)
+
+## 0 · The throughline: the cost of access
+
+**In one line:** *I work on the hidden cost people pay to participate: designing it out, negotiating it down, caring for the people who carry what's left, and producing the evidence that changes the systems that impose it.*
+
+The research question (*does the accommodation process itself drive depression in disabled students, and which parts of it are the levers?*) isn't where the arc ends up. It's the question every role has been asking, one layer at a time:
+
+| Role | Where the cost lives | What the role does with it |
+|---|---|---|
+| **Inclusive learning designer** (now; next full-time role) | In the environment, before anyone asks | Designs the barrier out (UDL, accessible-by-default courses). Nobody has to disclose, document or wait |
+| **Accessibility Advisor** (UBC or SFU) | In the institutional process | Negotiates what the environment still imposes, and sees from inside where the accommodation process becomes its own burden: documentation, waits, denials, renewals |
+| **Counsellor, then psychologist** (UBC, SFU or UVic; Therapeutic Studio) | In the person carrying what's left | Works with the psychological load of repeatedly justifying access, especially in depression and episodic conditions, where capacity fluctuates and the process assumes it doesn't |
+| **Researcher and instructor** (PhD, adjunct, Lecturer) | In the evidence and the next generation | Measures the burden over time (`over-time-into-action.md`), turns findings into timed levers, and trains counsellors and access staff to see it |
+
+**The constant is the social model of disability.** At every stage the problem is located in the environment and the process, not the person. That's why counselling psychology isn't a pivot away from accessibility: it's the social model entering a field that has historically worked at the level of the individual. The decision that the thesis question names no specific conditions (`decisions/2026-11-01-thesis-line.md`) is this commitment in practice.
+
+**Two supporting threads:**
+- **Design as method** at every stage: courses, accommodation processes, peer programmes, studies, teaching dossiers (`learning-design/15_across_the_arc.md`).
+- **Creative practice** as a way of working with people that doesn't depend only on words: BFA → Make Space → VATI → Creative Health (§3 below).
+
+**Why the combination is the asset.** Counselling psychologists rarely arrive with hands-on institutional accessibility and learning design experience; accessibility professionals rarely arrive with clinical training and a research programme. Holding both means findings can be acted on from both sides of the accommodation process, which is the point of the "into action" design. This is what makes the ceiling in `the-arc.md` coherent rather than a list of seats.
+
+### Telling it to each audience
+
+Each audience should hear the whole arc through its own entry point, never a slice that reads as scattered.
+
+| Audience | Lead with | Then |
+|---|---|---|
+| Learning design hiring manager | Accessibility-informed design, backed by a research line | The advisor and clinical direction as depth, not distraction |
+| Accessibility Advisor panel | Design and process expertise, with a wellbeing lens on accommodation | Why understanding the process's psychological cost makes for better adjudication |
+| Counselling MA admissions / supervisors | Years of seeing access burden firsthand from the institution's side, and a pilot already run (Leeds Applied Project) | The thesis as the first empirical answer on the levers |
+| PhD, Lecturer and research funders | A coherent, pre-built research trajectory from pilot to thesis to dissertation | Integrated knowledge translation: partners who own the levers, involved from design |
+
+**Paired questions to keep asking** (Ceiling and Floor Protocol): *Will an audience see only its slice?* → *What can I say in that room that no one else can?* · *Is the Leeds MSc a detour from counselling?* → *What does it make possible?* (The empirical pilot, a disability studies foundation and the thesis pipeline: the hinge that makes the throughline legible to academic reviewers.)
+
+**What multiplies it:** counselling psychology faculty whose work touches disability or episodic conditions, identified early so the Leeds pilot can fit their work (`people/faculty-map.md`); accessibility office staff at UBC and SFU as future colleagues and research partners; SSHRC/CGRS master's and doctoral awards, which reward a coherent trajectory; and the Leeds cohort and peer support networks as later collaborators.
 
 ## 1 · The question and the research line
 
