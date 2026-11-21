@@ -83,9 +83,14 @@ const ICON={
  board:'<rect x="4" y="4.5" width="16" height="11" rx="1"/><path d="M12 15.5V20M8.5 20h7"/>',
  flag:'<path d="M6 21V4M6 4.5h11l-2.5 4 2.5 4H6"/>',
  key:'<circle cx="8" cy="15.5" r="3.5"/><path d="M10.5 13 19 4.5M16 7.5l2.5 2.5M13.5 10l2 2"/>',
+ mountain:'<path d="M3 19l6-10 4 6 2.5-3.5L21 19z"/>',
+ tree:'<path d="M12 21v-5M12 3 7 10h3l-4 6h12l-4-6h3z"/>',
+ cross:'<path d="M9.5 4h5v5.5H20v5h-5.5V20h-5v-5.5H4v-5h5.5z"/>',
+ buoy:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="m5.6 5.6 3.9 3.9M14.5 14.5l3.9 3.9M18.4 5.6l-3.9 3.9M9.5 14.5l-3.9 3.9"/>',
+ peak:'<path d="M3 20 10 9l7 11zM14.5 16l2-3 4.5 7h-4"/><path d="M10 9V4l3 1.2-3 1.3"/>',
  chairs:'<path d="M5 20v-6h5v6M5 14V7M19 20v-6h-5v6M19 14V7"/>'
 };
-const LANES=[['all','All','all'],['study','Study','book'],['work','Work','case'],['practice','Practice','chairs']];
+const LANES=[['all','All','all'],['study','Study','book'],['work','Work','case'],['practice','Practice','chairs'],['art','Art','brush'],['nature','Nature','mountain'],['money','Money','sprout']];
 const STAGE={2027:'Access & Frame',2031:'The Room',2035:'The Question'};
 // [year, lane, icon, title, detail]
 const M=[
@@ -94,7 +99,7 @@ const M=[
  [2027,'study','book','Leeds MSc begins','Disability Studies, Rights and Inclusion. September.'],
  [2028,'study','flag','Applied Project runway complete','Ready at week one. 31 August.'],
  [2028,'practice','people','Peer support certification','Peer Support Canada. Make Space. ~'],
- [2029,'study','cap','Leeds MSc complete',''],
+ [2029,'study','cap','Leeds MSc complete','Paid in cash.'],
  [2029,'work','case','Accessibility Advisor','UBC or SFU. ~'],
  [2030,'study','send','Counselling MA applications','UBC, SFU and CGRS M. 1 December. Prerequisites graded by 31 December.'],
  [2031,'study','book','Counselling MA begins','Thesis route. September.'],
@@ -112,7 +117,24 @@ const M=[
  [2040,'study','globe','Global mental health postdoc','2040–42. ~'],
  [2041,'work','board','Adjunct professor','Beside a counselling psychology role.'],
  [2041,'work','board','UBC Lecturer, teaching stream','Psychology.'],
- [2041,'practice','door','Practice and Creative Health program','Therapeutic Studio.'],
+ [2041,'practice','door','Practice and Creative Health program','Therapeutic Studio.'],,
+ [2027,'art','brush','150 studies sold','Andrea Robin Studio.'],
+ [2027,'nature','mountain','Movement regimen, year one','Stabilise, build, integrate. Rowing, trail running, climbing. ~'],
+ [2027,'money','sprout','Debt cleared','July.'],
+ [2028,'art','board','Foundations teaching module','Taught from the studio.'],
+ [2028,'nature','cross','Wilderness First Responder','~'],
+ [2028,'nature','people','Nature ritual community','~'],
+ [2028,'money','sprout','$100K invested','Income doubled. Emergency fund full.'],
+ [2029,'nature','tree','Forest therapy credential','~'],
+ [2030,'art','door','Two curated exhibitions','Opens arts council funding. ~'],
+ [2030,'nature','buoy','Wilderness rescue team','~'],
+ [2031,'nature','peak','First skyrace','~'],
+ [2033,'money','sprout','$1M invested','~'],
+ [2035,'art','flag','Dear Ordinary, first major showing','~'],
+ [2036,'money','sprout','$1.8M invested','Ten-year picture. ~'],
+ [2038,'money','flag','Chosen work','$2.5M reached. Every role taken for meaning and fit. ~'],
+ [2041,'art','brush','Studio at its largest','Andrea Robin Studio.'],
+ [2041,'nature','mountain','Sustained for life','Emphasis shifts with each decade.']
 ];
 const svg=n=>`<svg viewBox="0 0 24 24" aria-hidden="true">${ICON[n]}</svg>`;
 const $=id=>document.getElementById(id);
